@@ -13,13 +13,6 @@ export function AboutPage() {
   });
   const yParallax = useTransform(scrollYProgress, [0, 1], ['-5%', '5%']);
 
-  const stats = [
-    { value: '47', label: 'COUNTIES REACHED', note: 'Active community budget monitoring across Kenya' },
-    { value: '150K+', label: 'CITIZENS ENGAGED', note: 'Trained on public expenditure and social audits' },
-    { value: '120+', label: 'EPISODES & REELS', note: 'Demystifying public debt and county finance' },
-    { value: '100%', label: 'OPEN CIVIC DATA', note: 'Independent, factual, and free public resources' },
-  ];
-
   const leadership = [
     {
       name: 'Millicent Makina',
@@ -64,13 +57,6 @@ export function AboutPage() {
       image: '/images/avatars/team/Calvina Praise.jpg',
     },
 
-  ];
-
-  const history = [
-    { year: '2023', title: 'Civic Movement Inception', detail: 'Founded in Nairobi to translate dense parliamentary budget bills into plain-language civic explainers for youth.' },
-    { year: '2024', title: 'BNS Mashinani Launch', detail: 'Expanded into grassroots informal settlements and counties, running participatory listening barazas and ward social audits.' },
-    { year: '2025', title: 'BNS Studio & Media Hub', detail: 'Launched dedicated multimedia studio producing viral explainer reels, podcasts, and data journalism toolkits.' },
-    { year: '2026', title: 'National Town Halls & Debt Watch', detail: 'Convened landmark national dialogues and policy submissions to Parliament on sovereign debt accountability.' },
   ];
 
   return (

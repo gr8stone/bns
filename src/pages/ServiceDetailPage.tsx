@@ -1,7 +1,7 @@
 import { useMemo, useRef } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
-import { ArrowLeft, ArrowRight, CheckCircle2, HelpCircle } from 'lucide-react';
+import { ArrowLeft, ArrowRight, HelpCircle } from 'lucide-react';
 import { SERVICES } from '../data/services';
 
 export function ServiceDetailPage() {

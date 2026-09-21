@@ -13,6 +13,18 @@ export function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const subject = formData.service
+      ? `BNS inquiry: ${formData.service}`
+      : "BNS civic inquiry";
+    const body = [
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      `Initiative: ${formData.service || "Not specified"}`,
+      "",
+      formData.message,
+    ].join("\n");
+
+    window.location.href = `mailto:info@budgetndiostory.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setSubmitted(true);
   };
 
@@ -125,7 +137,7 @@ export function ContactPage() {
                 <span>Follow us:</span>
                 <div className="flex items-center gap-5 text-xs sm:text-sm text-[#101010]">
                   <a
-                    href="https://x.com"
+                    href="https://x.com/budgetndiostory"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:opacity-60 transition-opacity font-semibold tracking-wider uppercase"
@@ -133,7 +145,7 @@ export function ContactPage() {
                     𝕏
                   </a>
                   <a
-                    href="https://linkedin.com"
+                    href="https://www.linkedin.com/company/budget-ndio-story/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:opacity-60 transition-opacity font-semibold tracking-wider uppercase"
@@ -141,12 +153,28 @@ export function ContactPage() {
                     LinkedIn
                   </a>
                   <a
-                    href="https://instagram.com"
+                    href="https://instagram.com/budgetndiostory"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:opacity-60 transition-opacity font-semibold tracking-wider uppercase"
                   >
                     Instagram
+                  </a>
+                  <a
+                    href="https://www.facebook.com/share/1CPg2LgfVJ/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:opacity-60 transition-opacity font-semibold tracking-wider uppercase"
+                  >
+                    Facebook
+                  </a>
+                  <a
+                    href="https://wa.me/254790631623"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:opacity-60 transition-opacity font-semibold tracking-wider uppercase"
+                  >
+                    WhatsApp
                   </a>
                 </div>
               </div>

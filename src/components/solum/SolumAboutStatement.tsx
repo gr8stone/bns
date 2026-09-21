@@ -1,60 +1,9 @@
-import { useRef, useEffect, useState } from 'react';
-import { motion, useReducedMotion, useInView, animate } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
-function CounterNumber({ value, suffix = '' }: { value: number; suffix?: string }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
-  const shouldReduceMotion = useReducedMotion();
-
-  useEffect(() => {
-    if (shouldReduceMotion) {
-      setCount(value);
-      return;
-    }
-    if (!isInView) return;
-
-    const controls = animate(0, value, {
-      duration: 1.0,
-      ease: [0.22, 1, 0.36, 1],
-      onUpdate: (latest) => setCount(Math.round(latest)),
-    });
-    return () => controls.stop();
-  }, [isInView, value, shouldReduceMotion]);
-
-  return (
-    <span ref={ref} className="tabular-nums">
-      {count}
-      {suffix}
-    </span>
-  );
-}
-
 export function SolumAboutStatement() {
   const shouldReduceMotion = useReducedMotion();
-
-  const metrics = [
-    {
-      value: 47,
-      suffix: '',
-      label: 'Counties Reached',
-      detail: 'Tracking local devolved budgets, health facilities, and ward project deliveries.',
-    },
-    {
-      value: 150,
-      suffix: 'K+',
-      label: 'Citizens Engaged',
-      detail: 'Across grassroots community barazas, student forums, and digital campaigns.',
-    },
-    {
-      value: 120,
-      suffix: '+',
-      label: 'Episodes & Explainers',
-      detail: 'Demystifying sovereign debt, infrastructure funds, and national budget bills.',
-    },
-  ];
 
   return (
     <section className="w-full bg-white text-[#101010] border-b border-[#101010]/12 select-none">

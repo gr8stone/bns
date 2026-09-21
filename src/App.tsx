@@ -7,6 +7,7 @@ import { ScrollToTop } from './components/common/ScrollToTop';
 import { SmoothScroll, resetLenisScroll, pauseLenis, resumeLenis } from './components/common/SmoothScroll';
 import { BackToTopButton } from './components/common/BackToTopButton';
 import { Preloader } from './components/common/Preloader';
+import { SEO } from './components/common/SEO';
 
 // Direct eager page imports for instant, zero-delay, zero-suspense navigation
 import { HomePage } from './pages/HomePage';
@@ -161,6 +162,7 @@ export function App() {
     <div className="min-h-screen flex flex-col bg-white text-[#101010] selection:bg-[#101010] selection:text-white relative overflow-x-clip">
       {/* Session-only Neutral Full-Page Preloader */}
       <Preloader />
+      <SEO />
 
       {/* Lenis smooth scroll & scroll restoration */}
       <SmoothScroll />

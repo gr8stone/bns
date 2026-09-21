@@ -21,60 +21,6 @@ export function ServicesPage() {
   });
   const yParallax = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
 
-  const stats = [
-    {
-      value: "47",
-      label: "COUNTIES REACHED",
-      note: "Active grassroots and ward-level budget tracking",
-    },
-    {
-      value: "04",
-      label: "STRATEGIC PROGRAMMES",
-      note: "Connect, Mashinani, Wanahabari, Studio",
-    },
-    {
-      value: "150K+",
-      label: "CITIZENS ENGAGED",
-      note: "Through town halls, barazas, and digital explainers",
-    },
-    {
-      value: "100%",
-      label: "OPEN CIVIC DATA",
-      note: "Independent statutory research and free public tools",
-    },
-  ];
-
-  const methodologyCycle = [
-    {
-      step: "01",
-      programme: "BNS MASHINANI",
-      role: "Grassroots Listening & Ward Audits",
-      detail:
-        "Community monitors identify local public project delays, dispensary stock shortages, and devolved fund allocations in wards across Kenya.",
-    },
-    {
-      step: "02",
-      programme: "BNS WANAHABARI",
-      role: "Data Verification & Investigative Grants",
-      detail:
-        "Journalists cross-reference community ground data with official Auditor-General reports, Controller of Budget papers, and procurement ledgers.",
-    },
-    {
-      step: "03",
-      programme: "BNS STUDIO",
-      role: "Multimedia Production & Viral Storytelling",
-      detail:
-        "Our creative lab transforms verified fiscal numbers into snappy vertical reels, YouTube docuseries, podcasts, and shareable infographics.",
-    },
-    {
-      step: "04",
-      programme: "BNS CONNECT",
-      role: "Town Halls & Legislative Policy Submissions",
-      detail:
-        "We bring citizens and lawmakers face-to-face in high-impact public hearings, submitting formal citizen memoranda to parliamentary committees.",
-    },
-  ];
-
   return (
     <main className="w-full bg-white text-[#101010] pt-28 md:pt-36 pb-24 md:pb-36 select-none">
       <div className="max-w-[1440px] mx-auto px-6 md:px-10">
