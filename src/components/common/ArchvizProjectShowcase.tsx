@@ -19,7 +19,7 @@ export function ArchvizProjectShowcase({
   const videoRef = useRef<HTMLVideoElement>(null);
   const videoPoster =
     project.heroImage === "/images/bns/towwnhallmay/129A3863.jpg"
-      ? "/images/bns/optimized/129A3863-poster.webp"
+      ? "/images/bns/optimized/129A3863-poster-small.webp"
       : project.heroImage;
 
   // Compile all high-res stills for the project

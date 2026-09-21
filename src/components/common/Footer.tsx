@@ -2,14 +2,14 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const PARTNER_LOGOS = [
-  { src: "/images/bns/logo.svg", alt: "Budget Ndio Story" },
+  { src: "/logo.svg", alt: "Budget Ndio Story" },
   { src: "/images/bns/partners/tisa.svg", alt: "TISA" },
   {
     src: "/images/bns/optimized/committee-on-fiscal-studies.webp",
     alt: "University of Nairobi",
   },
   {
-    src: "/images/bns/optimized/house-of-fiscal-wisdom.webp",
+    src: "/images/bns/optimized/house-of-fiscal-wisdom-small.webp",
     alt: "House of Fiscal Wisdom",
   },
 ];
@@ -45,7 +45,7 @@ export function Footer() {
             {/* Logo Mark + Name */}
             <Link to="/" className="inline-flex items-center gap-3 group">
               <img
-                src="/images/bns/logo.svg"
+                src="/logo.svg"
                 alt="Budget Ndio Story"
                 width={24}
                 height={24}
@@ -179,8 +179,8 @@ export function Footer() {
                   key={logo.src}
                   src={logo.src}
                   alt={logo.alt}
-                  width={96}
-                  height={40}
+                  width={logo.alt === "House of Fiscal Wisdom" ? 64 : 96}
+                  height={logo.alt === "House of Fiscal Wisdom" ? 64 : 40}
                   decoding="async"
                   className="h-10 w-auto max-w-[96px] object-contain"
                 />

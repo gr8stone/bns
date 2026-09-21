@@ -10,7 +10,6 @@ import {
 import { BackToTopButton } from "./components/common/BackToTopButton";
 import { Footer } from "./components/common/Footer";
 import { Navbar } from "./components/common/Navbar";
-import { Preloader } from "./components/common/Preloader";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import { SEO } from "./components/common/SEO";
 import {
@@ -210,7 +209,6 @@ export function App() {
   return (
     <div className="min-h-screen flex flex-col bg-white text-[#101010] selection:bg-[#101010] selection:text-white relative overflow-x-clip">
       {/* Session-only Neutral Full-Page Preloader */}
-      <Preloader />
       <SEO />
 
       {/* Lenis smooth scroll & scroll restoration */}

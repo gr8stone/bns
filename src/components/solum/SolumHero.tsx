@@ -5,7 +5,7 @@ import {
     useTransform,
 } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 const CLIENT_AVATARS = [
@@ -19,7 +19,7 @@ const CLIENT_LOGOS = [
   {
     name: "Budget Ndio Story",
     label: "Budget Ndio Story",
-    src: "/images/bns/logo.svg",
+    src: "/logo.svg",
   },
   { name: "TISA", label: "TISA", src: "/images/bns/partners/tisa.svg" },
   {
@@ -30,13 +30,27 @@ const CLIENT_LOGOS = [
   {
     name: "House of Fiscal Wisdom",
     label: "House of Fiscal Wisdom",
-    src: "/images/bns/optimized/house-of-fiscal-wisdom.webp",
+    src: "/images/bns/optimized/house-of-fiscal-wisdom-small.webp",
   },
 ];
 
 export function SolumHero() {
   const shouldReduceMotion = useReducedMotion();
   const heroRef = useRef<HTMLDivElement>(null);
+  const [showHeroVideo, setShowHeroVideo] = useState(false);
+
+  useEffect(() => {
+    if (shouldReduceMotion) return;
+
+    const startVideo = () => setShowHeroVideo(true);
+    if ("requestIdleCallback" in window) {
+      const idleId = window.requestIdleCallback(startVideo, { timeout: 4000 });
+      return () => window.cancelIdleCallback(idleId);
+    }
+
+    const timeoutId = globalThis.setTimeout(startVideo, 2500);
+    return () => globalThis.clearTimeout(timeoutId);
+  }, [shouldReduceMotion]);
 
   // Parallax strictly limited to 6%
   const { scrollYProgress } = useScroll({
@@ -69,7 +83,7 @@ export function SolumHero() {
           style={{ y: shouldReduceMotion ? "0%" : parallaxY }}
           className="w-full h-full"
         >
-          {heroVideoUrl ? (
+          {showHeroVideo ? (
             <video
               src={heroVideoUrl}
               poster={heroImage}
@@ -82,20 +96,13 @@ export function SolumHero() {
               className="w-full h-full object-cover filter brightness-90 contrast-105 pointer-events-none select-none"
             />
           ) : (
-            <motion.img
+            <img
               src={heroImage}
               alt="Budget Ndio Story Civic Convening"
-              initial={
-                shouldReduceMotion
-                  ? { opacity: 1, scale: 1 }
-                  : { opacity: 0, scale: 1.08 }
-              }
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{
-                duration: shouldReduceMotion ? 0.01 : 1.4,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="w-full h-full object-cover filter brightness-90 contrast-105 origin-center will-change-transform"
+              fetchPriority="high"
+              width={1280}
+              height={814}
+              className="w-full h-full object-cover filter brightness-90 contrast-105 origin-center"
             />
           )}
         </motion.div>
@@ -182,9 +189,10 @@ export function SolumHero() {
                 key={logo.name}
                 src={logo.src}
                 alt={logo.label}
-                width={112}
-                height={40}
+                width={logo.name === "House of Fiscal Wisdom" ? 64 : 112}
+                height={logo.name === "House of Fiscal Wisdom" ? 64 : 40}
                 decoding="async"
+                loading="lazy"
                 className="h-8 sm:h-10 w-auto max-w-[112px] object-contain"
               />
             ))}
