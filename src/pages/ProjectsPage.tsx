@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react';
 import { PROJECTS } from '../data/projects';
 import { ArchvizProjectShowcase } from '../components/common/ArchvizProjectShowcase';
 
-const CATEGORIES = ['All', 'Residential', 'Commercial', 'Cultural', 'Hospitality', 'Mixed-Use'];
+const CATEGORIES = ['All Projects', 'Wanahabari Lab', 'BNS Connect', 'BNS Mashinani', 'BNS Studios'];
 
 const ASPECT_RATIOS = [
   'aspect-[21/9]',
@@ -17,10 +17,10 @@ const ASPECT_RATIOS = [
 ];
 
 export function ProjectsPage() {
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState('All Projects');
 
   const filteredProjects = useMemo(() => {
-    if (selectedCategory === 'All') return PROJECTS;
+    if (selectedCategory === 'All Projects') return PROJECTS;
     return PROJECTS.filter((p) => p.category === selectedCategory);
   }, [selectedCategory]);
 
@@ -62,7 +62,7 @@ export function ProjectsPage() {
           {/* Left Rail: Category Filters (Horizontal swipeable strip on mobile, vertical sticky rail on desktop) */}
           <div className="col-span-1 md:sticky md:top-28">
             <span className="font-mono text-xs uppercase tracking-wider text-[#757575] block mb-3 md:mb-6">
-              FILTER BY THEME
+              FILTER BY DESK
             </span>
             <div className="flex md:flex-col overflow-x-auto md:overflow-x-visible no-scrollbar gap-2 md:gap-0 md:space-y-3 pb-3 md:pb-0 -mx-1 px-1 md:mx-0 md:px-0">
               {CATEGORIES.map((cat) => {
@@ -82,7 +82,7 @@ export function ProjectsPage() {
                     )}
                     <span>{cat}</span>
                     <span className={`text-[10px] ml-1.5 ${isActive ? 'text-white/70 md:text-[#757575]' : 'text-[#757575]'}`}>
-                      ({cat === 'All' ? PROJECTS.length : PROJECTS.filter((p) => p.category === cat).length})
+                      ({cat === 'All Projects' ? PROJECTS.length : PROJECTS.filter((p) => p.category === cat).length})
                     </span>
                   </button>
                 );
@@ -106,10 +106,10 @@ export function ProjectsPage() {
                   00 // NO ENTRIES FOUND
                 </span>
                 <h3 className="font-display text-2xl font-semibold uppercase text-[#101010] mb-4">
-                  NO PRODUCTIONS IN THIS THEME
+                  NO PRODUCTIONS IN THIS DESK
                 </h3>
                 <button
-                  onClick={() => handleCategoryChange('All')}
+                  onClick={() => handleCategoryChange('All Projects')}
                   className="solum-btn px-5 py-2.5 border border-[#101010] text-xs font-mono uppercase tracking-wider hover:bg-[#101010] hover:text-white transition-colors"
                 >
                   RESET FILTER

@@ -4,6 +4,7 @@ export const SERVICES: Service[] = [
   {
     id: 'bns-connect',
     slug: 'bns-connect',
+    aliases: ['connect'],
     number: '01',
     title: 'BNS Connect',
     shortDescription: 'Convening citizens, youth advocates, and fiscal policymakers through high-impact town halls and public hearings.',
@@ -70,6 +71,7 @@ export const SERVICES: Service[] = [
   {
     id: 'bns-mashinani',
     slug: 'bns-mashinani',
+    aliases: ['mashinani'],
     number: '02',
     title: 'BNS Mashinani',
     shortDescription: 'Taking budget literacy directly to the grassroots, informal settlements, and county communities.',
@@ -136,8 +138,9 @@ export const SERVICES: Service[] = [
   {
     id: 'bns-wanahabari',
     slug: 'bns-wanahabari',
+    aliases: ['wanahabari-lab', 'wanahabari'],
     number: '03',
-    title: 'BNS Wanahabari',
+    title: 'Wanahabari Lab',
     shortDescription: 'Empowering journalists, community media, and storytellers with data tools and investigative reporting grants.',
     heroHeadline: 'Investigative public finance journalism that demands answers.',
     heroSubhead: 'We train and resource media practitioners to uncover procurement irregularities, follow public money trails, and report with data rigor.',
@@ -202,8 +205,9 @@ export const SERVICES: Service[] = [
   {
     id: 'bns-studio',
     slug: 'bns-studio',
+    aliases: ['studios', 'bns-studios'],
     number: '04',
-    title: 'BNS Studio',
+    title: 'BNS Studios',
     shortDescription: 'Our creative multimedia hub producing viral video explainers, animated reels, podcasts, and infographics.',
     heroHeadline: 'Making national budget numbers impossible to ignore.',
     heroSubhead: 'We combine data journalism with viral creative storytelling to transform intimidating fiscal figures into engaging digital media.',

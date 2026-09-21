@@ -50,12 +50,12 @@ export function ArchvizProjectShowcase({ project, index }: ArchvizProjectShowcas
 
   // Fallback high-res stills if project has fewer than 9 images
   const fallbackImages = [
-    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1600&q=85',
+    '/images/bns/towwnhallmay/129A3863.jpg',
+    '/images/bns/towwnhallmay/129A3912.jpg',
+    '/images/bns/towwnhallmay/129A4056.jpg',
+    '/images/bns/cohort1 groundworks/129A3964.jpg',
+    '/images/bns/cohort1 groundworks/129A3987.jpg',
+    '/images/bns/hall/129A4248.jpg',
   ];
   let fbIdx = 0;
   while (stills.length < 9) {

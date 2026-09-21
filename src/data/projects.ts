@@ -9,10 +9,10 @@ export const PROJECTS: Project[] = [
     year: '2026',
     client: 'Budget Ndio Story Media',
     architect: 'BNS Civic Research & Data Desk',
-    category: 'Cultural',
+    category: 'BNS Mashinani',
     services: ['BNS Connect', 'BNS Studio', 'BNS Mashinani'],
     tags: ['All', 'Civic Tech', 'Counties', 'Public Finance', 'Docuseries', 'Community'],
-    heroImage: 'https://i4.ytimg.com/vi/oHuImiQvvN0/hqdefault.jpg',
+    heroImage: '/images/bns/towwnhallmay/129A3863.jpg',
     heroVideo: 'https://www.youtube.com/watch?v=oHuImiQvvN0',
     videoDuration: 'YouTube 3-Part Series',
     clientMaterial: 'County Allocation of Revenue Act (CARA), Controller of Budget reports & county treasury budgets',
@@ -69,17 +69,17 @@ export const PROJECTS: Project[] = [
     ],
     gallery: [
       {
-        url: 'https://i4.ytimg.com/vi/oHuImiQvvN0/hqdefault.jpg',
+        url: '/images/bns/towwnhallmay/129A3863.jpg',
         caption: 'Episode 3: Devolved Health & Water Budget Tracking',
         aspectRatio: 'landscape'
       },
       {
-        url: 'https://i2.ytimg.com/vi/abDYZ5xjQgo/hqdefault.jpg',
+        url: '/images/bns/towwnhallmay/129A4056.jpg',
         caption: 'Episode 2: Own-Source Revenue & County Levies',
         aspectRatio: 'portrait'
       },
       {
-        url: 'https://i4.ytimg.com/vi/3wfk09c_xNQ/hqdefault.jpg',
+        url: '/images/bns/cohort1 groundworks/129A3964.jpg',
         caption: 'Episode 1: Where Does County Money Actually Come From?',
         aspectRatio: 'landscape'
       },
@@ -101,10 +101,10 @@ export const PROJECTS: Project[] = [
     year: '2026',
     client: 'Budget Ndio Story Investigations',
     architect: 'BNS Fiscal Accountability Desk',
-    category: 'Heritage',
+    category: 'BNS Connect',
     services: ['BNS Wanahabari', 'BNS Studio', 'BNS Connect'],
     tags: ['All', 'National Budget', 'Infrastructure', 'Public Debt', 'Docuseries', 'Investigation'],
-    heroImage: 'https://i4.ytimg.com/vi/SfPwtqUFyj4/hqdefault.jpg',
+    heroImage: '/images/bns/hall/129A4248.jpg',
     heroVideo: 'https://www.youtube.com/watch?v=SfPwtqUFyj4',
     videoDuration: '4-Part Investigative Special',
     clientMaterial: 'National Infrastructure Fund Act, Sovereign Debt Schedules, and Parliament Hansard',
@@ -155,17 +155,17 @@ export const PROJECTS: Project[] = [
     ],
     gallery: [
       {
-        url: 'https://i4.ytimg.com/vi/SfPwtqUFyj4/hqdefault.jpg',
+        url: '/images/bns/hall/129A4248.jpg',
         caption: 'Part 4: Public Debt, Guarantees & Sovereign Risk',
         aspectRatio: 'landscape'
       },
       {
-        url: 'https://i4.ytimg.com/vi/KeNCrx6krl0/hqdefault.jpg',
+        url: '/images/bns/media/129A4039.jpg',
         caption: 'Part 3: Governance, Board Structures & Oversight',
         aspectRatio: 'portrait'
       },
       {
-        url: 'https://i2.ytimg.com/vi/A_EXLueEMlk/hqdefault.jpg',
+        url: '/images/bns/media/main media image.jpg',
         caption: 'Part 1: Key Provisions of the Infrastructure Fund',
         aspectRatio: 'landscape'
       }
@@ -182,10 +182,10 @@ export const PROJECTS: Project[] = [
     year: '2026',
     client: 'Civic Coalition for Budget Transparency',
     architect: 'BNS Youth Engagement Hub',
-    category: 'Commercial',
+    category: 'BNS Connect',
     services: ['BNS Connect', 'BNS Studio', 'BNS Wanahabari'],
     tags: ['All', 'National Budget', 'Public Policy', 'Youth', 'Civic Tech', 'BPS'],
-    heroImage: 'https://i3.ytimg.com/vi/FkgRz4v2Llk/hqdefault.jpg',
+    heroImage: '/images/bns/towwnhallmay/129A3912.jpg',
     heroVideo: 'https://www.youtube.com/watch?v=FkgRz4v2Llk',
     videoDuration: '3-Part BPS Explainer',
     clientMaterial: 'National Budget Policy Statement, Medium-Term Expenditure Framework (MTEF) & Public Submissions',
@@ -230,12 +230,12 @@ export const PROJECTS: Project[] = [
     ],
     gallery: [
       {
-        url: 'https://i3.ytimg.com/vi/FkgRz4v2Llk/hqdefault.jpg',
+        url: '/images/bns/towwnhallmay/129A3912.jpg',
         caption: 'BPS Part 3: Why Young People Must Care About Ceilings',
         aspectRatio: 'landscape'
       },
       {
-        url: 'https://i4.ytimg.com/vi/wkPe3sWomoA/hqdefault.jpg',
+        url: '/images/bns/towwnhallmay/129A3923.jpg',
         caption: 'BPS Part 2: Revenue Projections & Taxation Pressures',
         aspectRatio: 'portrait'
       }
@@ -252,7 +252,7 @@ export const PROJECTS: Project[] = [
     year: '2026',
     client: 'AFRODAD & Committee on Fiscal Studies',
     architect: 'Dr. Lyla Latiff & BNS Dialogue Desk',
-    category: 'Mixed-Use',
+    category: 'Wanahabari Lab',
     services: ['BNS Connect', 'BNS Wanahabari'],
     tags: ['All', 'Sovereign Debt', 'AFRODAD', 'Procurement', 'Investigation', 'Policy'],
     heroImage: '/images/bns/AFRODAD debt Conference 2026  also Dr LYLA Latiff Book Launch called Red Flags in Government contracts/latiff.jpeg',
@@ -315,7 +315,7 @@ export const PROJECTS: Project[] = [
     year: '2026',
     client: 'BNS Grassroots Movement',
     architect: 'BNS Mashinani Field Coordinators',
-    category: 'Cultural',
+    category: 'BNS Mashinani',
     services: ['BNS Mashinani', 'BNS Connect'],
     tags: ['All', 'Mashinani', 'Community', 'Devolution', 'Grassroots', 'Civic Tech'],
     heroImage: '/images/bns/cohort1 groundworks/129A3964.jpg',
@@ -358,7 +358,7 @@ export const PROJECTS: Project[] = [
     year: '2026',
     client: 'Youth Civic Action Alliance',
     architect: 'BNS Studio Motion Lab',
-    category: 'Commercial',
+    category: 'BNS Studios',
     services: ['BNS Studio'],
     tags: ['All', 'Civic Tech', 'BNS Studio', 'Animation', 'Youth', 'Economic Inclusion'],
     heroImage: '/images/bns/reels/reel-05-opportunities.jpg',
@@ -402,7 +402,7 @@ export const PROJECTS: Project[] = [
     year: '2026',
     client: 'Public Interest Coalition',
     architect: 'BNS Newsroom & Broadcast Desk',
-    category: 'Heritage',
+    category: 'Wanahabari Lab',
     services: ['BNS Studio', 'BNS Wanahabari'],
     tags: ['All', 'National Budget', 'Treasury', 'Broadcast', 'Journalism', 'Citizen Action'],
     heroImage: '/images/bns/treasury/budget-reading-2026.jpg',
@@ -446,7 +446,7 @@ export const PROJECTS: Project[] = [
     year: '2026',
     client: 'Citizen Assembly for Fiscal Accountability',
     architect: 'BNS Convening Committee',
-    category: 'Cultural',
+    category: 'BNS Connect',
     services: ['BNS Connect'],
     tags: ['All', 'Town Hall', 'Sovereign Debt', 'Citizens', 'Accountability', 'BNS Connect'],
     heroImage: '/images/bns/towwnhallmay/129A3912.jpg',

@@ -32,7 +32,7 @@ export interface Project {
   year: string;
   client: string;
   architect: string;
-  category: 'Residential' | 'Commercial' | 'Cultural' | 'Hospitality' | 'Mixed-Use' | 'Heritage';
+  category: 'Wanahabari Lab' | 'BNS Connect' | 'BNS Mashinani' | 'BNS Studios' | 'Residential' | 'Commercial' | 'Cultural' | 'Hospitality' | 'Mixed-Use' | 'Heritage' | string;
   services: string[];
   tags: string[]; // For filtering: CGI, Architecture, Real Estate, AI Film, Animation, Interior, Exterior, Renovation
   heroImage: string;
@@ -70,6 +70,7 @@ export interface ServiceFAQ {
 export interface Service {
   id: string;
   slug: string;
+  aliases?: string[];
   number: string;
   title: string;
   shortDescription: string;

@@ -8,7 +8,7 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
     date: 'June 2026',
     readTime: '6 min read',
     category: 'County Finance',
-    heroImage: 'https://i4.ytimg.com/vi/oHuImiQvvN0/hqdefault.jpg',
+    heroImage: '/images/bns/towwnhallmay/129A3863.jpg',
     excerpt: 'Counties manage schools, health clinics, and rural roads, yet many citizens are unaware of how devolved budgets are collected and distributed.',
     content: [
       'In our devolved system of governance, counties provide the frontline services citizens interact with every day: healthcare centers, early childhood education, local access roads, and community markets.',
@@ -24,7 +24,7 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
     date: 'April 2026',
     readTime: '5 min read',
     category: 'Public Debt',
-    heroImage: 'https://i4.ytimg.com/vi/SfPwtqUFyj4/hqdefault.jpg',
+    heroImage: '/images/bns/hall/129A4248.jpg',
     excerpt: 'The National Infrastructure Fund is now law. What does it mean for generational taxation, sovereign liability, and citizen oversight?',
     content: [
       'Kenya\'s National Infrastructure Fund is designed to channel billions into transport corridors, energy grids, and water dams. But major financing vehicles require equally robust transparency safeguards.',
@@ -40,7 +40,7 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
     date: 'March 2026',
     readTime: '7 min read',
     category: 'Civic Participation',
-    heroImage: 'https://i3.ytimg.com/vi/FkgRz4v2Llk/hqdefault.jpg',
+    heroImage: '/images/bns/towwnhallmay/129A3912.jpg',
     excerpt: 'The annual June budget speech is largely symbolic. Discover why genuine public influence happens months earlier during sectoral ceiling negotiations.',
     content: [
       'Every June, the nation tunes in to watch the Cabinet Secretary carry the traditional budget briefcase into Parliament. By then, over 95% of line items are fixed.',

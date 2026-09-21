@@ -216,7 +216,7 @@ export function ServicesPage() {
                         {prog.title}
                       </h3>
                       <Link
-                        to={`/services/${prog.slug}`}
+                        to={`/programmes/${prog.slug}`}
                         className="text-xs font-mono uppercase tracking-wider text-[#101010] inline-flex items-center gap-1 group-hover:underline"
                       >
                         <span>Details</span>
@@ -249,7 +249,7 @@ export function ServicesPage() {
                 {/* Bottom Action Strip */}
                 <div className="p-6 sm:p-8 pt-0">
                   <Link
-                    to={`/services/${prog.slug}`}
+                    to={`/programmes/${prog.slug}`}
                     className="w-full py-3.5 px-4 border border-[#101010] text-[#101010] hover:bg-[#101010] hover:text-white transition-colors duration-200 text-xs font-mono uppercase tracking-wider flex items-center justify-between"
                   >
                     <span>EXPLORE {prog.title}</span>

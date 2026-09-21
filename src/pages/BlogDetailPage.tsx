@@ -94,16 +94,16 @@ export function BlogDetailPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 my-12 pt-8 border-t border-[#101010]/12">
           <div className="aspect-[4/3] bg-zinc-100 border border-[#101010]/12 overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1000&q=80"
-              alt="Schematic Drawing Ingestion"
+              src="/images/bns/towwnhallmay/129A3863.jpg"
+              alt="Community Town Hall Deliberation"
               loading="lazy"
               className="w-full h-full object-cover filter grayscale"
             />
           </div>
           <div className="aspect-[4/3] bg-zinc-100 border border-[#101010]/12 overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80"
-              alt="Structural Lighting Simulation"
+              src="/images/bns/cohort1 groundworks/129A3964.jpg"
+              alt="Youth Budget Tracking Cohort"
               loading="lazy"
               className="w-full h-full object-cover"
             />

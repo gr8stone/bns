@@ -22,22 +22,52 @@ export function AboutPage() {
 
   const leadership = [
     {
-      name: 'James Maingi Mutinda',
-      role: 'Executive Director & Co-Founder',
-      bio: 'Civic technologist and fiscal activist leading grassroots youth mobilization and participatory budget monitoring across Kenya.',
-      image: '/images/bns/AFRODAD debt Conference 2026  also Dr LYLA Latiff Book Launch called Red Flags in Government contracts/James Maingi Mutinda.jpeg',
+      name: 'Millicent Makina',
+      role: 'Board Advisor',
+      bio: 'Distinguished governance expert advising non-profit boards and international development initiatives. Formulated the inaugural 5-year Strategic Governance & Accountability Framework.',
+      image: '/images/avatars/team/Millicent Makina.jpeg',
     },
     {
-      name: 'Dr. Lyla Latiff',
-      role: 'Fiscal Policy & Legal Scholar',
-      bio: 'Specialist in public finance, international tax law, and author of "Red Flags in Government Contracts".',
-      image: '/images/bns/AFRODAD debt Conference 2026  also Dr LYLA Latiff Book Launch called Red Flags in Government contracts/latiff.jpeg',
+      name: 'Movine Omondi',
+      role: 'Executive Director & Founder',
+      bio: 'Over a decade of experience in public policy, youth advocacy, and fiscal governance. Leads BNS’s strategic vision, institutional partnerships, and legislative advocacy.',
+      image: '/images/avatars/team/Movine Omondi_HeadShot.jpg',
+    },
+    {
+      name: 'Peculiar Koros',
+      role: 'Director ICT & Chief Technologist',
+      bio: 'Directs the technological architecture and digital verification systems, cross-referencing Treasury books with parliamentary acts for 100% data audit accuracy.',
+      image: '/images/avatars/team/Koros.jpeg',
+    },
+    {
+      name: 'Shem Odhiambo Ojunga',
+      role: 'Director Media',
+      bio: 'Award-winning digital strategist pioneering high-retention civic storytelling across TikTok, Instagram, and YouTube, demystifying technical fiscal documents.',
+      image: '/images/avatars/team/Shem Odhiambo Ojunga.jpeg',
+    },
+    {
+      name: 'James Maingi Mutinda',
+      role: 'Director Partnerships',
+      bio: 'Drives strategic alliances with academic institutions, civil society coalitions, and international development agencies, scaling BNS budget workshops nationwide.',
+      image: '/images/avatars/team/James Mutinda.jpeg',
     },
     {
       name: 'Nelly Maina',
-      role: 'Head of Media & Production',
-      bio: 'Broadcast journalist and data storyteller directing the BNS Studio explainer series, podcasts, and digital civic campaigns.',
-      image: '/images/bns/marketing newsletter subcribe/Nelly with The Mic.jpg',
+      role: 'Lead Podcast Host',
+      bio: 'Charismatic broadcaster and community storyteller anchoring the Budget Mtaani podcast, translating complex macroeconomic policies into everyday Sheng.',
+      image: '/images/avatars/team/Nelly Maina.jpg',
+    },
+    {
+      name: 'Calvina Praise',
+      role: 'Lead Youth Content Strategist & Producer',
+      bio: 'Architects youth-centered visual campaigns for digital channels, demystifying taxation formulas, public debt, and county budgets through bite-sized explainer reels.',
+      image: '/images/avatars/team/Calvina Praise.jpg',
+    },
+    {
+      name: 'Dr. Lyla Latif',
+      role: 'Principal Investigator (Project TERRA) & Fellow',
+      bio: 'Lecturer at the University of Nairobi Faculty of Law, Chair of CFS UoN, and author of "Red Flags in Government Contracts". Leads research on algorithmic tax governance.',
+      image: '/images/events/red-flags-book-launch/dr-lyla-latif.jpeg',
     },
   ];
 

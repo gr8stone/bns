@@ -10,11 +10,11 @@ export function ServiceDetailPage() {
   const shouldReduceMotion = useReducedMotion();
 
   const service = useMemo(() => {
-    return SERVICES.find((s) => s.slug === slug);
+    return SERVICES.find((s) => s.slug === slug || s.aliases?.includes(slug || ''));
   }, [slug]);
 
   const currentIndex = useMemo(() => {
-    return SERVICES.findIndex((s) => s.slug === slug);
+    return SERVICES.findIndex((s) => s.slug === slug || s.aliases?.includes(slug || ''));
   }, [slug]);
 
   const prevService = useMemo(() => {
@@ -34,7 +34,7 @@ export function ServiceDetailPage() {
   const yParallax = useTransform(scrollYProgress, [0, 1], ['-5%', '5%']);
 
   if (!service) {
-    return <Navigate to="/services" replace />;
+    return <Navigate to="/programmes" replace />;
   }
 
   return (
@@ -45,7 +45,7 @@ export function ServiceDetailPage() {
         {/* ========================================================= */}
         <div className="flex items-center justify-between pb-8 border-b border-[#101010]/12 font-mono text-xs text-[#757575] uppercase tracking-wider">
           <Link
-            to="/services"
+            to="/programmes"
             className="flex items-center gap-2 hover:text-[#101010] transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
@@ -274,7 +274,7 @@ export function ServiceDetailPage() {
         <div className="max-w-[1440px] mx-auto px-6 md:px-10 grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-[#101010]/12">
           {prevService && (
             <Link
-              to={`/services/${prevService.slug}`}
+              to={`/programmes/${prevService.slug}`}
               className="py-12 pr-6 flex flex-col justify-between group select-none hover:bg-white transition-colors duration-200"
             >
               <div className="flex items-center gap-2 font-mono text-xs uppercase text-[#757575] mb-4">
@@ -292,7 +292,7 @@ export function ServiceDetailPage() {
 
           {nextService && (
             <Link
-              to={`/services/${nextService.slug}`}
+              to={`/programmes/${nextService.slug}`}
               className="py-12 sm:pl-8 flex flex-col justify-between group select-none hover:bg-white transition-colors duration-200 sm:text-right"
             >
               <div className="flex items-center sm:justify-end gap-2 font-mono text-xs uppercase text-[#757575] mb-4">

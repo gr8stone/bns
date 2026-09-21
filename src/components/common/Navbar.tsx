@@ -39,7 +39,7 @@ export function Navbar() {
   const mainLinks = [
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
-    { label: 'Programmes', href: '/services' },
+    { label: 'Programmes', href: '/programmes' },
     { label: 'Projects', href: '/projects' },
     { label: 'Contact', href: '/contact' },
   ];
