@@ -83,10 +83,10 @@ export function FinalCTASection() {
                 <Phone className="w-3.5 h-3.5 text-[#C5A880]" /> NAIROBI HUB
               </span>
               <a
-                href="tel:+254700000000"
+                href="tel:+254790631623"
                 className="text-xs md:text-sm text-white/90 hover:text-[#C5A880] transition-colors"
               >
-                +254 (0) 20 800 BNS
+                +254 790 631 623
               </a>
             </div>
 

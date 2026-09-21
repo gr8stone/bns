@@ -123,10 +123,10 @@ export function Footer() {
           <div className="col-span-2 md:col-span-4 space-y-3 font-sans text-xs sm:text-sm text-neutral-300 md:text-left">
             <div>
               <a
-                href="tel:+254700000000"
+                href="tel:+254790631623"
                 className="hover:text-white transition-colors"
               >
-                +254 (0) 700 000 000
+                +254 790 631 623
               </a>
             </div>
 

@@ -309,7 +309,7 @@ export function ProjectBriefForm() {
               </label>
               <input
                 type="tel"
-                placeholder="+44 20 7946 0912"
+                placeholder="+254 790 631 623"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 className="w-full px-3 py-2.5 border border-zinc-200 text-xs text-zinc-900 bg-white focus:outline-none focus:border-black"

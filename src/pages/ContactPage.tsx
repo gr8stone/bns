@@ -89,10 +89,10 @@ export function ContactPage() {
                     Phone
                   </span>
                   <a
-                    href="tel:+254700000000"
+                    href="tel:+254790631623"
                     className="font-sans font-semibold text-lg sm:text-xl text-[#101010] hover:underline"
                   >
-                    +254 (0) 20 800 BNS
+                    +254 790 631 623
                   </a>
                 </div>
 
