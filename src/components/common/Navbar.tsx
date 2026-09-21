@@ -55,7 +55,7 @@ export function Navbar() {
       {!menuOpen && (
         <div
           aria-hidden="true"
-          className="fixed inset-x-0 top-0 z-[65] h-20 border-b border-white/10 bg-[#101010]/90 backdrop-blur-sm"
+          className="fixed inset-x-0 top-0 z-[65] h-20 border-b border-white/[0.08] bg-[#101010]/55 shadow-[0_8px_24px_rgba(0,0,0,0.08)] backdrop-blur-md backdrop-saturate-150"
         />
       )}
 
