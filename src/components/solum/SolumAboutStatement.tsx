@@ -112,7 +112,7 @@ export function SolumAboutStatement() {
         </div>
 
         {/* Bottom Metrics 3-Column Strip with Counter Number Animation */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-[#101010]/12 pt-12 md:pt-16">
+        {/* <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-[#101010]/12 pt-12 md:pt-16">
           {metrics.map((m, idx) => (
             <motion.div
               key={m.label}
@@ -137,7 +137,7 @@ export function SolumAboutStatement() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </div> */}
       </div>
     </section>
   );

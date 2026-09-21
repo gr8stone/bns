@@ -1,6 +1,19 @@
 import { Link } from 'react-router-dom';
+import { motion, useReducedMotion } from 'framer-motion';
+
+const PARTNER_LOGOS = [
+  { src: '/images/bns/logo.svg', alt: 'Budget Ndio Story' },
+  { src: '/images/bns/partners/tisa.svg', alt: 'TISA' },
+  {
+    src: '/images/bns/partners/committee-on-fiscal-studies.png',
+    alt: 'University of Nairobi',
+  },
+  { src: '/images/bns/partners/house-of-fiscal-wisdom.png', alt: 'House of Fiscal Wisdom' },
+];
 
 export function Footer() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <footer className="w-full bg-[#0B0B0B] text-white pt-12 md:pt-16 pb-8 md:pb-10 px-6 md:px-12 border-t border-[#1A1A1A] select-none overflow-hidden">
       <div className="max-w-[1480px] mx-auto">
@@ -9,9 +22,15 @@ export function Footer() {
             Matches exact 'INTERO' reference in scale, weight & charcoal tone
             ───────────────────────────────────────────────────────────── */}
         <div className="w-full flex justify-center items-center overflow-hidden py-4 md:py-6 select-none">
-          <h2 className="font-display text-[clamp(48px,14vw,260px)] font-bold tracking-[-0.03em] leading-[0.82] text-[#242424] uppercase whitespace-nowrap text-center">
-            BUDGET NDIO STORY
-          </h2>
+          <motion.h2
+            aria-label="Budget Ndio Story"
+            animate={shouldReduceMotion ? { x: 0 } : { x: ['0%', '-50%'] }}
+            transition={{ duration: 24, ease: 'linear', repeat: Infinity }}
+            className="flex w-max shrink-0 gap-[8vw] font-display text-[clamp(48px,14vw,260px)] font-bold tracking-[-0.03em] leading-[0.82] text-[#242424] uppercase whitespace-nowrap"
+          >
+            <span aria-hidden="true">BUDGET NDIO STORY</span>
+            <span aria-hidden="true">BUDGET NDIO STORY</span>
+          </motion.h2>
         </div>
 
         {/* ─────────────────────────────────────────────────────────────
@@ -23,7 +42,7 @@ export function Footer() {
             {/* Logo Mark + Name */}
             <Link to="/" className="inline-flex items-center gap-3 group">
               <img
-                src="/logo.svg"
+                src="/images/bns/logo.svg"
                 alt="Budget Ndio Story"
                 className="w-6 h-6 object-contain"
               />
@@ -94,6 +113,17 @@ export function Footer() {
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                 </svg>
               </a>
+            </div>
+
+            <div className="flex items-center gap-3" aria-label="Partners">
+              {PARTNER_LOGOS.map((logo) => (
+                <img
+                  key={logo.src}
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="h-10 w-auto max-w-[96px] object-contain"
+                />
+              ))}
             </div>
           </div>
 

@@ -1,6 +1,6 @@
-import { motion, useReducedMotion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface ServicePanel {
   number: string;
@@ -12,64 +12,70 @@ interface ServicePanel {
 
 const SERVICES: ServicePanel[] = [
   {
-    number: '01',
-    title: 'BNS Connect',
+    number: "01",
+    title: "BNS Connect",
     description:
-      'Connecting citizens, grassroots advocates, and fiscal policymakers through high-impact town halls, legislative hearings, and national dialogues to ensure the national budget reflects the people\'s priorities.',
+      "Connecting citizens, grassroots advocates, and fiscal policymakers through high-impact town halls, legislative hearings, and national dialogues to ensure the national budget reflects the people's priorities.",
     bullets: [
-      'Town hall convenings & national dialogues',
-      'Citizen participation in legislative hearings',
-      'Multi-stakeholder fiscal accountability roundtables',
-      'Youth & civil society budget forums',
-      'Policy advocacy briefs & stakeholder engagements',
+      "Town hall convenings & national dialogues",
+      "Citizen participation in legislative hearings",
+      "Multi-stakeholder fiscal accountability roundtables",
+      "Youth & civil society budget forums",
+      "Policy advocacy briefs & stakeholder engagements",
     ],
-    image: '/images/bns/towwnhallmay/129A3912.jpg',
+    image: "/images/bns/towwnhallmay/129A3912.jpg",
   },
   {
-    number: '02',
-    title: 'BNS Mashinani',
+    number: "02",
+    title: "BNS Mashinani",
     description:
-      'Taking budget literacy directly to the grassroots, informal settlements, and county communities to demystify public expenditure, track local project deliveries, and mobilize citizen monitoring.',
+      "Taking budget literacy directly to the grassroots, informal settlements, and county communities to demystify public expenditure, track local project deliveries, and mobilize citizen monitoring.",
     bullets: [
-      'Grassroots civic education & budget literacy',
-      'County-level budget tracking & citizen monitoring',
-      'Community listening tours & ward surveys',
-      'Vernacular budget breakdowns & localized barazas',
-      'Devolved funds oversight & social audits',
+      "Grassroots civic education & budget literacy",
+      "County-level budget tracking & citizen monitoring",
+      "Community listening tours & ward surveys",
+      "Vernacular budget breakdowns & localized barazas",
+      "Devolved funds oversight & social audits",
     ],
-    image: '/images/bns/cohort1 groundworks/129A3964.jpg',
+    image: "/images/bns/cohort1 groundworks/129A3964.jpg",
   },
   {
-    number: '03',
-    title: 'BNS Wanahabari',
+    number: "03",
+    title: "BNS Wanahabari",
     description:
-      'Empowering journalists, media practitioners, and community storytellers with data tools, investigative fellowships, and reporting grants to uncover fiscal irregularities and report on public funds.',
+      "Empowering journalists, media practitioners, and community storytellers with data tools, investigative fellowships, and reporting grants to uncover fiscal irregularities and report on public funds.",
     bullets: [
-      'Data journalism fellowships & mentorship',
-      'Investigative public finance reporting grants',
-      'Budget analysis workshops & data toolkits',
-      'Community radio syndication & newsroom partnerships',
-      'Fiscal transparency & procurement investigations',
+      "Data journalism fellowships & mentorship",
+      "Investigative public finance reporting grants",
+      "Budget analysis workshops & data toolkits",
+      "Community radio syndication & newsroom partnerships",
+      "Fiscal transparency & procurement investigations",
     ],
-    image: '/images/bns/media/129A4039.jpg',
+    image: "/images/bns/media/129A4039.jpg",
   },
   {
-    number: '04',
-    title: 'BNS Studio',
+    number: "04",
+    title: "BNS Studio",
     description:
-      'Our dedicated multimedia creative lab producing viral video explainers, podcasts, animated reels, and dynamic infographics that translate complex macroeconomic and budget data into accessible stories.',
+      "Our dedicated multimedia creative lab producing viral video explainers, podcasts, animated reels, and dynamic infographics that translate complex macroeconomic and budget data into accessible stories.",
     bullets: [
-      'Viral short-form explainer reels & social campaigns',
-      'Civic podcasts & expert dialogue broadcasts',
-      'Interactive infographics & fiscal data visualization',
-      'National Budget Day live analysis & coverage',
-      'Creative digital storytelling & youth media outreach',
+      "Viral short-form explainer reels & social campaigns",
+      "Civic podcasts & expert dialogue broadcasts",
+      "Interactive infographics & fiscal data visualization",
+      "National Budget Day live analysis & coverage",
+      "Creative digital storytelling & youth media outreach",
     ],
-    image: '/images/bns/studio/studio_cinema_cam.jpg',
+    image: "/images/bns/studio/studio_cinema_cam.jpg",
   },
 ];
 
-function ServiceCard({ service, index }: { service: ServicePanel; index: number }) {
+function ServiceCard({
+  service,
+  index,
+}: {
+  service: ServicePanel;
+  index: number;
+}) {
   const shouldReduceMotion = useReducedMotion();
 
   return (
@@ -102,7 +108,11 @@ function ServiceCard({ service, index }: { service: ServicePanel; index: number 
             initial={shouldReduceMotion ? false : { opacity: 0.4, y: 12 }}
             whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.45, delay: 0.04, ease: [0.22, 1, 0.36, 1] }}
+            transition={{
+              duration: 0.45,
+              delay: 0.04,
+              ease: [0.22, 1, 0.36, 1],
+            }}
             className="font-sans font-bold text-2xl sm:text-3xl md:text-5xl lg:text-5xl xl:text-6xl text-white tracking-tight leading-[1.08]"
           >
             {service.title}
@@ -113,14 +123,30 @@ function ServiceCard({ service, index }: { service: ServicePanel; index: number 
             initial={shouldReduceMotion ? false : { opacity: 0.4, y: 10 }}
             whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.45, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+            transition={{
+              duration: 0.45,
+              delay: 0.08,
+              ease: [0.22, 1, 0.36, 1],
+            }}
             className="font-sans text-white/75 text-xs sm:text-sm md:text-base leading-relaxed font-light line-clamp-3 sm:line-clamp-none"
           >
             {service.description}
           </motion.p>
 
           {/* 5 Bullet Items */}
-
+          <ul className="space-y-1.5 sm:space-y-2 pt-3 sm:pt-4 border-t border-white/10">
+            {service.bullets.map((bullet, bIdx) => (
+              <li
+                key={bIdx}
+                className="flex items-center gap-2.5 font-sans text-[11px] sm:text-xs md:text-sm text-white/85"
+              >
+                <span className="w-1.5 h-1.5 bg-white/40 inline-block flex-shrink-0" />
+                <span className="leading-tight sm:leading-normal">
+                  {bullet}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
@@ -129,7 +155,7 @@ function ServiceCard({ service, index }: { service: ServicePanel; index: number 
         <img
           src={service.image}
           alt={service.title}
-          loading={index === 0 ? 'eager' : 'lazy'}
+          loading={index === 0 ? "eager" : "lazy"}
           className="w-full h-full object-cover filter brightness-95 select-none"
         />
       </div>
@@ -139,7 +165,10 @@ function ServiceCard({ service, index }: { service: ServicePanel; index: number 
 
 export function SolumServices() {
   return (
-    <section id="services" className="w-full bg-[#121212] text-white select-none relative overflow-visible">
+    <section
+      id="services"
+      className="w-full bg-[#121212] text-white select-none relative overflow-visible"
+    >
       {/* ========================================================= */}
       {/* 1) NORMAL NON-STICKY INTRODUCTION BLOCK                   */}
       {/* ========================================================= */}
@@ -156,7 +185,9 @@ export function SolumServices() {
               WHAT WE DO.
             </h2>
             <p className="font-sans text-sm sm:text-base text-white/70 max-w-xl font-light leading-relaxed">
-              From grassroots community barazas to high-impact media broadcasts, Budget Ndio Story delivers creative civic education, public finance tracking, and youth-led budget storytelling.
+              From grassroots community barazas to high-impact media broadcasts,
+              Budget Ndio Story delivers creative civic education, public
+              finance tracking, and youth-led budget storytelling.
             </p>
           </div>
 

@@ -23,9 +23,7 @@ export function MobileMenu({ isOpen, onClose, navLinks, currentPath }: MobileMen
           {/* Top Bar */}
           <div className="flex items-center justify-between">
             <Link to="/" onClick={onClose} className="flex items-center gap-2">
-              <div className="w-5 h-5 bg-white text-black flex items-center justify-center font-bold text-xs">
-                B
-              </div>
+              <img src="/images/bns/logo.svg" alt="" className="w-6 h-6 object-contain" />
               <span className="text-sm font-semibold tracking-widest uppercase">
                 Budget Ndio Story
               </span>

@@ -1,14 +1,14 @@
-import { useState } from 'react';
-import { ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    service: '',
-    message: '',
+    name: "",
+    email: "",
+    service: "",
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -18,36 +18,36 @@ export function ContactPage() {
 
   const requirements = [
     {
-      step: '01',
-      title: 'Budget Documents or Fiscal Reports',
+      step: "01",
+      title: "Budget Documents or Fiscal Reports",
       description:
-        'National budget estimates, County Fiscal Strategy Papers (CFSP), Auditor General reports, or public procurement notices.',
-      formats: '.PDF · .XLSX · .CSV · Scanned Hansards',
-      image: '/images/bns/survey/bnssurvey1.jpeg',
+        "National budget estimates, County Fiscal Strategy Papers (CFSP), Auditor General reports, or public procurement notices.",
+      formats: ".PDF · .XLSX · .CSV · Scanned Hansards",
+      image: "/images/bns/survey/bnssurvey1.jpeg",
     },
     {
-      step: '02',
-      title: 'Field Intelligence & Ground Evidence',
+      step: "02",
+      title: "Field Intelligence & Ground Evidence",
       description:
-        'Ward-level project status, photo evidence, citizen petitions, dispensary stock audits, or community baraza resolutions.',
-      formats: 'Citizen Photos · Field Logs · Signed Petitions',
-      image: '/images/bns/cohort1 groundworks/129A3964.jpg',
+        "Ward-level project status, photo evidence, citizen petitions, dispensary stock audits, or community baraza resolutions.",
+      formats: "Citizen Photos · Field Logs · Signed Petitions",
+      image: "/images/bns/cohort1 groundworks/129A3964.jpg",
     },
     {
-      step: '03',
-      title: 'Media & Co-Production Pitches',
+      step: "03",
+      title: "Media & Co-Production Pitches",
       description:
-        'Collaborative investigative pitches, community radio syndication, animated explainer scripts, or podcast dialogue requests.',
-      formats: 'Story Pitch · Broadcast Specs · Topic Synopsis',
-      image: '/images/bns/media/129A4039.jpg',
+        "Collaborative investigative pitches, community radio syndication, animated explainer scripts, or podcast dialogue requests.",
+      formats: "Story Pitch · Broadcast Specs · Topic Synopsis",
+      image: "/images/bns/media/129A4039.jpg",
     },
     {
-      step: '04',
-      title: 'Town Hall & Workshop Convenings',
+      step: "04",
+      title: "Town Hall & Workshop Convenings",
       description:
-        'Host a BNS Connect town hall in your county, request BNS Mashinani budget literacy toolkits, or invite our team to campus.',
-      formats: 'Venue Scope · Community Size · Proposed Agenda',
-      image: '/images/bns/towwnhallmay/129A3912.jpg',
+        "Host a BNS Connect town hall in your county, request BNS Mashinani budget literacy toolkits, or invite our team to campus.",
+      formats: "Venue Scope · Community Size · Proposed Agenda",
+      image: "/images/bns/towwnhallmay/129A3912.jpg",
     },
   ];
 
@@ -66,7 +66,9 @@ export function ContactPage() {
                   Contact
                 </h1>
                 <p className="font-sans text-sm sm:text-base text-[#757575] leading-relaxed max-w-md">
-                  We believe that public finance is a public contract. Reach out to collaborate, report, or bring budget literacy to your community.
+                  We believe that public finance is a public contract. Reach out
+                  to collaborate, report, or bring budget literacy to your
+                  community.
                 </p>
               </div>
 
@@ -157,7 +159,8 @@ export function ContactPage() {
                     Inquiry Received
                   </h3>
                   <p className="font-sans text-xs sm:text-sm text-[#757575] leading-relaxed mb-8 max-w-md mx-auto">
-                    Thank you. A member of our civic research desk will review your inquiry and respond within 24 hours.
+                    Thank you. A member of our civic research desk will review
+                    your inquiry and respond within 24 hours.
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
@@ -177,7 +180,9 @@ export function ContactPage() {
                       type="text"
                       required
                       value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, name: e.target.value })
+                      }
                       placeholder="Jane Wanjiku"
                       className="w-full bg-[#F9F9F8] border border-[#101010]/10 px-4 py-3 text-sm font-sans text-[#101010] placeholder-[#757575]/50 focus:outline-none focus:border-[#101010] transition-colors rounded-none"
                     />
@@ -192,7 +197,9 @@ export function ContactPage() {
                       type="email"
                       required
                       value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
                       placeholder="info@budgetndiostory.org"
                       className="w-full bg-[#F9F9F8] border border-[#101010]/10 px-4 py-3 text-sm font-sans text-[#101010] placeholder-[#757575]/50 focus:outline-none focus:border-[#101010] transition-colors rounded-none"
                     />
@@ -206,16 +213,30 @@ export function ContactPage() {
                     <div className="relative">
                       <select
                         value={formData.service}
-                        onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                        onChange={(e) =>
+                          setFormData({ ...formData, service: e.target.value })
+                        }
                         className="w-full bg-[#F9F9F8] border border-[#101010]/10 px-4 py-3 text-sm font-sans text-[#101010] focus:outline-none focus:border-[#101010] transition-colors rounded-none appearance-none cursor-pointer"
                       >
                         <option value="">Select initiative</option>
-                        <option value="connect">BNS Connect (Town Halls &amp; Legislative Dialogues)</option>
-                        <option value="mashinani">BNS Mashinani (Grassroots &amp; Ward Budget Audits)</option>
-                        <option value="wanahabari">BNS Wanahabari (Journalism Grants &amp; Fellowships)</option>
-                        <option value="studio">BNS Studio (Docuseries, Podcasts &amp; Explainers)</option>
-                        <option value="whistleblower">Whistleblower Tip &amp; Document Submission</option>
-                        <option value="partnership">General Civic Partnership &amp; Research</option>
+                        <option value="connect">
+                          BNS Connect (Town Halls &amp; Legislative Dialogues)
+                        </option>
+                        <option value="mashinani">
+                          BNS Mashinani (Grassroots &amp; Ward Budget Audits)
+                        </option>
+                        <option value="wanahabari">
+                          BNS Wanahabari (Journalism Grants &amp; Fellowships)
+                        </option>
+                        <option value="studio">
+                          BNS Studio (Docuseries, Podcasts &amp; Explainers)
+                        </option>
+                        <option value="whistleblower">
+                          Whistleblower Tip &amp; Document Submission
+                        </option>
+                        <option value="partnership">
+                          General Civic Partnership &amp; Research
+                        </option>
                       </select>
                       <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-xs text-[#757575]">
                         ▼
@@ -232,7 +253,9 @@ export function ContactPage() {
                       rows={5}
                       required
                       value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, message: e.target.value })
+                      }
                       placeholder="Share your inquiry, community issue, or tip..."
                       className="w-full bg-[#F9F9F8] border border-[#101010]/10 px-4 py-3 text-sm font-sans text-[#101010] placeholder-[#757575]/50 focus:outline-none focus:border-[#101010] transition-colors rounded-none resize-none"
                     />
@@ -250,12 +273,18 @@ export function ContactPage() {
                       </div>
                     </button>
                     <p className="font-sans text-xs text-[#757575] mt-3">
-                      By submitting, you agree to our{' '}
-                      <Link to="/terms" className="underline text-[#101010] hover:opacity-75">
+                      By submitting, you agree to our{" "}
+                      <Link
+                        to="/terms"
+                        className="underline text-[#101010] hover:opacity-75"
+                      >
                         Terms
-                      </Link>{' '}
-                      and{' '}
-                      <Link to="/privacy" className="underline text-[#101010] hover:opacity-75">
+                      </Link>{" "}
+                      and{" "}
+                      <Link
+                        to="/privacy"
+                        className="underline text-[#101010] hover:opacity-75"
+                      >
                         Privacy policy
                       </Link>
                       .
@@ -281,11 +310,13 @@ export function ContactPage() {
                 // CIVIC COLLABORATION
               </span>
               <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.05em] text-[#101010] uppercase leading-none">
-                What We Need From You.
+                Making Public Money Docuseries for You.
               </h2>
             </div>
             <p className="font-sans text-xs sm:text-sm text-[#757575] max-w-sm leading-relaxed">
-              Everything needed to collaborate, investigate, or bring budget literacy to your community. Protected under strict source confidentiality.
+              Everything needed to collaborate, investigate, or bring budget
+              literacy to your community. Protected under strict source
+              confidentiality.
             </p>
           </div>
 
@@ -336,7 +367,9 @@ export function ContactPage() {
             <div className="flex items-center gap-3.5">
               <ShieldCheck className="w-5 h-5 text-[#101010] shrink-0" />
               <span className="font-sans text-xs sm:text-sm text-[#101010] font-medium">
-                All citizen tips, leaked procurement records, and community petitions are strictly protected under cryptographic source confidentiality.
+                All citizen tips, leaked procurement records, and community
+                petitions are strictly protected under cryptographic source
+                confidentiality.
               </span>
             </div>
             <a

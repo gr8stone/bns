@@ -11,12 +11,18 @@ const CLIENT_AVATARS = [
 ];
 
 const CLIENT_LOGOS = [
-  { name: 'AFRODAD', label: 'AFRODAD' },
-  { name: 'TISA', label: 'TISA' },
-  { name: 'CFS', label: 'CFS' },
-  { name: 'UON COHORT', label: 'UON COHORT' },
-  { name: 'COUNTY YOUTH', label: 'COUNTY YOUTH' },
-  { name: 'WANAHABARI', label: 'WANAHABARI' },
+  { name: 'Budget Ndio Story', label: 'Budget Ndio Story', src: '/images/bns/logo.svg' },
+  { name: 'TISA', label: 'TISA', src: '/images/bns/partners/tisa.svg' },
+  {
+    name: 'University of Nairobi',
+    label: 'University of Nairobi',
+    src: '/images/bns/partners/committee-on-fiscal-studies.png',
+  },
+  {
+    name: 'House of Fiscal Wisdom',
+    label: 'House of Fiscal Wisdom',
+    src: '/images/bns/partners/house-of-fiscal-wisdom.png',
+  },
 ];
 
 export function SolumHero() {
@@ -162,12 +168,15 @@ export function SolumHero() {
             </p>
           </div>
 
-          {/* Center/Right: Monochrome Partner Text Strip */}
+          {/* Center/Right: Partner Logo Strip */}
           <div className="flex items-center flex-wrap justify-start md:justify-end gap-4 sm:gap-8 font-mono text-xs tracking-widest text-white/70 w-full md:w-auto">
             {CLIENT_LOGOS.map((logo) => (
-              <span key={logo.name} className="hover:text-white transition-colors cursor-default">
-                {logo.name}
-              </span>
+              <img
+                key={logo.name}
+                src={logo.src}
+                alt={logo.label}
+                className="h-8 sm:h-10 w-auto max-w-[112px] object-contain"
+              />
             ))}
           </div>
         </div>

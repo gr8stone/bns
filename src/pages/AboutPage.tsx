@@ -63,12 +63,7 @@ export function AboutPage() {
       bio: 'Architects youth-centered visual campaigns for digital channels, demystifying taxation formulas, public debt, and county budgets through bite-sized explainer reels.',
       image: '/images/avatars/team/Calvina Praise.jpg',
     },
-    {
-      name: 'Dr. Lyla Latif',
-      role: 'Principal Investigator (Project TERRA) & Fellow',
-      bio: 'Lecturer at the University of Nairobi Faculty of Law, Chair of CFS UoN, and author of "Red Flags in Government Contracts". Leads research on algorithmic tax governance.',
-      image: '/images/events/red-flags-book-launch/dr-lyla-latif.jpeg',
-    },
+
   ];
 
   const history = [
@@ -140,28 +135,7 @@ export function AboutPage() {
           </div>
         </div>
 
-        {/* Metrics Row with Tabular Figures */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 divide-y sm:divide-y-0 sm:divide-x divide-[#101010]/12 py-16 border-b border-[#101010]/12"
-        >
-          {stats.map((st) => (
-            <div key={st.label} className="p-6 md:p-8">
-              <div className="font-display text-4xl sm:text-5xl font-semibold tracking-[-0.06em] text-[#101010] tabular-nums mb-2">
-                {st.value}
-              </div>
-              <div className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#101010] mb-1 font-medium">
-                {st.label}
-              </div>
-              <div className="font-sans text-xs sm:text-sm text-[#757575] font-light">
-                {st.note}
-              </div>
-            </div>
-          ))}
-        </motion.div>
+
 
         {/* Studio Philosophy & Narrative with Word-by-Word Reveal */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 py-20 border-b border-[#101010]/12 items-start">
@@ -239,7 +213,7 @@ export function AboutPage() {
         </div>
 
         {/* Chronological Archive */}
-        <div className="py-20">
+        {/* <div className="py-20">
           <div className="flex items-center gap-2 mb-12">
             <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
             <span className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#101010] font-medium">
@@ -262,7 +236,7 @@ export function AboutPage() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </main>
   );

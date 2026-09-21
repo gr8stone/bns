@@ -144,71 +144,12 @@ export function ServiceDetailPage() {
         {/* ========================================================= */}
         {/* OUTPUT MATRIX & DELIVERABLES                              */}
         {/* ========================================================= */}
-        <div className="py-20 border-b border-[#101010]/12">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
-            <span className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#101010] font-medium">
-              KEY DELIVERABLES &bull; OUTPUT MATRIX
-            </span>
-          </div>
 
-          <h2 className="font-display text-3xl sm:text-5xl font-semibold tracking-[-0.05em] text-[#101010] uppercase mb-12">
-            What This Programme Delivers.
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {service.deliverables.map((item, idx) => (
-              <div
-                key={item.name}
-                className="p-6 sm:p-8 border border-[#101010]/12 bg-white flex flex-col justify-between hover:border-[#101010] transition-colors"
-              >
-                <div>
-                  <span className="text-xs font-mono text-[#757575] block mb-3">
-                    OUTPUT 0{idx + 1}
-                  </span>
-                  <h4 className="font-display text-lg font-semibold uppercase tracking-tight text-[#101010] mb-2">
-                    {item.name}
-                  </h4>
-                  <p className="font-sans text-xs sm:text-sm text-[#757575] font-light leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-                <div className="mt-6 pt-4 border-t border-[#101010]/10 flex items-center gap-2 text-xs font-mono font-medium text-[#101010] uppercase tracking-wider">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#101010]" />
-                  <span>Civic Impact Verified</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
 
         {/* ========================================================= */}
         {/* IMPLEMENTATION WORKFLOW                                    */}
         {/* ========================================================= */}
-        <div className="py-20 border-b border-[#101010]/12">
-          <div className="flex items-center gap-2 mb-12">
-            <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
-            <span className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#101010] font-medium">
-              METHODOLOGY &bull; IMPLEMENTATION PIPELINE
-            </span>
-          </div>
 
-          <div className="divide-y divide-[#101010]/12 border-t border-b border-[#101010]/12">
-            {service.workflow.map((wf) => (
-              <div key={wf.step} className="py-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-baseline">
-                <div className="md:col-span-2 font-display text-3xl font-semibold text-[#101010] tabular-nums">
-                  {wf.step}
-                </div>
-                <div className="md:col-span-4 font-sans text-base sm:text-lg font-medium uppercase tracking-tight text-[#101010]">
-                  {wf.title}
-                </div>
-                <div className="md:col-span-6 font-sans text-xs sm:text-sm text-[#757575] font-light leading-relaxed">
-                  {wf.detail}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
 
         {/* ========================================================= */}
         {/* FREQUENTLY ASKED QUESTIONS                                 */}

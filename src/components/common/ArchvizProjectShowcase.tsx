@@ -318,40 +318,18 @@ export function ArchvizProjectShowcase({ project, index }: ArchvizProjectShowcas
           <p className="font-sans text-base sm:text-lg md:text-xl font-normal text-[#101010] leading-snug">
             {project.summary}
           </p>
-          {project.description && project.description[0] && (
+          {/* {project.description && project.description[0] && (
             <p className="font-sans text-xs sm:text-sm text-[#757575] leading-relaxed font-light">
               {project.description[0]}
             </p>
-          )}
+          )} */}
 
-          {/* Scope / Deliverables Tags */}
-          <div className="pt-2 flex flex-wrap gap-2">
-            {project.services.map((srv) => (
-              <span
-                key={srv}
-                className="px-3 py-1 bg-[#F6F6F2] border border-[#101010]/10 font-mono text-[11px] text-[#101010] uppercase tracking-wider font-medium"
-              >
-                {srv}
-              </span>
-            ))}
-          </div>
+
         </div>
 
         {/* Right: Commercial Metrics & Full Case Study CTA */}
         <div className="md:col-span-6 lg:col-span-5 flex flex-col justify-between h-full space-y-6 md:pl-6 md:border-l border-[#101010]/12">
           {/* Key Metrics Grid */}
-          <div className="grid grid-cols-2 gap-4 divide-x divide-[#101010]/10 border-t border-b border-[#101010]/10 py-4">
-            {project.stats && project.stats.slice(0, 2).map((st) => (
-              <div key={st.label} className="pl-3 first:pl-0">
-                <span className="font-mono text-[10px] text-[#757575] uppercase block mb-0.5">
-                  {st.label}
-                </span>
-                <span className="font-display text-lg sm:text-xl font-semibold text-[#101010] tabular-nums">
-                  {st.value}
-                </span>
-              </div>
-            ))}
-          </div>
 
           <div className="flex items-center justify-between pt-2">
             <span className="font-mono text-xs text-[#757575]">

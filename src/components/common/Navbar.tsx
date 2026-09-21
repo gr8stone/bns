@@ -2,6 +2,12 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const PROGRAMME_PREVIEW = [
+  { label: 'BNS Connect', href: '/programmes/bns-connect' },
+  { label: 'BNS Mashinani', href: '/programmes/bns-mashinani' },
+  { label: 'BNS Wanahabari', href: '/programmes/bns-wanahabari' },
+];
+
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
@@ -46,14 +52,22 @@ export function Navbar() {
 
   return (
     <>
+      {!menuOpen && (
+        <div
+          aria-hidden="true"
+          className="fixed inset-x-0 top-0 z-[65] h-20 border-b border-white/10 bg-[#101010]/90 backdrop-blur-sm"
+        />
+      )}
+
       {/* Pure Transparent Header (No Blur, No Dark Gradient Bar) */}
       {/* Top Left Wordmark with Direct Fixed mix-blend-difference */}
       {!menuOpen && (
-        <div className="fixed top-0 left-0 z-[70] py-5 md:py-6 px-6 md:px-10 pointer-events-none select-none mix-blend-difference">
+        <div className="fixed top-0 left-0 z-[70] py-5 md:py-6 px-6 md:px-10 pointer-events-none select-none">
           <Link
             to="/"
-            className="pointer-events-auto font-sans font-bold text-sm md:text-base tracking-[-0.04em] uppercase text-white hover:opacity-80 transition-opacity inline-block"
+            className="pointer-events-auto flex items-center gap-2 font-sans font-bold text-sm md:text-base tracking-[-0.04em] uppercase text-white hover:opacity-80 transition-opacity"
           >
+            <img src="/images/bns/logo.svg" alt="" className="w-6 h-6 object-contain" />
             BUDGET NDIO STORY
           </Link>
         </div>
@@ -97,8 +111,9 @@ export function Navbar() {
               <Link
                 to="/"
                 onClick={() => setMenuOpen(false)}
-                className="font-sans font-bold text-sm md:text-base tracking-[-0.04em] uppercase text-[#101010] hover:opacity-80 transition-opacity inline-block"
+                className="flex items-center gap-2 font-sans font-bold text-sm md:text-base tracking-[-0.04em] uppercase text-[#101010] hover:opacity-80 transition-opacity"
               >
+                <img src="/images/bns/logo.svg" alt="" className="w-6 h-6 object-contain" />
                 BUDGET NDIO STORY
               </Link>
             </div>
@@ -118,6 +133,7 @@ export function Navbar() {
                 const isHovered = hoveredIdx === idx;
                 const isAnyHovered = hoveredIdx !== null;
                 const isDimmed = isAnyHovered && !isHovered;
+                const isProgrammes = link.label === 'Programmes';
 
                 return (
                   <motion.div
@@ -136,6 +152,7 @@ export function Navbar() {
                     <Link
                       to={link.href}
                       onClick={() => setMenuOpen(false)}
+                      onFocus={() => setHoveredIdx(idx)}
                       className={`block font-display text-4xl sm:text-6xl md:text-7xl font-semibold tracking-[-0.06em] leading-[0.95] text-[#101010] transition-opacity duration-180 ${
                         isDimmed ? 'opacity-45' : 'opacity-100'
                       }`}
@@ -145,6 +162,30 @@ export function Navbar() {
                       </span>
                       {link.label}
                     </Link>
+
+                    <AnimatePresence initial={false}>
+                      {isProgrammes && isHovered && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -4 }}
+                          transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                          className="flex flex-wrap gap-x-5 gap-y-2 pl-12 pt-3 md:pl-20 md:pt-4"
+                        >
+                          {PROGRAMME_PREVIEW.map((programme) => (
+                            <Link
+                              key={programme.href}
+                              to={programme.href}
+                              onClick={() => setMenuOpen(false)}
+                              onFocus={() => setHoveredIdx(idx)}
+                              className="font-mono text-xs uppercase tracking-wider text-[#757575] transition-colors hover:text-[#101010]"
+                            >
+                              {programme.label}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </motion.div>
                 );
               })}

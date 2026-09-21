@@ -156,27 +156,7 @@ export function ServicesPage() {
         {/* ========================================================= */}
         {/* 3) METRICS ROW WITH TABULAR FIGURES                       */}
         {/* ========================================================= */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 divide-y sm:divide-y-0 sm:divide-x divide-[#101010]/12 py-16 border-b border-[#101010]/12"
-        >
-          {stats.map((st) => (
-            <div key={st.label} className="p-6 md:p-8">
-              <div className="font-display text-4xl sm:text-5xl font-semibold tracking-[-0.06em] text-[#101010] tabular-nums mb-2">
-                {st.value}
-              </div>
-              <div className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#101010] mb-1 font-medium">
-                {st.label}
-              </div>
-              <div className="font-sans text-xs sm:text-sm text-[#757575] font-light">
-                {st.note}
-              </div>
-            </div>
-          ))}
-        </motion.div>
+     
 
         {/* ========================================================= */}
         {/* 4) PROGRAMME ETHOS & WORD REVEAL (MATCHING ABOUT)        */}
@@ -299,7 +279,7 @@ export function ServicesPage() {
         {/* ========================================================= */}
         {/* 6) PROGRAMME METHODOLOGY WORKFLOW (CHRONOLOGY STYLE)     */}
         {/* ========================================================= */}
-      
+
 
         {/* ========================================================= */}
         {/* 7) CLOSING INITIATIVE CALLOUT (MATCHING ABOUT)            */}
