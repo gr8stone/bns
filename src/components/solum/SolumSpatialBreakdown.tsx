@@ -1,0 +1,269 @@
+import { useRef } from 'react';
+import { motion, useScroll, useTransform, useSpring, useReducedMotion } from 'framer-motion';
+
+export function SolumSpatialBreakdown() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const shouldReduceMotion = useReducedMotion();
+
+  // Pinned viewport scroll: expands smoothly, stays fully open throughout scroll down, collapses when exiting to top
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end'],
+  });
+
+  // Physical liquid spring: silky smooth 60fps/120Hz tracking, zero discrete 'wop' jumps
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 220,
+    damping: 28,
+    mass: 0.35,
+    restDelta: 0.001,
+  });
+
+  // Smoothly expands between 4% and 36% of scroll, and STAYS 100% open and visible throughout scroll down!
+  const spread = useTransform(smoothProgress, [0.04, 0.36], [0, 1]);
+  const centerScale = useTransform(smoothProgress, [0, 0.2, 0.8, 1], [0.96, 1, 1, 0.98]);
+
+  // Card opacity rises swiftly from 0 to 1 and stays 100% solid
+  const cardOpacity = useTransform(smoothProgress, [0.03, 0.16], [0, 1]);
+  const cardScale = useTransform(smoothProgress, [0.04, 0.36], [0.75, 1]);
+  const lineOpacity = useTransform(smoothProgress, [0.06, 0.22], [0, 0.9]);
+
+  // Wide translations so all 4 enlarged corner cards CLEAR the center card completely
+  const tlX = useTransform(spread, (v) => `${v * -144}%`);
+  const tlY = useTransform(spread, (v) => `${v * -128}%`);
+
+  const trX = useTransform(spread, (v) => `${v * 144}%`);
+  const trY = useTransform(spread, (v) => `${v * -128}%`);
+
+  const blX = useTransform(spread, (v) => `${v * -144}%`);
+  const blY = useTransform(spread, (v) => `${v * 128}%`);
+
+  const brX = useTransform(spread, (v) => `${v * 144}%`);
+  const brY = useTransform(spread, (v) => `${v * 128}%`);
+
+  return (
+    <section
+      ref={containerRef}
+      className="relative w-full h-[180vh] bg-[#0A0A0A] text-white select-none overflow-visible"
+    >
+      {/* Pinned Viewport Stage */}
+      <div className="sticky top-0 w-full h-[100svh] min-h-[100svh] flex items-center justify-center overflow-hidden">
+        {/* Subtle Ambient Radial Vignette */}
+        <div className="absolute inset-0 bg-gradient-radial from-zinc-900/40 via-[#0A0A0A] to-[#0A0A0A] pointer-events-none" />
+
+        {/* Central Stage Container */}
+        <div className="relative w-full max-w-[1700px] h-full flex items-center justify-center px-4 sm:px-6">
+          {/* ========================================================= */}
+          {/* CONNECTING ARROWS & HAIRLINE LEADER LINES (SVG)           */}
+          {/* ========================================================= */}
+          <motion.svg
+            style={{ opacity: shouldReduceMotion ? 0.8 : lineOpacity }}
+            className="absolute inset-0 w-full h-full pointer-events-none z-15"
+          >
+            <defs>
+              <marker
+                id="arrowhead-tl"
+                markerWidth="8"
+                markerHeight="8"
+                refX="5"
+                refY="4"
+                orient="auto"
+              >
+                <polygon points="0 1, 8 4, 0 7" fill="rgba(255,255,255,0.85)" />
+              </marker>
+              <marker
+                id="arrowhead-tr"
+                markerWidth="8"
+                markerHeight="8"
+                refX="5"
+                refY="4"
+                orient="auto"
+              >
+                <polygon points="0 1, 8 4, 0 7" fill="rgba(255,255,255,0.85)" />
+              </marker>
+              <marker
+                id="arrowhead-bl"
+                markerWidth="8"
+                markerHeight="8"
+                refX="5"
+                refY="4"
+                orient="auto"
+              >
+                <polygon points="0 1, 8 4, 0 7" fill="rgba(255,255,255,0.85)" />
+              </marker>
+              <marker
+                id="arrowhead-br"
+                markerWidth="8"
+                markerHeight="8"
+                refX="5"
+                refY="4"
+                orient="auto"
+              >
+                <polygon points="0 1, 8 4, 0 7" fill="rgba(255,255,255,0.85)" />
+              </marker>
+            </defs>
+
+            {/* 4 Directional Connecting Arrow Lines (Center to 4 Corners) with dynamic path length */}
+            <motion.line
+              x1="41%"
+              y1="41%"
+              x2="23%"
+              y2="22%"
+              stroke="rgba(255,255,255,0.7)"
+              strokeWidth="1.5"
+              strokeDasharray="5 5"
+              markerEnd="url(#arrowhead-tl)"
+              style={shouldReduceMotion ? undefined : { pathLength: spread }}
+            />
+            <motion.line
+              x1="59%"
+              y1="41%"
+              x2="77%"
+              y2="22%"
+              stroke="rgba(255,255,255,0.7)"
+              strokeWidth="1.5"
+              strokeDasharray="5 5"
+              markerEnd="url(#arrowhead-tr)"
+              style={shouldReduceMotion ? undefined : { pathLength: spread }}
+            />
+            <motion.line
+              x1="41%"
+              y1="59%"
+              x2="23%"
+              y2="78%"
+              stroke="rgba(255,255,255,0.7)"
+              strokeWidth="1.5"
+              strokeDasharray="5 5"
+              markerEnd="url(#arrowhead-bl)"
+              style={shouldReduceMotion ? undefined : { pathLength: spread }}
+            />
+            <motion.line
+              x1="59%"
+              y1="59%"
+              x2="77%"
+              y2="78%"
+              stroke="rgba(255,255,255,0.7)"
+              strokeWidth="1.5"
+              strokeDasharray="5 5"
+              markerEnd="url(#arrowhead-br)"
+              style={shouldReduceMotion ? undefined : { pathLength: spread }}
+            />
+          </motion.svg>
+
+          {/* ========================================================= */}
+          {/* 4 EXPANDING DETAIL VIGNETTES (EMERGE FROM BEHIND)          */}
+          {/* ========================================================= */}
+
+          {/* 1. TOP-LEFT: BNS Mashinani Groundworks */}
+          <motion.div
+            style={
+              shouldReduceMotion
+                ? undefined
+                : {
+                    x: tlX,
+                    y: tlY,
+                    opacity: cardOpacity,
+                    scale: cardScale,
+                  }
+            }
+            className="absolute z-10 w-[160px] sm:w-[230px] md:w-[310px] lg:w-[380px] xl:w-[420px] aspect-[16/9] rounded-xl sm:rounded-2xl overflow-hidden border border-white/30 bg-black shadow-[0_20px_50px_rgba(0,0,0,0.85)] group transition-all duration-300 hover:border-white/70"
+          >
+            <img
+              src="/images/bns/cohort1 groundworks/129A3964.jpg"
+              alt="Detail: BNS Mashinani Groundworks"
+              loading="eager"
+              className="w-full h-full object-cover filter brightness-110 contrast-105 saturate-105 group-hover:scale-105 transition-transform duration-500 pointer-events-none"
+            />
+            <div className="absolute inset-0 border border-white/20 rounded-xl sm:rounded-2xl pointer-events-none group-hover:border-white/50 transition-colors" />
+          </motion.div>
+
+          {/* 2. TOP-RIGHT: BNS Wanahabari Media Desk */}
+          <motion.div
+            style={
+              shouldReduceMotion
+                ? undefined
+                : {
+                    x: trX,
+                    y: trY,
+                    opacity: cardOpacity,
+                    scale: cardScale,
+                  }
+            }
+            className="absolute z-10 w-[160px] sm:w-[230px] md:w-[310px] lg:w-[380px] xl:w-[420px] aspect-[16/9] rounded-xl sm:rounded-2xl overflow-hidden border border-white/30 bg-black shadow-[0_20px_50px_rgba(0,0,0,0.85)] group transition-all duration-300 hover:border-white/70"
+          >
+            <img
+              src="/images/bns/media/main media image.jpg"
+              alt="Detail: BNS Wanahabari Media Desk"
+              loading="eager"
+              className="w-full h-full object-cover filter brightness-110 contrast-105 saturate-105 group-hover:scale-105 transition-transform duration-500 pointer-events-none"
+            />
+            <div className="absolute inset-0 border border-white/20 rounded-xl sm:rounded-2xl pointer-events-none group-hover:border-white/50 transition-colors" />
+          </motion.div>
+
+          {/* 3. BOTTOM-LEFT: BNS Studio Production */}
+          <motion.div
+            style={
+              shouldReduceMotion
+                ? undefined
+                : {
+                    x: blX,
+                    y: blY,
+                    opacity: cardOpacity,
+                    scale: cardScale,
+                  }
+            }
+            className="absolute z-10 w-[160px] sm:w-[230px] md:w-[310px] lg:w-[380px] xl:w-[420px] aspect-[16/9] rounded-xl sm:rounded-2xl overflow-hidden border border-white/30 bg-black shadow-[0_20px_50px_rgba(0,0,0,0.85)] group transition-all duration-300 hover:border-white/70"
+          >
+            <img
+              src="/images/bns/studio/studio_cinema_cam.jpg"
+              alt="Detail: BNS Studio Production"
+              loading="eager"
+              className="w-full h-full object-cover filter brightness-110 contrast-105 saturate-105 group-hover:scale-105 transition-transform duration-500 pointer-events-none"
+            />
+            <div className="absolute inset-0 border border-white/20 rounded-xl sm:rounded-2xl pointer-events-none group-hover:border-white/50 transition-colors" />
+          </motion.div>
+
+          {/* 4. BOTTOM-RIGHT: Policy & Sovereign Debt Brief */}
+          <motion.div
+            style={
+              shouldReduceMotion
+                ? undefined
+                : {
+                    x: brX,
+                    y: brY,
+                    opacity: cardOpacity,
+                    scale: cardScale,
+                  }
+            }
+            className="absolute z-10 w-[160px] sm:w-[230px] md:w-[310px] lg:w-[380px] xl:w-[420px] aspect-[16/9] rounded-xl sm:rounded-2xl overflow-hidden border border-white/30 bg-black shadow-[0_20px_50px_rgba(0,0,0,0.85)] group transition-all duration-300 hover:border-white/70"
+          >
+            <img
+              src="/images/bns/AFRODAD debt Conference 2026  also Dr LYLA Latiff Book Launch called Red Flags in Government contracts/latiff.jpeg"
+              alt="Detail: Policy & Sovereign Debt Brief"
+              loading="eager"
+              className="w-full h-full object-cover filter brightness-110 contrast-105 saturate-105 group-hover:scale-105 transition-transform duration-500 pointer-events-none"
+            />
+            <div className="absolute inset-0 border border-white/20 rounded-xl sm:rounded-2xl pointer-events-none group-hover:border-white/50 transition-colors" />
+          </motion.div>
+
+          {/* ========================================================= */}
+          {/* CENTER MASTER "AFTER" RENDER (MAIN FOCAL POINT)           */}
+          {/* ========================================================= */}
+          <motion.div
+            style={shouldReduceMotion ? undefined : { scale: centerScale }}
+            className="relative z-20 w-[280px] sm:w-[400px] md:w-[500px] lg:w-[600px] xl:w-[660px] aspect-[16/9] rounded-xl sm:rounded-2xl overflow-hidden border border-white/35 bg-black shadow-[0_0_90px_rgba(0,0,0,0.95)] group"
+          >
+            <img
+              src="/images/bns/towwnhallmay/129A3912.jpg"
+              alt="Budget Ndio Story National Civic Convening"
+              loading="eager"
+              className="w-full h-full object-cover filter brightness-100 group-hover:scale-102 transition-transform duration-500 pointer-events-none"
+            />
+            {/* Subtle inner border glow */}
+            <div className="absolute inset-0 border border-white/10 rounded-xl sm:rounded-2xl pointer-events-none" />
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}

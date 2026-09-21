@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-paper: #FFFFFF;
+    --color-ink: #101010;
+    --color-dark: #111111;
+    --color-light-on-dark: #F6F6F2;
+    --color-muted: #757575;
+    --color-divider: #B8B8B4;
+    --rule-white: rgba(16, 16, 16, 0.12);
+    --rule-dark: rgba(255, 255, 255, 0.12);
+  }
+
+  html {
+    background-color: #FFFFFF;
+    color: #101010;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Lenis smooth scrolling rules */
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #FFFFFF;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #D4D4D0;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #101010;
+  }
+}
+
+/* 1px Hairline rules */
+.rule-white {
+  border-color: rgba(16, 16, 16, 0.12);
+}
+.rule-dark {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Solum Headings */
+.solum-heading {
+  font-weight: 650;
+  letter-spacing: -0.055em;
+  line-height: 0.94;
+}
+
+/* Tabular figures for all metrics */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* Hide scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Split Button Hover Dynamics: Inverts in 180ms, arrow moves 6px right */
+.solum-btn {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid currentColor;
+  transition: all 180ms ease-out;
+  cursor: pointer;
+}
+.solum-btn .btn-arrow {
+  transition: transform 180ms ease-out;
+}
+.solum-btn:hover .btn-arrow {
+  transform: translateX(6px);
+}
+
+/* Marquee Left & Right */
+@keyframes marquee {
+  0% { transform: translate3d(0%, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+@keyframes marquee-reverse {
+  0% { transform: translate3d(-50%, 0, 0); }
+  100% { transform: translate3d(0%, 0, 0); }
+}
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee 35s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+.animate-marquee-reverse {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-reverse 35s linear infinite;
+}
+.animate-marquee-reverse:hover {
+  animation-play-state: paused;
+}
+

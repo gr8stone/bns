@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://budgetndiostory.org/sitemap.xml
