@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, X } from 'lucide-react';
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowUpRight, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -9,7 +9,12 @@ interface MobileMenuProps {
   currentPath: string;
 }
 
-export function MobileMenu({ isOpen, onClose, navLinks, currentPath }: MobileMenuProps) {
+export function MobileMenu({
+  isOpen,
+  onClose,
+  navLinks,
+  currentPath,
+}: MobileMenuProps) {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -23,7 +28,11 @@ export function MobileMenu({ isOpen, onClose, navLinks, currentPath }: MobileMen
           {/* Top Bar */}
           <div className="flex items-center justify-between">
             <Link to="/" onClick={onClose} className="flex items-center gap-2">
-              <img src="/images/bns/logo.svg" alt="" className="w-6 h-6 object-contain" />
+              <img
+                src="/images/bns/logo.svg"
+                alt=""
+                className="w-6 h-6 object-contain"
+              />
               <span className="text-sm font-semibold tracking-widest uppercase">
                 Budget Ndio Story
               </span>
@@ -40,7 +49,9 @@ export function MobileMenu({ isOpen, onClose, navLinks, currentPath }: MobileMen
           {/* Navigation Links */}
           <nav className="flex flex-col gap-6 my-auto">
             {navLinks.map((link, idx) => {
-              const active = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
+              const active =
+                currentPath === link.href ||
+                (link.href !== "/" && currentPath.startsWith(link.href));
               return (
                 <motion.div
                   key={link.label}
@@ -52,7 +63,9 @@ export function MobileMenu({ isOpen, onClose, navLinks, currentPath }: MobileMen
                     to={link.href}
                     onClick={onClose}
                     className={`text-4xl font-light tracking-tight transition-colors block ${
-                      active ? 'text-white font-normal' : 'text-zinc-500 hover:text-white'
+                      active
+                        ? "text-white font-normal"
+                        : "text-zinc-500 hover:text-white"
                     }`}
                   >
                     {link.label}

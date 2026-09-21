@@ -1,11 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const PROGRAMME_PREVIEW = [
-  { label: 'BNS Connect', href: '/programmes/bns-connect' },
-  { label: 'BNS Mashinani', href: '/programmes/bns-mashinani' },
-  { label: 'BNS Wanahabari', href: '/programmes/bns-wanahabari' },
+  { label: "BNS Connect", href: "/programmes/bns-connect" },
+  { label: "BNS Mashinani", href: "/programmes/bns-mashinani" },
+  { label: "BNS Wanahabari", href: "/programmes/bns-wanahabari" },
 ];
 
 export function Navbar() {
@@ -22,32 +22,32 @@ export function Navbar() {
   // Escape key closes menu
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && menuOpen) {
+      if (e.key === "Escape" && menuOpen) {
         setMenuOpen(false);
       }
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [menuOpen]);
 
   // Lock scroll when menu is open
   useEffect(() => {
     if (menuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, [menuOpen]);
 
   const mainLinks = [
-    { label: 'Home', href: '/' },
-    { label: 'About', href: '/about' },
-    { label: 'Programmes', href: '/programmes' },
-    { label: 'Projects', href: '/projects' },
-    { label: 'Contact', href: '/contact' },
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Programmes", href: "/programmes" },
+    { label: "Projects", href: "/projects" },
+    { label: "Contact", href: "/contact" },
   ];
 
   return (
@@ -67,7 +67,11 @@ export function Navbar() {
             to="/"
             className="pointer-events-auto flex items-center gap-2 font-sans font-bold text-sm md:text-base tracking-[-0.04em] uppercase text-white hover:opacity-80 transition-opacity"
           >
-            <img src="/images/bns/logo.svg" alt="" className="w-6 h-6 object-contain" />
+            <img
+              src="/images/bns/logo.svg"
+              alt=""
+              className="w-6 h-6 object-contain"
+            />
             BUDGET NDIO STORY
           </Link>
         </div>
@@ -77,17 +81,17 @@ export function Navbar() {
       <header className="fixed top-0 right-0 z-[70] py-5 md:py-6 px-6 md:px-10 pointer-events-none select-none">
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? 'Close Menu' : 'Open Menu'}
+          aria-label={menuOpen ? "Close Menu" : "Open Menu"}
           className={`pointer-events-auto cursor-pointer flex items-center gap-3 px-4 py-2 font-mono text-xs font-semibold uppercase tracking-wider transition-all duration-200 shadow-md group ${
             menuOpen
-              ? 'bg-[#101010] text-white hover:bg-black border border-[#101010]'
-              : 'bg-white text-[#101010] hover:bg-[#F4F4F0] border border-white'
+              ? "bg-[#101010] text-white hover:bg-black border border-[#101010]"
+              : "bg-white text-[#101010] hover:bg-[#F4F4F0] border border-white"
           }`}
         >
-          <span>{menuOpen ? 'CLOSE' : 'MENU'}</span>
+          <span>{menuOpen ? "CLOSE" : "MENU"}</span>
           <div
             className={`w-4 h-4 border border-current flex items-center justify-center transition-transform duration-[250ms] ease-out ${
-              menuOpen ? 'rotate-45' : 'group-hover:rotate-45'
+              menuOpen ? "rotate-45" : "group-hover:rotate-45"
             }`}
           >
             <span className="text-[12px] leading-none mb-0.5 font-bold">+</span>
@@ -113,7 +117,11 @@ export function Navbar() {
                 onClick={() => setMenuOpen(false)}
                 className="flex items-center gap-2 font-sans font-bold text-sm md:text-base tracking-[-0.04em] uppercase text-[#101010] hover:opacity-80 transition-opacity"
               >
-                <img src="/images/bns/logo.svg" alt="" className="w-6 h-6 object-contain" />
+                <img
+                  src="/images/bns/logo.svg"
+                  alt=""
+                  className="w-6 h-6 object-contain"
+                />
                 BUDGET NDIO STORY
               </Link>
             </div>
@@ -133,7 +141,7 @@ export function Navbar() {
                 const isHovered = hoveredIdx === idx;
                 const isAnyHovered = hoveredIdx !== null;
                 const isDimmed = isAnyHovered && !isHovered;
-                const isProgrammes = link.label === 'Programmes';
+                const isProgrammes = link.label === "Programmes";
 
                 return (
                   <motion.div
@@ -154,7 +162,7 @@ export function Navbar() {
                       onClick={() => setMenuOpen(false)}
                       onFocus={() => setHoveredIdx(idx)}
                       className={`block font-display text-4xl sm:text-6xl md:text-7xl font-semibold tracking-[-0.06em] leading-[0.95] text-[#101010] transition-opacity duration-180 ${
-                        isDimmed ? 'opacity-45' : 'opacity-100'
+                        isDimmed ? "opacity-45" : "opacity-100"
                       }`}
                     >
                       <span className="font-mono text-xs text-[#757575] mr-4 md:mr-8 align-middle">
@@ -169,7 +177,10 @@ export function Navbar() {
                           initial={{ opacity: 0, y: -8 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -4 }}
-                          transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                          transition={{
+                            duration: 0.2,
+                            ease: [0.22, 1, 0.36, 1],
+                          }}
                           className="flex flex-wrap gap-x-5 gap-y-2 pl-12 pt-3 md:pl-20 md:pt-4"
                         >
                           {PROGRAMME_PREVIEW.map((programme) => (
@@ -194,32 +205,53 @@ export function Navbar() {
             {/* Bottom Meta & Legal / Social Links */}
             <div className="pt-8 border-t border-[#101010]/12 grid grid-cols-1 md:grid-cols-4 gap-6 text-xs font-mono text-[#757575]">
               <div className="col-span-1">
-                <span className="text-[#101010] block mb-1 font-medium">CIVIC CONTACT</span>
-                <a href="mailto:info@budgetndiostory.org" className="hover:text-[#101010] transition-colors">
+                <span className="text-[#101010] block mb-1 font-medium">
+                  CIVIC CONTACT
+                </span>
+                <a
+                  href="mailto:info@budgetndiostory.org"
+                  className="hover:text-[#101010] transition-colors"
+                >
                   info@budgetndiostory.org
                 </a>
               </div>
 
               <div className="col-span-1">
-                <span className="text-[#101010] block mb-1 font-medium">HUBS</span>
+                <span className="text-[#101010] block mb-1 font-medium">
+                  HUBS
+                </span>
                 <span>Nairobi &bull; Kenya</span>
               </div>
 
               <div className="col-span-1">
-                <span className="text-[#101010] block mb-1 font-medium">LEGAL</span>
+                <span className="text-[#101010] block mb-1 font-medium">
+                  LEGAL
+                </span>
                 <div className="flex gap-4">
-                  <Link to="/terms" onClick={() => setMenuOpen(false)} className="hover:text-[#101010] transition-colors">
+                  <Link
+                    to="/terms"
+                    onClick={() => setMenuOpen(false)}
+                    className="hover:text-[#101010] transition-colors"
+                  >
                     Terms
                   </Link>
-                  <Link to="/privacy" onClick={() => setMenuOpen(false)} className="hover:text-[#101010] transition-colors">
+                  <Link
+                    to="/privacy"
+                    onClick={() => setMenuOpen(false)}
+                    className="hover:text-[#101010] transition-colors"
+                  >
                     Privacy
                   </Link>
                 </div>
               </div>
 
               <div className="col-span-1 text-left md:text-right">
-                <span className="text-[#101010] block mb-1 font-medium">&copy; 2026</span>
-                <span className="block mt-1">Budget Ndio Story All Rights Reserved.</span>
+                <span className="text-[#101010] block mb-1 font-medium">
+                  &copy; 2026
+                </span>
+                <span className="block mt-1">
+                  Budget Ndio Story All Rights Reserved.
+                </span>
               </div>
             </div>
           </motion.div>

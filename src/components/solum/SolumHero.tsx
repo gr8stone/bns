@@ -1,27 +1,36 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { useRef } from "react";
+import { Link } from "react-router-dom";
 
 const CLIENT_AVATARS = [
-  '/images/bns/marketing newsletter subcribe/Nelly with The Mic.jpg',
-  '/images/bns/AFRODAD debt Conference 2026  also Dr LYLA Latiff Book Launch called Red Flags in Government contracts/latiff.jpeg',
-  '/images/bns/AFRODAD debt Conference 2026  also Dr LYLA Latiff Book Launch called Red Flags in Government contracts/James Maingi Mutinda.jpeg',
-  '/images/bns/reels/calvina-praise-poster.jpg',
+  "/images/bns/marketing newsletter subcribe/Nelly with The Mic.jpg",
+  "/images/bns/AFRODAD debt Conference 2026  also Dr LYLA Latiff Book Launch called Red Flags in Government contracts/latiff.jpeg",
+  "/images/bns/AFRODAD debt Conference 2026  also Dr LYLA Latiff Book Launch called Red Flags in Government contracts/James Maingi Mutinda.jpeg",
+  "/images/bns/reels/calvina-praise-poster.jpg",
 ];
 
 const CLIENT_LOGOS = [
-  { name: 'Budget Ndio Story', label: 'Budget Ndio Story', src: '/images/bns/logo.svg' },
-  { name: 'TISA', label: 'TISA', src: '/images/bns/partners/tisa.svg' },
   {
-    name: 'University of Nairobi',
-    label: 'University of Nairobi',
-    src: '/images/bns/partners/committee-on-fiscal-studies.png',
+    name: "Budget Ndio Story",
+    label: "Budget Ndio Story",
+    src: "/images/bns/logo.svg",
+  },
+  { name: "TISA", label: "TISA", src: "/images/bns/partners/tisa.svg" },
+  {
+    name: "University of Nairobi",
+    label: "University of Nairobi",
+    src: "/images/bns/partners/committee-on-fiscal-studies.png",
   },
   {
-    name: 'House of Fiscal Wisdom',
-    label: 'House of Fiscal Wisdom',
-    src: '/images/bns/partners/house-of-fiscal-wisdom.png',
+    name: "House of Fiscal Wisdom",
+    label: "House of Fiscal Wisdom",
+    src: "/images/bns/partners/house-of-fiscal-wisdom.png",
   },
 ];
 
@@ -32,12 +41,12 @@ export function SolumHero() {
   // Parallax strictly limited to 6%
   const { scrollYProgress } = useScroll({
     target: heroRef,
-    offset: ['start start', 'end start'],
+    offset: ["start start", "end start"],
   });
-  const parallaxY = useTransform(scrollYProgress, [0, 1], ['0%', '6%']);
+  const parallaxY = useTransform(scrollYProgress, [0, 1], ["0%", "6%"]);
 
-  const heroImage = '/images/bns/towwnhallmay/129A3912.jpg';
-  const heroVideoUrl = '/images/bns/tiktoklanding.mp4';
+  const heroImage = "/images/bns/towwnhallmay/129A3912.jpg";
+  const heroVideoUrl = "/images/bns/tiktoklanding.mp4";
 
   return (
     <section
@@ -57,7 +66,7 @@ export function SolumHero() {
       {/* ========================================================= */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <motion.div
-          style={{ y: shouldReduceMotion ? '0%' : parallaxY }}
+          style={{ y: shouldReduceMotion ? "0%" : parallaxY }}
           className="w-full h-full"
         >
           {heroVideoUrl ? (
@@ -105,7 +114,11 @@ export function SolumHero() {
             <motion.h1
               initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              transition={{
+                duration: 0.9,
+                delay: 0.2,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               className="font-display text-[clamp(44px,7.5vw,110px)] font-bold tracking-[-0.05em] leading-[0.92] text-white mb-6 uppercase"
             >
               Budget Ndio Story&reg;
@@ -114,21 +127,30 @@ export function SolumHero() {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              transition={{
+                duration: 0.8,
+                delay: 0.35,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               className="font-sans text-base sm:text-lg lg:text-xl text-white/90 font-light leading-relaxed max-w-md"
             >
-              Civic media and public finance storytelling platform empowering citizens and youth to track, understand, and demand accountability in national and county budgets.
+              Civic media and public finance storytelling platform empowering
+              citizens and youth to track, understand, and demand accountability
+              in national and county budgets.
             </motion.p>
           </div>
 
           {/* Right Stage: Split Start a Project Button (Columns 3-4) */}
           <div className="col-span-1 md:col-span-2 md:pl-8 flex flex-col justify-end items-start md:items-end">
-
             {/* Split Architectural Start a Project Button */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              transition={{
+                duration: 0.7,
+                delay: 0.45,
+                ease: [0.22, 1, 0.36, 1],
+              }}
             >
               <Link
                 to="/contact"
