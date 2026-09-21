@@ -1,24 +1,69 @@
-import { lazy, Suspense, useState, useEffect, useRef } from 'react';
-import { Routes, Route, Navigate, useLocation, type Location } from 'react-router-dom';
-import { motion, useReducedMotion } from 'framer-motion';
-import { Navbar } from './components/common/Navbar';
-import { Footer } from './components/common/Footer';
-import { ScrollToTop } from './components/common/ScrollToTop';
-import { SmoothScroll, resetLenisScroll, pauseLenis, resumeLenis } from './components/common/SmoothScroll';
-import { BackToTopButton } from './components/common/BackToTopButton';
-import { Preloader } from './components/common/Preloader';
-import { SEO } from './components/common/SEO';
+import { motion, useReducedMotion } from "framer-motion";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import {
+    Navigate,
+    Route,
+    Routes,
+    useLocation,
+    type Location,
+} from "react-router-dom";
+import { BackToTopButton } from "./components/common/BackToTopButton";
+import { Footer } from "./components/common/Footer";
+import { Navbar } from "./components/common/Navbar";
+import { Preloader } from "./components/common/Preloader";
+import { ScrollToTop } from "./components/common/ScrollToTop";
+import { SEO } from "./components/common/SEO";
+import {
+    pauseLenis,
+    resetLenisScroll,
+    resumeLenis,
+    SmoothScroll,
+} from "./components/common/SmoothScroll";
 
-const HomePage = lazy(() => import('./pages/HomePage').then((module) => ({ default: module.HomePage })));
-const AboutPage = lazy(() => import('./pages/AboutPage').then((module) => ({ default: module.AboutPage })));
-const ProjectsPage = lazy(() => import('./pages/ProjectsPage').then((module) => ({ default: module.ProjectsPage })));
-const ProjectDetailPage = lazy(() => import('./pages/ProjectDetailPage').then((module) => ({ default: module.ProjectDetailPage })));
-const ServicesPage = lazy(() => import('./pages/ServicesPage').then((module) => ({ default: module.ServicesPage })));
-const ServiceDetailPage = lazy(() => import('./pages/ServiceDetailPage').then((module) => ({ default: module.ServiceDetailPage })));
-const ContactPage = lazy(() => import('./pages/ContactPage').then((module) => ({ default: module.ContactPage })));
-const TermsPage = lazy(() => import('./pages/TermsPage').then((module) => ({ default: module.TermsPage })));
-const PrivacyPage = lazy(() => import('./pages/PrivacyPage').then((module) => ({ default: module.PrivacyPage })));
-const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then((module) => ({ default: module.NotFoundPage })));
+const HomePage = lazy(() =>
+  import("./pages/HomePage").then((module) => ({ default: module.HomePage })),
+);
+const AboutPage = lazy(() =>
+  import("./pages/AboutPage").then((module) => ({ default: module.AboutPage })),
+);
+const ProjectsPage = lazy(() =>
+  import("./pages/ProjectsPage").then((module) => ({
+    default: module.ProjectsPage,
+  })),
+);
+const ProjectDetailPage = lazy(() =>
+  import("./pages/ProjectDetailPage").then((module) => ({
+    default: module.ProjectDetailPage,
+  })),
+);
+const ServicesPage = lazy(() =>
+  import("./pages/ServicesPage").then((module) => ({
+    default: module.ServicesPage,
+  })),
+);
+const ServiceDetailPage = lazy(() =>
+  import("./pages/ServiceDetailPage").then((module) => ({
+    default: module.ServiceDetailPage,
+  })),
+);
+const ContactPage = lazy(() =>
+  import("./pages/ContactPage").then((module) => ({
+    default: module.ContactPage,
+  })),
+);
+const TermsPage = lazy(() =>
+  import("./pages/TermsPage").then((module) => ({ default: module.TermsPage })),
+);
+const PrivacyPage = lazy(() =>
+  import("./pages/PrivacyPage").then((module) => ({
+    default: module.PrivacyPage,
+  })),
+);
+const NotFoundPage = lazy(() =>
+  import("./pages/NotFoundPage").then((module) => ({
+    default: module.NotFoundPage,
+  })),
+);
 
 function AppRoutes({ location }: { location: Location }) {
   return (
@@ -42,7 +87,10 @@ function AppRoutes({ location }: { location: Location }) {
         <Route path="/blog" element={<Navigate to="/projects" replace />} />
         <Route path="/blog/*" element={<Navigate to="/projects" replace />} />
         <Route path="/journal" element={<Navigate to="/projects" replace />} />
-        <Route path="/journal/*" element={<Navigate to="/projects" replace />} />
+        <Route
+          path="/journal/*"
+          element={<Navigate to="/projects" replace />}
+        />
         <Route path="/work" element={<Navigate to="/projects" replace />} />
         <Route path="/work/:slug" element={<ProjectDetailPage />} />
         <Route path="/process" element={<Navigate to="/about" replace />} />
@@ -112,15 +160,15 @@ function PageTransition() {
         <div
           aria-hidden="true"
           style={{
-            position: 'fixed',
+            position: "fixed",
             top: -savedScrollY,
             left: 0,
             right: 0,
-            width: '100%',
-            overflow: 'hidden',
+            width: "100%",
+            overflow: "hidden",
             zIndex: 1,
-            pointerEvents: 'none',
-            userSelect: 'none',
+            pointerEvents: "none",
+            userSelect: "none",
           }}
           className="w-full bg-white text-[#101010]"
         >
@@ -131,7 +179,7 @@ function PageTransition() {
       {/* 2. INCOMING PAGE: Ascends directly from the bottom (100vh -> 0) in normal document flow */}
       <motion.div
         key={location.pathname}
-        initial={shouldReduceMotion || isFirstMount ? false : { y: '100vh' }}
+        initial={shouldReduceMotion || isFirstMount ? false : { y: "100vh" }}
         animate={{ y: 0 }}
         transition={{
           duration: 0.85,
@@ -139,12 +187,12 @@ function PageTransition() {
         }}
         onAnimationComplete={handleAnimationComplete}
         style={{
-          position: 'relative',
+          position: "relative",
           zIndex: 10,
-          willChange: prevLocation ? 'transform' : 'auto',
-          transform: 'translateZ(0)',
-          WebkitBackfaceVisibility: 'hidden',
-          backfaceVisibility: 'hidden',
+          willChange: prevLocation ? "transform" : "auto",
+          transform: "translateZ(0)",
+          WebkitBackfaceVisibility: "hidden",
+          backfaceVisibility: "hidden",
         }}
         className="w-full min-h-screen bg-white text-[#101010]"
       >
