@@ -29,10 +29,14 @@ export function Footer() {
             aria-label="Budget Ndio Story"
             animate={shouldReduceMotion ? { x: 0 } : { x: ["0%", "-50%"] }}
             transition={{ duration: 24, ease: "linear", repeat: Infinity }}
-            className="flex w-max shrink-0 gap-[8vw] font-display text-[clamp(48px,14vw,260px)] font-bold tracking-[-0.03em] leading-[0.82] text-[#242424] uppercase whitespace-nowrap"
+            className="flex w-max shrink-0 gap-[8vw] font-display text-[clamp(48px,14vw,260px)] font-bold tracking-[-0.03em] leading-[0.82] text-white uppercase whitespace-nowrap"
           >
-            <span aria-hidden="true">BUDGET NDIO STORY</span>
-            <span aria-hidden="true">BUDGET NDIO STORY</span>
+            <span aria-hidden="true">
+              BUDGET <span className="text-[#374EAB]">NDIO</span> STORY
+            </span>
+            <span aria-hidden="true">
+              BUDGET <span className="text-[#374EAB]">NDIO</span> STORY
+            </span>
           </motion.h2>
         </div>
 
@@ -49,7 +53,7 @@ export function Footer() {
                 alt="Budget Ndio Story"
                 width={24}
                 height={24}
-                className="w-6 h-6 object-contain"
+                className="w-6 h-6 object-contain brightness-0 invert"
               />
               <span className="font-sans font-semibold text-xl tracking-tight text-white flex items-center gap-2">
                 Budget Ndio Story
