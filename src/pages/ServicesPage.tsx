@@ -299,38 +299,7 @@ export function ServicesPage() {
         {/* ========================================================= */}
         {/* 6) PROGRAMME METHODOLOGY WORKFLOW (CHRONOLOGY STYLE)     */}
         {/* ========================================================= */}
-        <div className="py-20 border-b border-[#101010]/12">
-          <div className="flex items-center gap-2 mb-12">
-            <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
-            <span className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#101010] font-medium">
-              HOW OUR FOUR PROGRAMMES CONVERGE &bull; 4-STAGE PIPELINE
-            </span>
-          </div>
-
-          <div className="divide-y divide-[#101010]/12 border-t border-b border-[#101010]/12">
-            {methodologyCycle.map((item) => (
-              <div
-                key={item.step}
-                className="py-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-baseline"
-              >
-                <div className="md:col-span-2 font-display text-3xl font-semibold text-[#101010] tabular-nums">
-                  {item.step}
-                </div>
-                <div className="md:col-span-4">
-                  <span className="font-mono text-xs text-[#757575] uppercase block mb-1">
-                    {item.programme}
-                  </span>
-                  <div className="font-sans text-base sm:text-lg font-medium uppercase tracking-tight text-[#101010]">
-                    {item.role}
-                  </div>
-                </div>
-                <div className="md:col-span-6 font-sans text-xs sm:text-sm text-[#757575] font-light leading-relaxed">
-                  {item.detail}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+      
 
         {/* ========================================================= */}
         {/* 7) CLOSING INITIATIVE CALLOUT (MATCHING ABOUT)            */}
