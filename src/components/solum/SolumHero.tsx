@@ -133,10 +133,7 @@ export function SolumHero() {
           {/* Right Stage: Split Start a Project Button (Columns 3-4) */}
           <div className="col-span-1 md:col-span-2 md:pl-8 flex flex-col justify-end items-start md:items-end">
             {/* Split Architectural Start a Project Button */}
-            <motion.div
-              initial={false}
-              animate={{ opacity: 1, y: 0 }}
-            >
+            <motion.div initial={false} animate={{ opacity: 1, y: 0 }}>
               <Link
                 to="/contact"
                 className="group inline-flex items-stretch bg-white text-[#101010] hover:bg-[#F4F4F0] transition-all duration-200 shadow-[0_10px_30px_rgba(0,0,0,0.35)] border border-white"

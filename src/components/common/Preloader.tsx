@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 interface PreloaderProps {
   onSequenceStart?: () => void;
@@ -13,7 +13,7 @@ export function Preloader({ onSequenceStart, onComplete }: PreloaderProps) {
 
   useEffect(() => {
     // Lock scroll during the curtain sequence
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
 
     // Rapid progress counter for architectural precision
     const progressInterval = setInterval(() => {
@@ -35,7 +35,7 @@ export function Preloader({ onSequenceStart, onComplete }: PreloaderProps) {
     // T=600ms: Curtain has fully moved offscreen, unlock body
     const t2 = setTimeout(() => {
       setIsDone(true);
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
       onComplete?.();
     }, 600);
 
@@ -43,7 +43,7 @@ export function Preloader({ onSequenceStart, onComplete }: PreloaderProps) {
       clearInterval(progressInterval);
       clearTimeout(t1);
       clearTimeout(t2);
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, [onSequenceStart, onComplete]);
 
@@ -56,8 +56,8 @@ export function Preloader({ onSequenceStart, onComplete }: PreloaderProps) {
       {!isDone && (
         <motion.div
           key="bns-opening-curtain"
-          initial={{ y: '0%' }}
-          animate={curtainUp ? { y: '-100%' } : { y: '0%' }}
+          initial={{ y: "0%" }}
+          animate={curtainUp ? { y: "-100%" } : { y: "0%" }}
           transition={{
             duration: 0.9,
             ease: [0.76, 0, 0.24, 1], // Editorial luxury easing curve
@@ -76,7 +76,9 @@ export function Preloader({ onSequenceStart, onComplete }: PreloaderProps) {
           <div className="relative z-10 pt-8 px-6 md:px-10 flex items-center justify-between font-mono text-[11px] sm:text-xs uppercase tracking-[0.2em] text-[#101010]/60">
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 bg-[#101010]" />
-              <span>Budget Ndio Story&reg; // Civic Media &amp; Public Finance</span>
+              <span>
+                Budget Ndio Story&reg; // Civic Media &amp; Public Finance
+              </span>
             </div>
             <div className="hidden sm:block">
               <span>Edition 2026 // Civic Tech &amp; Storytelling</span>
@@ -87,8 +89,8 @@ export function Preloader({ onSequenceStart, onComplete }: PreloaderProps) {
           <div className="relative z-10 flex flex-col items-center justify-center my-auto px-6 text-center">
             <div className="overflow-hidden py-2">
               <motion.h1
-                initial={{ y: '100%', opacity: 0 }}
-                animate={{ y: '0%', opacity: 1 }}
+                initial={{ y: "100%", opacity: 0 }}
+                animate={{ y: "0%", opacity: 1 }}
                 transition={{
                   duration: 0.65,
                   ease: [0.22, 1, 0.36, 1],

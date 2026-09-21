@@ -1,5 +1,10 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
+import {
+    motion,
+    useReducedMotion,
+    useScroll,
+    useTransform,
+} from "framer-motion";
+import { useRef } from "react";
 
 export function SolumMediaBreak() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -7,16 +12,17 @@ export function SolumMediaBreak() {
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start end', 'end start'],
+    offset: ["start end", "end start"],
   });
 
   // Parallax on the background photo
-  const yParallax = useTransform(scrollYProgress, [0, 1], ['-8%', '8%']);
+  const yParallax = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
 
   // Scroll-linked horizontal translation: restrained, calm, and slow speed
-  const xMarquee = useTransform(scrollYProgress, [0, 1], ['4%', '-14%']);
+  const xMarquee = useTransform(scrollYProgress, [0, 1], ["4%", "-14%"]);
 
-  const marqueeText = 'BUDGET NDIO STORY ◆ CIVIC MEDIA ◆ PUBLIC FINANCE ◆ YOUTH ENGAGEMENT ◆ ';
+  const marqueeText =
+    "BUDGET NDIO STORY ◆ CIVIC MEDIA ◆ PUBLIC FINANCE ◆ YOUTH ENGAGEMENT ◆ ";
 
   return (
     <section
@@ -25,7 +31,7 @@ export function SolumMediaBreak() {
     >
       {/* Background Architectural Monochrome Photography with Parallax */}
       <motion.div
-        style={{ y: shouldReduceMotion ? '0%' : yParallax }}
+        style={{ y: shouldReduceMotion ? "0%" : yParallax }}
         className="absolute inset-0 w-full h-[120%] -top-[10%]"
       >
         <img
@@ -41,7 +47,7 @@ export function SolumMediaBreak() {
       {/* Floating Horizontal Typography linked directly to page scroll */}
       <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none z-10">
         <motion.div
-          style={{ x: shouldReduceMotion ? '0%' : xMarquee }}
+          style={{ x: shouldReduceMotion ? "0%" : xMarquee }}
           className="flex items-center whitespace-nowrap text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-[-0.04em] text-white/95 uppercase will-change-transform"
         >
           <span>{marqueeText}</span>
