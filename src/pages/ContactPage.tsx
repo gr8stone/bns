@@ -77,10 +77,10 @@ export function ContactPage() {
                     Email
                   </span>
                   <a
-                    href="mailto:contact@budgetndiostory.org"
+                    href="mailto:info@budgetndiostory.org"
                     className="font-sans font-semibold text-lg sm:text-xl text-[#101010] hover:underline"
                   >
-                    contact@budgetndiostory.org
+                    info@budgetndiostory.org
                   </a>
                 </div>
 
@@ -193,7 +193,7 @@ export function ContactPage() {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="contact@budgetndiostory.org"
+                      placeholder="info@budgetndiostory.org"
                       className="w-full bg-[#F9F9F8] border border-[#101010]/10 px-4 py-3 text-sm font-sans text-[#101010] placeholder-[#757575]/50 focus:outline-none focus:border-[#101010] transition-colors rounded-none"
                     />
                   </div>
@@ -340,7 +340,7 @@ export function ContactPage() {
               </span>
             </div>
             <a
-              href="mailto:contact@budgetndiostory.org?subject=Confidential%20Whistleblower%20Tip"
+              href="mailto:info@budgetndiostory.org?subject=Confidential%20Whistleblower%20Tip"
               className="text-xs font-mono uppercase tracking-wider text-[#101010] underline hover:opacity-70 shrink-0"
             >
               Submit Confidential Tip ↗

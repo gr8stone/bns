@@ -14,6 +14,7 @@ import { AboutPage } from './pages/AboutPage';
 import { ProjectsPage } from './pages/ProjectsPage';
 import { ProjectDetailPage } from './pages/ProjectDetailPage';
 import { ServicesPage } from './pages/ServicesPage';
+import { ServiceDetailPage } from './pages/ServiceDetailPage';
 import { ContactPage } from './pages/ContactPage';
 import { TermsPage } from './pages/TermsPage';
 import { PrivacyPage } from './pages/PrivacyPage';
@@ -28,6 +29,9 @@ function AppRoutes({ location }: { location: Location }) {
       <Route path="/projects" element={<ProjectsPage />} />
       <Route path="/projects/:slug" element={<ProjectDetailPage />} />
       <Route path="/services" element={<ServicesPage />} />
+      <Route path="/services/:slug" element={<ServiceDetailPage />} />
+      <Route path="/programmes" element={<ServicesPage />} />
+      <Route path="/programmes/:slug" element={<ServiceDetailPage />} />
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/terms" element={<TermsPage />} />
       <Route path="/privacy" element={<PrivacyPage />} />
@@ -40,7 +44,6 @@ function AppRoutes({ location }: { location: Location }) {
       <Route path="/journal/*" element={<Navigate to="/projects" replace />} />
       <Route path="/work" element={<Navigate to="/projects" replace />} />
       <Route path="/work/:slug" element={<ProjectDetailPage />} />
-      <Route path="/services/:slug" element={<ServicesPage />} />
       <Route path="/process" element={<Navigate to="/about" replace />} />
       <Route path="/studio" element={<Navigate to="/about" replace />} />
 

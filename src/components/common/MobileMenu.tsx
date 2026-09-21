@@ -76,7 +76,7 @@ export function MobileMenu({ isOpen, onClose, navLinks, currentPath }: MobileMen
             </Link>
             <div className="flex justify-between items-center text-[10px] uppercase tracking-widest text-zinc-500 pt-2">
               <span>Nairobi • Kenya</span>
-              <span>contact@budgetndiostory.org</span>
+              <span>info@budgetndiostory.org</span>
             </div>
           </div>
         </motion.div>

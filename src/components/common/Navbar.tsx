@@ -39,7 +39,7 @@ export function Navbar() {
   const mainLinks = [
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
-    { label: 'Services', href: '/services' },
+    { label: 'Programmes', href: '/services' },
     { label: 'Projects', href: '/projects' },
     { label: 'Contact', href: '/contact' },
   ];
@@ -154,8 +154,8 @@ export function Navbar() {
             <div className="pt-8 border-t border-[#101010]/12 grid grid-cols-1 md:grid-cols-4 gap-6 text-xs font-mono text-[#757575]">
               <div className="col-span-1">
                 <span className="text-[#101010] block mb-1 font-medium">CIVIC CONTACT</span>
-                <a href="mailto:contact@budgetndiostory.org" className="hover:text-[#101010] transition-colors">
-                  contact@budgetndiostory.org
+                <a href="mailto:info@budgetndiostory.org" className="hover:text-[#101010] transition-colors">
+                  info@budgetndiostory.org
                 </a>
               </div>
 

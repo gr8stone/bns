@@ -71,10 +71,10 @@ export function FinalCTASection() {
                 <Mail className="w-3.5 h-3.5 text-[#C5A880]" /> CIVIC DESK
               </span>
               <a
-                href="mailto:contact@budgetndiostory.org"
+                href="mailto:info@budgetndiostory.org"
                 className="text-xs md:text-sm text-white/90 hover:text-[#C5A880] transition-colors"
               >
-                contact@budgetndiostory.org
+                info@budgetndiostory.org
               </a>
             </div>
 

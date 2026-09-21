@@ -66,7 +66,7 @@ export function PrivacyPage() {
               04 // PRIVACY &amp; WHISTLEBLOWER DESK
             </h2>
             <p>
-              For data access, correction, or inquiries regarding our source confidentiality protocols under Kenyan data protection laws, contact our privacy desk directly at contact@budgetndiostory.org.
+              For data access, correction, or inquiries regarding our source confidentiality protocols under Kenyan data protection laws, contact our privacy desk directly at info@budgetndiostory.org.
             </p>
           </div>
         </div>

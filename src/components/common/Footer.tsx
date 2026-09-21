@@ -92,12 +92,12 @@ export function Footer() {
               </li>
               <li>
                 <Link to="/services" className="hover:text-neutral-400 transition-colors">
-                  SERVICES
+                  PROGRAMMES
                 </Link>
               </li>
               <li>
                 <Link to="/projects" className="hover:text-neutral-400 transition-colors">
-                  PROJECT
+                  PRODUCTIONS
                 </Link>
               </li>
             </ul>
@@ -132,10 +132,10 @@ export function Footer() {
 
             <div>
               <a
-                href="mailto:contact@budgetndiostory.org"
+                href="mailto:info@budgetndiostory.org"
                 className="hover:text-white transition-colors inline-block"
               >
-                [ contact@budgetndiostory.org ]
+                [ info@budgetndiostory.org ]
               </a>
             </div>
 

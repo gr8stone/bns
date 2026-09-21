@@ -1,213 +1,314 @@
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { ArrowLeft, ArrowUpRight, CheckCircle2, HelpCircle } from 'lucide-react';
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
+import { ArrowLeft, ArrowRight, CheckCircle2, HelpCircle } from 'lucide-react';
 import { SERVICES } from '../data/services';
-import { FinalCTASection } from '../components/home/FinalCTASection';
 
 export function ServiceDetailPage() {
   const { slug } = useParams<{ slug: string }>();
+  const mediaRef = useRef<HTMLDivElement>(null);
+  const shouldReduceMotion = useReducedMotion();
 
   const service = useMemo(() => {
     return SERVICES.find((s) => s.slug === slug);
   }, [slug]);
+
+  const currentIndex = useMemo(() => {
+    return SERVICES.findIndex((s) => s.slug === slug);
+  }, [slug]);
+
+  const prevService = useMemo(() => {
+    if (currentIndex <= 0) return SERVICES[SERVICES.length - 1];
+    return SERVICES[currentIndex - 1];
+  }, [currentIndex]);
+
+  const nextService = useMemo(() => {
+    if (currentIndex < 0 || currentIndex >= SERVICES.length - 1) return SERVICES[0];
+    return SERVICES[currentIndex + 1];
+  }, [currentIndex]);
+
+  const { scrollYProgress } = useScroll({
+    target: mediaRef,
+    offset: ['start end', 'end start'],
+  });
+  const yParallax = useTransform(scrollYProgress, [0, 1], ['-5%', '5%']);
 
   if (!service) {
     return <Navigate to="/services" replace />;
   }
 
   return (
-    <main className="w-full bg-[#f7f6f2] text-[#121214] pt-28 md:pt-36">
-      {/* Back Link */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 mb-8">
-        <Link
-          to="/services"
-          className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-zinc-500 hover:text-black transition-colors"
+    <main className="w-full bg-white text-[#101010] pt-28 md:pt-36 select-none">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10">
+        {/* ========================================================= */}
+        {/* BREADCRUMB & BACK LINK                                    */}
+        {/* ========================================================= */}
+        <div className="flex items-center justify-between pb-8 border-b border-[#101010]/12 font-mono text-xs text-[#757575] uppercase tracking-wider">
+          <Link
+            to="/services"
+            className="flex items-center gap-2 hover:text-[#101010] transition-colors"
+          >
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>RETURN TO ALL PROGRAMMES</span>
+          </Link>
+          <div className="flex items-center gap-2 text-[#101010]">
+            <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
+            <span>PILLAR {service.number} // {service.title}</span>
+          </div>
+        </div>
+
+        {/* ========================================================= */}
+        {/* HERO SECTION (MATCHING ABOUT)                             */}
+        {/* ========================================================= */}
+        <div className="py-14 md:py-20 grid grid-cols-1 md:grid-cols-4 gap-8 items-end border-b border-[#101010]/12">
+          <div className="col-span-1 md:col-span-3 space-y-3">
+            <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[#757575]">
+              <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
+              <span>CIVIC PROGRAMME DOSSIER</span>
+            </div>
+            <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-[-0.06em] text-[#101010] uppercase leading-[0.94]">
+              {service.title}
+            </h1>
+            <p className="font-display text-xl sm:text-2xl font-normal tracking-[-0.03em] text-[#101010] pt-2">
+              {service.heroHeadline}
+            </p>
+          </div>
+
+          <div className="col-span-1">
+            <span className="font-mono text-xs text-[#757575] block mb-2 font-medium uppercase">
+              PROGRAMME MANDATE
+            </span>
+            <p className="font-sans text-xs sm:text-sm text-[#757575] leading-relaxed font-light">
+              {service.heroSubhead}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* ========================================================= */}
+      {/* FULL-BLEED MEDIA WITH PARALLAX                            */}
+      {/* ========================================================= */}
+      <div
+        ref={mediaRef}
+        className="relative w-full h-[50vh] sm:h-[65vh] lg:h-[75vh] overflow-hidden bg-zinc-900 my-16 border-t border-b border-[#101010]/12"
+      >
+        <motion.div
+          style={{ y: shouldReduceMotion ? '0%' : yParallax }}
+          className="absolute inset-0 w-full h-[120%] -top-[10%]"
         >
-          <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Back to All Services</span>
-        </Link>
-      </div>
-
-      {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 mb-20">
-        <div className="max-w-4xl">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="text-xs uppercase tracking-widest text-zinc-500 font-mono">
-              Pillar {service.number}
-            </span>
-            <span className="w-1.5 h-1.5 rounded-full bg-black" />
-            <span className="text-xs uppercase tracking-widest text-zinc-500 font-medium">
-              Civic Action Pillar
-            </span>
-          </div>
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-light tracking-tight text-black leading-[1.04] mb-6">
-            {service.heroHeadline}
-          </h1>
-          <p className="text-lg sm:text-xl text-zinc-600 font-light max-w-2xl leading-relaxed">
-            {service.heroSubhead}
-          </p>
+          <img
+            src={service.image}
+            alt={service.title}
+            loading="eager"
+            className="w-full h-full object-cover filter grayscale contrast-125 brightness-95"
+          />
+          <div className="absolute inset-0 bg-black/15 pointer-events-none" />
+        </motion.div>
+        <div className="absolute bottom-4 left-6 md:left-10 text-white font-mono text-xs uppercase tracking-wider">
+          PILLAR {service.number} FIELD ARCHIVE &bull; {service.title}
         </div>
       </div>
 
-      {/* Hero Visual Frame */}
-      <div className="w-full aspect-[16/9] md:aspect-[21/9] bg-zinc-900 overflow-hidden mb-24 md:mb-36">
-        <img
-          src={service.image}
-          alt={service.title}
-          className="w-full h-full object-cover filter brightness-95"
-        />
-      </div>
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10">
+        {/* ========================================================= */}
+        {/* CHALLENGE VS APPROACH (RULED GRID MATCHING ABOUT)         */}
+        {/* ========================================================= */}
+        <div className="py-16 md:py-24 border-b border-[#101010]/12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+            <div className="p-8 border border-[#101010]/12 bg-[#FBFBFA] space-y-4">
+              <span className="font-mono text-xs uppercase tracking-wider text-[#757575] block">
+                01 // THE CIVIC CHALLENGE
+              </span>
+              <h3 className="font-display text-2xl font-semibold uppercase text-[#101010]">
+                Why Traditional Systems Fail
+              </h3>
+              <p className="font-sans text-xs sm:text-sm text-[#757575] leading-relaxed font-light">
+                {service.problem}
+              </p>
+            </div>
 
-      {/* Problem & Solution (Commercial Clarity - OMEGA / The Boundary Influence) */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 mb-24 md:mb-36">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 border-t border-black/10 pt-16">
-          <div>
-            <span className="text-xs uppercase tracking-widest text-red-700 font-semibold block mb-3 font-mono">
-              The Civic Challenge
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-light tracking-tight text-black mb-4">
-              Why traditional public participation falls short.
-            </h3>
-            <p className="text-zinc-600 text-sm sm:text-base font-light leading-relaxed">
-              {service.problem}
-            </p>
-          </div>
-
-          <div>
-            <span className="text-xs uppercase tracking-widest text-emerald-700 font-semibold block mb-3 font-mono">
-              The BNS Approach
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-light tracking-tight text-black mb-4">
-              Civic truth with accessible storytelling.
-            </h3>
-            <p className="text-zinc-600 text-sm sm:text-base font-light leading-relaxed">
-              {service.solution}
-            </p>
+            <div className="p-8 border border-[#101010]/12 bg-white space-y-4">
+              <span className="font-mono text-xs uppercase tracking-wider text-[#101010] font-semibold block">
+                02 // THE BNS APPROACH
+              </span>
+              <h3 className="font-display text-2xl font-semibold uppercase text-[#101010]">
+                Data Rigor Meets Mass Action
+              </h3>
+              <p className="font-sans text-xs sm:text-sm text-[#757575] leading-relaxed font-light">
+                {service.solution}
+              </p>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Complete Deliverables Breakdown */}
-      <div className="bg-white border-y border-black/10 py-24 md:py-32 mb-24 md:mb-36">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="max-w-3xl mb-16">
-            <span className="text-xs uppercase tracking-widest text-zinc-500 font-medium block mb-3">
-              Output Matrix
+        {/* ========================================================= */}
+        {/* OUTPUT MATRIX & DELIVERABLES                              */}
+        {/* ========================================================= */}
+        <div className="py-20 border-b border-[#101010]/12">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
+            <span className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#101010] font-medium">
+              KEY DELIVERABLES &bull; OUTPUT MATRIX
             </span>
-            <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-black mb-4">
-              What we deliver.
-            </h2>
-            <p className="text-zinc-600 text-sm font-light">
-              Every initiative is calibrated for statutory budget rigor and measurable community empowerment.
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <h2 className="font-display text-3xl sm:text-5xl font-semibold tracking-[-0.05em] text-[#101010] uppercase mb-12">
+            What This Programme Delivers.
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {service.deliverables.map((item, idx) => (
               <div
                 key={item.name}
-                className="p-8 border border-black/10 bg-zinc-50/50 flex flex-col justify-between hover:border-black transition-colors"
+                className="p-6 sm:p-8 border border-[#101010]/12 bg-white flex flex-col justify-between hover:border-[#101010] transition-colors"
               >
                 <div>
-                  <span className="text-xs font-mono text-zinc-400 block mb-3">
-                    0{idx + 1}
+                  <span className="text-xs font-mono text-[#757575] block mb-3">
+                    OUTPUT 0{idx + 1}
                   </span>
-                  <h4 className="text-lg font-medium text-black mb-2 tracking-tight">
+                  <h4 className="font-display text-lg font-semibold uppercase tracking-tight text-[#101010] mb-2">
                     {item.name}
                   </h4>
-                  <p className="text-xs text-zinc-600 font-light leading-relaxed">
+                  <p className="font-sans text-xs sm:text-sm text-[#757575] font-light leading-relaxed">
                     {item.description}
                   </p>
                 </div>
-                <div className="mt-6 flex items-center gap-2 text-xs font-semibold text-black uppercase tracking-wider">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>Civic Impact Ready</span>
+                <div className="mt-6 pt-4 border-t border-[#101010]/10 flex items-center gap-2 text-xs font-mono font-medium text-[#101010] uppercase tracking-wider">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#101010]" />
+                  <span>Civic Impact Verified</span>
                 </div>
               </div>
             ))}
           </div>
         </div>
-      </div>
 
-      {/* Workflow Step-by-Step */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 mb-24 md:mb-36">
-        <div className="max-w-3xl mb-16">
-          <span className="text-xs uppercase tracking-widest text-zinc-500 font-medium block mb-3">
-            Civic Methodology
-          </span>
-          <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-black mb-4">
-            Implementation workflow.
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {service.workflow.map((wf) => (
-            <div key={wf.step} className="border-t-2 border-black pt-6">
-              <span className="text-2xl font-light text-zinc-400 font-mono block mb-2">
-                {wf.step}
-              </span>
-              <h4 className="text-lg font-medium text-black mb-2 tracking-tight">
-                {wf.title}
-              </h4>
-              <p className="text-xs text-zinc-600 font-light leading-relaxed">
-                {wf.detail}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Frequently Asked Questions */}
-      {service.faqs && service.faqs.length > 0 && (
-        <div className="max-w-7xl mx-auto px-6 md:px-12 mb-24 md:mb-36">
-          <div className="max-w-3xl mb-16">
-            <span className="text-xs uppercase tracking-widest text-zinc-500 font-medium block mb-3">
-              Clarity & Transparency
+        {/* ========================================================= */}
+        {/* IMPLEMENTATION WORKFLOW                                    */}
+        {/* ========================================================= */}
+        <div className="py-20 border-b border-[#101010]/12">
+          <div className="flex items-center gap-2 mb-12">
+            <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
+            <span className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#101010] font-medium">
+              METHODOLOGY &bull; IMPLEMENTATION PIPELINE
             </span>
-            <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-black mb-4">
-              Frequently asked questions.
-            </h2>
           </div>
 
-          <div className="divide-y divide-black/10 border-t border-b border-black/10">
-            {service.faqs.map((faq, idx) => (
-              <div key={idx} className="py-8 grid grid-cols-1 lg:grid-cols-12 gap-6">
-                <div className="lg:col-span-5 flex items-start gap-3">
-                  <HelpCircle className="w-4 h-4 text-zinc-400 mt-1 flex-shrink-0" />
-                  <h4 className="text-lg font-medium text-black tracking-tight">
-                    {faq.q}
-                  </h4>
+          <div className="divide-y divide-[#101010]/12 border-t border-b border-[#101010]/12">
+            {service.workflow.map((wf) => (
+              <div key={wf.step} className="py-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-baseline">
+                <div className="md:col-span-2 font-display text-3xl font-semibold text-[#101010] tabular-nums">
+                  {wf.step}
                 </div>
-                <div className="lg:col-span-7 text-sm text-zinc-600 font-light leading-relaxed">
-                  {faq.a}
+                <div className="md:col-span-4 font-sans text-base sm:text-lg font-medium uppercase tracking-tight text-[#101010]">
+                  {wf.title}
+                </div>
+                <div className="md:col-span-6 font-sans text-xs sm:text-sm text-[#757575] font-light leading-relaxed">
+                  {wf.detail}
                 </div>
               </div>
             ))}
           </div>
         </div>
-      )}
 
-      {/* Action CTA Strip */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 mb-20 text-center">
-        <div className="p-12 md:p-16 bg-white border border-black/10 shadow-lg max-w-3xl mx-auto">
-          <h3 className="text-3xl font-light text-black mb-4">
-            Engage with {service.title}
-          </h3>
-          <p className="text-zinc-600 text-sm font-light mb-8 max-w-lg mx-auto">
-            Ready to collaborate, request a workshop, or bring this pillar to your community or newsroom?
-          </p>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-black text-white text-xs font-semibold uppercase tracking-widest hover:bg-zinc-800 transition-colors"
-          >
-            <span>Connect With Us</span>
-            <ArrowUpRight className="w-4 h-4" />
-          </Link>
+        {/* ========================================================= */}
+        {/* FREQUENTLY ASKED QUESTIONS                                 */}
+        {/* ========================================================= */}
+        {service.faqs && service.faqs.length > 0 && (
+          <div className="py-20 border-b border-[#101010]/12">
+            <div className="flex items-center gap-2 mb-12">
+              <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
+              <span className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#101010] font-medium">
+                CLARITY &bull; FREQUENTLY ASKED QUESTIONS
+              </span>
+            </div>
+
+            <div className="divide-y divide-[#101010]/12 border-t border-b border-[#101010]/12">
+              {service.faqs.map((faq, idx) => (
+                <div key={idx} className="py-8 grid grid-cols-1 lg:grid-cols-12 gap-6">
+                  <div className="lg:col-span-5 flex items-start gap-3">
+                    <HelpCircle className="w-4 h-4 text-[#757575] mt-1 flex-shrink-0" />
+                    <h4 className="font-display text-lg font-semibold uppercase text-[#101010] tracking-tight">
+                      {faq.q}
+                    </h4>
+                  </div>
+                  <div className="lg:col-span-7 font-sans text-xs sm:text-sm text-[#757575] font-light leading-relaxed">
+                    {faq.a}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* ========================================================= */}
+        {/* ACTION CTA                                                 */}
+        {/* ========================================================= */}
+        <div className="py-20 text-center">
+          <div className="p-10 md:p-14 border border-[#101010]/12 bg-[#F9F9F8] max-w-3xl mx-auto space-y-4">
+            <span className="font-mono text-xs uppercase tracking-wider text-[#757575] block">
+              GET INVOLVED // PILLAR {service.number}
+            </span>
+            <h3 className="font-display text-3xl sm:text-4xl font-semibold uppercase text-[#101010]">
+              Engage with {service.title}
+            </h3>
+            <p className="font-sans text-xs sm:text-sm text-[#757575] font-light max-w-md mx-auto leading-relaxed">
+              Ready to bring this programme to your county, pitch an investigative investigation, or co-convene a town hall?
+            </p>
+            <div className="pt-4">
+              <Link
+                to="/contact"
+                className="solum-btn px-8 py-3.5 bg-[#101010] text-white border border-[#101010] text-xs font-mono uppercase tracking-wider hover:bg-white hover:text-[#101010] transition-colors inline-flex items-center gap-2"
+              >
+                <span>Connect With Us</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Final Dark CTA */}
-      <FinalCTASection />
+      {/* ========================================================= */}
+      {/* PREVIOUS & NEXT PROGRAMME NAVIGATION STRIP                 */}
+      {/* ========================================================= */}
+      <div className="w-full border-t border-[#101010]/12 bg-[#F6F6F2]">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10 grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-[#101010]/12">
+          {prevService && (
+            <Link
+              to={`/services/${prevService.slug}`}
+              className="py-12 pr-6 flex flex-col justify-between group select-none hover:bg-white transition-colors duration-200"
+            >
+              <div className="flex items-center gap-2 font-mono text-xs uppercase text-[#757575] mb-4">
+                <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
+                <span>PREVIOUS PROGRAMME</span>
+              </div>
+              <h4 className="font-display text-2xl sm:text-3xl font-semibold tracking-[-0.04em] text-[#101010] uppercase">
+                {prevService.title}
+              </h4>
+              <span className="font-mono text-xs text-[#757575] mt-2">
+                PILLAR {prevService.number} &bull; {prevService.shortDescription}
+              </span>
+            </Link>
+          )}
+
+          {nextService && (
+            <Link
+              to={`/services/${nextService.slug}`}
+              className="py-12 sm:pl-8 flex flex-col justify-between group select-none hover:bg-white transition-colors duration-200 sm:text-right"
+            >
+              <div className="flex items-center sm:justify-end gap-2 font-mono text-xs uppercase text-[#757575] mb-4">
+                <span>NEXT PROGRAMME</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </div>
+              <h4 className="font-display text-2xl sm:text-3xl font-semibold tracking-[-0.04em] text-[#101010] uppercase">
+                {nextService.title}
+              </h4>
+              <span className="font-mono text-xs text-[#757575] mt-2">
+                PILLAR {nextService.number} &bull; {nextService.shortDescription}
+              </span>
+            </Link>
+          )}
+        </div>
+      </div>
     </main>
   );
 }
