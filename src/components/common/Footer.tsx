@@ -5,7 +5,7 @@ const PARTNER_LOGOS = [
   { src: "/images/bns/logo.svg", alt: "Budget Ndio Story" },
   { src: "/images/bns/partners/tisa.svg", alt: "TISA" },
   {
-    src: "/images/bns/partners/committee-on-fiscal-studies.png",
+    src: "/images/bns/optimized/committee-on-fiscal-studies.webp",
     alt: "University of Nairobi",
   },
   {

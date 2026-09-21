@@ -26,18 +26,18 @@ export function Preloader({ onSequenceStart, onComplete }: PreloaderProps) {
       });
     }, 45);
 
-    // T=700ms: Begin lifting the white canvas upwards smoothly
+    // Reveal the page quickly so the first viewport can paint immediately.
     const t1 = setTimeout(() => {
       setCurtainUp(true);
       onSequenceStart?.();
-    }, 750);
+    }, 150);
 
-    // T=1700ms: Curtain has fully moved offscreen (-100%), unlock body
+    // T=600ms: Curtain has fully moved offscreen, unlock body
     const t2 = setTimeout(() => {
       setIsDone(true);
       document.body.style.overflow = '';
       onComplete?.();
-    }, 1700);
+    }, 600);
 
     return () => {
       clearInterval(progressInterval);

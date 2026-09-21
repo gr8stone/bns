@@ -29,7 +29,7 @@ export function SolumMediaBreak() {
         className="absolute inset-0 w-full h-[120%] -top-[10%]"
       >
         <img
-          src="/images/bns/hall/129A4248.jpg"
+          src="/images/bns/optimized/129A4248-media.webp"
           alt="Budget Ndio Story National Civic Convening"
           loading="lazy"
           className="w-full h-full object-cover object-center filter grayscale brightness-90 contrast-110"

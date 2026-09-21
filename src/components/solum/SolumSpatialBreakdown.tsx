@@ -264,7 +264,7 @@ export function SolumSpatialBreakdown() {
             className="relative z-20 w-[280px] sm:w-[400px] md:w-[500px] lg:w-[600px] xl:w-[660px] aspect-[16/9] rounded-xl sm:rounded-2xl overflow-hidden border border-white/35 bg-black shadow-[0_0_90px_rgba(0,0,0,0.95)] group"
           >
             <img
-              src="/images/bns/towwnhallmay/129A3912.jpg"
+              src="/images/bns/optimized/129A3912-hero.webp"
               alt="Budget Ndio Story National Civic Convening"
               loading="eager"
               className="w-full h-full object-cover filter brightness-100 group-hover:scale-102 transition-transform duration-500 pointer-events-none"

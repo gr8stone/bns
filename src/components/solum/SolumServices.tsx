@@ -23,7 +23,7 @@ const SERVICES: ServicePanel[] = [
       "Youth & civil society budget forums",
       "Policy advocacy briefs & stakeholder engagements",
     ],
-    image: "/images/bns/towwnhallmay/129A3912.jpg",
+    image: "/images/bns/optimized/129A3912-hero.webp",
   },
   {
     number: "02",

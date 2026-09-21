@@ -25,7 +25,7 @@ const CLIENT_LOGOS = [
   {
     name: "University of Nairobi",
     label: "University of Nairobi",
-    src: "/images/bns/partners/committee-on-fiscal-studies.png",
+    src: "/images/bns/optimized/committee-on-fiscal-studies.webp",
   },
   {
     name: "House of Fiscal Wisdom",
@@ -45,7 +45,7 @@ export function SolumHero() {
   });
   const parallaxY = useTransform(scrollYProgress, [0, 1], ["0%", "6%"]);
 
-  const heroImage = "/images/bns/towwnhallmay/129A3912.jpg";
+  const heroImage = "/images/bns/optimized/129A3912-hero.webp";
   const heroVideoUrl = "/images/bns/tiktoklanding.mp4";
 
   return (
@@ -112,26 +112,16 @@ export function SolumHero() {
           {/* Left Stage: Giant Brand Wordmark & Subtitle (Columns 1-2) */}
           <div className="col-span-1 md:col-span-2">
             <motion.h1
-              initial={{ opacity: 0, x: -40 }}
+              initial={false}
               animate={{ opacity: 1, x: 0 }}
-              transition={{
-                duration: 0.9,
-                delay: 0.2,
-                ease: [0.22, 1, 0.36, 1],
-              }}
               className="font-display text-[clamp(44px,7.5vw,110px)] font-bold tracking-[-0.05em] leading-[0.92] text-white mb-6 uppercase"
             >
               Budget Ndio Story&reg;
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.8,
-                delay: 0.35,
-                ease: [0.22, 1, 0.36, 1],
-              }}
               className="font-sans text-base sm:text-lg lg:text-xl text-white/90 font-light leading-relaxed max-w-md"
             >
               Civic media and public finance storytelling platform empowering
@@ -144,13 +134,8 @@ export function SolumHero() {
           <div className="col-span-1 md:col-span-2 md:pl-8 flex flex-col justify-end items-start md:items-end">
             {/* Split Architectural Start a Project Button */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.7,
-                delay: 0.45,
-                ease: [0.22, 1, 0.36, 1],
-              }}
             >
               <Link
                 to="/contact"
