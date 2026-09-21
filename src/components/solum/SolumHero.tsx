@@ -9,10 +9,10 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 
 const CLIENT_AVATARS = [
-  "/images/bns/marketing newsletter subcribe/Nelly with The Mic.jpg",
-  "/images/bns/AFRODAD debt Conference 2026  also Dr LYLA Latiff Book Launch called Red Flags in Government contracts/latiff.jpeg",
-  "/images/bns/AFRODAD debt Conference 2026  also Dr LYLA Latiff Book Launch called Red Flags in Government contracts/James Maingi Mutinda.jpeg",
-  "/images/bns/reels/calvina-praise-poster.jpg",
+  "/images/bns/optimized/nelly-avatar.webp",
+  "/images/bns/optimized/latiff-avatar.webp",
+  "/images/bns/optimized/james-avatar.webp",
+  "/images/bns/optimized/calvina-avatar.webp",
 ];
 
 const CLIENT_LOGOS = [
@@ -30,7 +30,7 @@ const CLIENT_LOGOS = [
   {
     name: "House of Fiscal Wisdom",
     label: "House of Fiscal Wisdom",
-    src: "/images/bns/partners/house-of-fiscal-wisdom.png",
+    src: "/images/bns/optimized/house-of-fiscal-wisdom.webp",
   },
 ];
 
@@ -181,6 +181,9 @@ export function SolumHero() {
                   key={i}
                   src={src}
                   alt="Citizen advocate"
+                  width={32}
+                  height={32}
+                  loading="lazy"
                   className="inline-block w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-[#101010] object-cover"
                 />
               ))}
@@ -197,6 +200,9 @@ export function SolumHero() {
                 key={logo.name}
                 src={logo.src}
                 alt={logo.label}
+                width={112}
+                height={40}
+                decoding="async"
                 className="h-8 sm:h-10 w-auto max-w-[112px] object-contain"
               />
             ))}

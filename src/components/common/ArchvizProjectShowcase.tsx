@@ -14,6 +14,9 @@ export function ArchvizProjectShowcase({ project, index }: ArchvizProjectShowcas
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const videoPoster = project.heroImage === '/images/bns/towwnhallmay/129A3863.jpg'
+    ? '/images/bns/optimized/129A3863-poster.webp'
+    : project.heroImage;
 
   // Compile all high-res stills for the project
   const stills: LightboxImage[] = [];
@@ -146,7 +149,7 @@ export function ArchvizProjectShowcase({ project, index }: ArchvizProjectShowcas
               <video
                 ref={videoRef}
                 src={project.heroVideo}
-                poster={project.heroImage}
+                poster={videoPoster}
                 autoPlay
                 muted
                 loop

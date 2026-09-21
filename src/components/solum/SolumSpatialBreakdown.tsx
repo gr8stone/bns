@@ -169,7 +169,7 @@ export function SolumSpatialBreakdown() {
             className="absolute z-10 w-[160px] sm:w-[230px] md:w-[310px] lg:w-[380px] xl:w-[420px] aspect-[16/9] rounded-xl sm:rounded-2xl overflow-hidden border border-white/30 bg-black shadow-[0_20px_50px_rgba(0,0,0,0.85)] group transition-all duration-300 hover:border-white/70"
           >
             <img
-              src="/images/bns/cohort1 groundworks/129A3964.jpg"
+              src="/images/bns/optimized/129A3964-card.webp"
               alt="Detail: BNS Mashinani Groundworks"
               loading="eager"
               className="w-full h-full object-cover filter brightness-110 contrast-105 saturate-105 group-hover:scale-105 transition-transform duration-500 pointer-events-none"

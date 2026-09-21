@@ -9,7 +9,7 @@ const PARTNER_LOGOS = [
     alt: "University of Nairobi",
   },
   {
-    src: "/images/bns/partners/house-of-fiscal-wisdom.png",
+    src: "/images/bns/optimized/house-of-fiscal-wisdom.webp",
     alt: "House of Fiscal Wisdom",
   },
 ];
@@ -47,6 +47,8 @@ export function Footer() {
               <img
                 src="/images/bns/logo.svg"
                 alt="Budget Ndio Story"
+                width={24}
+                height={24}
                 className="w-6 h-6 object-contain"
               />
               <span className="font-sans font-semibold text-xl tracking-tight text-white flex items-center gap-2">
@@ -169,6 +171,9 @@ export function Footer() {
                   key={logo.src}
                   src={logo.src}
                   alt={logo.alt}
+                  width={96}
+                  height={40}
+                  decoding="async"
                   className="h-10 w-auto max-w-[96px] object-contain"
                 />
               ))}

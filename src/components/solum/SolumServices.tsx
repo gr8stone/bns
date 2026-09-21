@@ -37,7 +37,7 @@ const SERVICES: ServicePanel[] = [
       "Vernacular budget breakdowns & localized barazas",
       "Devolved funds oversight & social audits",
     ],
-    image: "/images/bns/cohort1 groundworks/129A3964.jpg",
+    image: "/images/bns/optimized/129A3964-card.webp",
   },
   {
     number: "03",
