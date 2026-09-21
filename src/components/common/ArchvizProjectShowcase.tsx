@@ -1,22 +1,26 @@
-import { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { Volume2, VolumeX, Maximize2, ArrowRight, Eye } from 'lucide-react';
-import type { Project } from '../../types';
-import { LightboxModal, type LightboxImage } from './LightboxModal';
+import { ArrowRight, Eye, Maximize2, Volume2, VolumeX } from "lucide-react";
+import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import type { Project } from "../../types";
+import { LightboxModal, type LightboxImage } from "./LightboxModal";
 
 interface ArchvizProjectShowcaseProps {
   project: Project;
   index: number;
 }
 
-export function ArchvizProjectShowcase({ project, index }: ArchvizProjectShowcaseProps) {
+export function ArchvizProjectShowcase({
+  project,
+  index,
+}: ArchvizProjectShowcaseProps) {
   const [isMuted, setIsMuted] = useState(true);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const videoPoster = project.heroImage === '/images/bns/towwnhallmay/129A3863.jpg'
-    ? '/images/bns/optimized/129A3863-poster.webp'
-    : project.heroImage;
+  const videoPoster =
+    project.heroImage === "/images/bns/towwnhallmay/129A3863.jpg"
+      ? "/images/bns/optimized/129A3863-poster.webp"
+      : project.heroImage;
 
   // Compile all high-res stills for the project
   const stills: LightboxImage[] = [];
@@ -46,19 +50,19 @@ export function ArchvizProjectShowcase({ project, index }: ArchvizProjectShowcas
   if (project.heroImage) {
     stills.push({
       url: project.heroImage,
-      caption: 'Lead Master Elevation & Architectural Framing',
+      caption: "Lead Master Elevation & Architectural Framing",
       title: project.title,
     });
   }
 
   // Fallback high-res stills if project has fewer than 9 images
   const fallbackImages = [
-    '/images/bns/towwnhallmay/129A3863.jpg',
-    '/images/bns/towwnhallmay/129A3912.jpg',
-    '/images/bns/towwnhallmay/129A4056.jpg',
-    '/images/bns/cohort1 groundworks/129A3964.jpg',
-    '/images/bns/cohort1 groundworks/129A3987.jpg',
-    '/images/bns/hall/129A4248.jpg',
+    "/images/bns/towwnhallmay/129A3863.jpg",
+    "/images/bns/towwnhallmay/129A3912.jpg",
+    "/images/bns/towwnhallmay/129A4056.jpg",
+    "/images/bns/cohort1 groundworks/129A3964.jpg",
+    "/images/bns/cohort1 groundworks/129A3987.jpg",
+    "/images/bns/hall/129A4248.jpg",
   ];
   let fbIdx = 0;
   while (stills.length < 9) {
@@ -71,7 +75,10 @@ export function ArchvizProjectShowcase({ project, index }: ArchvizProjectShowcas
   }
 
   // Partition into 3 alternating rows with their originalIndex for lightbox
-  const itemsWithIdx = stills.map((item, originalIndex) => ({ item, originalIndex }));
+  const itemsWithIdx = stills.map((item, originalIndex) => ({
+    item,
+    originalIndex,
+  }));
   const r1Base = itemsWithIdx.filter((_, i) => i % 3 === 0);
   const r2Base = itemsWithIdx.filter((_, i) => i % 3 === 1);
   const r3Base = itemsWithIdx.filter((_, i) => i % 3 === 2);
@@ -101,7 +108,7 @@ export function ArchvizProjectShowcase({ project, index }: ArchvizProjectShowcas
     setLightboxOpen(true);
   };
 
-  const formattedNumber = String(index + 1).padStart(2, '0');
+  const formattedNumber = String(index + 1).padStart(2, "0");
 
   return (
     <article className="w-full bg-white text-[#101010] py-14 sm:py-20 border-b border-[#101010]/12 select-none">
@@ -112,13 +119,18 @@ export function ArchvizProjectShowcase({ project, index }: ArchvizProjectShowcas
         <div>
           <div className="flex items-center gap-2 mb-2 font-mono text-xs uppercase tracking-wider text-[#757575]">
             <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
-            <span>PRODUCTION {formattedNumber} // {project.category}</span>
+            <span>
+              PRODUCTION {formattedNumber} // {project.category}
+            </span>
             <span>&bull;</span>
             <span>{project.location}</span>
           </div>
 
           <h3 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-[-0.05em] text-[#101010] uppercase">
-            <Link to={`/projects/${project.slug}`} className="hover:opacity-80 transition-opacity">
+            <Link
+              to={`/projects/${project.slug}`}
+              className="hover:opacity-80 transition-opacity"
+            >
               {project.title}
             </Link>
           </h3>
@@ -173,7 +185,7 @@ export function ArchvizProjectShowcase({ project, index }: ArchvizProjectShowcas
             {/* Top Badge: Video Format */}
             <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-10 pointer-events-none">
               <span className="px-2.5 py-1 bg-black/75 backdrop-blur-sm text-[10px] sm:text-xs font-mono uppercase tracking-widest text-white border border-white/15">
-                {project.videoDuration || 'CIVIC MEDIA MASTER'}
+                {project.videoDuration || "CIVIC MEDIA MASTER"}
               </span>
             </div>
 
@@ -192,10 +204,14 @@ export function ArchvizProjectShowcase({ project, index }: ArchvizProjectShowcas
               <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 z-20 flex items-center gap-2">
                 <button
                   onClick={toggleSound}
-                  aria-label={isMuted ? 'Enable audio' : 'Mute audio'}
+                  aria-label={isMuted ? "Enable audio" : "Mute audio"}
                   className="w-8 h-8 rounded-full bg-black/75 hover:bg-white hover:text-black text-white border border-white/20 flex items-center justify-center transition-all cursor-pointer shadow-lg"
                 >
-                  {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+                  {isMuted ? (
+                    <VolumeX className="w-4 h-4" />
+                  ) : (
+                    <Volume2 className="w-4 h-4" />
+                  )}
                 </button>
                 <button
                   onClick={openFullscreenVideo}
@@ -215,7 +231,7 @@ export function ArchvizProjectShowcase({ project, index }: ArchvizProjectShowcas
           <div className="relative w-full overflow-hidden h-[95px] sm:h-[132px] lg:h-[162px] flex items-center">
             <div
               className="flex items-center gap-2 sm:gap-2.5 animate-marquee w-max"
-              style={{ animationDuration: '32s' }}
+              style={{ animationDuration: "32s" }}
             >
               {row1Loop.map((entry, idx) => (
                 <div
@@ -225,7 +241,9 @@ export function ArchvizProjectShowcase({ project, index }: ArchvizProjectShowcas
                 >
                   <img
                     src={entry.item.url}
-                    alt={entry.item.caption || `Still ${entry.originalIndex + 1}`}
+                    alt={
+                      entry.item.caption || `Still ${entry.originalIndex + 1}`
+                    }
                     loading="lazy"
                     className="w-full h-full object-cover filter brightness-95 group-hover:brightness-105 group-hover:scale-105 transition-all duration-500 pointer-events-none select-none"
                   />
@@ -248,7 +266,7 @@ export function ArchvizProjectShowcase({ project, index }: ArchvizProjectShowcas
           <div className="relative w-full overflow-hidden h-[95px] sm:h-[132px] lg:h-[162px] flex items-center">
             <div
               className="flex items-center gap-2 sm:gap-2.5 animate-marquee-reverse w-max"
-              style={{ animationDuration: '36s' }}
+              style={{ animationDuration: "36s" }}
             >
               {row2Loop.map((entry, idx) => (
                 <div
@@ -258,7 +276,9 @@ export function ArchvizProjectShowcase({ project, index }: ArchvizProjectShowcas
                 >
                   <img
                     src={entry.item.url}
-                    alt={entry.item.caption || `Still ${entry.originalIndex + 1}`}
+                    alt={
+                      entry.item.caption || `Still ${entry.originalIndex + 1}`
+                    }
                     loading="lazy"
                     className="w-full h-full object-cover filter brightness-95 group-hover:brightness-105 group-hover:scale-105 transition-all duration-500 pointer-events-none select-none"
                   />
@@ -281,7 +301,7 @@ export function ArchvizProjectShowcase({ project, index }: ArchvizProjectShowcas
           <div className="relative w-full overflow-hidden h-[95px] sm:h-[132px] lg:h-[162px] flex items-center">
             <div
               className="flex items-center gap-2 sm:gap-2.5 animate-marquee w-max"
-              style={{ animationDuration: '29s' }}
+              style={{ animationDuration: "29s" }}
             >
               {row3Loop.map((entry, idx) => (
                 <div
@@ -291,7 +311,9 @@ export function ArchvizProjectShowcase({ project, index }: ArchvizProjectShowcas
                 >
                   <img
                     src={entry.item.url}
-                    alt={entry.item.caption || `Still ${entry.originalIndex + 1}`}
+                    alt={
+                      entry.item.caption || `Still ${entry.originalIndex + 1}`
+                    }
                     loading="lazy"
                     className="w-full h-full object-cover filter brightness-95 group-hover:brightness-105 group-hover:scale-105 transition-all duration-500 pointer-events-none select-none"
                   />
@@ -326,8 +348,6 @@ export function ArchvizProjectShowcase({ project, index }: ArchvizProjectShowcas
               {project.description[0]}
             </p>
           )} */}
-
-
         </div>
 
         {/* Right: Commercial Metrics & Full Case Study CTA */}

@@ -1,5 +1,11 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform, useSpring, useReducedMotion } from 'framer-motion';
+import {
+    motion,
+    useReducedMotion,
+    useScroll,
+    useSpring,
+    useTransform,
+} from "framer-motion";
+import { useRef } from "react";
 
 export function SolumSpatialBreakdown() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -8,7 +14,7 @@ export function SolumSpatialBreakdown() {
   // Pinned viewport scroll: expands smoothly, stays fully open throughout scroll down, collapses when exiting to top
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start start', 'end end'],
+    offset: ["start start", "end end"],
   });
 
   // Physical liquid spring: silky smooth 60fps/120Hz tracking, zero discrete 'wop' jumps
@@ -21,7 +27,11 @@ export function SolumSpatialBreakdown() {
 
   // Smoothly expands between 4% and 36% of scroll, and STAYS 100% open and visible throughout scroll down!
   const spread = useTransform(smoothProgress, [0.04, 0.36], [0, 1]);
-  const centerScale = useTransform(smoothProgress, [0, 0.2, 0.8, 1], [0.96, 1, 1, 0.98]);
+  const centerScale = useTransform(
+    smoothProgress,
+    [0, 0.2, 0.8, 1],
+    [0.96, 1, 1, 0.98],
+  );
 
   // Card opacity rises swiftly from 0 to 1 and stays 100% solid
   const cardOpacity = useTransform(smoothProgress, [0.03, 0.16], [0, 1]);

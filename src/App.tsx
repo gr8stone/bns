@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { lazy, Suspense, useState, useEffect, useRef } from 'react';
 import { Routes, Route, Navigate, useLocation, type Location } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Navbar } from './components/common/Navbar';
@@ -9,48 +9,49 @@ import { BackToTopButton } from './components/common/BackToTopButton';
 import { Preloader } from './components/common/Preloader';
 import { SEO } from './components/common/SEO';
 
-// Direct eager page imports for instant, zero-delay, zero-suspense navigation
-import { HomePage } from './pages/HomePage';
-import { AboutPage } from './pages/AboutPage';
-import { ProjectsPage } from './pages/ProjectsPage';
-import { ProjectDetailPage } from './pages/ProjectDetailPage';
-import { ServicesPage } from './pages/ServicesPage';
-import { ServiceDetailPage } from './pages/ServiceDetailPage';
-import { ContactPage } from './pages/ContactPage';
-import { TermsPage } from './pages/TermsPage';
-import { PrivacyPage } from './pages/PrivacyPage';
-import { NotFoundPage } from './pages/NotFoundPage';
+const HomePage = lazy(() => import('./pages/HomePage').then((module) => ({ default: module.HomePage })));
+const AboutPage = lazy(() => import('./pages/AboutPage').then((module) => ({ default: module.AboutPage })));
+const ProjectsPage = lazy(() => import('./pages/ProjectsPage').then((module) => ({ default: module.ProjectsPage })));
+const ProjectDetailPage = lazy(() => import('./pages/ProjectDetailPage').then((module) => ({ default: module.ProjectDetailPage })));
+const ServicesPage = lazy(() => import('./pages/ServicesPage').then((module) => ({ default: module.ServicesPage })));
+const ServiceDetailPage = lazy(() => import('./pages/ServiceDetailPage').then((module) => ({ default: module.ServiceDetailPage })));
+const ContactPage = lazy(() => import('./pages/ContactPage').then((module) => ({ default: module.ContactPage })));
+const TermsPage = lazy(() => import('./pages/TermsPage').then((module) => ({ default: module.TermsPage })));
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage').then((module) => ({ default: module.PrivacyPage })));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then((module) => ({ default: module.NotFoundPage })));
 
 function AppRoutes({ location }: { location: Location }) {
   return (
-    <Routes location={location}>
-      {/* Core SOLUM Routes */}
-      <Route path="/" element={<HomePage />} />
-      <Route path="/about" element={<AboutPage />} />
-      <Route path="/projects" element={<ProjectsPage />} />
-      <Route path="/projects/:slug" element={<ProjectDetailPage />} />
-      <Route path="/services" element={<ServicesPage />} />
-      <Route path="/services/:slug" element={<ServiceDetailPage />} />
-      <Route path="/programmes" element={<ServicesPage />} />
-      <Route path="/programmes/:slug" element={<ServiceDetailPage />} />
-      <Route path="/contact" element={<ContactPage />} />
-      <Route path="/terms" element={<TermsPage />} />
-      <Route path="/privacy" element={<PrivacyPage />} />
-      <Route path="/404" element={<NotFoundPage />} />
+    <Suspense fallback={null}>
+      <Routes location={location}>
+        {/* Core SOLUM Routes */}
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/projects/:slug" element={<ProjectDetailPage />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/services/:slug" element={<ServiceDetailPage />} />
+        <Route path="/programmes" element={<ServicesPage />} />
+        <Route path="/programmes/:slug" element={<ServiceDetailPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/terms" element={<TermsPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/404" element={<NotFoundPage />} />
 
-      {/* Backwards-compatibility aliases */}
-      <Route path="/blog" element={<Navigate to="/projects" replace />} />
-      <Route path="/blog/*" element={<Navigate to="/projects" replace />} />
-      <Route path="/journal" element={<Navigate to="/projects" replace />} />
-      <Route path="/journal/*" element={<Navigate to="/projects" replace />} />
-      <Route path="/work" element={<Navigate to="/projects" replace />} />
-      <Route path="/work/:slug" element={<ProjectDetailPage />} />
-      <Route path="/process" element={<Navigate to="/about" replace />} />
-      <Route path="/studio" element={<Navigate to="/about" replace />} />
+        {/* Backwards-compatibility aliases */}
+        <Route path="/blog" element={<Navigate to="/projects" replace />} />
+        <Route path="/blog/*" element={<Navigate to="/projects" replace />} />
+        <Route path="/journal" element={<Navigate to="/projects" replace />} />
+        <Route path="/journal/*" element={<Navigate to="/projects" replace />} />
+        <Route path="/work" element={<Navigate to="/projects" replace />} />
+        <Route path="/work/:slug" element={<ProjectDetailPage />} />
+        <Route path="/process" element={<Navigate to="/about" replace />} />
+        <Route path="/studio" element={<Navigate to="/about" replace />} />
 
-      {/* 404 catch-all */}
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+        {/* 404 catch-all */}
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </Suspense>
   );
 }
 
