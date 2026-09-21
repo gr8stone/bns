@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- Brand Container -->
+  <rect width="48" height="48" rx="10" fill="#101010"/>
+  <!-- Concentric Acoustic / Story Ring -->
+  <circle cx="24" cy="24" r="18" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="1.5"/>
+  <!-- Official Music / Media Play Icon -->
+  <polygon points="20,15 34,24 20,33" fill="#FFFFFF"/>
+</svg>

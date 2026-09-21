@@ -120,17 +120,7 @@ function ServiceCard({ service, index }: { service: ServicePanel; index: number 
           </motion.p>
 
           {/* 5 Bullet Items */}
-          <ul className="space-y-1.5 sm:space-y-2 pt-3 sm:pt-4 border-t border-white/10">
-            {service.bullets.map((bullet, bIdx) => (
-              <li
-                key={bIdx}
-                className="flex items-center gap-2.5 font-sans text-[11px] sm:text-xs md:text-sm text-white/85"
-              >
-                <span className="w-1.5 h-1.5 bg-white/40 inline-block flex-shrink-0" />
-                <span className="leading-tight sm:leading-normal">{bullet}</span>
-              </li>
-            ))}
-          </ul>
+
         </div>
       </div>
 

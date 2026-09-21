@@ -1,9 +1,14 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
-import { WordReveal } from '../components/common/WordReveal';
-import { SERVICES } from '../data/services';
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { useRef } from "react";
+import { Link } from "react-router-dom";
+import { WordReveal } from "../components/common/WordReveal";
+import { SERVICES } from "../data/services";
 
 export function ServicesPage() {
   const mediaRef = useRef<HTMLDivElement>(null);
@@ -12,41 +17,61 @@ export function ServicesPage() {
   // Clipped frame parallax within 10% range matching AboutPage
   const { scrollYProgress } = useScroll({
     target: mediaRef,
-    offset: ['start end', 'end start'],
+    offset: ["start end", "end start"],
   });
-  const yParallax = useTransform(scrollYProgress, [0, 1], ['-5%', '5%']);
+  const yParallax = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
 
   const stats = [
-    { value: '47', label: 'COUNTIES REACHED', note: 'Active grassroots and ward-level budget tracking' },
-    { value: '04', label: 'STRATEGIC PROGRAMMES', note: 'Connect, Mashinani, Wanahabari, Studio' },
-    { value: '150K+', label: 'CITIZENS ENGAGED', note: 'Through town halls, barazas, and digital explainers' },
-    { value: '100%', label: 'OPEN CIVIC DATA', note: 'Independent statutory research and free public tools' },
+    {
+      value: "47",
+      label: "COUNTIES REACHED",
+      note: "Active grassroots and ward-level budget tracking",
+    },
+    {
+      value: "04",
+      label: "STRATEGIC PROGRAMMES",
+      note: "Connect, Mashinani, Wanahabari, Studio",
+    },
+    {
+      value: "150K+",
+      label: "CITIZENS ENGAGED",
+      note: "Through town halls, barazas, and digital explainers",
+    },
+    {
+      value: "100%",
+      label: "OPEN CIVIC DATA",
+      note: "Independent statutory research and free public tools",
+    },
   ];
 
   const methodologyCycle = [
     {
-      step: '01',
-      programme: 'BNS MASHINANI',
-      role: 'Grassroots Listening & Ward Audits',
-      detail: 'Community monitors identify local public project delays, dispensary stock shortages, and devolved fund allocations in wards across Kenya.',
+      step: "01",
+      programme: "BNS MASHINANI",
+      role: "Grassroots Listening & Ward Audits",
+      detail:
+        "Community monitors identify local public project delays, dispensary stock shortages, and devolved fund allocations in wards across Kenya.",
     },
     {
-      step: '02',
-      programme: 'BNS WANAHABARI',
-      role: 'Data Verification & Investigative Grants',
-      detail: 'Journalists cross-reference community ground data with official Auditor-General reports, Controller of Budget papers, and procurement ledgers.',
+      step: "02",
+      programme: "BNS WANAHABARI",
+      role: "Data Verification & Investigative Grants",
+      detail:
+        "Journalists cross-reference community ground data with official Auditor-General reports, Controller of Budget papers, and procurement ledgers.",
     },
     {
-      step: '03',
-      programme: 'BNS STUDIO',
-      role: 'Multimedia Production & Viral Storytelling',
-      detail: 'Our creative lab transforms verified fiscal numbers into snappy vertical reels, YouTube docuseries, podcasts, and shareable infographics.',
+      step: "03",
+      programme: "BNS STUDIO",
+      role: "Multimedia Production & Viral Storytelling",
+      detail:
+        "Our creative lab transforms verified fiscal numbers into snappy vertical reels, YouTube docuseries, podcasts, and shareable infographics.",
     },
     {
-      step: '04',
-      programme: 'BNS CONNECT',
-      role: 'Town Halls & Legislative Policy Submissions',
-      detail: 'We bring citizens and lawmakers face-to-face in high-impact public hearings, submitting formal citizen memoranda to parliamentary committees.',
+      step: "04",
+      programme: "BNS CONNECT",
+      role: "Town Halls & Legislative Policy Submissions",
+      detail:
+        "We bring citizens and lawmakers face-to-face in high-impact public hearings, submitting formal citizen memoranda to parliamentary committees.",
     },
   ];
 
@@ -72,7 +97,11 @@ export function ServicesPage() {
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+              transition={{
+                duration: 0.6,
+                delay: 0.08,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               className="font-display text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-[-0.06em] text-[#101010] uppercase leading-[0.94]"
             >
               OUR FOUR PROGRAMMES.
@@ -89,7 +118,9 @@ export function ServicesPage() {
               SCOPE OF ACTION
             </span>
             <p className="font-sans text-sm text-[#757575] leading-relaxed font-light">
-              From grassroots community barazas and investigative journalism to live national town halls and viral docuseries, our four programmes make public money understandable and actionable.
+              From grassroots community barazas and investigative journalism to
+              live national town halls and viral docuseries, our four programmes
+              make public money understandable and actionable.
             </p>
           </motion.div>
         </div>
@@ -97,10 +128,13 @@ export function ServicesPage() {
         {/* ========================================================= */}
         {/* 2) FULL-BLEED MEDIA WITH RESTRAINED PARALLAX              */}
         {/* ========================================================= */}
-        <div ref={mediaRef} className="py-16 md:py-24 border-b border-[#101010]/12">
+        <div
+          ref={mediaRef}
+          className="py-16 md:py-24 border-b border-[#101010]/12"
+        >
           <div className="relative aspect-[16/9] md:aspect-[21/9] w-full overflow-hidden bg-zinc-900 border border-[#101010]/12">
             <motion.img
-              style={{ y: shouldReduceMotion ? '0%' : yParallax }}
+              style={{ y: shouldReduceMotion ? "0%" : yParallax }}
               src="/images/bns/towwnhallmay/129A4056.jpg"
               alt="Budget Ndio Story Civic Programmes in Action"
               initial={{ scale: 1.06, opacity: 0 }}
@@ -110,7 +144,10 @@ export function ServicesPage() {
               className="w-full h-full object-cover filter grayscale contrast-125 brightness-95 will-change-transform"
             />
             <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between font-mono text-xs text-white/80 uppercase">
-              <span>NAIROBI &amp; 47 COUNTIES // CITIZEN PARTICIPATION &amp; OPEN FINANCE</span>
+              <span>
+                NAIROBI &amp; 47 COUNTIES // CITIZEN PARTICIPATION &amp; OPEN
+                FINANCE
+              </span>
               <span>4 ACTIVE PROGRAMMES</span>
             </div>
           </div>
@@ -165,10 +202,20 @@ export function ServicesPage() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              transition={{
+                duration: 0.6,
+                delay: 0.3,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               className="text-sm sm:text-base text-[#757575] leading-relaxed font-light"
             >
-              Too often, public finance reports are buried in technical jargon, locking ordinary Kenyans out of critical spending decisions. Our four programmes function as a cohesive civic machinery: BNS Connect opens legislative doors, BNS Mashinani mobilizes grassroots communities, BNS Wanahabari equips data journalists, and BNS Studio transforms numbers into captivating digital stories.
+              Too often, public finance reports are buried in technical jargon,
+              locking ordinary Kenyans out of critical spending decisions. Our
+              four programmes function as a cohesive civic machinery: BNS
+              Connect opens legislative doors, BNS Mashinani mobilizes
+              grassroots communities, BNS Wanahabari equips data journalists,
+              and BNS Studio transforms numbers into captivating digital
+              stories.
             </motion.p>
           </div>
         </div>
@@ -231,18 +278,6 @@ export function ServicesPage() {
                     <p className="font-sans text-xs sm:text-sm text-[#757575] leading-relaxed font-light">
                       {prog.heroSubhead}
                     </p>
-
-                    {/* Deliverables Tags */}
-                    <div className="pt-2 flex flex-wrap gap-1.5">
-                      {prog.deliverables.slice(0, 3).map((item) => (
-                        <span
-                          key={item.name}
-                          className="px-2.5 py-1 bg-[#F6F6F2] border border-[#101010]/10 font-mono text-[10px] text-[#101010] uppercase tracking-wider"
-                        >
-                          {item.name}
-                        </span>
-                      ))}
-                    </div>
                   </div>
                 </div>
 
@@ -274,7 +309,10 @@ export function ServicesPage() {
 
           <div className="divide-y divide-[#101010]/12 border-t border-b border-[#101010]/12">
             {methodologyCycle.map((item) => (
-              <div key={item.step} className="py-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-baseline">
+              <div
+                key={item.step}
+                className="py-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-baseline"
+              >
                 <div className="md:col-span-2 font-display text-3xl font-semibold text-[#101010] tabular-nums">
                   {item.step}
                 </div>
@@ -303,7 +341,9 @@ export function ServicesPage() {
               BRING OUR PROGRAMMES TO YOUR COMMUNITY.
             </h3>
             <p className="font-sans text-xs sm:text-sm text-[#757575] font-light max-w-xl leading-relaxed">
-              Whether you want to host a county town hall, request ward budget literacy training, or pitch an investigative story, connect with our team.
+              Whether you want to host a county town hall, request ward budget
+              literacy training, or pitch an investigative story, connect with
+              our team.
             </p>
           </div>
 
