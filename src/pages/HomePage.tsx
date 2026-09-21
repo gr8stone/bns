@@ -1,11 +1,8 @@
 import { SolumHero } from '../components/solum/SolumHero';
 import { SolumAboutStatement } from '../components/solum/SolumAboutStatement';
 import { SolumMediaBreak } from '../components/solum/SolumMediaBreak';
-import { SolumRecentProjects } from '../components/solum/SolumRecentProjects';
 import { SolumServices } from '../components/solum/SolumServices';
-import { SolumHowWeWork } from '../components/solum/SolumHowWeWork';
-import { SolumTransformationProof } from '../components/solum/SolumTransformationProof';
-import { SolumSpatialBreakdown } from '../components/solum/SolumSpatialBreakdown';
+import { SolumRecentProjects } from '../components/solum/SolumRecentProjects';
 import { SolumFAQ } from '../components/solum/SolumFAQ';
 
 export function HomePage() {
@@ -14,28 +11,19 @@ export function HomePage() {
       {/* 01: Signature Commercial Hero */}
       <SolumHero />
 
-      {/* 02: Solum Statement & 7+ Years Practice Metrics (Screenshot 2) */}
+      {/* 02: Statement & Practice Metrics */}
       <SolumAboutStatement />
 
-      {/* 03: Cinematic Architectural Monochrome Marquee Break (Screenshot 3) */}
+      {/* 03: Cinematic Architectural Monochrome Marquee Break */}
       <SolumMediaBreak />
 
-      {/* 04: Selected Projects Asymmetric Exhibition (Screenshot 4) */}
-      <SolumRecentProjects />
-
-      {/* 05: Commercial Services & Capabilities (What We Do - Stacking sequence) */}
+      {/* 04: What We Do (02 // PROGRAMMES - Stacking sequence) */}
       <SolumServices />
 
-      {/* 06: Structured Architectural Evolution (How We Work - 4 phases) */}
-      <SolumHowWeWork />
+      {/* 05: Showcasing Projects (Selected Projects Asymmetric Exhibition) */}
+      <SolumRecentProjects />
 
-      {/* 07: Transformation Proof (Interactive Before/After Technical Chamber) */}
-      <SolumTransformationProof />
-
-      {/* 07b: Spatial Breakdown (4-Direction Exploding Micro-Vignettes from After Master) */}
-      <SolumSpatialBreakdown />
-
-      {/* 08: Operational Protocols & FAQ */}
+      {/* 06: Operational Protocols & FAQ */}
       <SolumFAQ />
     </main>
   );
