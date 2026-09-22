@@ -2,7 +2,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const PARTNER_LOGOS = [
-  { src: "/logo.svg", alt: "Budget Ndio Story" },
+  { src: "/images/bns/logo.svg", alt: "Budget Ndio Story" },
   { src: "/images/bns/partners/tisa.svg", alt: "TISA" },
   {
     src: "/images/bns/optimized/committee-on-fiscal-studies.webp",
@@ -49,7 +49,7 @@ export function Footer() {
             {/* Logo Mark + Name */}
             <Link to="/" className="inline-flex items-center gap-3 group">
               <img
-                src="/logo.svg"
+                src="/images/bns/logo.svg"
                 alt="Budget Ndio Story"
                 width={24}
                 height={24}
@@ -243,10 +243,18 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  to="/404"
+                  to="/terms"
                   className="hover:text-neutral-400 transition-colors"
                 >
-                  404
+                  TERMS
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/privacy"
+                  className="hover:text-neutral-400 transition-colors"
+                >
+                  PRIVACY
                 </Link>
               </li>
             </ul>

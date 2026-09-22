@@ -4,19 +4,36 @@
 
 @layer base {
   :root {
-    --color-paper: #FFFFFF;
-    --color-ink: #101010;
-    --color-dark: #111111;
-    --color-light-on-dark: #F6F6F2;
-    --color-muted: #757575;
-    --color-divider: #B8B8B4;
-    --rule-white: rgba(16, 16, 16, 0.12);
-    --rule-dark: rgba(255, 255, 255, 0.12);
+    /* ── Section Backgrounds (documentary flow) ── */
+    --bns-ink:         #0B0C0E;   /* bg-ink        — Hero charcoal         */
+    --bns-ink-soft:    #111923;   /* bg-ink-soft   — Programmes navy       */
+    --bns-paper-warm:  #F4F2ED;   /* bg-paper-warm — Statement / FAQ       */
+    --bns-paper:       #FFFFFF;   /* bg-paper      — Projects pure white   */
+    --bns-near-black:  #070809;   /* bg-near-black — Footer                */
+
+    /* ── Typography on light sections ── */
+    --bns-text-base:   #111214;   /* text-text-base  — Primary on light    */
+    --bns-text-muted:  #656563;   /* text-text-muted — Secondary on light  */
+
+    /* ── Typography on dark sections ── */
+    --bns-text-light:  #F5F4F0;   /* text-text-light — Primary on dark     */
+    --bns-text-dim:    #B7B8B5;   /* text-text-dim   — Secondary on dark   */
+
+    /* ── Hairline Borders ── */
+    --bns-line-dark:   rgba(16, 16, 16, 0.12);    /* border-line-dark  */
+    --bns-line-light:  rgba(255, 255, 255, 0.10); /* border-line-light */
+
+    /* ── Brand Accent (one, restrained) ── */
+    --bns-accent:      #374EAB;   /* bg-accent / text-accent               */
+
+    /* ── Interactive Surfaces ── */
+    --bns-ivory:       #F6F6F2;   /* bg-ivory    — FAQ drawers, callouts   */
+    --bns-form-bg:     #F9F9F8;   /* bg-form-bg  — Form inputs             */
   }
 
   html {
-    background-color: #FFFFFF;
-    color: #101010;
+    background-color: var(--bns-paper);
+    color: var(--bns-text-base);
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
     text-rendering: optimizeLegibility;
@@ -46,13 +63,14 @@
     width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #FFFFFF;
+    background: var(--bns-paper);
   }
   ::-webkit-scrollbar-thumb {
     background: #D4D4D0;
+    transition: background 200ms ease-out;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #101010;
+    background: var(--bns-text-base);
   }
 }
 

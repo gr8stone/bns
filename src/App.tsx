@@ -169,7 +169,7 @@ function PageTransition() {
             pointerEvents: "none",
             userSelect: "none",
           }}
-          className="w-full bg-white text-[#101010]"
+          className="w-full bg-paper text-text-base"
         >
           <AppRoutes location={prevLocation} />
         </div>
@@ -193,11 +193,11 @@ function PageTransition() {
           WebkitBackfaceVisibility: "hidden",
           backfaceVisibility: "hidden",
         }}
-        className="w-full min-h-screen bg-white text-[#101010]"
+        className="w-full min-h-screen bg-paper text-text-base"
       >
         {/* Subtle physical card top edge while rising */}
         {prevLocation && (
-          <div className="absolute top-0 left-0 right-0 h-px bg-[#101010]/20 pointer-events-none z-20" />
+          <div className="absolute top-0 left-0 right-0 h-px bg-line-dark pointer-events-none z-20" />
         )}
         <AppRoutes location={location} />
       </motion.div>
@@ -207,7 +207,7 @@ function PageTransition() {
 
 export function App() {
   return (
-    <div className="min-h-screen flex flex-col bg-white text-[#101010] selection:bg-[#101010] selection:text-white relative overflow-x-clip">
+    <div className="min-h-screen flex flex-col bg-paper text-text-base selection:bg-ink selection:text-text-light relative overflow-x-clip">
       {/* Session-only Neutral Full-Page Preloader */}
       <SEO />
 

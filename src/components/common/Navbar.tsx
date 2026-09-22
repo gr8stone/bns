@@ -3,9 +3,10 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const PROGRAMME_PREVIEW = [
-  { label: "BNS Connect", href: "/programmes/bns-connect" },
-  { label: "BNS Mashinani", href: "/programmes/bns-mashinani" },
+  { label: "BNS Connect",    href: "/programmes/bns-connect"    },
+  { label: "BNS Mashinani",  href: "/programmes/bns-mashinani"  },
   { label: "BNS Wanahabari", href: "/programmes/bns-wanahabari" },
+  { label: "BNS Studio",     href: "/programmes/bns-studio"     },
 ];
 
 export function Navbar() {

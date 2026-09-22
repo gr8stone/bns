@@ -7,67 +7,78 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
+      // ── Color Tokens ───────────────────────────────────────────────────────
+      // Semantic names — not literal. Reference tokens.ts for JS values.
+      // Usage: bg-ink, text-muted, border-line-dark, bg-accent, etc.
       colors: {
-        paper: '#FFFFFF',
-        ink: '#101010',
-        dark: '#111111',
-        lightOnDark: '#F6F6F2',
-        muted: '#757575',
-        divider: '#B8B8B4',
-        ruleWhite: 'rgba(16,16,16,0.12)',
-        ruleDark: 'rgba(255,255,255,0.12)',
-        arch: {
-          light: '#FFFFFF',
-          white: '#FFFFFF',
-          dark: '#111111',
-          black: '#101010',
-          ink: '#101010',
-          muted: '#757575',
-          ivory: '#F6F6F2',
-          accent: '#101010',
-          bronze: '#757575',
-        },
-        studio: {
-          bg: '#FFFFFF',
-          card: '#FFFFFF',
-          border: 'rgba(16,16,16,0.12)',
-          light: '#FFFFFF',
-          lightMuted: '#F6F6F2',
-          lightBorder: 'rgba(16,16,16,0.12)',
-          textDark: '#101010',
-          textMuted: '#757575',
-          accent: '#101010',
-        }
+        // Section backgrounds (documentary flow)
+        ink:        '#0B0C0E',   // Hero — deep charcoal
+        'ink-soft': '#111923',   // Programmes — deep navy
+        'paper-warm': '#F4F2ED', // Statement / FAQ — warm off-white
+        paper:      '#FFFFFF',   // Projects — pure white
+
+        // Near-black footer
+        'near-black': '#070809',
+
+        // Typography on light sections
+        'text-base':  '#111214',
+        'text-muted': '#656563',
+
+        // Typography on dark sections
+        'text-light': '#F5F4F0',
+        'text-dim':   '#B7B8B5',
+
+        // Borders / hairlines
+        'line-dark':  'rgba(16, 16, 16, 0.12)',
+        'line-light': 'rgba(255, 255, 255, 0.10)',
+
+        // Single brand accent
+        accent: '#374EAB',
+
+        // Interactive surfaces
+        ivory:    '#F6F6F2',
+        'form-bg': '#F9F9F8',
       },
+
+      // ── Font Families ───────────────────────────────────────────────────────
+      // display = Inter (headings, hero). sans = Inter (body). mono = Geist Mono (metadata).
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        mono: ['Geist Mono', 'JetBrains Mono', 'ui-monospace', 'monospace'],
+        sans:    ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
         display: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        editorial: ['Inter', 'system-ui', 'sans-serif'],
+        mono:    ['Geist Mono', 'JetBrains Mono', 'ui-monospace', 'monospace'],
       },
+
+      // ── Letter Spacing ──────────────────────────────────────────────────────
       letterSpacing: {
-        tighter: '-0.04em',
-        tight: '-0.02em',
-        widest: '0.18em',
+        tighter: '-0.05em',   // Display headlines
+        tight:   '-0.04em',   // Section headings
+        normal:  '0em',       // Body copy
+        wide:    '0.12em',    // Metadata labels
+        wider:   '0.15em',    // Section markers
+        widest:  '0.20em',    // Tightest mono labels
       },
+
+      // ── Line Heights ────────────────────────────────────────────────────────
       lineHeight: {
-        tight: '1.05',
-        snug: '1.2',
+        display: '0.92',   // Hero headlines
+        heading: '1.0',    // Section headings
+        tight:   '1.05',
+        snug:    '1.2',
+        body:    '1.65',   // Body paragraphs
       },
+
+      // ── Max Widths ──────────────────────────────────────────────────────────
+      maxWidth: {
+        container: '1440px',  // max-w-container — standard page frame
+        prose:     '38ch',    // max-w-prose — body copy columns
+        statement: '52ch',    // max-w-statement — large editorial statements
+      },
+
+      // ── Animations (active only) ─────────────────────────────────────────
       animation: {
-        'fade-in': 'fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-        'reveal-up': 'revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        marquee:         'marquee 35s linear infinite',
+        'marquee-reverse': 'marquee-reverse 35s linear infinite',
       },
-      keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
-        revealUp: {
-          '0%': { opacity: '0', transform: 'translateY(24px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        }
-      }
     },
   },
   plugins: [],
