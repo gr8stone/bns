@@ -41,6 +41,7 @@ export default {
         accent:          '#9c4527',
         'accent-coral':  '#f87343',
         'accent-sage':   '#7d9590',
+        'agency-blue':   '#374EAB',
 
         // Interactive surfaces
         ivory:    '#FAFAF8',
