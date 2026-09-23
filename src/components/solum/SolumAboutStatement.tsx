@@ -1,92 +1,119 @@
-import { motion, useReducedMotion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { TRANSITION, VIEWPORT } from "../../lib/motion";
+import { ROUTES } from "../../lib/routes";
 
 export function SolumAboutStatement() {
   const shouldReduceMotion = useReducedMotion();
 
+  const initial = (axis: "y") =>
+    shouldReduceMotion ? { opacity: 1, [axis]: 0 } : { opacity: 0, [axis]: 16 };
+
+  const metrics = [
+    {
+      number: "47",
+      label: "COUNTIES COVERED",
+      detail: "Grassroots barazas and youth budget tracking.",
+    },
+    {
+      number: "150K+",
+      label: "CITIZENS REACHED",
+      detail: "Direct civic media engagement and radio broadcasts.",
+    },
+    {
+      number: "100%",
+      label: "OPEN PUBLIC DATA",
+      detail: "National and county fiscal transparency archives.",
+    },
+    {
+      number: "2026",
+      label: "STRATEGIC REPORT",
+      detail: "Budget journalism and fiscal insights.",
+    },
+  ];
+
   return (
-    <section className="w-full bg-white text-[#101010] border-b border-[#101010]/12 select-none">
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 md:px-16 lg:px-24 py-20 md:py-28">
+    <section className="w-full bg-white text-text-base border-b border-black/[0.08] select-none">
+      {/* Standard container — 1425px max width */}
+      <div className="max-w-[1425px] mx-auto px-6 md:px-10 py-16 md:py-24">
         {/* Top 4-Column Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-16 md:pb-20 border-b border-[#101010]/12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-16 md:pb-20 border-b border-black/[0.08]">
           {/* Col 1: Category Tag */}
-          <div className="col-span-1">
+          <div className="md:col-span-3">
             <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 bg-[#101010] inline-block rounded-full" />
-              <span className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#101010] font-medium">
-                About
+              <span className="w-2 h-2 bg-coral inline-block" />
+              <span className="font-mono text-xs uppercase tracking-wider text-terracotta font-semibold">
+                02 // ABOUT & MISSION
               </span>
             </div>
           </div>
 
-          {/* Cols 2-4: Massive Editorial Statement */}
-          <div className="col-span-1 md:col-span-3 space-y-6">
+          {/* Cols 2–4: Massive Swiss Editorial Statement (h2 ramp: 80px, leading: 0.95, -4.8px) */}
+          <div className="md:col-span-9 space-y-6">
             <motion.h2
-              initial={{ opacity: shouldReduceMotion ? 1 : 0, y: shouldReduceMotion ? 0 : 20 }}
+              initial={initial("y")}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-[-0.04em] text-[#101010] leading-[1.1]"
+              viewport={VIEWPORT.once}
+              transition={TRANSITION.reveal}
+              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[68px] font-medium tracking-[-0.05em] text-text-base leading-[0.98]"
             >
-              Budget Ndio Story is an independent civic media and public finance storytelling platform working across all 47 counties.
+              Budget Ndio Story is an independent civic media and public finance
+              storytelling platform working across 4 pilot counties.
             </motion.h2>
 
             <motion.p
-              initial={{ opacity: shouldReduceMotion ? 1 : 0, y: shouldReduceMotion ? 0 : 20 }}
+              initial={initial("y")}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="font-sans text-sm sm:text-base md:text-lg text-[#757575] leading-relaxed max-w-2xl font-light"
+              viewport={VIEWPORT.once}
+              transition={{ ...TRANSITION.reveal, delay: 0.1 }}
+              className="font-sans text-sm sm:text-base text-text-muted leading-relaxed max-w-2xl font-normal"
             >
-              We translate national budgets, county allocations, and public debt into accessible stories, citizen barazas, and grassroots accountability tools.
+              We translate national budgets, county allocations, and public debt
+              into accessible stories, citizen barazas, and grassroots
+              accountability tools.
             </motion.p>
 
             <motion.div
-              initial={{ opacity: shouldReduceMotion ? 1 : 0, y: shouldReduceMotion ? 0 : 20 }}
+              initial={initial("y")}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              viewport={VIEWPORT.once}
+              transition={{ ...TRANSITION.reveal, delay: 0.15 }}
               className="pt-2"
             >
               <Link
-                to="/about"
-                className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono uppercase tracking-wider text-[#101010] pb-1 border-b border-[#101010] hover:text-[#757575] hover:border-[#757575] transition-colors group"
+                to={ROUTES.about}
+                className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-text-base pb-1 border-b border-text-base hover:text-terracotta hover:border-terracotta transition-colors group"
               >
-                <span>More about us</span>
+                <span>Read our full charter</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>
           </div>
         </div>
 
-        {/* Bottom Metrics 3-Column Strip with Counter Number Animation */}
-        {/* <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-[#101010]/12 pt-12 md:pt-16">
-          {metrics.map((m, idx) => (
-            <motion.div
-              key={m.label}
-              initial={{ opacity: shouldReduceMotion ? 1 : 0, y: shouldReduceMotion ? 0 : 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.12, ease: [0.22, 1, 0.36, 1] }}
-              className={`p-6 sm:p-8 flex flex-col justify-between ${
-                idx === 0 ? 'sm:pl-0' : ''
-              }`}
+        {/* Bottom 4-Column Practice Metrics Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-black/[0.08] pt-12 md:pt-16">
+          {metrics.map((item, idx) => (
+            <div
+              key={idx}
+              className={`py-6 sm:py-0 ${idx === 0 ? "sm:pr-8" : idx === metrics.length - 1 ? "sm:pl-8" : "sm:px-8"}`}
             >
-              <div>
-                <div className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-[#101010] leading-none mb-3 flex items-baseline">
-                  <CounterNumber value={m.value} suffix={m.suffix} />
-                </div>
-                <div className="font-mono text-xs sm:text-sm text-[#757575] uppercase tracking-wider font-medium mb-2">
-                  {m.label}
-                </div>
-                <p className="font-sans text-xs sm:text-sm text-[#757575] font-light leading-relaxed max-w-[240px]">
-                  {m.detail}
-                </p>
+              <span className="font-mono text-[10px] uppercase tracking-widest text-slate block mb-2">
+                METRIC 0{idx + 1}
+              </span>
+              <div className="font-display text-4xl sm:text-5xl font-medium tracking-tight text-text-base mb-2">
+                {item.number}
               </div>
-            </motion.div>
+              <span className="font-mono text-xs uppercase tracking-wider text-terracotta font-medium block mb-1">
+                {item.label}
+              </span>
+              <p className="font-sans text-xs text-text-muted leading-relaxed">
+                {item.detail}
+              </p>
+            </div>
           ))}
-        </div> */}
+        </div>
       </div>
     </section>
   );

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { FAQ_ITEMS } from '../../data/faq';
+import { ROUTES } from '../../lib/routes';
 
 export function SolumFAQ() {
   const [openId, setOpenId] = useState<string | null>(FAQ_ITEMS[0]?.id || null);
@@ -12,39 +13,37 @@ export function SolumFAQ() {
   };
 
   return (
-    <section className="w-full bg-white text-[#101010] py-24 md:py-[120px] px-6 md:px-10 border-b border-[#101010]/12">
-      <div className="max-w-[1440px] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 items-start">
+    <section className="w-full bg-[#FAFAF8] text-text-base py-20 md:py-28 px-6 md:px-10 border-b border-black/[0.08] select-none">
+      <div className="max-w-[1425px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 items-start">
           {/* Left Column: Title, Intro, and Inquire Link */}
-          <div className="col-span-1 flex flex-col justify-between md:sticky md:top-28">
+          <div className="md:col-span-4 flex flex-col justify-between md:sticky md:top-28">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
-                <span className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#101010] font-medium">
-                  PROTOCOLS
+                <span className="w-2 h-2 bg-coral inline-block" />
+                <span className="font-mono text-xs uppercase tracking-wider text-terracotta font-semibold">
+                  05 // PROTOCOLS & FAQ
                 </span>
               </div>
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-[-0.05em] text-[#101010] uppercase leading-tight mb-4">
-                FREQUENTLY ASKED QUESTIONS
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[-0.05em] text-text-base uppercase leading-[0.98] mb-4">
+                FREQUENTLY ASKED QUESTIONS.
               </h2>
-              <p className="font-sans text-sm sm:text-base text-[#757575] leading-relaxed mb-8 font-light">
+              <p className="font-sans text-xs sm:text-sm text-text-muted leading-relaxed mb-8 font-normal">
                 Clear answers regarding public finance data sources, citizen participation, BNS Mashinani barazas, and reporting fellowships.
               </p>
             </div>
 
             <Link
-              to="/contact"
-              className="solum-btn self-start px-6 py-3.5 border border-[#101010] text-xs sm:text-sm font-mono uppercase tracking-wider text-[#101010] hover:bg-[#101010] hover:text-white transition-colors duration-180"
+              to={ROUTES.contact}
+              className="inline-flex items-center gap-2.5 self-start px-6 py-3.5 bg-text-base text-white hover:bg-terracotta transition-colors font-mono text-xs uppercase tracking-wider rounded-none group"
             >
               <span>GET IN TOUCH</span>
-              <span className="btn-arrow ml-3">
-                <ArrowRight className="w-4 h-4 inline-block" />
-              </span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
             </Link>
           </div>
 
           {/* Right Columns: Numbered Accordion */}
-          <div className="col-span-1 md:col-span-3 divide-y divide-[#101010]/12 border-t border-b border-[#101010]/12">
+          <div className="md:col-span-8 divide-y divide-black/[0.08] border-t border-b border-black/[0.08] bg-white p-2 sm:p-6 border-l border-r">
             {FAQ_ITEMS.map((item, idx) => {
               const isOpen = openId === item.id;
               const formattedNumber = String(idx + 1).padStart(2, '0');
@@ -54,23 +53,23 @@ export function SolumFAQ() {
                   <button
                     onClick={() => toggle(item.id)}
                     aria-expanded={isOpen}
-                    className="w-full py-6 md:py-7 flex items-baseline justify-between text-left group cursor-pointer"
+                    className="w-full py-5 md:py-6 px-3 flex items-baseline justify-between text-left group cursor-pointer"
                   >
                     <div className="flex items-baseline gap-4 md:gap-6 pr-4">
-                      <span className="font-mono text-xs sm:text-sm text-[#757575] tabular-nums font-medium">
+                      <span className="font-mono text-xs text-slate tabular-nums font-medium">
                         {formattedNumber}
                       </span>
-                      <h3 className="font-sans text-lg sm:text-xl font-medium text-[#101010] tracking-[-0.02em] group-hover:opacity-75 transition-opacity">
+                      <h3 className="font-sans text-base sm:text-lg font-medium text-text-base tracking-[-0.02em] group-hover:text-terracotta transition-colors">
                         {item.question}
                       </h3>
                     </div>
 
                     <div
-                      className={`w-6 h-6 flex-shrink-0 border border-[#101010]/30 flex items-center justify-center transition-transform duration-250 ${
-                        isOpen ? 'rotate-45 border-[#101010]' : 'group-hover:border-[#101010]'
+                      className={`w-5 h-5 flex-shrink-0 border border-black/20 flex items-center justify-center transition-transform duration-200 rounded-none ${
+                        isOpen ? 'rotate-45 border-terracotta text-terracotta' : 'group-hover:border-black'
                       }`}
                     >
-                      <span className="text-sm leading-none mb-0.5">+</span>
+                      <span className="text-xs leading-none mb-0.5 font-bold">+</span>
                     </div>
                   </button>
 
@@ -80,11 +79,11 @@ export function SolumFAQ() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                        className="overflow-hidden"
+                        transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                        className="overflow-hidden px-3"
                       >
-                        <div className="bg-[#F6F6F2] p-6 md:p-8 mb-6 border border-[#101010]/10">
-                          <p className="font-sans text-sm sm:text-base text-[#101010]/85 leading-relaxed font-normal">
+                        <div className="pb-6 pt-1 pl-8 md:pl-12 border-l border-coral/30">
+                          <p className="font-sans text-xs sm:text-sm text-text-muted leading-relaxed font-normal">
                             {item.answer}
                           </p>
                         </div>

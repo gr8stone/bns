@@ -1,8 +1,14 @@
-import { ArrowRight, Eye, Maximize2, Volume2, VolumeX } from "lucide-react";
+import { ArrowRight, Eye, Maximize2, Play, Volume2, VolumeX } from "lucide-react";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import type { Project } from "../../types";
 import { LightboxModal, type LightboxImage } from "./LightboxModal";
+
+function getYouTubeId(url: string | undefined): string | null {
+  if (!url) return null;
+  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+  return match ? match[1] : null;
+}
 
 interface ArchvizProjectShowcaseProps {
   project: Project;
@@ -13,6 +19,7 @@ export function ArchvizProjectShowcase({
   project,
   index,
 }: ArchvizProjectShowcaseProps) {
+  const [isPlayingYouTube, setIsPlayingYouTube] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
@@ -21,6 +28,11 @@ export function ArchvizProjectShowcase({
     project.heroImage === "/images/bns/towwnhallmay/129A3863.jpg"
       ? "/images/bns/optimized/129A3863-poster-small.webp"
       : project.heroImage;
+  const youtubeId = getYouTubeId(project.heroVideo);
+  const isDirectVideo = Boolean(
+    project.heroVideo &&
+    (project.heroVideo.endsWith('.mp4') || project.heroVideo.endsWith('.webm'))
+  );
 
   // Compile all high-res stills for the project
   const stills: LightboxImage[] = [];
@@ -157,7 +169,41 @@ export function ArchvizProjectShowcase({
         {/* LEFT: Cinematic High-Fidelity Video (or Hero Image Fallback) */}
         <div className="lg:col-span-7 xl:col-span-7 flex flex-col">
           <div className="relative aspect-[16/10] sm:aspect-[4/3] lg:aspect-[16/11] w-full h-full min-h-[260px] sm:min-h-[420px] lg:min-h-[520px] overflow-hidden bg-black border border-[#101010]/12 group">
-            {project.heroVideo ? (
+            {youtubeId ? (
+              isPlayingYouTube ? (
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1`}
+                  title={project.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full object-cover border-0"
+                />
+              ) : (
+                <div className="relative w-full h-full">
+                  <img
+                    src={videoPoster}
+                    alt={project.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover filter brightness-95"
+                  />
+                  {/* Play Trigger Button */}
+                  <div className="absolute inset-0 flex items-center justify-center z-20">
+                    <button
+                      onClick={() => setIsPlayingYouTube(true)}
+                      aria-label="Play documentary video"
+                      className="group/btn flex items-center gap-3 px-5 py-3 bg-black/85 hover:bg-coral text-white backdrop-blur-md border border-white/20 hover:border-coral transition-all duration-200 cursor-pointer shadow-2xl"
+                    >
+                      <span className="w-8 h-8 rounded-full bg-white text-black group-hover/btn:bg-white group-hover/btn:text-coral flex items-center justify-center transition-colors">
+                        <Play className="w-4 h-4 fill-current ml-0.5" />
+                      </span>
+                      <span className="font-mono text-xs uppercase tracking-wider font-semibold">
+                        PLAY EPISODE
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              )
+            ) : isDirectVideo ? (
               <video
                 ref={videoRef}
                 src={project.heroVideo}
@@ -180,27 +226,33 @@ export function ArchvizProjectShowcase({
             )}
 
             {/* Subtle Gradient vignette */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
+            {(!youtubeId || !isPlayingYouTube) && (
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
+            )}
 
             {/* Top Badge: Video Format */}
-            <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-10 pointer-events-none">
-              <span className="px-2.5 py-1 bg-black/75 backdrop-blur-sm text-[10px] sm:text-xs font-mono uppercase tracking-widest text-white border border-white/15">
-                {project.videoDuration || "CIVIC MEDIA MASTER"}
-              </span>
-            </div>
+            {(!youtubeId || !isPlayingYouTube) && (
+              <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-10 pointer-events-none">
+                <span className="px-2.5 py-1 bg-black/75 backdrop-blur-sm text-[10px] sm:text-xs font-mono uppercase tracking-widest text-white border border-white/15">
+                  {project.videoDuration || "CIVIC MEDIA MASTER"}
+                </span>
+              </div>
+            )}
 
             {/* Bottom Left: Title & Location Watermark */}
-            <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 z-10 pointer-events-none">
-              <span className="font-mono text-xs text-white/90 uppercase tracking-wider block font-semibold">
-                {project.title} &bull; {project.location}
-              </span>
-              <span className="font-mono text-[10px] text-white/50 uppercase tracking-widest block">
-                BUDGET NDIO STORY PRODUCTION
-              </span>
-            </div>
+            {(!youtubeId || !isPlayingYouTube) && (
+              <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 z-10 pointer-events-none">
+                <span className="font-mono text-xs text-white/90 uppercase tracking-wider block font-semibold">
+                  {project.title} &bull; {project.location}
+                </span>
+                <span className="font-mono text-[10px] text-white/50 uppercase tracking-widest block">
+                  BUDGET NDIO STORY PRODUCTION
+                </span>
+              </div>
+            )}
 
-            {/* Bottom Right: Discreet Audio & Fullscreen Controls */}
-            {project.heroVideo && (
+            {/* Bottom Right: Discreet Audio & Fullscreen Controls for direct videos */}
+            {isDirectVideo && (
               <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 z-20 flex items-center gap-2">
                 <button
                   onClick={toggleSound}
@@ -226,7 +278,7 @@ export function ArchvizProjectShowcase({
         </div>
 
         {/* RIGHT: 3-Tier Alternating Infinite Marquee Stills (CGI Studio / Solé Ettalong Master Dynamic) */}
-        <div className="lg:col-span-5 xl:col-span-5 flex flex-col justify-between gap-2 sm:gap-2.5 h-full min-h-[300px] sm:min-h-[420px] lg:min-h-[520px] overflow-hidden bg-[#0A0A0A] border border-[#101010]/12 p-2">
+        <div className="lg:col-span-5 xl:col-span-5 flex flex-col justify-between gap-2 sm:gap-2.5 h-full min-h-[300px] sm:min-h-[420px] lg:min-h-[520px] overflow-hidden bg-[#0A0A0A] border border-[#101010]/12 p-2 transform-gpu">
           {/* Row 1: Slides Left (animate-marquee) */}
           <div className="relative w-full overflow-hidden h-[95px] sm:h-[132px] lg:h-[162px] flex items-center">
             <div

@@ -48,13 +48,11 @@ export const OFFSET = {
   dramatic: 32,  // Section headers, hero elements
 } as const;
 
-// ─── Parallax Ranges ─────────────────────────────────────────────────────────
-
-export const PARALLAX = {
+export const PARALLAX: Record<'subtle' | 'normal' | 'deep', [string, string]> = {
   subtle:   ['-4%', '4%'],   // Small imagery, subtle depth
   normal:   ['-6%', '6%'],   // Standard full-bleed images (hero, about)
   deep:     ['-8%', '8%'],   // Media break, cinematic dividers
-} as const;
+};
 
 // ─── Pre-built Transitions ────────────────────────────────────────────────────
 

@@ -4,31 +4,41 @@
 
 @layer base {
   :root {
-    /* ── Section Backgrounds (documentary flow) ── */
-    --bns-ink:         #0B0C0E;   /* bg-ink        — Hero charcoal         */
-    --bns-ink-soft:    #111923;   /* bg-ink-soft   — Programmes navy       */
-    --bns-paper-warm:  #F4F2ED;   /* bg-paper-warm — Statement / FAQ       */
-    --bns-paper:       #FFFFFF;   /* bg-paper      — Projects pure white   */
+    --one-if-corner-shape-supported: 1;
+
+    /* ── Palette (AI in Design Report 2026 / State of AI Design) ── */
+    --color-coral:      #f87343;   /* Dominant support */
+    --color-peach:      #fa9c7b;   /* Surface support  */
+    --color-terracotta: #9c4527;   /* Accent ink       */
+    --color-sage:       #7d9590;   /* Muted teal       */
+    --color-slate:      #b4b7b6;   /* Detail slate     */
+
+    /* ── Section Backgrounds ── */
+    --bns-ink:         #0B0C0E;   /* bg-ink        — Deep charcoal ink     */
+    --bns-ink-soft:    #1A1C1E;   /* bg-ink-soft   — Soft charcoal         */
+    --bns-paper-warm:  #FAFAF8;   /* bg-paper-warm — Clean warm surface    */
+    --bns-paper:       #FFFFFF;   /* bg-paper      — Stark white           */
     --bns-near-black:  #070809;   /* bg-near-black — Footer                */
 
     /* ── Typography on light sections ── */
-    --bns-text-base:   #111214;   /* text-text-base  — Primary on light    */
-    --bns-text-muted:  #656563;   /* text-text-muted — Secondary on light  */
+    --bns-text-base:   #111214;   /* text-text-base  — High-contrast ink   */
+    --bns-text-muted:  #656563;   /* text-text-muted — Secondary           */
 
     /* ── Typography on dark sections ── */
-    --bns-text-light:  #F5F4F0;   /* text-text-light — Primary on dark     */
-    --bns-text-dim:    #B7B8B5;   /* text-text-dim   — Secondary on dark   */
+    --bns-text-light:  #FFFFFF;   /* text-text-light — Stark white         */
+    --bns-text-dim:    #b4b7b6;   /* text-text-dim   — Slate muted         */
 
     /* ── Hairline Borders ── */
     --bns-line-dark:   rgba(16, 16, 16, 0.12);    /* border-line-dark  */
-    --bns-line-light:  rgba(255, 255, 255, 0.10); /* border-line-light */
+    --bns-line-light:  rgba(255, 255, 255, 0.12); /* border-line-light */
 
-    /* ── Brand Accent (one, restrained) ── */
-    --bns-accent:      #374EAB;   /* bg-accent / text-accent               */
+    /* ── Brand Accent (Terracotta & Coral) ── */
+    --bns-accent:       #9c4527;   /* Primary accent                        */
+    --bns-accent-coral: #f87343;   /* Vibrant coral accent                  */
 
     /* ── Interactive Surfaces ── */
-    --bns-ivory:       #F6F6F2;   /* bg-ivory    — FAQ drawers, callouts   */
-    --bns-form-bg:     #F9F9F8;   /* bg-form-bg  — Form inputs             */
+    --bns-ivory:       #FAFAF8;   /* bg-ivory    — Card surfaces           */
+    --bns-form-bg:     #FFFFFF;   /* bg-form-bg  — Form inputs             */
   }
 
   html {

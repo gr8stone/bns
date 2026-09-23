@@ -7,20 +7,20 @@ import { SolumFAQ } from '../components/solum/SolumFAQ';
 
 export function HomePage() {
   return (
-    <main className="w-full bg-white text-[#101010]">
-      {/* 01: Signature Commercial Hero */}
+    <main className="w-full bg-paper text-text-base">
+      {/* 01: Signature Civic Hero */}
       <SolumHero />
 
-      {/* 02: Statement & Practice Metrics */}
+      {/* 02: Statement & Mission */}
       <SolumAboutStatement />
 
-      {/* 03: Cinematic Architectural Monochrome Marquee Break */}
+      {/* 03: Cinematic Monochrome Marquee Break */}
       <SolumMediaBreak />
 
-      {/* 04: What We Do (02 // PROGRAMMES - Stacking sequence) */}
+      {/* 04: What We Do (02 // PROGRAMMES — Stacking sequence) */}
       <SolumServices />
 
-      {/* 05: Showcasing Projects (Selected Projects Asymmetric Exhibition) */}
+      {/* 05: Selected Productions (Asymmetric Exhibition) */}
       <SolumRecentProjects />
 
       {/* 06: Operational Protocols & FAQ */}

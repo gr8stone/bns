@@ -2,24 +2,24 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const PARTNER_LOGOS = [
-  { src: "/images/bns/logo.svg", alt: "Budget Ndio Story" },
-  { src: "/images/bns/partners/tisa.svg", alt: "TISA" },
+  { src: "/images/bns/partners/tisa.svg", alt: "The Institute for Social Accountability (TISA)" },
   {
-    src: "/images/bns/optimized/committee-on-fiscal-studies.webp",
-    alt: "University of Nairobi",
-  },
-  {
-    src: "/images/bns/optimized/house-of-fiscal-wisdom-small.webp",
+    src: "/images/bns/optimized/house-of-fiscal-wisdom.webp",
     alt: "House of Fiscal Wisdom",
   },
+  {
+    src: "/images/bns/optimized/committee-on-fiscal-studies.webp",
+    alt: "University of Nairobi Committee on Fiscal Studies (UON CFS)",
+  },
+  { src: "/images/bns/logo.svg", alt: "Budget Ndio Story" },
 ];
 
 export function Footer() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <footer className="w-full bg-[#0B0B0B] text-white pt-12 md:pt-16 pb-8 md:pb-10 px-6 md:px-12 border-t border-[#1A1A1A] select-none overflow-hidden">
-      <div className="max-w-[1480px] mx-auto">
+    <footer className="w-full bg-[#0B0B0B] text-white pt-12 md:pt-16 pb-8 md:pb-10 px-6 md:px-10 border-t border-white/10 select-none overflow-hidden">
+      <div className="max-w-[1425px] mx-auto">
         {/* ─────────────────────────────────────────────────────────────
             TOP SECTION: GIGANTIC MUTED WATERMARK WORDMARK
             Matches exact 'INTERO' reference in scale, weight & charcoal tone
@@ -29,13 +29,13 @@ export function Footer() {
             aria-label="Budget Ndio Story"
             animate={shouldReduceMotion ? { x: 0 } : { x: ["0%", "-50%"] }}
             transition={{ duration: 24, ease: "linear", repeat: Infinity }}
-            className="flex w-max shrink-0 gap-[8vw] font-display text-[clamp(48px,14vw,260px)] font-bold tracking-[-0.03em] leading-[0.82] text-white uppercase whitespace-nowrap"
+            className="flex w-max shrink-0 gap-[8vw] font-display text-[clamp(48px,14vw,260px)] font-medium tracking-[-0.06em] leading-[0.82] text-white uppercase whitespace-nowrap"
           >
             <span aria-hidden="true">
-              BUDGET <span className="text-[#374EAB]">NDIO</span> STORY
+              BUDGET <span className="text-coral">NDIO</span> STORY
             </span>
             <span aria-hidden="true">
-              BUDGET <span className="text-[#374EAB]">NDIO</span> STORY
+              BUDGET <span className="text-coral">NDIO</span> STORY
             </span>
           </motion.h2>
         </div>
@@ -51,9 +51,9 @@ export function Footer() {
               <img
                 src="/images/bns/logo.svg"
                 alt="Budget Ndio Story"
-                width={24}
-                height={24}
-                className="w-6 h-6 object-contain brightness-0 invert"
+                width={28}
+                height={28}
+                className="w-7 h-7 object-contain"
               />
               <span className="font-sans font-semibold text-xl tracking-tight text-white flex items-center gap-2">
                 Budget Ndio Story
@@ -177,17 +177,21 @@ export function Footer() {
               </a>
             </div>
 
-            <div className="flex items-center gap-3" aria-label="Partners">
+            <div className="flex items-center flex-wrap gap-2.5" aria-label="Partners">
               {PARTNER_LOGOS.map((logo) => (
-                <img
+                <div
                   key={logo.src}
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={logo.alt === "House of Fiscal Wisdom" ? 64 : 96}
-                  height={logo.alt === "House of Fiscal Wisdom" ? 64 : 40}
-                  decoding="async"
-                  className="h-10 w-auto max-w-[96px] object-contain"
-                />
+                  className="bg-white p-2 border border-white/20 flex items-center justify-center transition-all duration-200 hover:scale-105"
+                >
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={logo.alt.includes("Wisdom") ? 64 : 96}
+                    height={36}
+                    decoding="async"
+                    className="h-7 sm:h-8 w-auto max-w-[92px] object-contain"
+                  />
+                </div>
               ))}
             </div>
           </div>
