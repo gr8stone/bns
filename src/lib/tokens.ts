@@ -13,7 +13,7 @@
 // ─── Color Palette (AI in Design Report 2026) ───────────────────────────────
 export const COLORS = {
   // Inspo System Palette
-  coral:       '#f87343',   // Support / Dominant — saturated vibrant coral
+  coral:       '#4E58AA',   // Support / Dominant — brand deep indigo
   peach:       '#fa9c7b',   // Support / Surface  — warm soft peach
   terracotta:  '#9c4527',   // Accent / Ink       — deep terracotta rust
   sage:        '#7d9590',   // Support            — muted sage teal
@@ -21,7 +21,7 @@ export const COLORS = {
 
   // Controlled Accents
   accent:      '#9c4527',   // Primary accent (terracotta)
-  accentCoral: '#f87343',   // Vibrant coral accent
+  accentCoral: '#4E58AA',   // Vibrant accent (#4E58AA)
   accentSage:  '#7d9590',   // Secondary sage accent
   agencyBlue:  '#374EAB',   // Agency Brand Royal Blue (Vantage Studio / BNS classic blue #374EAB)
 

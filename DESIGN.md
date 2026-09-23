@@ -18,7 +18,7 @@ High-contrast layout pairing a fragmented, abstract AI-generated image collage w
 
 | Hex | Role (heuristic) |
 |---|---|
-| `#f87343` | support |
+| `#4E58AA` | support (brand indigo) |
 | `#fa9c7b` | support |
 | `#9c4527` | accent |
 | `#7d9590` | support |

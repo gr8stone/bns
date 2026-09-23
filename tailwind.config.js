@@ -10,7 +10,7 @@ export default {
       // ── Color Tokens (AI in Design Report 2026 / State of AI Design) ─────────
       colors: {
         // Inspo system palette
-        coral:        '#f87343',   // Dominant coral
+        coral:        '#4E58AA',   // Dominant brand indigo (#4E58AA)
         peach:        '#fa9c7b',   // Surface peach
         terracotta:   '#9c4527',   // Ink / accent terracotta
         sage:         '#7d9590',   // Support sage
@@ -39,7 +39,7 @@ export default {
 
         // Brand accents
         accent:          '#9c4527',
-        'accent-coral':  '#f87343',
+        'accent-coral':  '#4E58AA',
         'accent-sage':   '#7d9590',
         'agency-blue':   '#374EAB',
 

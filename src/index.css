@@ -7,7 +7,7 @@
     --one-if-corner-shape-supported: 1;
 
     /* ── Palette (AI in Design Report 2026 / State of AI Design) ── */
-    --color-coral:      #f87343;   /* Dominant support */
+    --color-coral:      #4E58AA;   /* Dominant brand indigo (#4E58AA) */
     --color-peach:      #fa9c7b;   /* Surface support  */
     --color-terracotta: #9c4527;   /* Accent ink       */
     --color-sage:       #7d9590;   /* Muted teal       */
@@ -32,9 +32,9 @@
     --bns-line-dark:   rgba(16, 16, 16, 0.12);    /* border-line-dark  */
     --bns-line-light:  rgba(255, 255, 255, 0.12); /* border-line-light */
 
-    /* ── Brand Accent (Terracotta & Coral) ── */
+    /* ── Brand Accent (Terracotta & Brand Indigo) ── */
     --bns-accent:       #9c4527;   /* Primary accent                        */
-    --bns-accent-coral: #f87343;   /* Vibrant coral accent                  */
+    --bns-accent-coral: #4E58AA;   /* Brand indigo accent (#4E58AA)         */
 
     /* ── Interactive Surfaces ── */
     --bns-ivory:       #FAFAF8;   /* bg-ivory    — Card surfaces           */

@@ -6,6 +6,7 @@ import { ROUTES } from "../../lib/routes";
 
 interface ServicePanel {
   number: string;
+  slug: string;
   title: string;
   description: string;
   bullets: string[];
@@ -16,6 +17,7 @@ interface ServicePanel {
 const SERVICES: ServicePanel[] = [
   {
     number: "01",
+    slug: "bns-connect",
     title: "BNS Connect",
     tag: "CONVENINGS & HEARINGS",
     description:
@@ -31,6 +33,7 @@ const SERVICES: ServicePanel[] = [
   },
   {
     number: "02",
+    slug: "bns-mashinani",
     title: "BNS Mashinani",
     tag: "GRASSROOTS LITERACY",
     description:
@@ -46,6 +49,7 @@ const SERVICES: ServicePanel[] = [
   },
   {
     number: "03",
+    slug: "bns-wanahabari",
     title: "BNS Wanahabari",
     tag: "INVESTIGATIVE DATA",
     description:
@@ -61,6 +65,7 @@ const SERVICES: ServicePanel[] = [
   },
   {
     number: "04",
+    slug: "bns-studio",
     title: "BNS Studio",
     tag: "CREATIVE MEDIA LAB",
     description:
@@ -119,7 +124,9 @@ function ServiceCard({
             {...reveal(0.04)}
             className="font-display font-medium text-3xl sm:text-4xl md:text-5xl xl:text-6xl text-white tracking-[-0.05em] leading-[0.96]"
           >
-            {service.title}
+            <Link to={ROUTES.programme(service.slug)} className="hover:text-coral transition-colors">
+              {service.title}
+            </Link>
           </motion.h3>
 
           {/* Description */}
@@ -144,6 +151,16 @@ function ServiceCard({
               </li>
             ))}
           </ul>
+
+          <div className="pt-2">
+            <Link
+              to={ROUTES.programme(service.slug)}
+              className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-coral hover:text-white transition-colors"
+            >
+              <span>EXPLORE PROGRAMME DOSSIER</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
         </div>
       </div>
 
