@@ -139,13 +139,13 @@ export function ServiceDetailPage() {
 
           <div className="space-y-1">
             <span className="font-mono text-[10px] sm:text-xs text-slate uppercase tracking-wider block font-medium">
-              COMMUNITY ADVOCATES
+              CITIZEN ENGAGEMENT
             </span>
             <span className="font-display text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tight text-text-base">
-              150,000+
+              50,000+
             </span>
             <span className="font-sans text-xs text-text-muted block">
-              Youth & citizens equipped in storytelling
+              Youth &amp; citizens equipped across 47 counties
             </span>
           </div>
 

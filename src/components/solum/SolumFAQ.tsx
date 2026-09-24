@@ -29,7 +29,7 @@ export function SolumFAQ() {
                 FREQUENTLY ASKED QUESTIONS.
               </h2>
               <p className="font-sans text-xs sm:text-sm text-text-muted leading-relaxed mb-8 font-normal">
-                Clear answers regarding public finance data sources, citizen participation, BNS Mashinani barazas, and reporting fellowships.
+                Key details regarding our Two-Entity Model, 40% surplus reinvestment, commissioned content rates, non-partisan governance, and statutory legal anchors.
               </p>
             </div>
 

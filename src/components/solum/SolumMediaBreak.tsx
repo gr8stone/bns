@@ -31,7 +31,7 @@ export function SolumMediaBreak() {
   );
 
   const marqueeText =
-    "BUDGET NDIO STORY ◆ CIVIC MEDIA ◆ PUBLIC FINANCE ◆ REPORT 2026 ◆ ";
+    "FOLLOW THE BUDGET ◆ FIND THE STORY ◆ BNS FOUNDATION ◆ BNS STUDIOS ◆ 47 COUNTIES ◆ ";
 
   return (
     <section

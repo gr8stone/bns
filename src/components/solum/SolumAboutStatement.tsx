@@ -13,23 +13,23 @@ export function SolumAboutStatement() {
   const metrics = [
     {
       number: "47",
-      label: "COUNTIES COVERED",
-      detail: "Grassroots barazas and youth budget tracking.",
+      label: "ALL 47 COUNTIES",
+      detail: "Engaged through surveys, town halls, and community dialogues.",
     },
     {
-      number: "150K+",
-      label: "CITIZENS REACHED",
-      detail: "Direct civic media engagement and radio broadcasts.",
+      number: "50K+",
+      label: "YOUTH ENGAGED",
+      detail: "Scaling beyond 200,000 active civic participants by year-end.",
     },
     {
-      number: "100%",
-      label: "OPEN PUBLIC DATA",
-      detail: "National and county fiscal transparency archives.",
+      number: "40%+",
+      label: "STUDIO PROFIT RETURN",
+      detail: "Reinvested directly to sustain the grassroots civic mission.",
     },
     {
-      number: "2026",
-      label: "STRATEGIC REPORT",
-      detail: "Budget journalism and fiscal insights.",
+      number: "3+ YRS",
+      label: "OPERATIONAL TRACK RECORD",
+      detail: "Active commissions with TISA Kenya, CFS, and HFW.",
     },
   ];
 

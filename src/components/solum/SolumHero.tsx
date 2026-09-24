@@ -42,12 +42,12 @@ export function SolumHero() {
   const heroVideoUrl = "/images/bns/tiktoklanding.mp4";
 
   const tickerItems = [
-    "AI IN CIVIC STORYTELLING",
-    "2026 RESEARCH & ACTION REPORT",
-    "4 COUNTIES MONITORED",
-    "PUBLIC FINANCE TRACKING",
-    "KENYA OPEN BUDGET DATA",
-    "YOUTH-LED ACCOUNTABILITY",
+    "FOLLOW THE BUDGET. FIND THE STORY.",
+    "BNS FOUNDATION • BNS STUDIOS",
+    "50,000+ YOUNG KENYANS ENGAGED",
+    "ALL 47 COUNTIES ACROSS KENYA",
+    "CROSS-SUBSIDISED CIVIC IMPACT",
+    "PARTNERSHIP PROSPECTUS 2026",
     "BUDGET NDIO STORY",
   ];
 
@@ -88,11 +88,11 @@ export function SolumHero() {
             <div className="flex items-center gap-2 mb-4">
               <span className="w-2 h-2 bg-coral inline-block" />
               <span className="font-mono text-[11px] uppercase tracking-wider text-terracotta font-semibold">
-                01 // CIVIC MEDIA & RESEARCH INITIATIVE
+                BNS FOUNDATION • BNS STUDIOS
               </span>
               <span className="text-slate font-mono text-[11px]">&bull;</span>
               <span className="font-mono text-[11px] uppercase tracking-wider text-slate">
-                EDITION 2026
+                PARTNERSHIP PROSPECTUS 2026
               </span>
             </div>
 
@@ -115,18 +115,14 @@ export function SolumHero() {
               }}
               className="font-display text-lg sm:text-xl md:text-[24px] font-medium leading-[1.3] tracking-[-0.04em] text-text-base mt-5 max-w-2xl"
             >
-              Independent civic media and public finance storytelling platform
-              empowering citizens and youth to track, understand, and demand
-              accountability across Kenya.
+              A platform for budget literacy, civic accountability & impact storytelling. Making Kenya's public budgets readable, relatable, and responsive.
             </motion.p>
           </div>
 
           {/* Right: Actions & Micro Metadata */}
           <div className="lg:col-span-4 flex flex-col justify-end lg:items-end gap-6">
             <p className="font-sans text-xs text-text-muted leading-relaxed font-normal max-w-sm">
-              From grassroots community barazas to broadcast journalism, we
-              translate complex budgets into actionable citizen data across 47
-              counties.
+              Sitting at the intersection of public finance, civic organising, and creative media across all 47 counties. Follow the budget. Find the story.
             </p>
 
             <div className="flex flex-wrap items-center gap-3">
@@ -201,14 +197,13 @@ export function SolumHero() {
 
               <div>
                 <span className="font-mono text-[10px] uppercase tracking-widest text-slate block mb-2">
-                  COVERAGE & METRICS
+                  COVERAGE & REACH
                 </span>
                 <div className="font-display text-4xl sm:text-5xl font-medium tracking-tight text-text-base leading-none mb-3">
-                  4 / 47
+                  47 / 47
                 </div>
                 <p className="font-sans text-xs text-text-muted leading-relaxed font-normal">
-                  County Assemblies & National Treasury monitored through open
-                  citizen tracking barazas.
+                  Counties engaged through surveys, town halls, digital storytelling, and community dialogues.
                 </p>
               </div>
 
@@ -223,7 +218,7 @@ export function SolumHero() {
               <div>
                 <div className="flex items-center justify-between mb-3">
                   <span className="font-mono text-[10px] uppercase tracking-widest text-sage font-medium">
-                    CITIZEN ADVOCATES
+                    YOUTH CONSTITUENCY
                   </span>
                   <span className="w-2 h-2 bg-sage rounded-full animate-pulse" />
                 </div>
@@ -242,16 +237,15 @@ export function SolumHero() {
                 </div>
 
                 <div className="font-display text-xl font-medium tracking-tight text-text-base">
-                  150,000+ Reached
+                  50,000+ Engaged
                 </div>
                 <p className="font-sans text-xs text-text-muted leading-tight mt-1">
-                  Youth & grassroots participants trained in public finance
-                  storytelling.
+                  Young Kenyans mobilized across all 47 counties, scaling beyond 200,000.
                 </p>
               </div>
 
               <div className="pt-3 mt-3 border-t border-black/[0.08] flex items-center gap-2 font-mono text-[11px] text-slate">
-                <span className="text-coral">&#9670;</span> Verified Field Reach
+                <span className="text-coral">&#9670;</span> Verified Civic Reach
               </div>
             </div>
           </div>
