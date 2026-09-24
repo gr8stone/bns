@@ -1,5 +1,6 @@
 import { SolumHero } from '../components/solum/SolumHero';
 import { SolumAboutStatement } from '../components/solum/SolumAboutStatement';
+import { SolumProspectusDossier } from '../components/solum/SolumProspectusDossier';
 import { SolumMediaBreak } from '../components/solum/SolumMediaBreak';
 import { SolumServices } from '../components/solum/SolumServices';
 import { SolumRecentProjects } from '../components/solum/SolumRecentProjects';
@@ -14,10 +15,13 @@ export function HomePage() {
       {/* 02: Statement & Mission */}
       <SolumAboutStatement />
 
-      {/* 03: Cinematic Monochrome Marquee Break */}
+      {/* 03: Interactive Partnership Prospectus Dossier */}
+      <SolumProspectusDossier />
+
+      {/* 04: Cinematic Monochrome Marquee Break */}
       <SolumMediaBreak />
 
-      {/* 04: What We Do (02 // PROGRAMMES — Stacking sequence) */}
+      {/* 05: What We Do (02 // PROGRAMMES — Stacking sequence) */}
       <SolumServices />
 
       {/* 05: Selected Productions (Asymmetric Exhibition) */}

@@ -156,8 +156,211 @@ export function AboutPage() {
               transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className="text-sm sm:text-base text-[#757575] leading-relaxed font-light"
             >
-              Our governance model ensures commercial activity never compromises civic independence: BNS maintains strict non-partisan positioning, arm's length transaction governance, and independent non-executive board oversight.
+              We sit at the intersection of public finance, civic organising, and creative media. African content studios with deep subject-matter expertise in public finance and civic accountability are rare—we bring that expertise alongside an existing youth audience and distribution infrastructure.
             </motion.p>
+          </div>
+        </div>
+
+        {/* Why This Matters Right Now — 3-Card Grid */}
+        <div className="py-20 border-b border-[#101010]/12">
+          <div className="flex items-center justify-between mb-12">
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
+              <span className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#101010] font-medium">
+                CONTEXT // WHY THIS MATTERS RIGHT NOW
+              </span>
+            </div>
+            <span className="font-mono text-xs text-[#757575] uppercase hidden sm:inline">
+              CIVIC URGENCY
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="p-6 border border-[#101010]/12 bg-white"
+            >
+              <span className="font-mono text-xs text-[#757575] uppercase block mb-2 font-medium">01 // CONSTITUTIONAL RIGHT</span>
+              <h3 className="font-display text-xl font-semibold uppercase text-[#101010] mb-2.5">
+                Statutory Citizen Participation
+              </h3>
+              <p className="font-sans text-xs sm:text-sm text-[#757575] leading-relaxed font-light">
+                Kenya's Constitution (2010 Articles 10 &amp; 232) and the Public Finance Management Act (2015) enshrine the right of citizens to participate in budgeting. Yet participation remains limited for youth aged 18–35, who make up over a third of Kenya's population.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="p-6 border border-[#101010]/12 bg-white"
+            >
+              <span className="font-mono text-xs text-[#757575] uppercase block mb-2 font-medium">02 // TURNING POINT</span>
+              <h3 className="font-display text-xl font-semibold uppercase text-[#101010] mb-2.5">
+                The 2024 Turning Point
+              </h3>
+              <p className="font-sans text-xs sm:text-sm text-[#757575] leading-relaxed font-light">
+                The 2024 Finance Bill protests proved young Kenyans are informed, engaged, and demanding fiscal transparency. BNS exists to channel that energy into structured, constructive civic accountability at every level of government year-round, not just at crisis points.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="p-6 border border-[#101010]/12 bg-white"
+            >
+              <span className="font-mono text-xs text-[#757575] uppercase block mb-2 font-medium">03 // CIVIC ROOTS &amp; REACH</span>
+              <h3 className="font-display text-xl font-semibold uppercase text-[#101010] mb-2.5">
+                Beyond Entertainment
+              </h3>
+              <p className="font-sans text-xs sm:text-sm text-[#757575] leading-relaxed font-light">
+                Africa's creator economy is valued at USD 5.1 billion in 2025 and growing at 28.7% annually, but mostly in entertainment. BNS occupies a distinct position: a mission-anchored content platform with real civic roots and professional production capability.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Dual Entity Model Section */}
+        <div className="py-20 border-b border-[#101010]/12">
+          <div className="flex items-center gap-2 mb-8">
+            <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
+            <span className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#101010] font-medium">
+              SUSTAINABILITY ARCHITECTURE // OUR TWO-ENTITY MODEL
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+            <motion.div
+              initial={{ opacity: 0, x: -16 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="p-8 border border-[#101010]/12 bg-[#FAFAF8] flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between pb-3 border-b border-[#101010]/12 mb-4">
+                  <h3 className="font-display text-2xl font-semibold uppercase text-[#101010]">
+                    BNS Foundation
+                  </h3>
+                  <span className="px-2 py-0.5 bg-[#101010] text-white font-mono text-[10px] uppercase font-semibold">
+                    CIVIC PILLAR
+                  </span>
+                </div>
+                <div className="space-y-4 font-sans text-sm text-[#757575] font-light leading-relaxed">
+                  <p>
+                    <strong className="text-[#101010] font-medium">Civic Mission:</strong> Budget literacy, youth organising, ward scorecards, community town halls, and national surveys.
+                  </p>
+                  <p>
+                    <strong className="text-[#101010] font-medium">Funded through:</strong> Philanthropic grants, donations, and statutory programme partnerships.
+                  </p>
+                  <p>
+                    <strong className="text-[#101010] font-medium">Reinvestment:</strong> Direct beneficiary of surplus generated by BNS Studios to permanently sustain grassroots civic organizing.
+                  </p>
+                </div>
+              </div>
+              <div className="mt-8 pt-4 border-t border-[#101010]/12 font-mono text-xs text-[#757575]">
+                SERVING ALL 47 KENYAN COUNTIES
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 16 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="p-8 border border-[#101010]/12 bg-[#FAFAF8] flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between pb-3 border-b border-[#101010]/12 mb-4">
+                  <h3 className="font-display text-2xl font-semibold uppercase text-[#101010]">
+                    BNS Studios
+                  </h3>
+                  <span className="px-2 py-0.5 bg-[#4E58AA] text-white font-mono text-[10px] uppercase font-semibold">
+                    IMPACT STUDIO
+                  </span>
+                </div>
+                <div className="space-y-4 font-sans text-sm text-[#757575] font-light leading-relaxed">
+                  <p>
+                    <strong className="text-[#101010] font-medium">Impact Content Studio:</strong> Producing research podcasts, animated explainers, documentary research spotlights, and multi-platform social series.
+                  </p>
+                  <p>
+                    <strong className="text-[#101010] font-medium">Funded through:</strong> Commissioned content mandates from development partners, the private sector, CSOs, and government.
+                  </p>
+                  <p>
+                    <strong className="text-[#101010] font-medium">Cross-Subsidisation:</strong> Minimum 40% of profits channelled back to BNS Foundation annually — sustaining the civic mission permanently.
+                  </p>
+                </div>
+              </div>
+              <div className="mt-8 pt-4 border-t border-[#101010]/12 font-mono text-xs text-[#4E58AA] font-semibold">
+                COMMISSIONING SUBSIDISES YOUTH CIVIC POWER
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Track Record Strip */}
+        <div className="py-20 border-b border-[#101010]/12">
+          <div className="flex items-center gap-2 mb-10">
+            <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
+            <span className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#101010] font-medium">
+              VERIFIED TRACK RECORD &bull; OVER 3 YEARS
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="p-6 border border-[#101010]/12 bg-white">
+              <span className="font-mono text-[10px] uppercase tracking-wider text-[#757575] block mb-1">
+                CIVIC REACH
+              </span>
+              <div className="font-display text-3xl sm:text-4xl font-semibold text-[#101010] tracking-tight">
+                50,000+
+              </div>
+              <p className="font-sans text-xs text-[#757575] font-light mt-2 leading-relaxed">
+                Young Kenyans engaged across all 47 counties, growing to 200,000+.
+              </p>
+            </div>
+
+            <div className="p-6 border border-[#101010]/12 bg-white">
+              <span className="font-mono text-[10px] uppercase tracking-wider text-[#757575] block mb-1">
+                ECOSYSTEM PARTNERS
+              </span>
+              <div className="font-display text-3xl sm:text-4xl font-semibold text-[#101010] tracking-tight">
+                Active
+              </div>
+              <p className="font-sans text-xs text-[#757575] font-light mt-2 leading-relaxed">
+                TISA Kenya, House of Fiscal Wisdom, and Committee on Fiscal Studies.
+              </p>
+            </div>
+
+            <div className="p-6 border border-[#101010]/12 bg-white">
+              <span className="font-mono text-[10px] uppercase tracking-wider text-[#757575] block mb-1">
+                INSTITUTIONAL PIPELINE
+              </span>
+              <div className="font-display text-3xl sm:text-4xl font-semibold text-[#101010] tracking-tight">
+                Multi-Agency
+              </div>
+              <p className="font-sans text-xs text-[#757575] font-light mt-2 leading-relaxed">
+                Active negotiations with major bilateral funders and international NGOs.
+              </p>
+            </div>
+
+            <div className="p-6 border border-[#101010]/12 bg-white">
+              <span className="font-mono text-[10px] uppercase tracking-wider text-[#757575] block mb-1">
+                PERMANENT REINVESTMENT
+              </span>
+              <div className="font-display text-3xl sm:text-4xl font-semibold text-[#101010] tracking-tight">
+                &ge; 40%
+              </div>
+              <p className="font-sans text-xs text-[#757575] font-light mt-2 leading-relaxed">
+                Studio profits returned annually to fund grassroots civic participation.
+              </p>
+            </div>
           </div>
         </div>
 
