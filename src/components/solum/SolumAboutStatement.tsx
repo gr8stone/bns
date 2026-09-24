@@ -58,8 +58,7 @@ export function SolumAboutStatement() {
               transition={TRANSITION.reveal}
               className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[68px] font-medium tracking-[-0.05em] text-text-base leading-[0.98]"
             >
-              Budget Ndio Story is an independent civic media and public finance
-              storytelling platform working across 4 pilot counties.
+              Budget Ndio Story is a youth-centred civic platform dedicated to making Kenya's public budgets readable, relatable, and responsive.
             </motion.h2>
 
             <motion.p
@@ -69,9 +68,7 @@ export function SolumAboutStatement() {
               transition={{ ...TRANSITION.reveal, delay: 0.1 }}
               className="font-sans text-sm sm:text-base text-text-muted leading-relaxed max-w-2xl font-normal"
             >
-              We translate national budgets, county allocations, and public debt
-              into accessible stories, citizen barazas, and grassroots
-              accountability tools.
+              Operating through BNS Foundation and BNS Studios, we sit at the intersection of public finance, civic organising, and creative media across all 47 counties.
             </motion.p>
 
             <motion.div

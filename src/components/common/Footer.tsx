@@ -285,7 +285,7 @@ export function Footer() {
             </div>
 
             <div className="text-neutral-400 pt-1 leading-relaxed">
-              Civic Action & Public Finance Hub,
+              BNS Foundation • BNS Studios
               <br />
               Nairobi, Kenya
             </div>
@@ -302,7 +302,7 @@ export function Footer() {
             <span>
               &copy; {new Date().getFullYear()}{" "}
               <strong className="text-white font-semibold uppercase tracking-wider">
-                BUDGET NDIO STORY
+                BNS FOUNDATION • BNS STUDIOS
               </strong>{" "}
               All Rights Reserved
             </span>

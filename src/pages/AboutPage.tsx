@@ -16,47 +16,46 @@ export function AboutPage() {
   const leadership = [
     {
       name: 'Millicent Makina',
-      role: 'Board Advisor',
-      bio: 'Distinguished governance expert advising non-profit boards and international development initiatives. Formulated the inaugural 5-year Strategic Governance & Accountability Framework.',
+      role: 'Board Advisor & Governance Lead',
+      bio: 'Provides independent strategic and governance counsel to the Advisory Board, strengthening organizational effectiveness, institutional policies, and fiduciary risk oversight.',
       image: '/images/avatars/team/Millicent Makina.jpeg',
     },
     {
       name: 'Movine Omondi',
-      role: 'Executive Director & Founder',
-      bio: 'Over a decade of experience in public policy, youth advocacy, and fiscal governance. Leads BNS’s strategic vision, institutional partnerships, and legislative advocacy.',
+      role: 'Executive Director & Founder (ELT)',
+      bio: 'Leads strategy execution, institutional partnerships, and legislative advocacy. Over a decade directing youth civic organizing, public finance accountability, and national dialogues.',
       image: '/images/avatars/team/Movine Omondi_HeadShot.jpg',
     },
     {
       name: 'Peculiar Koros',
-      role: 'Director ICT & Chief Technologist',
-      bio: 'Directs the technological architecture and digital verification systems, cross-referencing Treasury books with parliamentary acts for 100% data audit accuracy.',
+      role: 'Director ICT & Chief Technologist (ELT)',
+      bio: 'Directs digital verification systems and open-data infrastructure, engineering data pipelines cross-referencing Treasury books, COB reports, and parliamentary finance acts.',
       image: '/images/avatars/team/Koros.jpeg',
     },
     {
       name: 'Shem Odhiambo Ojunga',
-      role: 'Director Media',
-      bio: 'Award-winning digital strategist pioneering high-retention civic storytelling across TikTok, Instagram, and YouTube, demystifying technical fiscal documents.',
+      role: 'Director Media & BNS Studios (ELT)',
+      bio: 'Leads BNS Studios production mandates, pioneering research spotlights, animated explainers, and multi-platform social series that translate institutional research into high-impact civic media.',
       image: '/images/avatars/team/Shem Odhiambo Ojunga.jpeg',
     },
     {
       name: 'James Maingi Mutinda',
-      role: 'Director Partnerships',
-      bio: 'Drives strategic alliances with academic institutions, civil society coalitions, and international development agencies, scaling BNS budget workshops nationwide.',
+      role: 'Director Partnerships & Programmes (ELT)',
+      bio: 'Drives strategic alliances with government MDAs, county assemblies, development partners, and civil society coalitions, scaling BNS civic programmes across all 47 counties.',
       image: '/images/avatars/team/James Mutinda.jpeg',
     },
     {
       name: 'Nelly Maina',
-      role: 'Lead Podcast Host',
-      bio: 'Charismatic broadcaster and community storyteller anchoring the Budget Mtaani podcast, translating complex macroeconomic policies into everyday Sheng.',
+      role: 'Lead Podcast Host & Audio Producer',
+      bio: 'Broadcast journalist and audio lead anchoring BNS podcasts across Spotify, Apple Podcasts, and YouTube, translating macroeconomic policy into relatable everyday civic conversation.',
       image: '/images/avatars/team/Nelly Maina.jpg',
     },
     {
       name: 'Calvina Praise',
-      role: 'Lead Youth Content Strategist & Producer',
-      bio: 'Architects youth-centered visual campaigns for digital channels, demystifying taxation formulas, public debt, and county budgets through bite-sized explainer reels.',
+      role: 'Lead Youth Content Strategist & Fellow',
+      bio: 'Produces youth-centered visual campaigns, infographics, and explainer reels across digital channels, demystifying county budgets and public debt for youth across all 47 counties.',
       image: '/images/avatars/team/Calvina Praise.jpg',
     },
-
   ];
 
   return (
@@ -96,7 +95,7 @@ export function AboutPage() {
               MISSION SUMMARY
             </span>
             <p className="font-sans text-sm text-[#757575] leading-relaxed font-light">
-              We operate as an independent civic media and budget accountability platform combining data forensics with creative storytelling and grassroots action.
+              We operate through two complementary entities: BNS Foundation (civic mission & budget literacy) and BNS Studios (impact content studio), channeling a minimum of 40% of studio profits back into youth civic engagement.
             </p>
           </motion.div>
         </div>
@@ -136,7 +135,7 @@ export function AboutPage() {
 
           <div className="col-span-1 md:col-span-3 space-y-6 max-w-3xl text-sm sm:text-base text-[#101010]/85 font-light leading-relaxed">
             <WordReveal
-              text="A public budget is a moral contract before it is a ledger. We believe civic media must make public money visible, understandable, and actionable for every citizen."
+              text="Budgets are not boring — they are the most direct expression of government priorities. A public budget is a moral contract before it is a ledger."
               as="p"
               className="font-display text-2xl sm:text-3xl font-normal tracking-[-0.03em] leading-snug text-[#101010]"
               staggerMs={30}
@@ -148,7 +147,7 @@ export function AboutPage() {
               transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="text-sm sm:text-base text-[#757575] leading-relaxed font-light"
             >
-              When reviewing national estimates or county fiscal strategy papers, we do not simply cite statutory tables. We investigate how treasury disbursements translate into medicine in dispensaries, desks in primary schools, and transparent market access for youth and grassroots traders.
+              Since its inception, BNS has engaged 50,000+ young Kenyans across all 47 counties through surveys, town halls, digital storytelling, and community dialogues. When citizens understand where public money goes and are given platforms to respond, governance improves.
             </motion.p>
             <motion.p
               initial={{ opacity: 0 }}
@@ -157,7 +156,7 @@ export function AboutPage() {
               transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className="text-sm sm:text-base text-[#757575] leading-relaxed font-light"
             >
-              While our initiative harnesses digital docuseries, open data journalism, and community town halls to accelerate civic literacy, factual rigour remains our foundation, and grassroots empowerment remains our compass.
+              Our governance model ensures commercial activity never compromises civic independence: BNS maintains strict non-partisan positioning, arm's length transaction governance, and independent non-executive board oversight.
             </motion.p>
           </div>
         </div>
@@ -167,7 +166,7 @@ export function AboutPage() {
           <div className="flex items-center gap-2 mb-12">
             <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
             <span className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#101010] font-medium">
-              CORE INITIATIVE &bull; PILLAR LEADS
+              GOVERNANCE &bull; EXECUTIVE LEADERSHIP
             </span>
           </div>
 

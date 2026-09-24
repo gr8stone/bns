@@ -31,34 +31,34 @@ export function ContactPage() {
   const requirements = [
     {
       step: "01",
-      title: "Budget Documents or Fiscal Reports",
+      title: "Programme Partner (Civic)",
       description:
-        "National budget estimates, County Fiscal Strategy Papers (CFSP), Auditor General reports, or public procurement notices.",
-      formats: ".PDF · .XLSX · .CSV · Scanned Hansards",
+        "Co-design and co-fund budget literacy programmes, youth town halls, scorecards, surveys, and ward-level engagements.",
+      formats: "County Governments · MDAs · Bilaterals · Civic Foundations",
       image: "/images/bns/survey/bnssurvey1.jpeg",
     },
     {
       step: "02",
-      title: "Field Intelligence & Ground Evidence",
+      title: "Content Commission (BNS Studios)",
       description:
-        "Ward-level project status, photo evidence, citizen petitions, dispensary stock audits, or community baraza resolutions.",
-      formats: "Citizen Photos · Field Logs · Signed Petitions",
+        "Commission BNS Studios to produce podcasts, animations, research spotlights, and multi-platform social media series.",
+      formats: "Development Partners · Think Tanks · CSOs · Private Sector",
       image: "/images/bns/cohort1 groundworks/129A3964.jpg",
     },
     {
       step: "03",
-      title: "Media & Co-Production Pitches",
+      title: "Strategic Partnership (Foundation)",
       description:
-        "Collaborative investigative pitches, community radio syndication, animated explainer scripts, or podcast dialogue requests.",
-      formats: "Story Pitch · Broadcast Specs · Topic Synopsis",
+        "Become a foundational partner of BNS Foundation, supporting our long-term civic mission with flexible, multi-year funding.",
+      formats: "Foundational Partners · Philanthropies · Global Donors",
       image: "/images/bns/media/129A4039.jpg",
     },
     {
       step: "04",
-      title: "Town Hall & Workshop Convenings",
+      title: "Annual Retainers & Embedded Studio",
       description:
-        "Host a BNS Connect town hall in your county, request BNS Mashinani budget literacy toolkits, or invite our team to campus.",
-      formats: "Venue Scope · Community Size · Proposed Agenda",
+        "Embed BNS Studios as a 'Content & Engagement Studio' budget line in your grant applications from the design stage.",
+      formats: "Grant Embedment · Annual Mandates · Retainer Agreements",
       image: "/images/bns/towwnhallmay/129A3912.jpg",
     },
   ];
@@ -79,8 +79,8 @@ export function ContactPage() {
                 </h1>
                 <p className="font-sans text-sm sm:text-base text-[#757575] leading-relaxed max-w-md">
                   We believe that public finance is a public contract. Reach out
-                  to collaborate, report, or bring budget literacy to your
-                  community.
+                  to collaborate, commission BNS Studios, or bring budget
+                  literacy to your community.
                 </p>
               </div>
 
@@ -112,10 +112,10 @@ export function ContactPage() {
 
                 <div>
                   <span className="font-mono text-xs uppercase tracking-wider text-[#757575] block mb-1">
-                    Address
+                    Offices
                   </span>
                   <p className="font-sans font-semibold text-lg sm:text-xl text-[#101010]">
-                    Nairobi Civic Media Hub, Kenya
+                    BNS Foundation • BNS Studios • Nairobi, Kenya
                   </p>
                 </div>
 
@@ -246,24 +246,30 @@ export function ContactPage() {
                         }
                         className="w-full bg-[#F9F9F8] border border-[#101010]/10 px-4 py-3 text-sm font-sans text-[#101010] focus:outline-none focus:border-[#101010] transition-colors rounded-none appearance-none cursor-pointer"
                       >
-                        <option value="">Select initiative</option>
+                        <option value="">Select partnership track or initiative</option>
+                        <option value="programme-partner">
+                          Programme Partner (Town Halls, Youth Chapters &amp; Scorecards)
+                        </option>
+                        <option value="content-commission">
+                          Content Commission — BNS Studios (Podcasts, Animations, Spotlights)
+                        </option>
+                        <option value="strategic-partnership">
+                          Strategic Partnership (Foundational Multi-Year Mission Support)
+                        </option>
+                        <option value="annual-retainer">
+                          Annual Retainer &amp; Embedded Grant Studio
+                        </option>
                         <option value="connect">
                           BNS Connect (Town Halls &amp; Legislative Dialogues)
                         </option>
                         <option value="mashinani">
-                          BNS Mashinani (Grassroots &amp; Ward Budget Audits)
+                          BNS Mashinani (47-County Grassroots Budget Audits)
                         </option>
                         <option value="wanahabari">
-                          BNS Wanahabari (Journalism Grants &amp; Fellowships)
-                        </option>
-                        <option value="studio">
-                          BNS Studio (Docuseries, Podcasts &amp; Explainers)
+                          Wanahabari Lab (Journalism Grants &amp; Training)
                         </option>
                         <option value="whistleblower">
                           Whistleblower Tip &amp; Document Submission
-                        </option>
-                        <option value="partnership">
-                          General Civic Partnership &amp; Research
                         </option>
                       </select>
                       <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-xs text-[#757575]">
@@ -335,16 +341,16 @@ export function ContactPage() {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-[#101010]/12">
             <div>
               <span className="font-mono text-xs uppercase tracking-wider text-[#757575] block mb-2">
-                // CIVIC COLLABORATION
+                // PARTNERSHIP FRAMEWORK
               </span>
               <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.05em] text-[#101010] uppercase leading-none">
-                Making Public Money Docuseries for You.
+                How to Partner With BNS.
               </h2>
             </div>
             <p className="font-sans text-xs sm:text-sm text-[#757575] max-w-sm leading-relaxed">
-              Everything needed to collaborate, investigate, or bring budget
-              literacy to your community. Protected under strict source
-              confidentiality.
+              We offer concrete, valuable partnerships tailored to what each
+              partner needs across civic programmes, impact content, and
+              foundational support.
             </p>
           </div>
 

@@ -7,63 +7,63 @@ export const SERVICES: Service[] = [
     aliases: ['connect'],
     number: '01',
     title: 'BNS Connect',
-    shortDescription: 'Convening citizens, youth advocates, and fiscal policymakers through high-impact town halls and public hearings.',
-    heroHeadline: 'Bridging the gap between the people and public budget makers.',
-    heroSubhead: 'We bring citizens and community leaders into direct dialogue with national and county budget committees to ensure public spending reflects real community needs.',
-    problem: 'Public participation in budgeting is too often treated as a rubber-stamp exercise, held in inaccessible venues with dense jargon that locks ordinary citizens out.',
-    solution: 'BNS Connect organizes dynamic, participatory town halls, legislative hearings, and youth forums that demystify fiscal choices and turn public feedback into actionable policy briefs.',
+    shortDescription: 'Co-designing budget literacy programmes, national youth town halls, scorecards, and statutory public hearings.',
+    heroHeadline: 'Public dialogue that bridges the gap between citizens and budget makers.',
+    heroSubhead: 'Facilitating structured, credible public participation under Constitution 2010 Articles 10 & 232 and the Public Finance Management Act to ensure public expenditure reflects citizen priorities.',
+    problem: 'Public participation is a constitutional obligation, but translating complex budget documents into formats citizens can engage with remains a persistent gap. Most budget publications are inaccessible to ordinary Kenyans, particularly the youth.',
+    solution: 'BNS Connect bridges the communication gap between fiscal policy and public understanding without compromising accuracy or institutional dignity, convening town halls at ward, sub-county, and county levels.',
     deliverables: [
       {
-        name: 'Town Hall Convenings & National Dialogues',
-        description: 'Large-scale citizen gatherings connecting community advocates with parliamentarians and treasury officials.'
+        name: 'Budget Town Halls',
+        description: 'Full-service public dialogue events at ward, sub-county, and county levels with moderation, documentation, and summary outputs.'
       },
       {
-        name: 'Citizen Participation in Legislative Hearings',
-        description: 'Mobilizing youth and civic groups to present formal petitions during statutory public hearing windows.'
+        name: 'Youth Budget Scorecards',
+        description: 'Systematic tracking of government commitments and actual expenditure against community priorities across all 47 counties.'
       },
       {
-        name: 'Multi-Stakeholder Fiscal Accountability Roundtables',
-        description: 'Targeted policy sessions bringing together civil society, academia, and state oversight institutions.'
+        name: 'Community Budget Surveys',
+        description: 'Rigorous evidence generation on citizen priorities, public perceptions, and service delivery realities for policy oversight.'
       },
       {
-        name: 'Youth & Civil Society Budget Forums',
-        description: 'Interactive civic workshops in universities and community hubs breaking down national spending priorities.'
+        name: 'Citizen Legislative Memoranda & Petitions',
+        description: 'Data-driven citizen submissions delivered directly to parliamentary and county assembly budget committees during statutory review windows.'
       },
       {
-        name: 'Policy Advocacy Briefs & Memoranda',
-        description: 'Data-driven citizen submissions delivered directly to parliamentary budget committees.'
+        name: 'Budget Explainer Content',
+        description: 'Free, publicly distributed translations of official budget documents, fiscal pressure points, and allocation matrices.'
       }
     ],
     workflow: [
       {
         step: '01',
         title: 'Issue Scoping & Community Audit',
-        detail: 'Identifying critical fiscal concerns directly from grassroots community networks.'
+        detail: 'Identifying critical fiscal concerns directly from grassroots community networks and statutory expenditure documents.'
       },
       {
         step: '02',
         title: 'Evidence Gathering & Analysis',
-        detail: 'Harmonizing community demands with official budget data and statutory ceilings.'
+        detail: 'Harmonizing community demands with official budget data, Controller of Budget reports, and statutory ceilings.'
       },
       {
         step: '03',
         title: 'Town Hall Dialogue Convening',
-        detail: 'Hosting structured public debates with policymakers broadcast live across media channels.'
+        detail: 'Hosting structured public debates with policymakers, broadcast live across digital media channels and community radio.'
       },
       {
         step: '04',
         title: 'Resolution Tracking & Legislative Follow-up',
-        detail: 'Tracking parliamentary committee commitments against subsequent budget appropriations.'
+        detail: 'Tracking parliamentary and county assembly committee commitments against subsequent budget appropriations and project delivery.'
       }
     ],
     faqs: [
       {
-        q: 'Who can attend BNS Connect town halls?',
-        a: 'All BNS Connect sessions are free and open to the public, youth advocates, community leaders, and civil society partners.'
+        q: 'Who is BNS Connect designed for?',
+        a: 'BNS Connect co-designs programmes with County Governments, National Government MDAs, bilateral funders, civic foundations, and youth networks across Kenya.'
       },
       {
-        q: 'How do town hall resolutions reach Parliament?',
-        a: 'We synthesize citizen testimonies and data into formal memoranda submitted directly to Parliamentary Committee Clerks during statutory review periods.'
+        q: 'How does BNS Connect satisfy statutory public participation mandates?',
+        a: 'We build a documented evidence base of citizen engagement that satisfies oversight and audit requirements under the PFM Act and Constitution 2010 Articles 10 & 232.'
       }
     ],
     image: '/images/bns/towwnhallmay/129A3912.jpg'
@@ -74,63 +74,63 @@ export const SERVICES: Service[] = [
     aliases: ['mashinani'],
     number: '02',
     title: 'BNS Mashinani',
-    shortDescription: 'Taking budget literacy directly to the grassroots, informal settlements, and county communities.',
-    heroHeadline: 'Budget literacy where it matters most: at the grassroots.',
-    heroSubhead: 'We translate national and county fiscal decisions into community barazas, ward-level project audits, and citizen expenditure tracking.',
-    problem: 'Devolution promised resources at the grassroots, but lack of access to ward-level financial data leaves citizens unable to track local project deliveries.',
-    solution: 'BNS Mashinani deploys field facilitators and simplified ward budget maps to equip communities to monitor dispensaries, local roads, and water kiosks.',
+    shortDescription: 'Grassroots budget organizing, community listening sessions, and ward-level expenditure tracking across all 47 counties.',
+    heroHeadline: 'Taking budget literacy directly to the grassroots across all 47 counties.',
+    heroSubhead: 'Translating county Annual Development Plans, ward budgets, and devolved funds into community barazas and citizen monitoring scorecards.',
+    problem: 'Devolution promised resources at the grassroots, but lack of access to ward-level financial data leaves citizens unable to track local project deliveries. Youth aged 18–35 make up over a third of Kenya’s population but hold little de facto influence over public expenditure.',
+    solution: 'BNS Mashinani deploys field facilitators and simplified ward budget maps to equip communities to monitor dispensaries, local roads, and water kiosks, channeling civic energy into structured accountability.',
     deliverables: [
       {
-        name: 'Grassroots Civic Education & Budget Literacy',
-        description: 'Community-based training on how county budgets are collected, allocated, and spent.'
+        name: 'Community Listening Sessions',
+        description: 'Participatory sessions with consent management, documentation, and storytelling outputs capturing grassroots voice.'
       },
       {
         name: 'County-Level Budget Tracking & Citizen Monitoring',
-        description: 'Practical toolkits for residents to inspect public project implementation in their wards.'
+        description: 'Practical toolkits for residents to inspect public project implementation and capital expenditure in their wards.'
       },
       {
-        name: 'Community Listening Tours & Ward Surveys',
-        description: 'Documenting lived realities and public service delivery gaps in rural wards and informal settlements.'
+        name: 'Ward-Level Project Ground Scorecards',
+        description: 'Comparing budgetary allocations with physical ground reality for dispensaries, rural access roads, and water kiosks.'
       },
       {
         name: 'Vernacular Budget Breakdowns & Local Barazas',
-        description: 'Accessible civic materials translated into everyday languages and community dialogue formats.'
+        description: 'Accessible civic materials translated into everyday languages and community dialogue formats that demystify fiscal choices.'
       },
       {
         name: 'Devolved Funds Oversight & Social Audits',
-        description: 'Collaborative citizen audits tracking Ward Development Funds and County Health allocations.'
+        description: 'Collaborative citizen audits tracking Ward Development Funds, NG-CDF, and county health and education allocations.'
       }
     ],
     workflow: [
       {
         step: '01',
         title: 'Community Mapping & Entry',
-        detail: 'Connecting with local youth champions, women\'s groups, and resident associations in target wards.'
+        detail: 'Connecting with local youth champions, women\'s groups, and resident associations across target county wards.'
       },
       {
         step: '02',
         title: 'Ward Budget Deconstruction',
-        detail: 'Extracting approved ward projects and capital budget figures from county financial statements.'
+        detail: 'Extracting approved ward projects and capital budget figures from county Annual Development Plans (ADPs).'
       },
       {
         step: '03',
         title: 'Groundwork Social Audit',
-        detail: 'Community volunteers visit project sites to compare budgetary allocations with physical ground reality.'
+        detail: 'Community volunteers visit project sites to compare budgetary allocations with physical ground delivery.'
       },
       {
         step: '04',
         title: 'Community Scorecard Presentation',
-        detail: 'Presenting community findings to Ward Administrators and County Assembly members for action.'
+        detail: 'Presenting community findings to Ward Administrators, MCAs, and County Assembly budget committees for action.'
       }
     ],
     faqs: [
       {
-        q: 'Which counties does BNS Mashinani operate in?',
-        a: 'We have run field groundworks across Nairobi, Kisumu, Mombasa, Nakuru, and are continuously expanding our county network.'
+        q: 'How many Kenyans has BNS Mashinani engaged?',
+        a: 'Since inception, BNS has engaged 50,000+ young Kenyans across all 47 counties through surveys, town halls, digital storytelling, and community dialogues, scaling beyond 200,000.'
       },
       {
-        q: 'How can a community request a BNS Mashinani workshop?',
-        a: 'Community leaders and youth groups can reach out via our contact page to request field toolkits and facilitators.'
+        q: 'How does BNS Mashinani assist county governments?',
+        a: 'We assist county governments in translating Annual Development Plans into accessible public formats, designing participatory budget sessions aligned with Open Government Partnership (OGP) commitments.'
       }
     ],
     image: '/images/bns/cohort1 groundworks/129A3964.jpg'
@@ -141,63 +141,63 @@ export const SERVICES: Service[] = [
     aliases: ['wanahabari-lab', 'wanahabari'],
     number: '03',
     title: 'Wanahabari Lab',
-    shortDescription: 'Empowering journalists, community media, and storytellers with data tools and investigative reporting grants.',
-    heroHeadline: 'Investigative public finance journalism that demands answers.',
-    heroSubhead: 'We train and resource media practitioners to uncover procurement irregularities, follow public money trails, and report with data rigor.',
-    problem: 'Public finance stories are frequently covered with sensational political quotes rather than forensic data analysis, leaving citizens uninformed about actual spending.',
-    solution: 'BNS Wanahabari provides investigative data toolkits, expert mentoring, and reporting grants that enable newsrooms and community radio to produce impactful public interest journalism.',
+    shortDescription: 'Supporting journalists and digital storytellers with quarterly capacity building, data toolkits, and public finance fellowships.',
+    heroHeadline: 'Empowering media and storytellers to report accurately on public finance.',
+    heroSubhead: 'Bridging the gap between technical fiscal research and impactful news reporting through fellowships, data forensics, and investigative grants.',
+    problem: 'Peer organisations, media houses, and journalists routinely encounter impenetrable budget documents, leading to superficial coverage rather than forensic accountability of public spending.',
+    solution: 'Wanahabari Lab offers quarterly capacity building, investigative data toolkits, and production grants to help Kenyan journalists and digital storytellers report accurately and effectively on public finance.',
     deliverables: [
+      {
+        name: 'Quarterly Capacity Building Training',
+        description: 'Comprehensive quarterly training for Kenyan journalists and digital storytellers to report accurately on public finance and debt.'
+      },
       {
         name: 'Data Journalism Fellowships & Mentorship',
         description: 'Structured training programs pairing reporters with leading fiscal policy analysts and data engineers.'
       },
       {
         name: 'Investigative Public Finance Reporting Grants',
-        description: 'Direct production grants enabling journalists to investigate sovereign debt and public contracts.'
+        description: 'Direct production grants enabling journalists to investigate sovereign debt, public contracts, and procurement red flags.'
       },
       {
-        name: 'Budget Analysis Workshops & Data Toolkits',
-        description: 'Hands-on practical guides for interrogating Controller of Budget reports and procurement portals.'
+        name: 'Budget Analysis Toolkits & Guides',
+        description: 'Hands-on practical guides for interrogating Controller of Budget reports, Treasury releases, and procurement portals.'
       },
       {
-        name: 'Community Radio Syndication & Newsroom Partnerships',
+        name: 'Community Radio & Vernacular Syndication',
         description: 'Syndicating audio explainers and budget stories across regional and vernacular broadcast networks.'
-      },
-      {
-        name: 'Fiscal Transparency & Procurement Investigations',
-        description: 'Collaborative cross-newsroom investigations probing public expenditure and contract execution.'
       }
     ],
     workflow: [
       {
         step: '01',
         title: 'Call for Investigative Proposals',
-        detail: 'Inviting journalists to pitch high-impact public finance and procurement stories.'
+        detail: 'Inviting journalists and content creators to pitch high-impact public finance and procurement stories.'
       },
       {
         step: '02',
         title: 'Data & Legal Mentorship',
-        detail: 'Pairing fellows with data scientists and public procurement lawyers to verify documents.'
+        detail: 'Pairing fellows with data scientists and public procurement lawyers to verify documents and fiscal data.'
       },
       {
         step: '03',
         title: 'Field Investigation & Reporting',
-        detail: 'Supporting on-the-ground reporting, whistleblowing verification, and official inquiries.'
+        detail: 'Supporting on-the-ground reporting, whistleblowing verification, and official inquiries with statutory institutions.'
       },
       {
         step: '04',
         title: 'Multi-Platform Syndication',
-        detail: 'Publishing investigations across national television, digital news portals, and community radio.'
+        detail: 'Publishing investigations across national television, digital news portals, and community radio networks.'
       }
     ],
     faqs: [
       {
-        q: 'Who is eligible for BNS Wanahabari fellowships?',
-        a: 'Practicing journalists, freelance investigative reporters, and community radio producers across East Africa are eligible.'
+        q: 'Who is eligible for Wanahabari Lab training and grants?',
+        a: 'Kenyan journalists, freelance investigative reporters, digital storytellers, and community radio broadcasters are eligible.'
       },
       {
-        q: 'Are the training materials open-source?',
-        a: 'Yes, our budget journalism guides and data toolkits are published under open licenses for free public use.'
+        q: 'How often are Wanahabari Lab training sessions held?',
+        a: 'We conduct quarterly capacity building workshops on public finance literacy, data analysis, and investigative budget reporting.'
       }
     ],
     image: '/images/bns/media/129A4039.jpg'
@@ -208,63 +208,67 @@ export const SERVICES: Service[] = [
     aliases: ['studios', 'bns-studios'],
     number: '04',
     title: 'BNS Studios',
-    shortDescription: 'Our creative multimedia hub producing viral video explainers, animated reels, podcasts, and infographics.',
-    heroHeadline: 'Making national budget numbers impossible to ignore.',
-    heroSubhead: 'We combine data journalism with viral creative storytelling to transform intimidating fiscal figures into engaging digital media.',
-    problem: 'Budget reports and economic policy documents are notoriously dry, dense, and unengaging, preventing mass civic awareness.',
-    solution: 'BNS Studio produces broadcast-quality motion graphics, fast-paced TikTok/Instagram reels, and insightful podcasts that make public finance relatable to millions.',
+    shortDescription: 'Impact content studio producing podcasts, animations, research spotlights, and multi-platform social campaigns for partners.',
+    heroHeadline: 'Your research, your institution, and your work. We make it land.',
+    heroSubhead: 'BNS Studios translates complex institutional outputs into creative storytelling products that real audiences engage with, channeling at least 40% of profits back to BNS Foundation.',
+    problem: 'Organisations investing in Kenya\'s governance, health, education, and development routinely produce high-quality technical reports that never travel beyond the impact report, leaving public understanding and demand persistently low.',
+    solution: 'BNS Studios fills that gap: we translate institutional research into podcasts, animations, research spotlights, and social campaigns that satisfy ESG and double impact criteria while cross-subsidising youth civic engagement.',
     deliverables: [
       {
-        name: 'Viral Short-Form Explainer Reels & Campaigns',
-        description: 'Bite-sized vertical videos optimized for TikTok, Instagram, and WhatsApp civic distribution.'
+        name: 'Podcast & Audio Production',
+        description: 'Research-informed episodes, expert interviews, and public voice distributed on Spotify, Apple Podcasts, WhatsApp, and YouTube (Starting Rate: USD 3,500/ep).'
       },
       {
-        name: 'Civic Podcasts & Expert Dialogue Broadcasts',
-        description: 'In-depth audio interviews interrogating macroeconomic shifts and government spending choices.'
+        name: 'Short Animations & Explainers',
+        description: '60–90 second animated explainers translating one key finding or issue for social distribution (Starting Rate: USD 2,000/video).'
       },
       {
-        name: 'Interactive Infographics & Fiscal Data Visualizations',
-        description: 'Clear, shareable visual charts that illustrate where public tax money goes.'
+        name: 'Research Spotlights (Documentary)',
+        description: '8–10 minute institutional video profiles featuring researchers, data, and BNS narrative (USD 8,000–15,000).'
       },
       {
-        name: 'National Budget Day Live Analysis & Coverage',
-        description: 'Real-time broadcast fact-checking during the National Treasury\'s annual budget speech.'
+        name: 'Multi-Platform Social Media Series',
+        description: 'Targeted campaigns across threads, reels, carousels, and quote cards over 4–6 weeks (USD 5,000–8,000).'
       },
       {
-        name: 'Creative Digital Storytelling & Youth Outreach',
-        description: 'Engaging animations explaining sovereign debt, affirmative funds, and public welfare.'
+        name: 'Town Hall Design & Facilitation',
+        description: 'Full-service public dialogue: design, moderation, documentation, and summary outputs (USD 4,000–7,000).'
+      },
+      {
+        name: 'Annual Retainers & Embedded Studio',
+        description: 'Embedded as a \'Content & Engagement Studio\' budget line in partner grant applications from inception.'
       }
     ],
     workflow: [
       {
         step: '01',
         title: 'Story Ideation & Angle Identification',
-        detail: 'Translating newly released public data into high-relevance everyday civic angles.'
+        detail: 'Translating institutional research outputs and public data into high-relevance everyday civic angles.'
       },
       {
         step: '02',
         title: 'Data Verification & Scripting',
-        detail: 'Drafting snappy scripts with 100% verified numbers vetted by our research desk.'
+        detail: 'Drafting snappy scripts with 100% verified numbers vetted by our research desk and external economists.'
       },
       {
         step: '03',
         title: 'Production, Motion Design & Edit',
-        detail: 'Filming in the studio, animating infographics, and editing high-retention video sequences.'
+        detail: 'Studio filming, animation production, motion infographic design, and high-retention video editing.'
       },
       {
         step: '04',
         title: 'Distribution & Community Engagement',
-        detail: 'Launching coordinated digital rollouts and engaging directly with audience questions.'
+        detail: 'Executing coordinated digital rollouts across YouTube, TikTok, Instagram, and community networks.'
       }
     ],
     faqs: [
       {
-        q: 'Where can I watch BNS Studio productions?',
-        a: 'Our productions are published on YouTube (@budgetndiostory), TikTok, Instagram, X, and our official platform.'
+        q: 'How does the BNS Studios cross-subsidisation model work?',
+        a: 'BNS operates through a two-entity model: BNS Studios channels a minimum of 40% of profits back to BNS Foundation annually, directly sustaining youth civic engagement and budget literacy across Kenya.'
       },
       {
-        q: 'Can external organizations commission or co-produce content?',
-        a: 'We collaborate with civic partners, universities, and public interest entities on aligned transparency campaigns.'
+        q: 'Can external organisations embed BNS Studios in grant applications?',
+        a: 'Yes. For organisations with ongoing communications needs, BNS Studios offers annual content retainers and can be embedded as a \'Content & Engagement Studio\' budget line in your grant applications.'
       }
     ],
     image: '/images/bns/studio/studio_cinema_cam.jpg',

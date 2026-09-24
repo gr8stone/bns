@@ -3,9 +3,9 @@ import type { ProcessStep } from '../types';
 export const PROCESS_STEPS: ProcessStep[] = [
   {
     number: '01',
-    title: 'Public Data Ingestion & Audit',
+    title: 'Public Data Ingestion & Statutory Audit',
     subtitle: 'Extracting and verifying official Treasury, COB, and Parliamentary records.',
-    description: 'We ingest statutory budget estimates, auditor reports, and public debt prospectuses, auditing allocations against previous fiscal performance and constitutional thresholds.',
+    description: 'We ingest statutory budget estimates, auditor reports, and public debt prospectuses, auditing allocations against previous fiscal performance under Constitution 2010 Articles 10 & 232 and the PFM Act 2015.',
     deliverables: [
       'Statutory Data Audit Checklist',
       'Fiscal Discrepancy Matrix',
@@ -27,9 +27,9 @@ export const PROCESS_STEPS: ProcessStep[] = [
   },
   {
     number: '03',
-    title: 'Grassroots Groundwork & Barazas',
+    title: 'Grassroots Groundwork & Community Listening',
     subtitle: 'Connecting fiscal policies directly to citizen realities in informal settlements and counties.',
-    description: 'BNS Mashinani field teams host community listening tours and localized barazas, documenting the real-world impact of healthcare deficits, stalled school facilities, and water projects.',
+    description: 'BNS Mashinani field teams host community listening sessions with rigorous consent management, documenting the real-world impact of healthcare deficits, stalled school facilities, and water projects.',
     deliverables: [
       'Community Lived Experience Testimonies',
       'Ward-Level Project Ground Scorecards',
@@ -51,36 +51,38 @@ export const PROCESS_STEPS: ProcessStep[] = [
   },
   {
     number: '05',
-    title: 'Multimedia Production & Animation',
-    subtitle: 'Crafting high-impact explainer reels, podcasts, and data visualizations in BNS Studio.',
-    description: 'Our creative lab produces 2D animations, host-led investigative video explainers, motion data charts, and audio podcast episodes calibrated for maximum digital engagement.',
+    title: 'Multimedia Production & Animation in BNS Studios',
+    subtitle: 'Crafting high-impact explainer reels, podcasts, and research spotlights.',
+    description: 'BNS Studios produces 60–90s 2D animated explainers, 8–10 min research spotlight documentaries, audio podcasts, and multi-platform social media series calibrated for maximum civic engagement.',
     deliverables: [
       'Studio Production Master Footage',
-      'Dynamic Motion Graphics & Infographics',
-      'Multi-Format Video Cuts (16:9 & 9:16)'
+      '60–90s Animated Video Explainers',
+      'Research Spotlight Documentaries',
+      'Podcast Episodes & Audio Masters'
     ],
     duration: '5–7 Days'
   },
   {
     number: '06',
-    title: 'Fact-Checking & Expert Review',
+    title: 'Fact-Checking & Non-Partisan Editorial Review',
     subtitle: 'Rigorous data verification to maintain absolute credibility and truth.',
-    description: 'Before any episode or graphic is published, our data desk and external fiscal advisors conduct strict source-checking, ensuring every number traces to verifiable public documents.',
+    description: 'Before any episode or graphic is published, our data desk and external fiscal advisors conduct strict source-checking under our non-partisan Editorial Policy, ensuring every number traces to verifiable public documents.',
     deliverables: [
       'Verification Sign-off Dossier',
       'Source Citation Appendix',
-      'Legal Clearance Note'
+      'Editorial Clearance Note'
     ],
     duration: '2–3 Days'
   },
   {
     number: '07',
-    title: 'Distribution, Town Halls & Advocacy',
+    title: 'Distribution, Town Halls & Policy Advocacy',
     subtitle: 'Amplifying findings across digital media, community radio, and parliamentary hearings.',
-    description: 'We release the findings through coordinated YouTube episodes, viral TikTok/WhatsApp campaigns, town hall dialogues (BNS Connect), and formal petitions to Parliamentary oversight committees.',
+    description: 'We release findings through coordinated multi-platform campaigns, community radio syndication, BNS Connect town halls at ward/sub-county/county level, and formal citizen petitions to parliamentary committees.',
     deliverables: [
-      'YouTube & Social Media Campaign Rollout',
+      'Multi-Platform Campaign Rollout',
       'Community Radio Audio Syndication',
+      'Town Hall Dialogue Outputs',
       'Citizen Petition & Policy Memo to Parliament'
     ],
     duration: 'Ongoing'
