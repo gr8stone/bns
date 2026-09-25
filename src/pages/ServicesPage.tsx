@@ -35,8 +35,8 @@ export function ServicesPage() {
               transition={{ duration: 0.36, ease: [0.22, 1, 0.36, 1] }}
               className="flex items-center gap-2 mb-4"
             >
-              <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
-              <span className="font-mono text-xs uppercase tracking-wider text-[#101010] font-medium">
+              <span className="w-1.5 h-1.5 bg-[#2446EC] inline-block" />
+              <span className="font-mono text-xs uppercase tracking-wider text-[#2446EC] font-semibold">
                 CIVIC ACTION FRAMEWORK // 3 STRATEGIC PROGRAMMES
               </span>
             </motion.div>
@@ -50,7 +50,7 @@ export function ServicesPage() {
               }}
               className="font-display text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-[-0.06em] text-[#101010] uppercase leading-[0.94]"
             >
-              OUR THREE PROGRAMMES.
+              Our three <span className="text-[#2446EC]">programmes.</span>
             </motion.h1>
           </div>
 
@@ -177,7 +177,7 @@ export function ServicesPage() {
                       loading="lazy"
                       className="w-full h-full object-cover filter grayscale contrast-125 transition-transform duration-700 ease-out group-hover:scale-[1.025]"
                     />
-                    <div className="absolute top-3 left-3 px-2.5 py-1 bg-[#101010] text-white font-mono text-xs font-semibold">
+                    <div className="absolute top-3 left-3 px-2.5 py-1 bg-[#2446EC] text-white font-mono text-xs font-semibold rounded-none">
                       PILLAR {prog.number}
                     </div>
                   </div>
@@ -185,12 +185,12 @@ export function ServicesPage() {
                   {/* Card Content */}
                   <div className="p-6 sm:p-8 space-y-4">
                     <div className="flex items-baseline justify-between gap-4">
-                      <h3 className="font-display text-2xl sm:text-3xl font-semibold uppercase tracking-tight text-[#101010]">
+                      <h3 className="font-display text-2xl sm:text-3xl font-semibold uppercase tracking-tight text-[#101010] group-hover:text-[#2446EC] transition-colors">
                         {prog.title}
                       </h3>
                       <Link
                         to={`/programmes/${prog.slug}`}
-                        className="text-xs font-mono uppercase tracking-wider text-[#101010] inline-flex items-center gap-1 group-hover:underline"
+                        className="text-xs font-mono uppercase tracking-wider text-[#101010] inline-flex items-center gap-1 group-hover:text-[#2446EC] group-hover:underline"
                       >
                         <span>Details</span>
                         <ArrowUpRight className="w-3.5 h-3.5" />
@@ -211,7 +211,7 @@ export function ServicesPage() {
                 <div className="p-6 sm:p-8 pt-0">
                   <Link
                     to={`/programmes/${prog.slug}`}
-                    className="w-full py-3.5 px-4 border border-[#101010] text-[#101010] hover:bg-[#101010] hover:text-white transition-colors duration-200 text-xs font-mono uppercase tracking-wider flex items-center justify-between"
+                    className="w-full py-3.5 px-4 border border-[#101010] text-[#101010] hover:bg-[#2446EC] hover:text-white hover:border-[#2446EC] transition-colors duration-200 text-xs font-mono uppercase tracking-wider flex items-center justify-between rounded-none"
                   >
                     <span>EXPLORE {prog.title}</span>
                     <ArrowRight className="w-3.5 h-3.5" />

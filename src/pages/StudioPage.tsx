@@ -30,8 +30,8 @@ export function StudioPage() {
               transition={{ duration: 0.36, ease: [0.22, 1, 0.36, 1] }}
               className="flex items-center gap-2 mb-4"
             >
-              <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
-              <span className="font-mono text-xs uppercase tracking-wider text-[#101010] font-medium">
+              <span className="w-1.5 h-1.5 bg-[#2446EC] inline-block" />
+              <span className="font-mono text-xs uppercase tracking-wider text-[#2446EC] font-semibold">
                 IMPACT CONTENT STUDIO // TWO-ENTITY MODEL
               </span>
             </motion.div>
@@ -46,7 +46,7 @@ export function StudioPage() {
               }}
               className="font-display text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-[-0.06em] text-[#101010] uppercase leading-[0.92]"
             >
-              WE TRANSLATE EVIDENCE INTO CULTURE THAT COMPELS ACTION.
+              We translate evidence into culture that <span className="text-[#2446EC]">compels action.</span>
             </motion.h1>
           </div>
 
@@ -71,7 +71,7 @@ export function StudioPage() {
             <div className="pt-2 flex flex-wrap gap-3">
               <Link
                 to={ROUTES.contact}
-                className="inline-flex items-center gap-2 px-5 py-3 bg-[#101010] text-white hover:bg-[#4E58AA] transition-colors font-mono text-xs uppercase tracking-wider"
+                className="inline-flex items-center gap-2 px-5 py-3 bg-[#2446EC] text-white hover:bg-[#101010] transition-colors font-mono text-xs uppercase tracking-wider rounded-none"
               >
                 <span>Commission Brief</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -79,7 +79,7 @@ export function StudioPage() {
               <a
                 href="/docs/BNS_Partnership_Prospectus_2026.pdf"
                 download="BNS_Partnership_Prospectus_2026.pdf"
-                className="inline-flex items-center gap-2 px-4 py-3 border border-[#101010]/20 text-[#101010] hover:border-[#101010] transition-colors font-mono text-xs uppercase tracking-wider"
+                className="inline-flex items-center gap-2 px-4 py-3 border border-[#101010]/20 text-[#101010] hover:border-[#101010] hover:bg-ivory transition-colors font-mono text-xs uppercase tracking-wider rounded-none"
               >
                 <FileDown className="w-3.5 h-3.5" />
                 <span>PDF Prospectus</span>
@@ -132,19 +132,19 @@ export function StudioPage() {
               <div className="pt-4 border-t border-[#101010]/12 space-y-2 font-mono text-xs text-[#101010]">
                 <div className="flex items-center justify-between py-1 border-b border-[#101010]/06">
                   <span>01 // RESEARCH CINEMATOGRAPHY</span>
-                  <span className="text-[#4E58AA]">4K DCI</span>
+                  <span className="text-[#2446EC] font-semibold">4K DCI</span>
                 </div>
                 <div className="flex items-center justify-between py-1 border-b border-[#101010]/06">
                   <span>02 // PROCEDURAL 2D/3D EXPLAINERS</span>
-                  <span className="text-[#4E58AA]">9:16 + 16:9</span>
+                  <span className="text-[#2446EC] font-semibold">9:16 + 16:9</span>
                 </div>
                 <div className="flex items-center justify-between py-1 border-b border-[#101010]/06">
                   <span>03 // BROADCAST AUDIO &amp; PODCASTS</span>
-                  <span className="text-[#4E58AA]">STUDIO + FIELD</span>
+                  <span className="text-[#2446EC] font-semibold">STUDIO + FIELD</span>
                 </div>
                 <div className="flex items-center justify-between py-1">
                   <span>04 // STATUTORY TOWN HALL HEARINGS</span>
-                  <span className="text-[#4E58AA]">47 COUNTIES</span>
+                  <span className="text-[#2446EC] font-semibold">47 COUNTIES</span>
                 </div>
               </div>
             </div>
@@ -476,13 +476,13 @@ export function StudioPage() {
           <div className="flex flex-wrap items-center gap-3">
             <Link
               to={ROUTES.contact}
-              className="solum-btn px-7 py-3.5 bg-[#101010] text-white border border-[#101010] font-mono text-xs uppercase tracking-wider hover:bg-white hover:text-[#101010] transition-colors"
+              className="px-7 py-3.5 bg-[#2446EC] text-white border border-[#2446EC] font-mono text-xs uppercase tracking-wider hover:bg-[#101010] hover:border-[#101010] transition-colors rounded-none font-medium"
             >
               Write to Production Desk &rarr;
             </Link>
             <Link
               to={ROUTES.faq}
-              className="px-6 py-3.5 border border-[#101010]/20 text-[#101010] font-mono text-xs uppercase tracking-wider hover:border-[#101010] transition-colors"
+              className="px-6 py-3.5 border border-[#101010]/20 text-[#101010] font-mono text-xs uppercase tracking-wider hover:border-[#101010] hover:bg-ivory transition-colors rounded-none font-medium"
             >
               Help &amp; FAQ &rarr;
             </Link>

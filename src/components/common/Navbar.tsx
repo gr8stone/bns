@@ -49,7 +49,7 @@ export function Navbar() {
             {/* Left: Brand Wordmark */}
             <Link
               to={ROUTES.home}
-              className="flex items-center gap-2.5 font-sans font-bold text-sm md:text-base tracking-[-0.04em] uppercase text-text-base hover:text-terracotta transition-colors"
+              className="flex items-center gap-2.5 font-sans font-bold text-sm md:text-base tracking-[-0.04em] uppercase text-text-base hover:text-[#2446EC] transition-colors"
             >
               <img
                 src="/images/bns/logo.svg"
@@ -57,7 +57,7 @@ export function Navbar() {
                 className="w-6 h-6 object-contain"
               />
               <span className="tracking-tight font-extrabold">BUDGET NDIO STORY</span>
-              <span className="hidden sm:inline-block font-mono text-[10px] tracking-widest text-terracotta border border-terracotta/30 px-1.5 py-0.5 ml-1 bg-coral/5">
+              <span className="hidden sm:inline-block font-mono text-[10px] tracking-widest text-[#2446EC] border border-[#2446EC]/30 px-1.5 py-0.5 ml-1 bg-[#2446EC]/5">
                 REPORT 2026
               </span>
             </Link>
@@ -72,7 +72,7 @@ export function Navbar() {
                     to={item.href}
                     className={`font-mono text-xs uppercase tracking-wider transition-colors duration-150 py-1 border-b ${
                       isActive
-                        ? "text-terracotta border-terracotta font-semibold"
+                        ? "text-[#2446EC] border-[#2446EC] font-semibold"
                         : "text-text-muted border-transparent hover:text-text-base hover:border-black/20"
                     }`}
                   >
@@ -86,9 +86,15 @@ export function Navbar() {
             <div className="flex items-center gap-3">
               <Link
                 to={ROUTES.contact}
-                className="hidden sm:inline-flex items-center font-mono text-xs uppercase tracking-wider px-4 py-2 bg-text-base text-white hover:bg-terracotta transition-colors border border-text-base rounded-none"
+                className="hidden sm:inline-flex items-center gap-2.5 font-mono text-xs uppercase tracking-wider pl-4 pr-3 py-2 bg-[#2446EC] text-white hover:bg-[#101010] transition-colors rounded-none font-medium group border-0"
               >
                 <span>Get Involved</span>
+                <span className="font-mono text-[10px] bg-white/20 text-white px-1.5 py-0.5 rounded-none leading-none">
+                  03
+                </span>
+                <span className="text-sm leading-none transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                  &nearr;
+                </span>
               </Link>
 
               <button

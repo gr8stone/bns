@@ -56,14 +56,14 @@ export function SolumHero() {
       {/* ========================================================= */}
       {/* 1) TOP MARQUEE TICKER (Macrostructure: Marquee Hero)      */}
       {/* ========================================================= */}
-      <div className="w-full border-b border-black/[0.08] bg-coral/5 overflow-hidden py-2.5">
+      <div className="w-full border-b border-black/[0.08] bg-[#2446EC]/5 overflow-hidden py-2.5">
         <div className="flex whitespace-nowrap animate-marquee">
           {[...tickerItems, ...tickerItems, ...tickerItems].map((item, idx) => (
             <div key={idx} className="flex items-center gap-4 mx-4">
-              <span className="font-mono text-[11px] uppercase tracking-widest text-terracotta font-medium">
+              <span className="font-mono text-[11px] uppercase tracking-widest text-[#2446EC] font-medium">
                 {item}
               </span>
-              <span className="w-1.5 h-1.5 bg-coral inline-block" />
+              <span className="w-1.5 h-1.5 bg-[#2446EC] inline-block" />
             </div>
           ))}
         </div>
@@ -83,11 +83,11 @@ export function SolumHero() {
 
         {/* Hero Header Area */}
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end mb-12 lg:mb-16">
-          {/* Left: Giant Typography Ramp (h1: 120px, leading: 0.95, -7.2px) */}
+          {/* Left: Giant Typography Ramp */}
           <div className="lg:col-span-8">
             <div className="flex items-center gap-2 mb-4">
-              <span className="w-2 h-2 bg-coral inline-block" />
-              <span className="font-mono text-[11px] uppercase tracking-wider text-terracotta font-semibold">
+              <span className="w-2 h-2 bg-[#2446EC] inline-block" />
+              <span className="font-mono text-[11px] uppercase tracking-wider text-[#2446EC] font-semibold">
                 BNS FOUNDATION • BNS STUDIOS
               </span>
               <span className="text-slate font-mono text-[11px]">&bull;</span>
@@ -100,9 +100,10 @@ export function SolumHero() {
               initial={shouldReduceMotion ? false : { opacity: 0.5, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display text-[clamp(44px,8vw,116px)] font-medium leading-[0.93] tracking-[-0.06em] text-text-base uppercase"
+              className="font-display text-[clamp(44px,7.5vw,112px)] font-medium leading-[0.93] tracking-[-0.06em] text-text-base"
             >
-              Budget Ndio Story<span className="text-coral">&reg;</span>
+              Follow the budget.{" "}
+              <span className="text-[#2446EC] block sm:inline">Find the story.</span>
             </motion.h1>
 
             <motion.p
@@ -115,7 +116,7 @@ export function SolumHero() {
               }}
               className="font-display text-lg sm:text-xl md:text-[24px] font-medium leading-[1.3] tracking-[-0.04em] text-text-base mt-5 max-w-2xl"
             >
-              A platform for budget literacy, civic accountability & impact storytelling. Making Kenya's public budgets readable, relatable, and responsive.
+              A platform for budget literacy, civic accountability & impact storytelling. Making Kenya&apos;s public budgets readable, relatable, and responsive.
             </motion.p>
           </div>
 
@@ -128,9 +129,12 @@ export function SolumHero() {
             <div className="flex flex-wrap items-center gap-3">
               <Link
                 to={ROUTES.contact}
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-text-base text-white hover:bg-terracotta transition-colors font-mono text-xs uppercase tracking-wider rounded-none group"
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-[#2446EC] text-white hover:bg-[#101010] transition-colors font-mono text-xs uppercase tracking-wider rounded-none group border-0"
               >
                 <span>GET INVOLVED</span>
+                <span className="font-mono text-[10px] bg-white/20 text-white px-1.5 py-0.5 rounded-none leading-none">
+                  03
+                </span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
               </Link>
               <Link
@@ -172,7 +176,7 @@ export function SolumHero() {
                 <button
                   onClick={() => setIsPlayingVideo(true)}
                   aria-label="Play documentary reel"
-                  className="absolute bottom-5 left-5 z-20 flex items-center gap-3 px-4 py-2.5 bg-white text-text-base hover:bg-coral hover:text-white transition-colors border border-black/10 rounded-none shadow-sm cursor-pointer group/btn"
+                  className="absolute bottom-5 left-5 z-20 flex items-center gap-3 px-4 py-2.5 bg-white text-text-base hover:bg-[#2446EC] hover:text-white transition-colors border border-black/10 rounded-none shadow-sm cursor-pointer group/btn"
                 >
                   <Play className="w-3.5 h-3.5 fill-current" />
                   <span className="font-mono text-xs font-semibold uppercase tracking-wider">
@@ -181,7 +185,7 @@ export function SolumHero() {
                 </button>
 
                 {/* Saturated Color Tag */}
-                <div className="absolute top-4 right-4 z-20 bg-terracotta text-white font-mono text-[10px] uppercase tracking-widest px-2.5 py-1">
+                <div className="absolute top-4 right-4 z-20 bg-[#2446EC] text-white font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-none">
                   LIVE DOC
                 </div>
               </>
@@ -190,10 +194,10 @@ export function SolumHero() {
 
           {/* Right Column Bento Collage Cards */}
           <div className="md:col-span-5 lg:col-span-4 flex flex-col gap-4 sm:gap-6">
-            {/* Card 1: Saturated Terracotta & Coral Metric Tile */}
+            {/* Card 1: Electric Blue Metric Tile */}
             <div className="p-6 sm:p-7 border border-black/[0.08] bg-[#FAFAF8] relative overflow-hidden flex flex-col justify-between">
               {/* Corner Color Accent Stripe */}
-              <div className="absolute top-0 right-0 w-24 h-1 bg-gradient-to-r from-coral to-terracotta" />
+              <div className="absolute top-0 right-0 w-24 h-1 bg-[#2446EC]" />
 
               <div>
                 <span className="font-mono text-[10px] uppercase tracking-widest text-slate block mb-2">
@@ -209,10 +213,10 @@ export function SolumHero() {
 
               <Link
                 to={ROUTES.projects}
-                className="pt-4 mt-4 border-t border-black/[0.08] flex items-center justify-between text-xs font-mono text-terracotta font-medium hover:underline"
+                className="pt-4 mt-4 border-t border-black/[0.08] flex items-center justify-between text-xs font-mono text-[#2446EC] font-medium hover:underline"
               >
                 <span>OPEN DATA ARCHIVE</span>
-                <span className="text-coral">&rarr;</span>
+                <span className="text-[#2446EC]">&rarr;</span>
               </Link>
             </div>
 
@@ -220,10 +224,10 @@ export function SolumHero() {
             <div className="p-6 sm:p-7 border border-black/[0.08] bg-white flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-sage font-medium">
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#2446EC] font-medium">
                     YOUTH CONSTITUENCY
                   </span>
-                  <span className="w-2 h-2 bg-sage rounded-full animate-pulse" />
+                  <span className="w-2 h-2 bg-[#2446EC] rounded-none animate-pulse" />
                 </div>
 
                 <div className="flex -space-x-2 overflow-hidden mb-3">

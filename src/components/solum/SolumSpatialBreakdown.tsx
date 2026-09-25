@@ -176,7 +176,7 @@ export function SolumSpatialBreakdown() {
                     scale: cardScale,
                   }
             }
-            className="absolute z-10 w-[160px] sm:w-[230px] md:w-[310px] lg:w-[380px] xl:w-[420px] aspect-[16/9] rounded-xl sm:rounded-2xl overflow-hidden border border-white/30 bg-black shadow-[0_20px_50px_rgba(0,0,0,0.85)] group transition-all duration-300 hover:border-white/70"
+            className="absolute z-10 w-[160px] sm:w-[230px] md:w-[310px] lg:w-[380px] xl:w-[420px] aspect-[16/9] rounded-none overflow-hidden border border-white/30 bg-black shadow-[0_20px_50px_rgba(0,0,0,0.85)] group transition-all duration-300 hover:border-white/70"
           >
             <img
               src="/images/bns/optimized/129A3964-card.webp"
@@ -184,7 +184,7 @@ export function SolumSpatialBreakdown() {
               loading="eager"
               className="w-full h-full object-cover filter brightness-110 contrast-105 saturate-105 group-hover:scale-105 transition-transform duration-500 pointer-events-none"
             />
-            <div className="absolute inset-0 border border-white/20 rounded-xl sm:rounded-2xl pointer-events-none group-hover:border-white/50 transition-colors" />
+            <div className="absolute inset-0 border border-white/20 rounded-none pointer-events-none group-hover:border-white/50 transition-colors" />
           </motion.div>
 
           {/* 2. TOP-RIGHT: BNS Wanahabari Media Desk */}
@@ -199,7 +199,7 @@ export function SolumSpatialBreakdown() {
                     scale: cardScale,
                   }
             }
-            className="absolute z-10 w-[160px] sm:w-[230px] md:w-[310px] lg:w-[380px] xl:w-[420px] aspect-[16/9] rounded-xl sm:rounded-2xl overflow-hidden border border-white/30 bg-black shadow-[0_20px_50px_rgba(0,0,0,0.85)] group transition-all duration-300 hover:border-white/70"
+            className="absolute z-10 w-[160px] sm:w-[230px] md:w-[310px] lg:w-[380px] xl:w-[420px] aspect-[16/9] rounded-none overflow-hidden border border-white/30 bg-black shadow-[0_20px_50px_rgba(0,0,0,0.85)] group transition-all duration-300 hover:border-white/70"
           >
             <img
               src="/images/bns/media/main media image.jpg"
@@ -207,7 +207,7 @@ export function SolumSpatialBreakdown() {
               loading="eager"
               className="w-full h-full object-cover filter brightness-110 contrast-105 saturate-105 group-hover:scale-105 transition-transform duration-500 pointer-events-none"
             />
-            <div className="absolute inset-0 border border-white/20 rounded-xl sm:rounded-2xl pointer-events-none group-hover:border-white/50 transition-colors" />
+            <div className="absolute inset-0 border border-white/20 rounded-none pointer-events-none group-hover:border-white/50 transition-colors" />
           </motion.div>
 
           {/* 3. BOTTOM-LEFT: BNS Studio Production */}
@@ -222,7 +222,7 @@ export function SolumSpatialBreakdown() {
                     scale: cardScale,
                   }
             }
-            className="absolute z-10 w-[160px] sm:w-[230px] md:w-[310px] lg:w-[380px] xl:w-[420px] aspect-[16/9] rounded-xl sm:rounded-2xl overflow-hidden border border-white/30 bg-black shadow-[0_20px_50px_rgba(0,0,0,0.85)] group transition-all duration-300 hover:border-white/70"
+            className="absolute z-10 w-[160px] sm:w-[230px] md:w-[310px] lg:w-[380px] xl:w-[420px] aspect-[16/9] rounded-none overflow-hidden border border-white/30 bg-black shadow-[0_20px_50px_rgba(0,0,0,0.85)] group transition-all duration-300 hover:border-white/70"
           >
             <img
               src="/images/bns/studio/studio_cinema_cam.jpg"
@@ -230,7 +230,7 @@ export function SolumSpatialBreakdown() {
               loading="eager"
               className="w-full h-full object-cover filter brightness-110 contrast-105 saturate-105 group-hover:scale-105 transition-transform duration-500 pointer-events-none"
             />
-            <div className="absolute inset-0 border border-white/20 rounded-xl sm:rounded-2xl pointer-events-none group-hover:border-white/50 transition-colors" />
+            <div className="absolute inset-0 border border-white/20 rounded-none pointer-events-none group-hover:border-white/50 transition-colors" />
           </motion.div>
 
           {/* 4. BOTTOM-RIGHT: Policy & Sovereign Debt Brief */}
@@ -245,7 +245,7 @@ export function SolumSpatialBreakdown() {
                     scale: cardScale,
                   }
             }
-            className="absolute z-10 w-[160px] sm:w-[230px] md:w-[310px] lg:w-[380px] xl:w-[420px] aspect-[16/9] rounded-xl sm:rounded-2xl overflow-hidden border border-white/30 bg-black shadow-[0_20px_50px_rgba(0,0,0,0.85)] group transition-all duration-300 hover:border-white/70"
+            className="absolute z-10 w-[160px] sm:w-[230px] md:w-[310px] lg:w-[380px] xl:w-[420px] aspect-[16/9] rounded-none overflow-hidden border border-white/30 bg-black shadow-[0_20px_50px_rgba(0,0,0,0.85)] group transition-all duration-300 hover:border-white/70"
           >
             <img
               src="/images/bns/AFRODAD debt Conference 2026  also Dr LYLA Latiff Book Launch called Red Flags in Government contracts/latiff.jpeg"
@@ -253,7 +253,7 @@ export function SolumSpatialBreakdown() {
               loading="eager"
               className="w-full h-full object-cover filter brightness-110 contrast-105 saturate-105 group-hover:scale-105 transition-transform duration-500 pointer-events-none"
             />
-            <div className="absolute inset-0 border border-white/20 rounded-xl sm:rounded-2xl pointer-events-none group-hover:border-white/50 transition-colors" />
+            <div className="absolute inset-0 border border-white/20 rounded-none pointer-events-none group-hover:border-white/50 transition-colors" />
           </motion.div>
 
           {/* ========================================================= */}
@@ -261,7 +261,7 @@ export function SolumSpatialBreakdown() {
           {/* ========================================================= */}
           <motion.div
             style={shouldReduceMotion ? undefined : { scale: centerScale }}
-            className="relative z-20 w-[280px] sm:w-[400px] md:w-[500px] lg:w-[600px] xl:w-[660px] aspect-[16/9] rounded-xl sm:rounded-2xl overflow-hidden border border-white/35 bg-black shadow-[0_0_90px_rgba(0,0,0,0.95)] group"
+            className="relative z-20 w-[280px] sm:w-[400px] md:w-[500px] lg:w-[600px] xl:w-[660px] aspect-[16/9] rounded-none overflow-hidden border border-white/35 bg-black shadow-[0_0_90px_rgba(0,0,0,0.95)] group"
           >
             <img
               src="/images/bns/optimized/129A3912-hero.webp"
@@ -270,7 +270,7 @@ export function SolumSpatialBreakdown() {
               className="w-full h-full object-cover filter brightness-100 group-hover:scale-102 transition-transform duration-500 pointer-events-none"
             />
             {/* Subtle inner border glow */}
-            <div className="absolute inset-0 border border-white/10 rounded-xl sm:rounded-2xl pointer-events-none" />
+            <div className="absolute inset-0 border border-white/10 rounded-none pointer-events-none" />
           </motion.div>
         </div>
       </div>

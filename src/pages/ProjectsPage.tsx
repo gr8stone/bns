@@ -152,13 +152,13 @@ export function ProjectsPage() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-16 border-b border-black/[0.08] items-end">
           <div className="col-span-1 md:col-span-3">
             <div className="flex items-center gap-2 mb-4">
-              <span className="w-2 h-2 bg-coral inline-block" />
-              <span className="font-mono text-xs uppercase tracking-wider text-terracotta font-semibold">
+              <span className="w-2 h-2 bg-[#2446EC] inline-block" />
+              <span className="font-mono text-xs uppercase tracking-wider text-[#2446EC] font-semibold">
                 CIVIC MEDIA ARCHIVE
               </span>
             </div>
             <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-medium tracking-[-0.05em] text-text-base uppercase leading-[0.94]">
-              PRODUCTIONS &amp; CAMPAIGNS.
+              Productions &amp; <span className="text-[#2446EC]">campaigns.</span>
             </h1>
           </div>
 
@@ -177,7 +177,7 @@ export function ProjectsPage() {
           {/* Left Rail: Category Navigation (Responsive to scroll & clickable) */}
           <div className="col-span-1 md:sticky md:top-28 z-20 bg-white">
             <div className="flex items-center justify-between mb-3 md:mb-6">
-              <span className="font-mono text-xs uppercase tracking-wider text-terracotta font-semibold block">
+              <span className="font-mono text-xs uppercase tracking-wider text-[#2446EC] font-semibold block">
                 FILTER BY DESK
               </span>
               <button
@@ -188,10 +188,10 @@ export function ProjectsPage() {
                     setSelectedCategory('All Projects');
                   }
                 }}
-                className="font-mono text-[10px] uppercase text-text-muted hover:text-coral transition-colors flex items-center gap-1.5 cursor-pointer"
+                className="font-mono text-[10px] uppercase text-text-muted hover:text-[#2446EC] transition-colors flex items-center gap-1.5 cursor-pointer rounded-none border-0"
                 title={isFilterOnly ? "Switch to Scroll Navigation Mode" : "Switch to Filter-Only Mode"}
               >
-                <Filter className="w-3 h-3 text-coral" />
+                <Filter className="w-3 h-3 text-[#2446EC]" />
                 <span className="text-slate font-medium">
                   {isFilterOnly ? "ISOLATE: ON" : "SCROLL NAV"}
                 </span>
@@ -221,13 +221,13 @@ export function ProjectsPage() {
                     onClick={() => handleCategoryClick(cat)}
                     className={`whitespace-nowrap px-3.5 py-2 md:p-0 border md:border-0 text-left font-mono text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer flex-shrink-0 rounded-none flex items-center justify-between ${
                       isActive
-                        ? 'border-coral bg-coral/5 md:bg-transparent text-text-base font-semibold'
+                        ? 'border-[#2446EC] bg-[#2446EC]/5 md:bg-transparent text-text-base font-semibold'
                         : 'border-black/10 text-text-muted hover:text-text-base hover:border-black/30'
                     }`}
                   >
                     <div className="flex items-center">
                       {isActive ? (
-                        <span className="w-1.5 h-1.5 bg-coral inline-block mr-2.5 flex-shrink-0" />
+                        <span className="w-1.5 h-1.5 bg-[#2446EC] inline-block mr-2.5 flex-shrink-0" />
                       ) : (
                         <span className="w-1.5 h-1.5 bg-transparent inline-block mr-2.5 flex-shrink-0 hidden md:inline-block" />
                       )}
@@ -235,7 +235,7 @@ export function ProjectsPage() {
                     </div>
                     <span
                       className={`text-[10px] ml-2 font-mono tabular-nums ${
-                        isActive ? 'text-coral font-medium' : 'text-slate'
+                        isActive ? 'text-[#2446EC] font-medium' : 'text-slate'
                       }`}
                     >
                       ({count})

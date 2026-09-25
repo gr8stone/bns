@@ -13,7 +13,7 @@ export function SolumAboutStatement() {
           {/* Col 1: Category Tag */}
           <div className="col-span-1">
             <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 bg-[#101010] inline-block rounded-full" />
+              <span className="w-1.5 h-1.5 bg-[#2446EC] inline-block rounded-none" />
               <span className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#101010] font-medium">
                 About
               </span>
@@ -27,9 +27,9 @@ export function SolumAboutStatement() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-[-0.04em] text-[#101010] leading-[1.1]"
+              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-[-0.05em] text-[#101010] leading-[1.08]"
             >
-              Budget Ndio Story is an independent civic media and public finance storytelling platform working across all 47 counties.
+              Different counties. <span className="text-[#2446EC]">Shared public money.</span> An independent civic media and public finance platform across all 47 counties.
             </motion.h2>
 
             <motion.p
@@ -51,7 +51,7 @@ export function SolumAboutStatement() {
             >
               <Link
                 to="/about"
-                className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono uppercase tracking-wider text-[#101010] pb-1 border-b border-[#101010] hover:text-[#757575] hover:border-[#757575] transition-colors group"
+                className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono uppercase tracking-wider text-[#101010] pb-1 border-b border-[#101010] hover:text-[#2446EC] hover:border-[#2446EC] transition-colors group"
               >
                 <span>More about us</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />

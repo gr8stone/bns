@@ -71,8 +71,8 @@ export function AboutPage() {
               transition={{ duration: 0.36, ease: [0.22, 1, 0.36, 1] }}
               className="flex items-center gap-2 mb-4"
             >
-              <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
-              <span className="font-mono text-xs uppercase tracking-wider text-[#101010] font-medium">
+              <span className="w-1.5 h-1.5 bg-[#2446EC] inline-block" />
+              <span className="font-mono text-xs uppercase tracking-wider text-[#2446EC] font-semibold">
                 ORGANIZATIONAL MONOGRAPH
               </span>
             </motion.div>
@@ -82,7 +82,7 @@ export function AboutPage() {
               transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
               className="font-display text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-[-0.06em] text-[#101010] uppercase leading-[0.94]"
             >
-              TURNING PUBLIC FINANCE INTO CITIZEN POWER.
+              Turning public finance into <span className="text-[#2446EC]">citizen power.</span>
             </motion.h1>
           </div>
 

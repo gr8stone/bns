@@ -174,13 +174,13 @@ export function SolumServices() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-coral inline-block" />
-              <span className="font-mono text-xs uppercase tracking-wider text-terracotta font-semibold block">
+              <span className="w-2 h-2 bg-[#2446EC] inline-block" />
+              <span className="font-mono text-xs uppercase tracking-wider text-[#2446EC] font-semibold block">
                 03 // PROGRAMMES & OPERATIONS
               </span>
             </div>
-            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-medium uppercase tracking-[-0.05em] text-text-base leading-[0.98]">
-              WHAT WE DO.
+            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-medium tracking-[-0.05em] text-text-base leading-[0.98]">
+              Good accountability starts with <span className="text-[#2446EC]">good questions.</span>
             </h2>
             <p className="font-sans text-sm sm:text-base text-text-muted max-w-xl font-normal leading-relaxed">
               From grassroots community barazas to high-impact media broadcasts,
@@ -195,9 +195,12 @@ export function SolumServices() {
             </span>
             <Link
               to={ROUTES.contact}
-              className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-text-base text-white hover:bg-terracotta transition-colors font-mono text-xs uppercase tracking-wider rounded-none group"
+              className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-[#2446EC] text-white hover:bg-[#101010] transition-colors font-mono text-xs uppercase tracking-wider rounded-none group border-0"
             >
               <span>GET INVOLVED</span>
+              <span className="font-mono text-[10px] bg-white/20 text-white px-1.5 py-0.5 rounded-none leading-none">
+                03
+              </span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
             </Link>
           </div>
@@ -220,8 +223,8 @@ export function SolumServices() {
         <div className="max-w-[1425px] mx-auto flex flex-col md:flex-row md:items-center justify-between gap-8">
           <div className="space-y-3 max-w-2xl">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-coral inline-block" />
-              <span className="font-mono text-xs uppercase tracking-wider text-coral font-semibold">
+              <span className="w-2 h-2 bg-[#2446EC] inline-block" />
+              <span className="font-mono text-xs uppercase tracking-wider text-[#2446EC] font-semibold">
                 COMMERCIAL IMPACT CONTENT // TWO-ENTITY MODEL
               </span>
             </div>
@@ -234,7 +237,7 @@ export function SolumServices() {
           </div>
           <Link
             to={ROUTES.studio}
-            className="inline-flex items-center gap-3 px-8 py-4 bg-[#2446EC] text-white hover:bg-white hover:text-[#2446EC] transition-colors font-mono text-xs uppercase tracking-wider self-start md:self-auto font-semibold"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-[#2446EC] text-white hover:bg-white hover:text-[#2446EC] transition-colors font-mono text-xs uppercase tracking-wider self-start md:self-auto font-semibold rounded-none border-0"
           >
             <span>DISCOVER BNS STUDIOS &amp; RATE CARD</span>
             <ArrowRight className="w-4 h-4" />
