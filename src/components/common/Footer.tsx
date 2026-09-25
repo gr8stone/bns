@@ -32,10 +32,10 @@ export function Footer() {
             className="flex w-max shrink-0 gap-[8vw] font-display text-[clamp(48px,14vw,260px)] font-bold tracking-[-0.03em] leading-[0.82] text-white uppercase whitespace-nowrap"
           >
             <span aria-hidden="true">
-              BUDGET <span className="text-[#374EAB]">NDIO</span> STORY
+              BUDGET <span className="text-[#2446EC]">NDIO</span> STORY
             </span>
             <span aria-hidden="true">
-              BUDGET <span className="text-[#374EAB]">NDIO</span> STORY
+              BUDGET <span className="text-[#2446EC]">NDIO</span> STORY
             </span>
           </motion.h2>
         </div>

@@ -84,21 +84,21 @@ function ServiceCard({
   return (
     <div
       style={{ zIndex: index + 1 }}
-      className="sticky top-0 w-full h-[100svh] min-h-[100svh] flex flex-col md:flex-row bg-[#0B0C0E] text-white overflow-hidden border-t border-white/10"
+      className="sticky top-0 w-full h-[100svh] min-h-[100svh] flex flex-col md:flex-row bg-[#2446EC] text-white overflow-hidden border-t border-white/20"
     >
       {/* Editorial Content Column — Left 50% on desktop */}
-      <div className="w-full md:w-1/2 flex-1 md:h-full flex flex-col justify-center px-6 md:px-12 lg:px-16 py-8 md:py-16 bg-[#0B0C0E] z-10 overflow-y-auto sm:overflow-visible">
+      <div className="w-full md:w-1/2 flex-1 md:h-full flex flex-col justify-center px-6 md:px-12 lg:px-16 py-8 md:py-16 bg-[#2446EC] z-10 overflow-y-auto sm:overflow-visible">
         <div className="max-w-xl space-y-4 md:space-y-6 my-auto">
           {/* Number & Phase Tag */}
           <motion.div
             {...reveal(0)}
             className="flex items-center gap-3"
           >
-            <span className="font-mono text-sm text-coral block font-medium">
+            <span className="font-mono text-sm text-white block font-medium">
               {service.number} // {service.tag}
             </span>
-            <span className="w-8 h-px bg-white/20 inline-block" />
-            <span className="font-mono text-[10px] sm:text-xs uppercase tracking-widest text-slate">
+            <span className="w-8 h-px bg-white/40 inline-block" />
+            <span className="font-mono text-[10px] sm:text-xs uppercase tracking-widest text-white/70">
               PROGRAMME 0{index + 1}
             </span>
           </motion.div>
@@ -108,7 +108,7 @@ function ServiceCard({
             {...reveal(0.04)}
             className="font-display font-medium text-3xl sm:text-4xl md:text-5xl xl:text-6xl text-white tracking-[-0.05em] leading-[0.96]"
           >
-            <Link to={ROUTES.programme(service.slug)} className="hover:text-coral transition-colors">
+            <Link to={ROUTES.programme(service.slug)} className="hover:text-white/80 transition-colors">
               {service.title}
             </Link>
           </motion.h3>
@@ -116,19 +116,19 @@ function ServiceCard({
           {/* Description */}
           <motion.p
             {...reveal(0.08)}
-            className="font-sans text-white/80 text-xs sm:text-sm md:text-base leading-relaxed font-normal line-clamp-3 sm:line-clamp-none"
+            className="font-sans text-white/90 text-xs sm:text-sm md:text-base leading-relaxed font-normal line-clamp-3 sm:line-clamp-none"
           >
             {service.description}
           </motion.p>
 
           {/* 5 Bullet Items */}
-          <ul className="space-y-2 pt-4 border-t border-white/10">
+          <ul className="space-y-2 pt-4 border-t border-white/20">
             {service.bullets.map((bullet, bIdx) => (
               <li
                 key={bIdx}
-                className="flex items-center gap-2.5 font-sans text-xs sm:text-sm text-white/90"
+                className="flex items-center gap-2.5 font-sans text-xs sm:text-sm text-white"
               >
-                <span className="w-1.5 h-1.5 bg-coral inline-block flex-shrink-0" />
+                <span className="w-1.5 h-1.5 bg-white inline-block flex-shrink-0" />
                 <span className="leading-normal">
                   {bullet}
                 </span>
@@ -139,10 +139,10 @@ function ServiceCard({
           <div className="pt-2">
             <Link
               to={ROUTES.programme(service.slug)}
-              className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-coral hover:text-white transition-colors"
+              className="group/btn inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider px-4 py-2.5 bg-white text-[#2446EC] hover:bg-[#101010] hover:text-white transition-colors font-semibold"
             >
               <span>EXPLORE PROGRAMME DOSSIER</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
             </Link>
           </div>
         </div>
@@ -234,7 +234,7 @@ export function SolumServices() {
           </div>
           <Link
             to={ROUTES.studio}
-            className="inline-flex items-center gap-3 px-8 py-4 bg-coral text-white hover:bg-white hover:text-black transition-colors font-mono text-xs uppercase tracking-wider self-start md:self-auto font-medium"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-[#2446EC] text-white hover:bg-white hover:text-[#2446EC] transition-colors font-mono text-xs uppercase tracking-wider self-start md:self-auto font-semibold"
           >
             <span>DISCOVER BNS STUDIOS &amp; RATE CARD</span>
             <ArrowRight className="w-4 h-4" />

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { ArrowRight, FileDown, Plus, Minus } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, FileDown, Plus, Minus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { WordReveal } from '../components/common/WordReveal';
 import { STUDIO_RATE_CARD } from '../data/studio';
@@ -182,68 +182,68 @@ export function StudioPage() {
         {/* ========================================================= */}
         {/* 4. MINIMALIST BRUTALIST RATE SCHEDULE (INVOICE-STYLE)     */}
         {/* ========================================================= */}
-        <div className="py-20 border-b border-[#101010]/12">
+        <div className="py-20 border-b border-black/10 bg-[#2446EC] text-white -mx-6 md:-mx-10 px-6 md:px-10">
           {/* Header Row */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-[#101010]/12">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-white/20">
             <div>
               <div className="flex items-center gap-2 mb-3">
-                <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
-                <span className="font-mono text-xs uppercase tracking-wider text-[#101010] font-medium">
+                <span className="w-1.5 h-1.5 bg-white inline-block" />
+                <span className="font-mono text-xs uppercase tracking-wider text-white font-medium">
                   RATE SCHEDULE // PROSPECTUS 2026 TARIFFS
                 </span>
               </div>
-              <h2 className="font-display text-3xl sm:text-5xl font-medium tracking-[-0.05em] text-[#101010] uppercase leading-none">
+              <h2 className="font-display text-3xl sm:text-5xl font-medium tracking-[-0.05em] text-white uppercase leading-none">
                 COMMERCIAL RATE CARD.
               </h2>
             </div>
-            <div className="font-mono text-xs text-[#757575] space-y-1 md:text-right">
+            <div className="font-mono text-xs text-white/70 space-y-1 md:text-right">
               <div>REF: BNS-STUDIO-2026-V1 &bull; CURRENCY: USD</div>
               <div>TERMS: 50% ADVANCE / 50% DELIVERY &bull; NET 30</div>
             </div>
           </div>
 
           {/* Table Header (Desktop) */}
-          <div className="hidden lg:grid lg:grid-cols-12 gap-6 py-4 border-b border-[#101010]/12 font-mono text-[11px] uppercase tracking-wider text-[#757575]">
+          <div className="hidden lg:grid lg:grid-cols-12 gap-6 py-4 border-b border-white/20 font-mono text-[11px] uppercase tracking-wider text-white/70">
             <div className="col-span-4">FORMAT</div>
             <div className="col-span-6">SCOPE &amp; DELIVERABLES</div>
             <div className="col-span-2 text-right">STARTING RATE</div>
           </div>
 
           {/* Table Rows (Desktop & Mobile) */}
-          <div className="divide-y divide-[#101010]/12">
+          <div className="divide-y divide-white/15">
             {STUDIO_RATE_CARD.map((item, idx) => (
               <div
                 key={idx}
-                className="py-8 grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-6 items-start group hover:bg-[#FAFAF8] transition-colors -mx-4 px-4 sm:-mx-6 sm:px-6"
+                className="py-8 grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-6 items-start group hover:bg-black/10 transition-colors -mx-4 px-4 sm:-mx-6 sm:px-6"
               >
                 {/* Format */}
                 <div className="lg:col-span-4">
-                  <h3 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-[#101010] uppercase group-hover:text-[#4E58AA] transition-colors leading-tight">
+                  <h3 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-white uppercase group-hover:text-white transition-colors leading-tight">
                     {item.format}
                   </h3>
                 </div>
 
                 {/* Scope */}
-                <div className="lg:col-span-6 font-sans text-sm text-[#101010]/75 font-light leading-relaxed">
+                <div className="lg:col-span-6 font-sans text-sm text-white/85 font-light leading-relaxed">
                   {item.scope}
                 </div>
 
                 {/* Tariff & Action */}
-                <div className="lg:col-span-2 flex lg:flex-col items-center lg:items-end justify-between lg:justify-start gap-2 pt-1 lg:pt-0 border-t border-[#101010]/08 lg:border-0 mt-2 lg:mt-0">
+                <div className="lg:col-span-2 flex lg:flex-col items-center lg:items-end justify-between lg:justify-start gap-2 pt-1 lg:pt-0 border-t border-white/15 lg:border-0 mt-2 lg:mt-0">
                   <div className="lg:text-right">
-                    <span className="font-mono text-sm font-semibold text-[#101010] tabular-nums block">
+                    <span className="font-mono text-sm font-semibold text-white tabular-nums block">
                       {item.startingRate}
                     </span>
-                    <span className="font-mono text-[11px] text-[#757575] block">
+                    <span className="font-mono text-[11px] text-white/70 block">
                       {item.unit}
                     </span>
                   </div>
                   <Link
                     to={ROUTES.contact}
-                    className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-[#101010] hover:text-[#4E58AA] transition-colors font-medium"
+                    className="group/btn inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider px-3.5 py-1.5 bg-white text-[#2446EC] hover:bg-[#101010] hover:text-white transition-colors font-semibold"
                   >
                     <span>Brief</span>
-                    <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                    <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 ease-out group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
                   </Link>
                 </div>
               </div>
@@ -251,9 +251,9 @@ export function StudioPage() {
           </div>
 
           {/* Ledger Disclosures */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 mt-4 border-t border-[#101010]/12 font-mono text-[11px] text-[#757575] leading-relaxed">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 mt-4 border-t border-white/20 font-mono text-[11px] text-white/70 leading-relaxed">
             <div>
-              <span className="text-[#101010] uppercase block font-semibold mb-1">
+              <span className="text-white uppercase block font-semibold mb-1">
                 DISBURSEMENTS
               </span>
               <span>
@@ -262,7 +262,7 @@ export function StudioPage() {
               </span>
             </div>
             <div>
-              <span className="text-[#101010] uppercase block font-semibold mb-1">
+              <span className="text-white uppercase block font-semibold mb-1">
                 EDITORIAL FIREWALL
               </span>
               <span>
@@ -271,7 +271,7 @@ export function StudioPage() {
               </span>
             </div>
             <div>
-              <span className="text-[#101010] uppercase block font-semibold mb-1">
+              <span className="text-white uppercase block font-semibold mb-1">
                 MULTI-EPISODE RETAINERS
               </span>
               <span>

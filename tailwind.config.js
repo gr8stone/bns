@@ -38,10 +38,10 @@ export default {
         'line-light': 'rgba(255, 255, 255, 0.12)',
 
         // Brand accents
-        accent:          '#9c4527',
-        'accent-coral':  '#4E58AA',
+        accent:          '#2446EC',
+        'accent-coral':  '#2446EC',
         'accent-sage':   '#7d9590',
-        'agency-blue':   '#374EAB',
+        'agency-blue':   '#2446EC',
 
         // Interactive surfaces
         ivory:    '#FAFAF8',
