@@ -85,16 +85,7 @@ export function SolumHero() {
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end mb-12 lg:mb-16">
           {/* Left: Giant Typography Ramp */}
           <div className="lg:col-span-8">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="w-2 h-2 bg-[#2446EC] inline-block" />
-              <span className="font-mono text-[11px] uppercase tracking-wider text-[#2446EC] font-semibold">
-                BNS FOUNDATION • BNS STUDIOS
-              </span>
-              <span className="text-slate font-mono text-[11px]">&bull;</span>
-              <span className="font-mono text-[11px] uppercase tracking-wider text-slate">
-                PARTNERSHIP PROSPECTUS 2026
-              </span>
-            </div>
+           
 
             <motion.h1
               initial={shouldReduceMotion ? false : { opacity: 0.5, y: 16 }}
