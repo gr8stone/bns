@@ -238,6 +238,14 @@ export function Footer() {
               </li>
               <li>
                 <Link
+                  to="/ratecard"
+                  className="hover:text-neutral-400 transition-colors"
+                >
+                  RATE CARD
+                </Link>
+              </li>
+              <li>
+                <Link
                   to="/faq"
                   className="hover:text-neutral-400 transition-colors"
                 >

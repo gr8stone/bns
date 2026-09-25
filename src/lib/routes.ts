@@ -17,6 +17,7 @@ export const ROUTES = {
   home:     '/',
   about:    '/about',
   studio:   '/studio',
+  ratecard: '/ratecard',
   contact:  '/contact',
   terms:    '/terms',
   privacy:  '/privacy',

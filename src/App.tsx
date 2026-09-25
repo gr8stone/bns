@@ -20,6 +20,7 @@ import { ContactPage } from './pages/ContactPage';
 import { TermsPage } from './pages/TermsPage';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { StudioPage } from './pages/StudioPage';
+import { RateCardPage } from './pages/RateCardPage';
 import { WhitepaperPage } from './pages/WhitepaperPage';
 import { FaqPage } from './pages/FaqPage';
 import { CookiesPage } from './pages/CookiesPage';
@@ -32,6 +33,7 @@ function AppRoutes({ location }: { location: Location }) {
       <Route path="/" element={<HomePage />} />
       <Route path="/about" element={<AboutPage />} />
       <Route path="/studio" element={<StudioPage />} />
+      <Route path="/ratecard" element={<RateCardPage />} />
       <Route path="/projects" element={<ProjectsPage />} />
       <Route path="/projects/:slug" element={<ProjectDetailPage />} />
       <Route path="/services" element={<ServicesPage />} />
@@ -166,6 +168,9 @@ function PageTransition() {
 }
 
 export function App() {
+  const location = useLocation();
+  const isRateCardPage = location.pathname === '/ratecard';
+
   return (
     <div className="min-h-screen flex flex-col bg-white text-[#101010] selection:bg-[#101010] selection:text-white relative overflow-x-clip">
       {/* Session-only Neutral Full-Page Preloader */}
@@ -182,8 +187,8 @@ export function App() {
       {/* Global Page Transition: Vertical Travel (What We Do stacking style) */}
       <PageTransition />
 
-      {/* Solum 4-Column Footer & Back to Top */}
-      <Footer />
+      {/* Solum 4-Column Footer & Back to Top (hidden on /ratecard) */}
+      {!isRateCardPage && <Footer />}
       <BackToTopButton />
     </div>
   );

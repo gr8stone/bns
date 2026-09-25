@@ -197,36 +197,68 @@ export function StudioPage() {
                 COMMERCIAL RATE CARD.
               </h2>
             </div>
-            <div className="font-mono text-[11px] text-white/70 space-y-0.5 sm:text-right">
+            <div className="font-mono text-[11px] text-white/70 space-y-1 sm:text-right">
               <div>REF: BNS-STUDIO-2026-V1 &bull; USD &bull; NET 30</div>
-              <div className="text-white/60">SELECT FORMAT TO INSPECT SPECIFICATIONS</div>
+              <div className="flex items-center sm:justify-end gap-3 pt-0.5">
+                <Link
+                  to={ROUTES.ratecard}
+                  className="underline underline-offset-4 text-white hover:opacity-80"
+                >
+                  Dedicated /ratecard view &rarr;
+                </Link>
+              </div>
             </div>
           </div>
 
-          {/* 2. Mobile Quick-Pill Bar (Visible on mobile only to toggle in 1 touch) */}
-          <div className="flex lg:hidden overflow-x-auto no-scrollbar gap-2 py-3 border-b border-white/15">
-            {STUDIO_RATE_CARD.map((item, idx) => {
-              const isActive = activeRateIndex === idx;
-              return (
-                <button
-                  key={item.code}
-                  onClick={() => setActiveRateIndex(idx)}
-                  className={`px-3 py-1.5 font-mono text-xs uppercase tracking-wider whitespace-nowrap transition-colors rounded-none shrink-0 ${
-                    isActive
-                      ? "bg-white text-[#2446EC] font-bold"
-                      : "bg-white/10 text-white/80 hover:bg-white/20"
-                  }`}
-                >
-                  {item.code.replace('SRV-', '')}
-                </button>
-              );
-            })}
+          {/* 2. Mobile Clean Minimalist View (Direct Integrated Ledger, No Nested Box) */}
+          <div className="flex lg:hidden flex-col text-white my-auto divide-y divide-white/20">
+            {/* Mobile Header Info */}
+            <div className="pb-3 flex items-center justify-between">
+              <span className="font-mono text-[10px] uppercase tracking-wider text-white font-semibold">
+                COMMISSION TARIFFS 2026
+              </span>
+              <span className="font-mono text-[10px] text-white/70 uppercase">
+                6 FLAGSHIP FORMATS
+              </span>
+            </div>
+
+            {/* 6 Minimalist Compact Rows (Receipt Style) */}
+            <div className="py-2 divide-y divide-white/10">
+              {STUDIO_RATE_CARD.map((item, idx) => (
+                <div key={item.code} className="py-3 flex items-baseline justify-between gap-3">
+                  <div className="flex items-baseline gap-2">
+                    <span className="font-mono text-[10px] text-white/60">0{idx + 1}</span>
+                    <span className="font-display font-medium text-sm text-white uppercase tracking-tight">
+                      {item.format}
+                    </span>
+                  </div>
+                  <div className="text-right font-mono shrink-0">
+                    <span className="text-sm font-bold text-white tabular-nums">{item.startingRate}</span>
+                    <span className="text-[10px] text-white/70 ml-1">{item.unit}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Mobile Bottom Action */}
+            <div className="pt-3.5 flex items-center justify-between">
+              <span className="font-mono text-[9px] text-white/70 uppercase tracking-tight">
+                &ge;40% CIVIC ENDOWMENT
+              </span>
+              <Link
+                to={ROUTES.contact}
+                className="group/btn inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider px-4 py-2 bg-white text-[#2446EC] hover:bg-[#101010] hover:text-white transition-colors font-semibold"
+              >
+                <span>Brief Desk</span>
+                <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 ease-out group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+              </Link>
+            </div>
           </div>
 
-          {/* 3. Cockpit Master-Detail Body */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 my-auto py-4 items-stretch">
+          {/* 3. Desktop Cockpit Master-Detail Body (lg screens only) */}
+          <div className="hidden lg:grid lg:grid-cols-12 gap-8 my-auto py-4 items-stretch">
             {/* Left Master List (Desktop: all 6 items in tight single-line ledger) */}
-            <div className="hidden lg:flex lg:col-span-5 flex-col justify-between divide-y divide-white/15 pr-2">
+            <div className="lg:col-span-5 flex flex-col justify-between divide-y divide-white/15 pr-2">
               {STUDIO_RATE_CARD.map((item, idx) => {
                 const isActive = activeRateIndex === idx;
                 return (
@@ -265,8 +297,8 @@ export function StudioPage() {
               })}
             </div>
 
-            {/* Right Inspector Card (Detail Card — Live reactive viewport pane) */}
-            <div className="col-span-1 lg:col-span-7 bg-white text-[#101010] p-6 sm:p-8 lg:p-10 flex flex-col justify-between border border-black/10 shadow-xl">
+            {/* Right Inspector Card (Desktop detail pane) */}
+            <div className="lg:col-span-7 bg-white text-[#101010] p-8 lg:p-10 flex flex-col justify-between border border-black/10 shadow-xl">
               <div>
                 {/* Meta Top Line */}
                 <div className="flex items-center justify-between pb-4 border-b border-[#101010]/10">
