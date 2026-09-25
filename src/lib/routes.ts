@@ -16,9 +16,14 @@ export const ROUTES = {
   // Pages
   home:     '/',
   about:    '/about',
+  studio:   '/studio',
   contact:  '/contact',
   terms:    '/terms',
   privacy:  '/privacy',
+  cookies:  '/cookies',
+  whitepaper: '/whitepaper',
+  faq:      '/faq',
+  help:     '/help',
   notFound: '/404',
 
   // Productions (projects)
@@ -37,18 +42,16 @@ export const ROUTES = {
     journal:  '/journal',
     work:     '/work',
     process:  '/process',
-    studio:   '/studio',
   },
 } as const;
 
 // ─── Programme Slugs ──────────────────────────────────────────────────────────
-// Must match the `id` field in src/data/services.ts
+// Must match the `id` field in src/data/services.ts (3 Flagship Civic Programmes)
 
 export const PROGRAMME_SLUGS = {
   connect:    'bns-connect',
   mashinani:  'bns-mashinani',
   wanahabari: 'bns-wanahabari',
-  studio:     'bns-studio',
 } as const;
 
 export type ProgrammeSlug = (typeof PROGRAMME_SLUGS)[keyof typeof PROGRAMME_SLUGS];
@@ -60,20 +63,20 @@ export const NAV_LINKS = [
   { label: 'Home',        index: '01', href: ROUTES.home       },
   { label: 'About',       index: '02', href: ROUTES.about      },
   { label: 'Programmes',  index: '03', href: ROUTES.programmes },
-  { label: 'Productions', index: '04', href: ROUTES.projects   },
-  { label: 'Contact',     index: '05', href: ROUTES.contact    },
+  { label: 'Studio',      index: '04', href: ROUTES.studio     },
+  { label: 'Productions', index: '05', href: ROUTES.projects   },
+  { label: 'Contact',     index: '06', href: ROUTES.contact    },
 ] as const;
 
 export type NavLink = (typeof NAV_LINKS)[number];
 
 // ─── Programme Preview Links (Navbar hover submenu) ──────────────────────────
-// All four pillars. Drives the Programmes submenu in Navbar.
+// 3 Flagship Civic Programmes under BNS Foundation
 
 export const PROGRAMME_PREVIEW = [
   { label: 'BNS Connect',    href: ROUTES.programme(PROGRAMME_SLUGS.connect)    },
   { label: 'BNS Mashinani',  href: ROUTES.programme(PROGRAMME_SLUGS.mashinani)  },
   { label: 'BNS Wanahabari', href: ROUTES.programme(PROGRAMME_SLUGS.wanahabari) },
-  { label: 'BNS Studio',     href: ROUTES.programme(PROGRAMME_SLUGS.studio)     },
 ] as const;
 
 // ─── Footer Nav Columns ───────────────────────────────────────────────────────
@@ -82,13 +85,17 @@ export const FOOTER_NAV_PRIMARY = [
   { label: 'HOME',        href: ROUTES.home        },
   { label: 'ABOUT US',    href: ROUTES.about       },
   { label: 'PROGRAMMES',  href: ROUTES.programmes  },
+  { label: 'STUDIO',      href: ROUTES.studio      },
   { label: 'PRODUCTIONS', href: ROUTES.projects    },
 ] as const;
 
 export const FOOTER_NAV_SECONDARY = [
   { label: 'CONTACT', href: ROUTES.contact  },
+  { label: 'FAQ',     href: ROUTES.faq      },
   { label: 'TERMS',   href: ROUTES.terms    },
   { label: 'PRIVACY', href: ROUTES.privacy  },
+  { label: 'COOKIES', href: ROUTES.cookies  },
+  { label: 'WHITE PAPER', href: ROUTES.whitepaper },
 ] as const;
 
 // ─── External / Contact Links ─────────────────────────────────────────────────

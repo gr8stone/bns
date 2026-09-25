@@ -66,7 +66,8 @@ export const SERVICES: Service[] = [
         a: 'We build a documented evidence base of citizen engagement that satisfies oversight and audit requirements under the PFM Act and Constitution 2010 Articles 10 & 232.'
       }
     ],
-    image: '/images/bns/towwnhallmay/129A3912.jpg'
+    image: '/images/bns/towwnhallmay/129A3912.jpg',
+    video: 'https://www.youtube.com/watch?v=FkgRz4v2Llk'
   },
   {
     id: 'bns-mashinani',
@@ -133,7 +134,8 @@ export const SERVICES: Service[] = [
         a: 'We assist county governments in translating Annual Development Plans into accessible public formats, designing participatory budget sessions aligned with Open Government Partnership (OGP) commitments.'
       }
     ],
-    image: '/images/bns/cohort1 groundworks/129A3964.jpg'
+    image: '/images/bns/cohort1 groundworks/129A3964.jpg',
+    video: 'https://www.youtube.com/watch?v=oHuImiQvvN0'
   },
   {
     id: 'bns-wanahabari',
@@ -200,78 +202,7 @@ export const SERVICES: Service[] = [
         a: 'We conduct quarterly capacity building workshops on public finance literacy, data analysis, and investigative budget reporting.'
       }
     ],
-    image: '/images/bns/media/129A4039.jpg'
-  },
-  {
-    id: 'bns-studio',
-    slug: 'bns-studio',
-    aliases: ['studios', 'bns-studios'],
-    number: '04',
-    title: 'BNS Studios',
-    shortDescription: 'Impact content studio producing podcasts, animations, research spotlights, and multi-platform social campaigns for partners.',
-    heroHeadline: 'Your research, your institution, and your work. We make it land.',
-    heroSubhead: 'BNS Studios translates complex institutional outputs into creative storytelling products that real audiences engage with, channeling at least 40% of profits back to BNS Foundation.',
-    problem: 'Organisations investing in Kenya\'s governance, health, education, and development routinely produce high-quality technical reports that never travel beyond the impact report, leaving public understanding and demand persistently low.',
-    solution: 'BNS Studios fills that gap: we translate institutional research into podcasts, animations, research spotlights, and social campaigns that satisfy ESG and double impact criteria while cross-subsidising youth civic engagement.',
-    deliverables: [
-      {
-        name: 'Podcast & Audio Production',
-        description: 'Research-informed episodes, expert interviews, and public voice distributed on Spotify, Apple Podcasts, WhatsApp, and YouTube (Starting Rate: USD 3,500/ep).'
-      },
-      {
-        name: 'Short Animations & Explainers',
-        description: '60–90 second animated explainers translating one key finding or issue for social distribution (Starting Rate: USD 2,000/video).'
-      },
-      {
-        name: 'Research Spotlights (Documentary)',
-        description: '8–10 minute institutional video profiles featuring researchers, data, and BNS narrative (USD 8,000–15,000).'
-      },
-      {
-        name: 'Multi-Platform Social Media Series',
-        description: 'Targeted campaigns across threads, reels, carousels, and quote cards over 4–6 weeks (USD 5,000–8,000).'
-      },
-      {
-        name: 'Town Hall Design & Facilitation',
-        description: 'Full-service public dialogue: design, moderation, documentation, and summary outputs (USD 4,000–7,000).'
-      },
-      {
-        name: 'Annual Retainers & Embedded Studio',
-        description: 'Embedded as a \'Content & Engagement Studio\' budget line in partner grant applications from inception.'
-      }
-    ],
-    workflow: [
-      {
-        step: '01',
-        title: 'Story Ideation & Angle Identification',
-        detail: 'Translating institutional research outputs and public data into high-relevance everyday civic angles.'
-      },
-      {
-        step: '02',
-        title: 'Data Verification & Scripting',
-        detail: 'Drafting snappy scripts with 100% verified numbers vetted by our research desk and external economists.'
-      },
-      {
-        step: '03',
-        title: 'Production, Motion Design & Edit',
-        detail: 'Studio filming, animation production, motion infographic design, and high-retention video editing.'
-      },
-      {
-        step: '04',
-        title: 'Distribution & Community Engagement',
-        detail: 'Executing coordinated digital rollouts across YouTube, TikTok, Instagram, and community networks.'
-      }
-    ],
-    faqs: [
-      {
-        q: 'How does the BNS Studios cross-subsidisation model work?',
-        a: 'BNS operates through a two-entity model: BNS Studios channels a minimum of 40% of profits back to BNS Foundation annually, directly sustaining youth civic engagement and budget literacy across Kenya.'
-      },
-      {
-        q: 'Can external organisations embed BNS Studios in grant applications?',
-        a: 'Yes. For organisations with ongoing communications needs, BNS Studios offers annual content retainers and can be embedded as a \'Content & Engagement Studio\' budget line in your grant applications.'
-      }
-    ],
-    image: '/images/bns/studio/studio_cinema_cam.jpg',
-    video: '/images/bns/reels/animation reel opportunities . Where do I start ( nyota programmes  uwezo fund) main landing page .mp4'
+    image: '/images/bns/media/129A4039.jpg',
+    video: 'https://www.youtube.com/watch?v=SfPwtqUFyj4'
   }
 ];

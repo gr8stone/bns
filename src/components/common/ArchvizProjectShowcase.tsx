@@ -62,7 +62,7 @@ export function ArchvizProjectShowcase({
   if (project.heroImage) {
     stills.push({
       url: project.heroImage,
-      caption: "Lead Master Elevation & Architectural Framing",
+      caption: "Lead Production Visual & Field Framing",
       title: project.title,
     });
   }
@@ -80,7 +80,7 @@ export function ArchvizProjectShowcase({
   while (stills.length < 9) {
     stills.push({
       url: fallbackImages[fbIdx % fallbackImages.length],
-      caption: `Architectural Perspective ${stills.length + 1}`,
+      caption: `Field Production Still ${stills.length + 1}`,
       title: project.title,
     });
     fbIdx++;

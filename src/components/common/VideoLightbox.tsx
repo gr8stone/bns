@@ -16,7 +16,7 @@ export function VideoLightbox({
   onClose,
   videoUrl,
   title,
-  subtitle = 'Cinematic Architectural Film',
+  subtitle = 'Cinematic Civic Film',
 }: VideoLightboxProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);

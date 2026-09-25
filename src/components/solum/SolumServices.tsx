@@ -63,22 +63,6 @@ const SERVICES: ServicePanel[] = [
     ],
     image: "/images/bns/media/129A4039.jpg",
   },
-  {
-    number: "04",
-    slug: "bns-studio",
-    title: "BNS Studios",
-    tag: "IMPACT CONTENT STUDIO",
-    description:
-      "Impact content studio translating complex institutional research into podcasts, animations, research spotlights, and campaigns. Minimum 40% of profits channelled back to BNS Foundation annually.",
-    bullets: [
-      "Podcast & Audio Production (Starting Rate: USD 3,500/ep)",
-      "60–90s Short Animated Explainers (Starting Rate: USD 2,000/video)",
-      "Research Spotlight Documentaries (USD 8,000–15,000)",
-      "Multi-Platform Social Media Series (USD 5,000–8,000)",
-      "Annual Retainers embedded as 'Content & Engagement Studio'",
-    ],
-    image: "/images/bns/studio/studio_cinema_cam.jpg",
-  },
 ];
 
 function ServiceCard({
@@ -100,7 +84,7 @@ function ServiceCard({
   return (
     <div
       style={{ zIndex: index + 1 }}
-      className="sticky top-0 w-full h-[100svh] min-h-[100svh] flex flex-col md:flex-row bg-[#0B0C0E] text-white overflow-hidden shadow-[0_-24px_48px_rgba(0,0,0,0.85)] border-t border-white/10"
+      className="sticky top-0 w-full h-[100svh] min-h-[100svh] flex flex-col md:flex-row bg-[#0B0C0E] text-white overflow-hidden border-t border-white/10"
     >
       {/* Editorial Content Column — Left 50% on desktop */}
       <div className="w-full md:w-1/2 flex-1 md:h-full flex flex-col justify-center px-6 md:px-12 lg:px-16 py-8 md:py-16 bg-[#0B0C0E] z-10 overflow-y-auto sm:overflow-visible">
@@ -170,10 +154,8 @@ function ServiceCard({
           src={service.image}
           alt={service.title}
           loading={index === 0 ? "eager" : "lazy"}
-          className="w-full h-full object-cover filter brightness-95 select-none"
+          className="w-full h-full object-cover select-none"
         />
-        {/* Subtle fluid gradient highlight */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
       </div>
     </div>
   );
@@ -229,6 +211,35 @@ export function SolumServices() {
         {SERVICES.map((service, index) => (
           <ServiceCard key={service.number} service={service} index={index} />
         ))}
+      </div>
+
+      {/* ========================================================= */}
+      {/* 3) BNS STUDIOS COMMISSIONING BRIDGE                       */}
+      {/* ========================================================= */}
+      <div className="w-full bg-[#101010] text-white py-16 md:py-20 px-6 md:px-10 border-t border-white/10 relative z-20">
+        <div className="max-w-[1425px] mx-auto flex flex-col md:flex-row md:items-center justify-between gap-8">
+          <div className="space-y-3 max-w-2xl">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 bg-coral inline-block" />
+              <span className="font-mono text-xs uppercase tracking-wider text-coral font-semibold">
+                COMMERCIAL IMPACT CONTENT // TWO-ENTITY MODEL
+              </span>
+            </div>
+            <h3 className="font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight uppercase leading-[0.98]">
+              LOOKING FOR COMMISSIONED PRODUCTION?
+            </h3>
+            <p className="font-sans text-xs sm:text-sm text-white/70 leading-relaxed font-light">
+              BNS Studios translates complex research into high-impact podcasts, animations, and documentaries. Operating under our Two-Entity Model, &ge; 40% of studio profits are reinvested into BNS Foundation&apos;s civic mission.
+            </p>
+          </div>
+          <Link
+            to={ROUTES.studio}
+            className="inline-flex items-center gap-3 px-8 py-4 bg-coral text-white hover:bg-white hover:text-black transition-colors font-mono text-xs uppercase tracking-wider self-start md:self-auto font-medium"
+          >
+            <span>DISCOVER BNS STUDIOS &amp; RATE CARD</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
       </div>
     </section>
   );

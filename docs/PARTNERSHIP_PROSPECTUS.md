@@ -162,6 +162,8 @@ Our organisational structure is aligned with international governance and organi
 | **Executive Leadership Team (ELT)** | Executive Director and Functional Leads | Provides executive leadership and day-to-day management of BNS. Leads strategy execution, programme and project delivery, research, media productions, business development, partnerships, finance, communications, operations, people management, resource mobilisation and organisational performance. |
 | **Staff, Consultants & Contractors** | Multidisciplinary Team of Staff, Associate Experts, Consultants and Contractors | Delivers BNS's programmes, research, advisory services, strategic communications, creative productions and operational support through a flexible, multidisciplinary resourcing model that enables the organisation to deploy specialist expertise while maintaining high standards of quality, accountability and value for partners. |
 
+For more information on our governance and structure please visit [www.budgetndiostory.org](https://www.budgetndiostory.org).
+
 ---
 
 > *"We are building a platform that earns the right to do its civic work permanently."*

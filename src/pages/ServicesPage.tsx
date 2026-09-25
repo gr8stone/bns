@@ -64,7 +64,9 @@ export function ServicesPage() {
               SCOPE OF ACTION
             </span>
             <p className="font-sans text-sm text-[#757575] leading-relaxed font-light">
-              From civic programme partnerships (BNS Connect, BNS Mashinani, Wanahabari Lab) to commissioned impact storytelling via BNS Studios, we make Kenya's public budgets readable, relatable, and responsive.
+              From grassroots community barazas and investigative journalism to
+              live national town halls and viral docuseries, our four programmes
+              make public money understandable and actionable.
             </p>
           </motion.div>
         </div>
@@ -100,7 +102,7 @@ export function ServicesPage() {
         {/* ========================================================= */}
         {/* 3) METRICS ROW WITH TABULAR FIGURES                       */}
         {/* ========================================================= */}
-     
+
 
         {/* ========================================================= */}
         {/* 4) PROGRAMME ETHOS & WORD REVEAL (MATCHING ABOUT)        */}
@@ -117,7 +119,7 @@ export function ServicesPage() {
 
           <div className="col-span-1 md:col-span-3 space-y-6 max-w-3xl text-sm sm:text-base text-[#101010]/85 font-light leading-relaxed">
             <WordReveal
-              text="Commissioning BNS Studios doesn't just get you great content, it directly cross-subsidises youth civic engagement across Kenya. A proposition no generic agency can offer."
+              text="Public participation must never be an afterthought. We build platforms that take citizens from passive observers to active monitors of public money."
               as="p"
               className="font-display text-2xl sm:text-3xl font-normal tracking-[-0.03em] leading-snug text-[#101010]"
               staggerMs={30}
@@ -133,7 +135,13 @@ export function ServicesPage() {
               }}
               className="text-sm sm:text-base text-[#757575] leading-relaxed font-light"
             >
-              African organisations are doing remarkable work, but technical results rarely travel beyond the impact report. BNS bridges that gap: BNS Connect facilitates credible public dialogue, BNS Mashinani organizes grassroots communities across all 47 counties, Wanahabari Lab resources journalists, and BNS Studios produces podcasts, animations, research spotlights, and campaigns.
+              Too often, public finance reports are buried in technical jargon,
+              locking ordinary Kenyans out of critical spending decisions. Our
+              four programmes function as a cohesive civic machinery: BNS
+              Connect opens legislative doors, BNS Mashinani mobilizes
+              grassroots communities, BNS Wanahabari equips data journalists,
+              and BNS Studio transforms numbers into captivating digital
+              stories.
             </motion.p>
           </div>
         </div>

@@ -207,10 +207,13 @@ export function SolumHero() {
                 </p>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-black/[0.08] flex items-center justify-between text-xs font-mono text-terracotta font-medium">
+              <Link
+                to={ROUTES.projects}
+                className="pt-4 mt-4 border-t border-black/[0.08] flex items-center justify-between text-xs font-mono text-terracotta font-medium hover:underline"
+              >
                 <span>OPEN DATA ARCHIVE</span>
                 <span className="text-coral">&rarr;</span>
-              </div>
+              </Link>
             </div>
 
             {/* Card 2: Sage / Peach Social Proof Card */}

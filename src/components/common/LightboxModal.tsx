@@ -68,7 +68,7 @@ export function LightboxModal({
           <div className="flex items-center gap-3">
             <span className="w-1.5 h-1.5 bg-white rounded-full inline-block" />
             <span className="uppercase tracking-widest text-white font-medium">
-              4K ARCHITECTURAL INSPECTOR
+              4K CIVIC MEDIA INSPECTOR
             </span>
             <span className="text-white/40 hidden sm:inline">&mdash;</span>
             <span className="text-white/60 hidden sm:inline tabular-nums">
@@ -148,7 +148,7 @@ export function LightboxModal({
               </span>
             )}
             <span className="text-white/60 font-sans text-xs">
-              {currentImage.caption || 'High-fidelity architectural visualization still'}
+              {currentImage.caption || 'High-fidelity civic media still'}
             </span>
           </div>
 
