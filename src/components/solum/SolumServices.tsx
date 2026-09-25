@@ -219,25 +219,25 @@ export function SolumServices() {
       {/* ========================================================= */}
       {/* 3) BNS STUDIOS COMMISSIONING BRIDGE                       */}
       {/* ========================================================= */}
-      <div className="w-full bg-[#101010] text-white py-16 md:py-20 px-6 md:px-10 border-t border-white/10 relative z-20">
+      <div className="w-full bg-[#2446EC] text-white py-16 md:py-20 px-6 md:px-10 border-t border-white/20 relative z-20">
         <div className="max-w-[1425px] mx-auto flex flex-col md:flex-row md:items-center justify-between gap-8">
           <div className="space-y-3 max-w-2xl">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-[#2446EC] inline-block" />
-              <span className="font-mono text-xs uppercase tracking-wider text-[#2446EC] font-semibold">
+              <span className="w-2 h-2 bg-white inline-block" />
+              <span className="font-mono text-xs uppercase tracking-wider text-white font-semibold">
                 COMMERCIAL IMPACT CONTENT // TWO-ENTITY MODEL
               </span>
             </div>
-            <h3 className="font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight uppercase leading-[0.98]">
+            <h3 className="font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight uppercase leading-[0.98] text-white">
               LOOKING FOR COMMISSIONED PRODUCTION?
             </h3>
-            <p className="font-sans text-xs sm:text-sm text-white/70 leading-relaxed font-light">
+            <p className="font-sans text-xs sm:text-sm text-white/90 leading-relaxed font-light">
               BNS Studios translates complex research into high-impact podcasts, animations, and documentaries. Operating under our Two-Entity Model, &ge; 40% of studio profits are reinvested into BNS Foundation&apos;s civic mission.
             </p>
           </div>
           <Link
             to={ROUTES.studio}
-            className="inline-flex items-center gap-3 px-8 py-4 bg-[#2446EC] text-white hover:bg-white hover:text-[#2446EC] transition-colors font-mono text-xs uppercase tracking-wider self-start md:self-auto font-semibold rounded-none border-0"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-white text-[#2446EC] hover:bg-[#101010] hover:text-white transition-colors font-mono text-xs uppercase tracking-wider self-start md:self-auto font-semibold rounded-none border-0 shadow-sm"
           >
             <span>DISCOVER BNS STUDIOS &amp; RATE CARD</span>
             <ArrowRight className="w-4 h-4" />
