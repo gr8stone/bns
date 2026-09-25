@@ -208,9 +208,93 @@ export function SolumServices() {
       </div>
 
       {/* ========================================================= */}
-      {/* 2) STICKY STACKING SERVICE CARDS                           */}
+      {/* 2A) MOBILE HORIZONTAL SCROLL SLIDER (Enhanced Emphasis)    */}
       {/* ========================================================= */}
-      <div className="relative w-full overflow-visible">
+      <div className="block md:hidden w-full pb-12">
+        <div className="px-6 pb-3 flex items-center justify-between font-mono text-[11px] text-[#757575] uppercase tracking-wider">
+          <span>SWIPE PROGRAMMES &rarr;</span>
+          <span>3 FLAGSHIP PILLARS</span>
+        </div>
+
+        {/* Snap Slider Track */}
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 px-6 no-scrollbar pb-4 pt-1">
+          {SERVICES.map((service, index) => (
+            <div
+              key={`mobile-${service.number}`}
+              className="snap-center shrink-0 w-[86vw] max-w-[340px] bg-[#2446EC] text-white flex flex-col justify-between border border-white/20 select-none"
+            >
+              {/* Card Image Header */}
+              <div className="relative w-full aspect-[16/10] overflow-hidden bg-black border-b border-white/20">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-3 left-3 bg-[#101010] text-white font-mono text-[10px] uppercase tracking-widest px-2.5 py-1">
+                  PILLAR {service.number}
+                </div>
+                <div className="absolute top-3 right-3 bg-white/20 backdrop-blur-md text-white font-mono text-[10px] tracking-widest px-2 py-0.5">
+                  0{index + 1} / 03
+                </div>
+              </div>
+
+              {/* Card Body */}
+              <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                <div className="space-y-3">
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-white/70 block">
+                    {service.tag}
+                  </span>
+                  <h3 className="font-display text-2xl font-medium tracking-tight text-white leading-tight">
+                    <Link to={ROUTES.programme(service.slug)}>
+                      {service.title}
+                    </Link>
+                  </h3>
+                  <p className="font-sans text-xs text-white/90 leading-relaxed font-normal line-clamp-3">
+                    {service.description}
+                  </p>
+
+                  {/* Top 3 Bullets for Emphasis */}
+                  <ul className="space-y-1.5 pt-3 border-t border-white/20">
+                    {service.bullets.slice(0, 3).map((bullet, bIdx) => (
+                      <li key={bIdx} className="flex items-start gap-2 font-sans text-[11px] text-white/95">
+                        <span className="w-1.5 h-1.5 bg-white inline-block mt-1 flex-shrink-0" />
+                        <span className="leading-snug">{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="pt-3">
+                  <Link
+                    to={ROUTES.programme(service.slug)}
+                    className="w-full py-3 px-4 bg-white text-[#2446EC] hover:bg-[#101010] hover:text-white transition-colors font-mono text-[11px] uppercase tracking-wider flex items-center justify-between font-semibold"
+                  >
+                    <span>EXPLORE DOSSIER</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Scroll Progress / Swipe Hint Pill */}
+        <div className="px-6 pt-2 flex items-center justify-center gap-2">
+          {SERVICES.map((s, idx) => (
+            <div
+              key={s.number}
+              className="h-1 rounded-none transition-all duration-300 bg-[#2446EC] w-6 opacity-75"
+              aria-label={`Slide ${idx + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* ========================================================= */}
+      {/* 2B) DESKTOP STICKY STACKING SERVICE CARDS                 */}
+      {/* ========================================================= */}
+      <div className="hidden md:block relative w-full overflow-visible">
         {SERVICES.map((service, index) => (
           <ServiceCard key={service.number} service={service} index={index} />
         ))}
