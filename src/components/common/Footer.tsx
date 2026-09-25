@@ -221,23 +221,47 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Navigation 2 */}
+          {/* Column 3: Governance & Resources */}
           <div className="col-span-1 md:col-span-2">
             <ul className="space-y-3 font-sans text-xs sm:text-sm font-semibold tracking-wider uppercase text-white/90">
               <li>
                 <Link
-                  to="/contact"
+                  to="/whitepaper"
                   className="hover:text-neutral-400 transition-colors"
                 >
-                  CONTACT
+                  WHITE PAPER
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/404"
+                  to="/faq"
                   className="hover:text-neutral-400 transition-colors"
                 >
-                  404
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/terms"
+                  className="hover:text-neutral-400 transition-colors"
+                >
+                  TERMS
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/privacy"
+                  className="hover:text-neutral-400 transition-colors"
+                >
+                  PRIVACY
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/cookies"
+                  className="hover:text-neutral-400 transition-colors"
+                >
+                  COOKIES
                 </Link>
               </li>
             </ul>

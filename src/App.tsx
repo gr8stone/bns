@@ -19,6 +19,10 @@ import { ServiceDetailPage } from './pages/ServiceDetailPage';
 import { ContactPage } from './pages/ContactPage';
 import { TermsPage } from './pages/TermsPage';
 import { PrivacyPage } from './pages/PrivacyPage';
+import { StudioPage } from './pages/StudioPage';
+import { WhitepaperPage } from './pages/WhitepaperPage';
+import { FaqPage } from './pages/FaqPage';
+import { CookiesPage } from './pages/CookiesPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 function AppRoutes({ location }: { location: Location }) {
@@ -27,6 +31,7 @@ function AppRoutes({ location }: { location: Location }) {
       {/* Core SOLUM Routes */}
       <Route path="/" element={<HomePage />} />
       <Route path="/about" element={<AboutPage />} />
+      <Route path="/studio" element={<StudioPage />} />
       <Route path="/projects" element={<ProjectsPage />} />
       <Route path="/projects/:slug" element={<ProjectDetailPage />} />
       <Route path="/services" element={<ServicesPage />} />
@@ -36,6 +41,10 @@ function AppRoutes({ location }: { location: Location }) {
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/terms" element={<TermsPage />} />
       <Route path="/privacy" element={<PrivacyPage />} />
+      <Route path="/cookies" element={<CookiesPage />} />
+      <Route path="/whitepaper" element={<WhitepaperPage />} />
+      <Route path="/faq" element={<FaqPage />} />
+      <Route path="/help" element={<FaqPage />} />
       <Route path="/404" element={<NotFoundPage />} />
 
       {/* Backwards-compatibility aliases */}
@@ -46,7 +55,6 @@ function AppRoutes({ location }: { location: Location }) {
       <Route path="/work" element={<Navigate to="/projects" replace />} />
       <Route path="/work/:slug" element={<ProjectDetailPage />} />
       <Route path="/process" element={<Navigate to="/about" replace />} />
-      <Route path="/studio" element={<Navigate to="/about" replace />} />
 
       {/* 404 catch-all */}
       <Route path="*" element={<NotFoundPage />} />

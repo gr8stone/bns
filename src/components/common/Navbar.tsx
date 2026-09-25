@@ -244,7 +244,21 @@ export function Navbar() {
                 <span className="text-text-base block mb-1 font-semibold">
                   INDEX
                 </span>
-                <div className="flex gap-4">
+                <div className="flex flex-wrap gap-x-4 gap-y-1">
+                  <Link
+                    to={ROUTES.whitepaper}
+                    onClick={() => setMenuOpen(false)}
+                    className="hover:text-terracotta transition-colors"
+                  >
+                    White Paper
+                  </Link>
+                  <Link
+                    to={ROUTES.faq}
+                    onClick={() => setMenuOpen(false)}
+                    className="hover:text-terracotta transition-colors"
+                  >
+                    FAQ
+                  </Link>
                   <Link
                     to={ROUTES.terms}
                     onClick={() => setMenuOpen(false)}
@@ -258,6 +272,13 @@ export function Navbar() {
                     className="hover:text-terracotta transition-colors"
                   >
                     Privacy
+                  </Link>
+                  <Link
+                    to={ROUTES.cookies}
+                    onClick={() => setMenuOpen(false)}
+                    className="hover:text-terracotta transition-colors"
+                  >
+                    Cookies
                   </Link>
                 </div>
               </div>
