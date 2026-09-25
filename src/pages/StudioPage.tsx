@@ -10,6 +10,7 @@ import { ROUTES } from '../lib/routes';
 export function StudioPage() {
   const shouldReduceMotion = useReducedMotion();
   const [openFaqId, setOpenFaqId] = useState<string | null>(null);
+  const [activeRateIndex, setActiveRateIndex] = useState<number>(0);
 
   function toggleFaq(id: string) {
     setOpenFaqId((prev) => (prev === id ? null : id));
@@ -180,104 +181,153 @@ export function StudioPage() {
         </div>
 
         {/* ========================================================= */}
-        {/* 4. MINIMALIST BRUTALIST RATE SCHEDULE (INVOICE-STYLE)     */}
+        {/* 4. SINGLE-VIEWPORT COCKPIT RATE CARD (ZERO-SCROLL VIEW)   */}
         {/* ========================================================= */}
-        <div className="py-20 border-b border-black/10 bg-[#2446EC] text-white -mx-6 md:-mx-10 px-6 md:px-10">
-          {/* Header Row */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-white/20">
+        <div className="border-b border-black/10 bg-[#2446EC] text-white -mx-6 md:-mx-10 px-6 md:px-10 py-8 md:py-12 min-h-[92svh] md:h-[90svh] flex flex-col justify-between">
+          {/* 1. Header Strip */}
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 md:pb-6 border-b border-white/20">
             <div>
-              <div className="flex items-center gap-2 mb-3">
-                <span className="w-1.5 h-1.5 bg-white inline-block" />
-                <span className="font-mono text-xs uppercase tracking-wider text-white font-medium">
+              <div className="flex items-center gap-2 mb-1.5">
+                <span className="w-1.5 h-1.5 bg-white inline-block animate-pulse" />
+                <span className="font-mono text-[11px] uppercase tracking-wider text-white font-medium">
                   RATE SCHEDULE // PROSPECTUS 2026 TARIFFS
                 </span>
               </div>
-              <h2 className="font-display text-3xl sm:text-5xl font-medium tracking-[-0.05em] text-white uppercase leading-none">
+              <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-medium tracking-[-0.05em] text-white uppercase leading-none">
                 COMMERCIAL RATE CARD.
               </h2>
             </div>
-            <div className="font-mono text-xs text-white/70 space-y-1 md:text-right">
-              <div>REF: BNS-STUDIO-2026-V1 &bull; CURRENCY: USD</div>
-              <div>TERMS: 50% ADVANCE / 50% DELIVERY &bull; NET 30</div>
+            <div className="font-mono text-[11px] text-white/70 space-y-0.5 sm:text-right">
+              <div>REF: BNS-STUDIO-2026-V1 &bull; USD &bull; NET 30</div>
+              <div className="text-white/60">SELECT FORMAT TO INSPECT SPECIFICATIONS</div>
             </div>
           </div>
 
-          {/* Table Header (Desktop) */}
-          <div className="hidden lg:grid lg:grid-cols-12 gap-6 py-4 border-b border-white/20 font-mono text-[11px] uppercase tracking-wider text-white/70">
-            <div className="col-span-4">FORMAT</div>
-            <div className="col-span-6">SCOPE &amp; DELIVERABLES</div>
-            <div className="col-span-2 text-right">STARTING RATE</div>
+          {/* 2. Mobile Quick-Pill Bar (Visible on mobile only to toggle in 1 touch) */}
+          <div className="flex lg:hidden overflow-x-auto no-scrollbar gap-2 py-3 border-b border-white/15">
+            {STUDIO_RATE_CARD.map((item, idx) => {
+              const isActive = activeRateIndex === idx;
+              return (
+                <button
+                  key={item.code}
+                  onClick={() => setActiveRateIndex(idx)}
+                  className={`px-3 py-1.5 font-mono text-xs uppercase tracking-wider whitespace-nowrap transition-colors rounded-none shrink-0 ${
+                    isActive
+                      ? "bg-white text-[#2446EC] font-bold"
+                      : "bg-white/10 text-white/80 hover:bg-white/20"
+                  }`}
+                >
+                  {item.code.replace('SRV-', '')}
+                </button>
+              );
+            })}
           </div>
 
-          {/* Table Rows (Desktop & Mobile) */}
-          <div className="divide-y divide-white/15">
-            {STUDIO_RATE_CARD.map((item, idx) => (
-              <div
-                key={idx}
-                className="py-8 grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-6 items-start group hover:bg-black/10 transition-colors -mx-4 px-4 sm:-mx-6 sm:px-6"
-              >
-                {/* Format */}
-                <div className="lg:col-span-4">
-                  <h3 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-white uppercase group-hover:text-white transition-colors leading-tight">
-                    {item.format}
-                  </h3>
+          {/* 3. Cockpit Master-Detail Body */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 my-auto py-4 items-stretch">
+            {/* Left Master List (Desktop: all 6 items in tight single-line ledger) */}
+            <div className="hidden lg:flex lg:col-span-5 flex-col justify-between divide-y divide-white/15 pr-2">
+              {STUDIO_RATE_CARD.map((item, idx) => {
+                const isActive = activeRateIndex === idx;
+                return (
+                  <button
+                    key={item.code}
+                    onClick={() => setActiveRateIndex(idx)}
+                    onMouseEnter={() => setActiveRateIndex(idx)}
+                    className={`w-full text-left py-3 px-3.5 transition-all flex items-center justify-between group rounded-none ${
+                      isActive
+                        ? "bg-white text-[#2446EC] font-semibold translate-x-1"
+                        : "hover:bg-white/10 text-white"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className={`font-mono text-xs ${isActive ? "text-[#2446EC]" : "text-white/70"}`}>
+                        0{idx + 1}
+                      </span>
+                      <span className="font-display text-base uppercase tracking-tight">
+                        {item.format}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-3 font-mono text-xs">
+                      <span className={isActive ? "text-[#2446EC]" : "text-white/80"}>
+                        {item.startingRate}
+                      </span>
+                      <ArrowUpRight
+                        className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                          isActive
+                            ? "rotate-0 text-[#2446EC]"
+                            : "-rotate-45 text-white/40 group-hover:rotate-0 group-hover:text-white"
+                        }`}
+                      />
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Right Inspector Card (Detail Card — Live reactive viewport pane) */}
+            <div className="col-span-1 lg:col-span-7 bg-white text-[#101010] p-6 sm:p-8 lg:p-10 flex flex-col justify-between border border-black/10 shadow-xl">
+              <div>
+                {/* Meta Top Line */}
+                <div className="flex items-center justify-between pb-4 border-b border-[#101010]/10">
+                  <span className="font-mono text-xs font-semibold text-[#2446EC] tracking-wider uppercase">
+                    {STUDIO_RATE_CARD[activeRateIndex].code} // SCOPE &amp; SPECIFICATIONS
+                  </span>
+                  <span className="font-mono text-xs text-[#757575] uppercase">
+                    ITEM 0{activeRateIndex + 1} OF 06
+                  </span>
                 </div>
 
-                {/* Scope */}
-                <div className="lg:col-span-6 font-sans text-sm text-white/85 font-light leading-relaxed">
-                  {item.scope}
-                </div>
+                {/* Format Headline */}
+                <h3 className="font-display text-2xl sm:text-4xl font-medium tracking-tight text-[#101010] uppercase mt-4 mb-3 leading-tight">
+                  {STUDIO_RATE_CARD[activeRateIndex].format}
+                </h3>
 
-                {/* Tariff & Action */}
-                <div className="lg:col-span-2 flex lg:flex-col items-center lg:items-end justify-between lg:justify-start gap-2 pt-1 lg:pt-0 border-t border-white/15 lg:border-0 mt-2 lg:mt-0">
-                  <div className="lg:text-right">
-                    <span className="font-mono text-sm font-semibold text-white tabular-nums block">
-                      {item.startingRate}
+                {/* Scope Description */}
+                <p className="font-sans text-xs sm:text-sm lg:text-base text-[#101010]/80 font-normal leading-relaxed">
+                  {STUDIO_RATE_CARD[activeRateIndex].scope}
+                </p>
+              </div>
+
+              {/* Bottom Tariff & Action Bar */}
+              <div className="pt-6 mt-6 border-t border-[#101010]/10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                <div>
+                  <span className="font-mono text-[10px] text-[#757575] uppercase tracking-wider block">
+                    BASE INVESTMENT
+                  </span>
+                  <div className="flex items-baseline gap-2">
+                    <span className="font-mono text-xl sm:text-3xl font-bold text-[#101010] tabular-nums">
+                      {STUDIO_RATE_CARD[activeRateIndex].startingRate}
                     </span>
-                    <span className="font-mono text-[11px] text-white/70 block">
-                      {item.unit}
+                    <span className="font-mono text-xs text-[#757575]">
+                      {STUDIO_RATE_CARD[activeRateIndex].unit}
                     </span>
                   </div>
+                </div>
+
+                <div className="flex items-center gap-3">
                   <Link
                     to={ROUTES.contact}
-                    className="group/btn inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider px-3.5 py-1.5 bg-white text-[#2446EC] hover:bg-[#101010] hover:text-white transition-colors font-semibold"
+                    className="group/btn inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider px-5 py-3 bg-[#2446EC] text-white hover:bg-[#101010] transition-colors font-semibold"
                   >
-                    <span>Brief</span>
+                    <span>Commission Brief</span>
                     <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 ease-out group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
                   </Link>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
 
-          {/* Ledger Disclosures */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 mt-4 border-t border-white/20 font-mono text-[11px] text-white/70 leading-relaxed">
+          {/* 4. Compact 3-Column Disclosures Footer */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-6 pt-4 border-t border-white/20 font-mono text-[10px] md:text-[11px] text-white/70 leading-normal">
             <div>
-              <span className="text-white uppercase block font-semibold mb-1">
-                DISBURSEMENTS
-              </span>
-              <span>
-                Tariffs exclude travel and accommodation outside Nairobi
-                metropolitan area. Invoiced at verified cost.
-              </span>
+              <span className="text-white uppercase font-semibold">DISBURSEMENTS:</span> Outside Nairobi invoiced at verified net cost.
             </div>
             <div>
-              <span className="text-white uppercase block font-semibold mb-1">
-                EDITORIAL FIREWALL
-              </span>
-              <span>
-                Commissions fund creative production and dissemination. BNS
-                maintains complete independence over civic research.
-              </span>
+              <span className="text-white uppercase font-semibold">EDITORIAL FIREWALL:</span> BNS maintains independent civic oversight.
             </div>
             <div>
-              <span className="text-white uppercase block font-semibold mb-1">
-                MULTI-EPISODE RETAINERS
-              </span>
-              <span>
-                Series commitments, multi-year projects, and embedded grant
-                budget lines receive customized tariff schedules.
-              </span>
+              <span className="text-white uppercase font-semibold">RETAINERS:</span> Multi-year grants receive customized rate models.
             </div>
           </div>
         </div>
