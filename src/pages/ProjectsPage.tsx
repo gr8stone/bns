@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Filter } from 'lucide-react';
 import { PROJECTS } from '../data/projects';
 import { ArchvizProjectShowcase } from '../components/common/ArchvizProjectShowcase';
+import { getYouTubeId, getYouTubeThumbnail } from '../lib/media';
 
 const CATEGORIES = [
   'All Projects',
@@ -293,6 +294,8 @@ export function ProjectsPage() {
                   }
 
                   const aspect = ASPECT_RATIOS[idx % ASPECT_RATIOS.length];
+                  const ytId = getYouTubeId(project.heroVideo);
+                  const displayImage = (ytId ? getYouTubeThumbnail(ytId, 'maxres') : null) || project.heroImage;
 
                   return (
                     <div
@@ -307,19 +310,19 @@ export function ProjectsPage() {
                           className={`relative ${aspect} w-full overflow-hidden bg-zinc-100 border border-black/[0.08] rounded-none`}
                         >
                           <img
-                            src={project.heroImage}
+                            src={displayImage}
                             alt={project.title}
                             loading="lazy"
                             className="w-full h-full object-cover transition-transform duration-550 ease-out group-hover:scale-[1.025]"
                           />
-                          <div className="absolute inset-0 bg-coral/0 group-hover:bg-coral/10 transition-colors duration-300" />
+                          <div className="absolute inset-0 bg-[#2446EC]/0 group-hover:bg-[#2446EC]/10 transition-colors duration-300" />
                         </div>
 
                         {/* Metadata Strip with Title Left / Year Right */}
                         <div className="pt-4 flex flex-col sm:flex-row sm:items-baseline justify-between font-mono text-xs sm:text-sm text-text-base border-b border-black/[0.08] pb-3 gap-2">
                           <div className="flex items-baseline gap-3">
-                            <span className="text-coral font-medium">0{idx + 1}</span>
-                            <span className="font-semibold uppercase tracking-wider group-hover:text-terracotta transition-colors">
+                            <span className="text-[#2446EC] font-semibold">0{idx + 1}</span>
+                            <span className="font-semibold uppercase tracking-wider group-hover:text-[#2446EC] transition-colors">
                               {project.title}
                             </span>
                             <span className="text-slate hidden sm:inline">&mdash;</span>
@@ -329,7 +332,7 @@ export function ProjectsPage() {
                           </div>
 
                           <div className="flex items-center gap-4 text-slate">
-                            <span className="text-terracotta font-medium">{project.category}</span>
+                            <span className="text-[#2446EC] font-medium">{project.category}</span>
                             <span>&bull;</span>
                             <span className="tabular-nums font-mono">{project.year}</span>
                             <ArrowRight className="w-3.5 h-3.5 text-text-base transform group-hover:translate-x-1.5 transition-transform" />

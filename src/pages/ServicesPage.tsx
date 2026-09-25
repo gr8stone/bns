@@ -4,7 +4,7 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { WordReveal } from "../components/common/WordReveal";
@@ -162,59 +162,80 @@ export function ServicesPage() {
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+          {/* Architectural Editorial List Layout (Monogram® Class) */}
+          <div className="divide-y divide-[#101010]/15 border-t border-b border-[#101010]/15">
             {SERVICES.map((prog) => (
               <div
                 key={prog.slug}
-                className="group border border-[#101010]/12 bg-white flex flex-col justify-between hover:border-[#101010] transition-colors duration-300"
+                className="group py-12 lg:py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start hover:bg-[#FAFAF8] transition-colors -mx-6 px-6 md:-mx-10 md:px-10"
               >
-                {/* Card Image Frame */}
-                <div>
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-100 border-b border-[#101010]/12">
+                {/* Column 1: Pillar Number & Tag */}
+                <div className="lg:col-span-2 space-y-2">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#2446EC] inline-block" />
+                    <span className="font-mono text-xs uppercase tracking-wider text-[#2446EC] font-semibold">
+                      PILLAR {prog.number}
+                    </span>
+                  </div>
+                  <span className="font-mono text-[11px] text-[#757575] block uppercase tracking-wider">
+                    {prog.slug.replace('-', ' ')}
+                  </span>
+                </div>
+
+                {/* Column 2: Large Title, Headline, and Deliverable Pills */}
+                <div className="lg:col-span-6 space-y-4">
+                  <h3 className="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight uppercase text-[#101010] group-hover:text-[#2446EC] transition-colors leading-[0.98]">
+                    <Link to={`/programmes/${prog.slug}`}>
+                      {prog.title}
+                    </Link>
+                  </h3>
+
+                  <p className="font-sans text-base text-[#101010]/90 font-normal leading-relaxed">
+                    {prog.heroHeadline}
+                  </p>
+
+                  <p className="font-sans text-xs sm:text-sm text-[#757575] leading-relaxed font-light">
+                    {prog.heroSubhead}
+                  </p>
+
+                  {/* 3 Key Deliverables List */}
+                  {prog.deliverables && prog.deliverables.length > 0 && (
+                    <div className="pt-3 flex flex-wrap gap-2">
+                      {prog.deliverables.slice(0, 3).map((d) => (
+                        <span
+                          key={d.name}
+                          className="font-mono text-[11px] uppercase tracking-wider px-2.5 py-1 bg-black/[0.04] text-[#101010] border border-black/[0.08]"
+                        >
+                          &bull; {d.name}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  <div className="pt-2">
+                    <Link
+                      to={`/programmes/${prog.slug}`}
+                      className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[#101010] group-hover:text-[#2446EC] font-semibold border-b border-current pb-0.5 transition-colors"
+                    >
+                      <span>Explore Full Programme Dossier</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Column 3: High-Res Visual Frame */}
+                <div className="lg:col-span-4">
+                  <Link to={`/programmes/${prog.slug}`} className="block overflow-hidden bg-black border border-black/10 aspect-[16/10] relative group/img">
                     <img
                       src={prog.image}
                       alt={prog.title}
                       loading="lazy"
-                      className="w-full h-full object-cover filter grayscale contrast-125 transition-transform duration-700 ease-out group-hover:scale-[1.025]"
+                      className="w-full h-full object-cover filter brightness-95 group-hover/img:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute top-3 left-3 px-2.5 py-1 bg-[#2446EC] text-white font-mono text-xs font-semibold rounded-none">
-                      PILLAR {prog.number}
+                    <div className="absolute inset-0 bg-[#2446EC]/0 group-hover/img:bg-[#2446EC]/15 transition-colors duration-300" />
+                    <div className="absolute bottom-3 left-3 bg-[#2446EC] text-white font-mono text-[10px] uppercase tracking-widest px-2.5 py-1">
+                      VIEW PILLAR {prog.number} &rarr;
                     </div>
-                  </div>
-
-                  {/* Card Content */}
-                  <div className="p-6 sm:p-8 space-y-4">
-                    <div className="flex items-baseline justify-between gap-4">
-                      <h3 className="font-display text-2xl sm:text-3xl font-semibold uppercase tracking-tight text-[#101010] group-hover:text-[#2446EC] transition-colors">
-                        {prog.title}
-                      </h3>
-                      <Link
-                        to={`/programmes/${prog.slug}`}
-                        className="text-xs font-mono uppercase tracking-wider text-[#101010] inline-flex items-center gap-1 group-hover:text-[#2446EC] group-hover:underline"
-                      >
-                        <span>Details</span>
-                        <ArrowUpRight className="w-3.5 h-3.5" />
-                      </Link>
-                    </div>
-
-                    <p className="font-mono text-xs uppercase tracking-wider text-[#757575]">
-                      {prog.shortDescription}
-                    </p>
-
-                    <p className="font-sans text-xs sm:text-sm text-[#757575] leading-relaxed font-light">
-                      {prog.heroSubhead}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Bottom Action Strip */}
-                <div className="p-6 sm:p-8 pt-0">
-                  <Link
-                    to={`/programmes/${prog.slug}`}
-                    className="w-full py-3.5 px-4 border border-[#101010] text-[#101010] hover:bg-[#2446EC] hover:text-white hover:border-[#2446EC] transition-colors duration-200 text-xs font-mono uppercase tracking-wider flex items-center justify-between rounded-none"
-                  >
-                    <span>EXPLORE {prog.title}</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </div>

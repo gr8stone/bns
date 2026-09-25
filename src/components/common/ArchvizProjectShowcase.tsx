@@ -3,12 +3,7 @@ import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import type { Project } from "../../types";
 import { LightboxModal, type LightboxImage } from "./LightboxModal";
-
-function getYouTubeId(url: string | undefined): string | null {
-  if (!url) return null;
-  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
-  return match ? match[1] : null;
-}
+import { getYouTubeId, getYouTubeThumbnail } from "../../lib/media";
 
 interface ArchvizProjectShowcaseProps {
   project: Project;
@@ -23,12 +18,12 @@ export function ArchvizProjectShowcase({
   const [isMuted, setIsMuted] = useState(true);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [thumbError, setThumbError] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const videoPoster =
-    project.heroImage === "/images/bns/towwnhallmay/129A3863.jpg"
-      ? "/images/bns/optimized/129A3863-poster-small.webp"
-      : project.heroImage;
+  
   const youtubeId = getYouTubeId(project.heroVideo);
+  const youtubeThumb = youtubeId ? getYouTubeThumbnail(youtubeId, thumbError ? 'hq' : 'maxres') : null;
+  const videoPoster = youtubeThumb || project.heroImage;
   const isDirectVideo = Boolean(
     project.heroVideo &&
     (project.heroVideo.endsWith('.mp4') || project.heroVideo.endsWith('.webm'))
@@ -184,6 +179,7 @@ export function ArchvizProjectShowcase({
                     src={videoPoster}
                     alt={project.title}
                     loading="lazy"
+                    onError={() => setThumbError(true)}
                     className="w-full h-full object-cover filter brightness-95"
                   />
                   {/* Play Trigger Button */}

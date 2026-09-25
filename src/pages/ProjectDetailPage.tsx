@@ -1,13 +1,16 @@
-import { useMemo, useRef } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Play } from 'lucide-react';
 import { PROJECTS } from '../data/projects';
+import { getYouTubeId, getYouTubeThumbnail } from '../lib/media';
 
 export function ProjectDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const leadImageRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [thumbError, setThumbError] = useState(false);
 
   const project = useMemo(() => {
     return PROJECTS.find((p) => p.slug === slug);
@@ -36,6 +39,14 @@ export function ProjectDetailPage() {
   if (!project) {
     return <Navigate to="/projects" replace />;
   }
+
+  const youtubeId = getYouTubeId(project.heroVideo);
+  const youtubeThumb = youtubeId ? getYouTubeThumbnail(youtubeId, thumbError ? 'hq' : 'maxres') : null;
+  const leadPoster = youtubeThumb || project.heroImage;
+  const isDirectVideo = Boolean(
+    project.heroVideo &&
+    (project.heroVideo.endsWith('.mp4') || project.heroVideo.endsWith('.webm'))
+  );
 
   return (
     <main className="w-full bg-white text-[#101010] pt-28 md:pt-36">
@@ -89,24 +100,59 @@ export function ProjectDetailPage() {
         </div>
       </div>
 
-      {/* Full-Bleed Lead Image with Restrained Parallax */}
+      {/* Full-Bleed Lead Video / Thumbnail Stage */}
       <div
         ref={leadImageRef}
-        className="relative w-full h-[55vh] sm:h-[70vh] lg:h-[80vh] overflow-hidden bg-zinc-900 my-16 border-t border-b border-[#101010]/12"
+        className="relative w-full h-[55vh] sm:h-[70vh] lg:h-[80vh] overflow-hidden bg-black my-16 border-t border-b border-[#101010]/12 group"
       >
-        <motion.div
-          style={{ y: shouldReduceMotion ? '0%' : parallaxY }}
-          className="absolute inset-0 w-full h-[120%] -top-[10%]"
-        >
-          <img
-            src={project.heroImage}
-            alt={project.title}
-            loading="eager"
-            className="w-full h-full object-cover filter brightness-95"
+        {youtubeId && isPlaying ? (
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1`}
+            title={project.title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="w-full h-full object-cover border-0"
           />
-          <div className="absolute inset-0 bg-black/15 pointer-events-none" />
-        </motion.div>
-        <div className="absolute bottom-4 left-6 md:left-10 text-white font-mono text-xs uppercase tracking-wider">
+        ) : isDirectVideo && isPlaying ? (
+          <video
+            src={project.heroVideo}
+            poster={leadPoster}
+            autoPlay
+            controls
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="relative w-full h-full">
+            <motion.div
+              style={{ y: shouldReduceMotion ? '0%' : parallaxY }}
+              className="absolute inset-0 w-full h-[120%] -top-[10%]"
+            >
+              <img
+                src={leadPoster}
+                alt={project.title}
+                loading="eager"
+                onError={() => setThumbError(true)}
+                className="w-full h-full object-cover filter brightness-90"
+              />
+              <div className="absolute inset-0 bg-black/25 pointer-events-none" />
+            </motion.div>
+
+            {(youtubeId || isDirectVideo) && (
+              <div className="absolute inset-0 flex items-center justify-center z-20">
+                <button
+                  onClick={() => setIsPlaying(true)}
+                  aria-label="Play documentary video"
+                  className="flex items-center gap-3 px-6 py-3.5 bg-[#2446EC] text-white hover:bg-[#101010] transition-colors rounded-none font-mono text-xs uppercase tracking-wider font-semibold cursor-pointer shadow-xl border-0"
+                >
+                  <Play className="w-4 h-4 fill-current ml-0.5" />
+                  <span>Watch Feature &bull; 2026</span>
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+
+        <div className="absolute bottom-4 left-6 md:left-10 text-white font-mono text-xs uppercase tracking-wider z-20 pointer-events-none">
           PRIMARY EPISODE VISUAL &bull; {project.title}
         </div>
       </div>
