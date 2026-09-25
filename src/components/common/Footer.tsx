@@ -204,6 +204,14 @@ export function Footer() {
               </li>
               <li>
                 <Link
+                  to="/studio"
+                  className="hover:text-neutral-400 transition-colors"
+                >
+                  STUDIO
+                </Link>
+              </li>
+              <li>
+                <Link
                   to="/projects"
                   className="hover:text-neutral-400 transition-colors"
                 >

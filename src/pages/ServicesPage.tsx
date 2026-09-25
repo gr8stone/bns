@@ -37,7 +37,7 @@ export function ServicesPage() {
             >
               <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
               <span className="font-mono text-xs uppercase tracking-wider text-[#101010] font-medium">
-                CIVIC ACTION FRAMEWORK // 4 STRATEGIC PROGRAMMES
+                CIVIC ACTION FRAMEWORK // 3 STRATEGIC PROGRAMMES
               </span>
             </motion.div>
             <motion.h1
@@ -50,7 +50,7 @@ export function ServicesPage() {
               }}
               className="font-display text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-[-0.06em] text-[#101010] uppercase leading-[0.94]"
             >
-              OUR FOUR PROGRAMMES.
+              OUR THREE PROGRAMMES.
             </motion.h1>
           </div>
 
@@ -65,7 +65,7 @@ export function ServicesPage() {
             </span>
             <p className="font-sans text-sm text-[#757575] leading-relaxed font-light">
               From grassroots community barazas and investigative journalism to
-              live national town halls and viral docuseries, our four programmes
+              live national town halls and civic budget monitoring, our three programmes
               make public money understandable and actionable.
             </p>
           </motion.div>
@@ -94,7 +94,7 @@ export function ServicesPage() {
                 NAIROBI &amp; 47 COUNTIES // CITIZEN PARTICIPATION &amp; OPEN
                 FINANCE
               </span>
-              <span>4 ACTIVE PROGRAMMES</span>
+              <span>3 ACTIVE CIVIC PROGRAMMES</span>
             </div>
           </div>
         </div>
@@ -136,25 +136,25 @@ export function ServicesPage() {
               className="text-sm sm:text-base text-[#757575] leading-relaxed font-light"
             >
               Too often, public finance reports are buried in technical jargon,
-              locking ordinary Kenyans out of critical spending decisions. Our
-              four programmes function as a cohesive civic machinery: BNS
-              Connect opens legislative doors, BNS Mashinani mobilizes
-              grassroots communities, BNS Wanahabari equips data journalists,
-              and BNS Studio transforms numbers into captivating digital
-              stories.
+              locking ordinary Kenyans out of critical spending decisions. Under
+              BNS Foundation, our three flagship programmes function as cohesive
+              civic machinery: BNS Connect opens legislative doors, BNS Mashinani
+              mobilizes grassroots communities, and Wanahabari Lab equips data
+              journalists. Commercial impact productions are delivered by our
+              sister entity, BNS Studios.
             </motion.p>
           </div>
         </div>
 
         {/* ========================================================= */}
-        {/* 5) THE 4 PROGRAMMES CARDS (EXACT EDITORIAL STYLE)        */}
+        {/* 5) THE 3 PROGRAMMES CARDS (EXACT EDITORIAL STYLE)        */}
         {/* ========================================================= */}
         <div className="py-20 border-b border-[#101010]/12">
           <div className="flex items-center justify-between mb-12">
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
               <span className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#101010] font-medium">
-                CORE PILLARS &bull; 4 INITIATIVES
+                CORE PILLARS &bull; 3 INITIATIVES
               </span>
             </div>
             <span className="font-mono text-xs text-[#757575] uppercase hidden sm:inline">
