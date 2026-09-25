@@ -83,7 +83,7 @@ export function Footer() {
               <img
                 src="/images/bns/logo.svg"
                 alt="Budget Ndio Story"
-                className="w-7 h-7 object-contain brightness-0 invert"
+                className="w-7 h-7 object-contain"
               />
               <span className="font-sans font-bold text-xl tracking-tight text-white">
                 Budget Ndio Story&reg;
@@ -164,15 +164,16 @@ export function Footer() {
               </a>
             </div>
 
-            {/* Inverted Monochromatic Partner Badges */}
+            {/* Partner Badges in Natural/Original Colors */}
             <div className="flex items-center gap-4 pt-2" aria-label="Partners">
               {PARTNER_LOGOS.map((logo) => (
-                <img
-                  key={logo.src}
-                  src={logo.src}
-                  alt={logo.alt}
-                  className="h-8 w-auto max-w-[80px] object-contain brightness-0 invert opacity-75 hover:opacity-100 transition-opacity"
-                />
+                <div key={logo.src} className="p-1 bg-white/10 flex items-center justify-center">
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="h-7 w-auto max-w-[85px] object-contain hover:scale-105 transition-transform"
+                  />
+                </div>
               ))}
             </div>
           </div>
