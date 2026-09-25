@@ -198,17 +198,29 @@ export function ServicesPage() {
                     {prog.heroSubhead}
                   </p>
 
-                  {/* 3 Key Deliverables List */}
+                  {/* Minimalist Deliverables Reveal (Clean Architectural Ledger) */}
                   {prog.deliverables && prog.deliverables.length > 0 && (
-                    <div className="pt-3 flex flex-wrap gap-2">
-                      {prog.deliverables.slice(0, 3).map((d) => (
-                        <span
-                          key={d.name}
-                          className="font-mono text-[11px] uppercase tracking-wider px-2.5 py-1 bg-black/[0.04] text-[#101010] border border-black/[0.08]"
-                        >
-                          &bull; {d.name}
-                        </span>
-                      ))}
+                    <div className="pt-3 pb-1 border-t border-[#101010]/10 space-y-2">
+                      <span className="font-mono text-[10px] uppercase tracking-widest text-[#757575] block">
+                        KEY OUTPUTS //
+                      </span>
+                      <ul className="space-y-1.5 font-mono text-xs text-[#101010]/85">
+                        {prog.deliverables.slice(0, 3).map((d, dIdx) => (
+                          <motion.li
+                            key={d.name}
+                            initial={{ opacity: 0, x: -6 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.3, delay: dIdx * 0.06 }}
+                            className="flex items-center gap-2 group/item"
+                          >
+                            <span className="w-1.5 h-1.5 bg-[#2446EC] inline-block flex-shrink-0 transition-transform group-hover/item:scale-125" />
+                            <span className="tracking-tight font-medium text-[#101010] group-hover/item:text-[#2446EC] transition-colors">
+                              {d.name}
+                            </span>
+                          </motion.li>
+                        ))}
+                      </ul>
                     </div>
                   )}
 

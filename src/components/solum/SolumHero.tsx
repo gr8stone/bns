@@ -96,25 +96,12 @@ export function SolumHero() {
               Follow the budget.{" "}
               <span className="text-[#2446EC] block sm:inline">Find the story.</span>
             </motion.h1>
-
-            <motion.p
-              initial={shouldReduceMotion ? false : { opacity: 0.5, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.5,
-                delay: 0.08,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="font-display text-lg sm:text-xl md:text-[24px] font-medium leading-[1.3] tracking-[-0.04em] text-text-base mt-5 max-w-2xl"
-            >
-              A platform for budget literacy, civic accountability & impact storytelling. Making Kenya&apos;s public budgets readable, relatable, and responsive.
-            </motion.p>
           </div>
 
           {/* Right: Actions & Micro Metadata */}
           <div className="lg:col-span-4 flex flex-col justify-end lg:items-end gap-6">
-            <p className="font-sans text-xs text-text-muted leading-relaxed font-normal max-w-sm">
-              Sitting at the intersection of public finance, civic organising, and creative media across all 47 counties. Follow the budget. Find the story.
+            <p className="font-sans text-xs sm:text-sm text-text-muted leading-relaxed font-normal max-w-sm">
+              A platform for budget literacy, civic accountability & impact storytelling. Making Kenya&apos;s public budgets readable, relatable, and responsive across all 47 counties.
             </p>
 
             <div className="flex flex-wrap items-center gap-3">
