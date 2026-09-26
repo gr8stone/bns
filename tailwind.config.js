@@ -50,8 +50,8 @@ export default {
 
       // ── Font Families (Beausite Classic Medium ramp) ─────────────────────────
       fontFamily: {
-        sans:    ['"Beausite Classic Medium"', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['"Beausite Classic Medium"', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans:    ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
         mono:    ['Geist Mono', 'JetBrains Mono', 'ui-monospace', 'monospace'],
       },
 
