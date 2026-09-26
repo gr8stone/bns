@@ -210,14 +210,16 @@ export function ProjectDetailPage() {
             <p className="font-display text-xl sm:text-2xl font-normal tracking-[-0.03em] leading-snug text-[#101010]">
               {projectArticle?.subtitle ?? project.summary}
             </p>
-            {(projectArticle?.content ?? project.description).map((paragraph, i) => (
-              <p
-                key={i}
-                className="text-xs sm:text-sm text-[#757575] leading-relaxed"
-              >
-                {paragraph}
-              </p>
-            ))}
+            {(projectArticle?.content ?? project.description).map(
+              (paragraph, i) => (
+                <p
+                  key={i}
+                  className="text-xs sm:text-sm text-[#757575] leading-relaxed"
+                >
+                  {paragraph}
+                </p>
+              ),
+            )}
           </div>
 
           {/* Project Metrics Summary in Column 4 */}

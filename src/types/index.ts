@@ -21,7 +21,7 @@ export interface BeforeAfterData {
 export interface GalleryItem {
   url: string;
   caption: string;
-  aspectRatio?: 'landscape' | 'portrait' | 'wide';
+  aspectRatio?: "landscape" | "portrait" | "wide";
 }
 
 export interface Project {
@@ -33,7 +33,18 @@ export interface Project {
   year: string;
   client: string;
   architect: string;
-  category: 'Wanahabari Lab' | 'BNS Connect' | 'BNS Mashinani' | 'BNS Studios' | 'Residential' | 'Commercial' | 'Cultural' | 'Hospitality' | 'Mixed-Use' | 'Heritage' | string;
+  category:
+    | "Wanahabari Lab"
+    | "BNS Connect"
+    | "BNS Mashinani"
+    | "BNS Studios"
+    | "Residential"
+    | "Commercial"
+    | "Cultural"
+    | "Hospitality"
+    | "Mixed-Use"
+    | "Heritage"
+    | string;
   services: string[];
   tags: string[]; // For filtering: CGI, Architecture, Real Estate, AI Film, Animation, Interior, Exterior, Renovation
   heroImage: string;
