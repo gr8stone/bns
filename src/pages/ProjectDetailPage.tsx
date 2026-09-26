@@ -239,20 +239,21 @@ export function ProjectDetailPage() {
 
       {/* Previous & Next Project Navigation Links */}
       <div className="w-full border-t border-[#101010]/12 bg-[#F6F6F2]">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-10 grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-[#101010]/12">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10 grid grid-cols-2 divide-x divide-[#101010]/12">
           {prevProject && (
             <Link
               to={`/projects/${prevProject.slug}`}
-              className="py-12 pr-6 flex flex-col justify-between group select-none hover:bg-white transition-colors duration-200"
+              className={`py-6 px-3 sm:py-12 sm:pr-6 flex flex-col justify-between group select-none hover:bg-white transition-colors duration-200 ${nextProject ? "" : "col-span-2"}`}
             >
-              <div className="flex items-center gap-2 font-mono text-xs uppercase text-[#757575] mb-4">
-                <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
-                <span>PREVIOUS CAMPAIGN</span>
+              <div className="flex items-center gap-2 font-mono text-[10px] sm:text-xs uppercase text-[#757575] mb-3 sm:mb-4">
+                <ArrowLeft className="w-3.5 h-3.5 shrink-0 group-hover:-translate-x-1 transition-transform" />
+                <span className="sm:hidden">PREV</span>
+                <span className="hidden sm:inline">PREVIOUS CAMPAIGN</span>
               </div>
-              <h4 className="font-display text-2xl sm:text-3xl font-semibold tracking-[-0.04em] text-[#101010] uppercase">
+              <h4 className="font-display text-base sm:text-3xl font-semibold tracking-[-0.04em] text-[#101010] uppercase">
                 {prevProject.title}
               </h4>
-              <span className="font-mono text-xs text-[#757575] mt-2">
+              <span className="font-mono text-[10px] sm:text-xs text-[#757575] mt-2">
                 {prevProject.category} &bull; {prevProject.year}
               </span>
             </Link>
@@ -261,16 +262,17 @@ export function ProjectDetailPage() {
           {nextProject && (
             <Link
               to={`/projects/${nextProject.slug}`}
-              className="py-12 sm:pl-8 flex flex-col justify-between group select-none hover:bg-white transition-colors duration-200 sm:text-right"
+              className={`py-6 px-3 sm:py-12 sm:pl-8 flex flex-col justify-between group select-none hover:bg-white transition-colors duration-200 sm:text-right ${prevProject ? "" : "col-span-2"}`}
             >
-              <div className="flex items-center sm:justify-end gap-2 font-mono text-xs uppercase text-[#757575] mb-4">
-                <span>NEXT CAMPAIGN</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              <div className="flex items-center sm:justify-end gap-2 font-mono text-[10px] sm:text-xs uppercase text-[#757575] mb-3 sm:mb-4">
+                <span className="sm:hidden">NEXT</span>
+                <span className="hidden sm:inline">NEXT CAMPAIGN</span>
+                <ArrowRight className="w-3.5 h-3.5 shrink-0 group-hover:translate-x-1 transition-transform" />
               </div>
-              <h4 className="font-display text-2xl sm:text-3xl font-semibold tracking-[-0.04em] text-[#101010] uppercase">
+              <h4 className="font-display text-base sm:text-3xl font-semibold tracking-[-0.04em] text-[#101010] uppercase">
                 {nextProject.title}
               </h4>
-              <span className="font-mono text-xs text-[#757575] mt-2">
+              <span className="font-mono text-[10px] sm:text-xs text-[#757575] mt-2">
                 {nextProject.category} &bull; {nextProject.year}
               </span>
             </Link>
