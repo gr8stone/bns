@@ -31,7 +31,7 @@ const SCENARIOS: Scenario[] = [
   },
   {
     id: 'viewport-to-film',
-    tabLabel: 'PARLIAMENT HANSARD → INVESTIGATIVE DOSSIER',
+    tabLabel: 'PARLIAMENT HANSARD → INVESTIGATIVE REPORT',
     beforeImage: '/images/bns/AFRODAD debt Conference 2026  also Dr LYLA Latiff Book Launch called Red Flags in Government contracts/red Flags in Government contacts .jpeg',
     afterImage: '/images/bns/media/main media image.jpg',
     headline: 'Investigating sovereign debt & infrastructure funds.',

@@ -141,7 +141,7 @@ function ServiceCard({
               to={ROUTES.programme(service.slug)}
               className="group/btn inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider px-4 py-2.5 bg-white text-[#2446EC] hover:bg-[#101010] hover:text-white transition-colors font-semibold"
             >
-              <span>EXPLORE PROGRAMME DOSSIER</span>
+              <span>EXPLORE PROGRAMME</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
             </Link>
           </div>
@@ -198,9 +198,6 @@ export function SolumServices() {
               className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-[#2446EC] text-white hover:bg-[#101010] transition-colors font-mono text-xs uppercase tracking-wider rounded-none group border-0"
             >
               <span>GET INVOLVED</span>
-              <span className="font-mono text-[10px] bg-white/20 text-white px-1.5 py-0.5 rounded-none leading-none">
-                03
-              </span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
             </Link>
           </div>
@@ -270,7 +267,7 @@ export function SolumServices() {
                     to={ROUTES.programme(service.slug)}
                     className="w-full py-3 px-4 bg-white text-[#2446EC] hover:bg-[#101010] hover:text-white transition-colors font-mono text-[11px] uppercase tracking-wider flex items-center justify-between font-semibold"
                   >
-                    <span>EXPLORE DOSSIER</span>
+                    <span>EXPLORE PROGRAMME</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>

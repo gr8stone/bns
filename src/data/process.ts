@@ -68,7 +68,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
     subtitle: 'Rigorous data verification to maintain absolute credibility and truth.',
     description: 'Before any episode or graphic is published, our data desk and external fiscal advisors conduct strict source-checking under our non-partisan Editorial Policy, ensuring every number traces to verifiable public documents.',
     deliverables: [
-      'Verification Sign-off Dossier',
+      'Verification Sign-off Report',
       'Source Citation Appendix',
       'Editorial Clearance Note'
     ],

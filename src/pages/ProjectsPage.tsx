@@ -1,10 +1,8 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Filter } from 'lucide-react';
+import { Filter } from 'lucide-react';
 import { PROJECTS } from '../data/projects';
 import { ArchvizProjectShowcase } from '../components/common/ArchvizProjectShowcase';
-import { getYouTubeId, getYouTubeThumbnail } from '../lib/media';
 
 const CATEGORIES = [
   'All Projects',
@@ -12,15 +10,6 @@ const CATEGORIES = [
   'BNS Connect',
   'BNS Mashinani',
   'BNS Studios',
-];
-
-const ASPECT_RATIOS = [
-  'aspect-[21/9]',
-  'aspect-[16/10]',
-  'aspect-[16/9]',
-  'aspect-[4/3]',
-  'aspect-[21/9]',
-  'aspect-[16/10]',
 ];
 
 export function ProjectsPage() {
@@ -279,69 +268,16 @@ export function ProjectsPage() {
                 transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                 className="space-y-12 sm:space-y-16"
               >
-                {filteredProjects.map((project, idx) => {
-                  if (project.heroVideo) {
-                    return (
-                      <div
-                        key={project.slug}
-                        id={`project-${project.slug}`}
-                        data-category={project.category}
-                        className="scroll-mt-28"
-                      >
-                        <ArchvizProjectShowcase project={project} index={idx} />
-                      </div>
-                    );
-                  }
-
-                  const aspect = ASPECT_RATIOS[idx % ASPECT_RATIOS.length];
-                  const ytId = getYouTubeId(project.heroVideo);
-                  const displayImage = (ytId ? getYouTubeThumbnail(ytId, 'maxres') : null) || project.heroImage;
-
-                  return (
-                    <div
-                      key={project.slug}
-                      id={`project-${project.slug}`}
-                      data-category={project.category}
-                      className="group py-8 border-b border-black/[0.08] scroll-mt-28"
-                    >
-                      <Link to={`/projects/${project.slug}`} className="block select-none">
-                        {/* Image with Deliberately Varied Aspect Ratio */}
-                        <div
-                          className={`relative ${aspect} w-full overflow-hidden bg-zinc-100 border border-black/[0.08] rounded-none`}
-                        >
-                          <img
-                            src={displayImage}
-                            alt={project.title}
-                            loading="lazy"
-                            className="w-full h-full object-cover transition-transform duration-550 ease-out group-hover:scale-[1.025]"
-                          />
-                          <div className="absolute inset-0 bg-[#2446EC]/0 group-hover:bg-[#2446EC]/10 transition-colors duration-300" />
-                        </div>
-
-                        {/* Metadata Strip with Title Left / Year Right */}
-                        <div className="pt-4 flex flex-col sm:flex-row sm:items-baseline justify-between font-mono text-xs sm:text-sm text-text-base border-b border-black/[0.08] pb-3 gap-2">
-                          <div className="flex items-baseline gap-3">
-                            <span className="text-[#2446EC] font-semibold">0{idx + 1}</span>
-                            <span className="font-semibold uppercase tracking-wider group-hover:text-[#2446EC] transition-colors">
-                              {project.title}
-                            </span>
-                            <span className="text-slate hidden sm:inline">&mdash;</span>
-                            <span className="text-text-muted font-sans text-xs hidden sm:inline">
-                              {project.location}
-                            </span>
-                          </div>
-
-                          <div className="flex items-center gap-4 text-slate">
-                            <span className="text-[#2446EC] font-medium">{project.category}</span>
-                            <span>&bull;</span>
-                            <span className="tabular-nums font-mono">{project.year}</span>
-                            <ArrowRight className="w-3.5 h-3.5 text-text-base transform group-hover:translate-x-1.5 transition-transform" />
-                          </div>
-                        </div>
-                      </Link>
-                    </div>
-                  );
-                })}
+                {filteredProjects.map((project, idx) => (
+                  <div
+                    key={project.slug}
+                    id={`project-${project.slug}`}
+                    data-category={project.category}
+                    className="scroll-mt-28"
+                  >
+                    <ArchvizProjectShowcase project={project} index={idx} />
+                  </div>
+                ))}
               </motion.div>
             )}
           </div>

@@ -60,7 +60,7 @@ const SECTIONS: { n: string; id: string; title: string; body: string[] }[] = [
     id: 'conclusion',
     title: 'Conclusion & Partnership Enquiries',
     body: [
-      'We have built an institutional model that earns its civic independence by making public budgets readable to the people who fund them, backed by a commercial studio that turns empirical research into culture. Detailed commercial terms and civic partnership protocols are available in the official 2026 Partnership Prospectus dossier. Enquiries may be directed to info@budgetndiostory.org.',
+      'We have built an institutional model that earns its civic independence by making public budgets readable to the people who fund them, backed by a commercial studio that turns empirical research into culture. Detailed commercial terms and civic partnership protocols are available in the official 2026 Partnership Prospectus. Enquiries may be directed to info@budgetndiostory.org.',
     ],
   },
 ];
@@ -80,17 +80,9 @@ export function WhitepaperPage() {
         </p>
 
         <div className="mt-8 flex flex-wrap gap-4 items-center">
-          <a
-            href="/docs/BNS_Partnership_Prospectus_2026.pdf"
-            download="BNS_Partnership_Prospectus_2026.pdf"
-            className="inline-flex items-center gap-2 px-5 py-3 bg-[#101010] text-white hover:bg-[#4E58AA] transition-colors font-mono text-xs uppercase tracking-wider"
-          >
-            <span>Download Prospectus (PDF)</span>
-            <span>&darr;</span>
-          </a>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 px-5 py-3 border border-[#101010]/20 text-[#101010] hover:border-[#101010] transition-colors font-mono text-xs uppercase tracking-wider"
+            className="inline-flex items-center gap-2 px-5 py-3 bg-[#101010] text-white hover:bg-[#2446EC] transition-colors font-mono text-xs uppercase tracking-wider"
           >
             <span>Partner With Us</span>
             <span>&rarr;</span>
@@ -113,23 +105,22 @@ export function WhitepaperPage() {
         <div className="mt-16 p-6 sm:p-8 bg-[#FAFAF8] border border-[#101010]/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div>
             <span className="font-mono text-[10px] uppercase tracking-widest text-[#757575] block mb-1">
-              OFFICIAL PUBLICATION · PROSPECTUS DOSSIER
+              OFFICIAL PUBLICATION · INSTITUTIONAL NOTE
             </span>
             <h3 className="font-display text-xl font-medium text-[#101010]">
-              BNS Partnership Prospectus 2026
+              BNS Partnership Inquiries
             </h3>
             <p className="font-sans text-xs text-[#757575] mt-1">
-              Complete official institutional document including governance charters, rate card, and legal anchors.
+              Official institutional charters, rate cards, and legal anchors are available upon direct request for accredited partners.
             </p>
           </div>
-          <a
-            href="/docs/BNS_Partnership_Prospectus_2026.pdf"
-            download="BNS_Partnership_Prospectus_2026.pdf"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#101010] text-white hover:bg-[#4E58AA] transition-colors font-mono text-xs uppercase tracking-wider shrink-0"
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#101010] text-white hover:bg-[#2446EC] transition-colors font-mono text-xs uppercase tracking-wider shrink-0"
           >
-            <span>Download PDF</span>
-            <span>&darr;</span>
-          </a>
+            <span>Contact Team</span>
+            <span>&rarr;</span>
+          </Link>
         </div>
 
         <p className="mt-16 pt-8 border-t border-[#101010]/12 font-sans text-sm text-[#757575] leading-relaxed">

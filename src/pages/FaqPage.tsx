@@ -1,6 +1,6 @@
 import { useState, useMemo, useRef } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { ArrowRight, FileDown, Mail, Plus, Minus, SlidersHorizontal, X } from 'lucide-react';
+import { ArrowRight, Mail, Plus, Minus, SlidersHorizontal, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { COMPREHENSIVE_FAQS, FAQ_CATEGORIES } from '../data/comprehensiveFaq';
 import { ROUTES } from '../lib/routes';
@@ -80,18 +80,9 @@ export function FaqPage() {
                 SCOPE OF KNOWLEDGE
               </span>
               <p className="font-sans text-sm text-[#757575] leading-relaxed font-light">
-                Drawn directly from the BNS Partnership Prospectus 2026,
-                Institutional Whitepaper, Terms, and Fiduciary Charters.
+                Drawn directly from the BNS Institutional Framework, Whitepaper, Terms, and Fiduciary Charters.
               </p>
             </div>
-            <a
-              href="/docs/BNS_Partnership_Prospectus_2026.pdf"
-              download="BNS_Partnership_Prospectus_2026.pdf"
-              className="inline-flex items-center gap-2 px-4 py-2.5 border border-[#101010]/20 text-[#101010] hover:border-[#101010] transition-colors font-mono text-xs uppercase tracking-wider"
-            >
-              <FileDown className="w-3.5 h-3.5" />
-              <span>Full Prospectus (PDF)</span>
-            </a>
           </motion.div>
         </div>
 

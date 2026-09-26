@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { NAV_LINKS, PROGRAMME_PREVIEW, ROUTES } from "../../lib/routes";
@@ -57,9 +58,6 @@ export function Navbar() {
                 className="w-6 h-6 object-contain"
               />
               <span className="tracking-tight font-extrabold">BUDGET NDIO STORY</span>
-              <span className="hidden sm:inline-block font-mono text-[10px] tracking-widest text-[#2446EC] border border-[#2446EC]/30 px-1.5 py-0.5 ml-1 bg-[#2446EC]/5">
-                REPORT 2026
-              </span>
             </Link>
 
             {/* Desktop Direct Nav Links */}
@@ -86,15 +84,10 @@ export function Navbar() {
             <div className="flex items-center gap-3">
               <Link
                 to={ROUTES.contact}
-                className="hidden sm:inline-flex items-center gap-2.5 font-mono text-xs uppercase tracking-wider pl-4 pr-3 py-2 bg-[#2446EC] text-white hover:bg-[#101010] transition-colors rounded-none font-medium group border-0"
+                className="hidden sm:inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider px-4 py-2 bg-[#2446EC] text-white hover:bg-[#101010] transition-colors rounded-none font-medium group border-0"
               >
                 <span>Get Involved</span>
-                <span className="font-mono text-[10px] bg-white/20 text-white px-1.5 py-0.5 rounded-none leading-none">
-                  03
-                </span>
-                <span className="text-sm leading-none transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                  &nearr;
-                </span>
+                <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
 
               <button

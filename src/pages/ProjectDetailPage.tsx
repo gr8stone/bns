@@ -13,11 +13,11 @@ export function ProjectDetailPage() {
   const [thumbError, setThumbError] = useState(false);
 
   const project = useMemo(() => {
-    return PROJECTS.find((p) => p.slug === slug);
+    return PROJECTS.find((p) => p.slug === slug || p.aliases?.includes(slug || ''));
   }, [slug]);
 
   const currentIndex = useMemo(() => {
-    return PROJECTS.findIndex((p) => p.slug === slug);
+    return PROJECTS.findIndex((p) => p.slug === slug || p.aliases?.includes(slug || ''));
   }, [slug]);
 
   const prevProject = useMemo(() => {
@@ -204,7 +204,7 @@ export function ProjectDetailPage() {
         <div className="max-w-[1440px] mx-auto px-6 md:px-10 pb-24 space-y-12">
           <div className="border-b border-[#101010]/12 pb-4">
             <span className="font-mono text-xs uppercase tracking-wider text-[#101010]">
-              PRODUCTION &amp; FIELD GALLERY ({project.gallery.length} PLATES)
+              PRODUCTION &amp; FIELD GALLERY ({project.gallery.length})
             </span>
           </div>
 
@@ -228,7 +228,7 @@ export function ProjectDetailPage() {
                   />
                 </div>
                 <div className="pt-2 flex justify-between font-mono text-xs text-[#757575] border-b border-[#101010]/12 pb-2">
-                  <span>PLATE 0{idx + 1}</span>
+                  <span>0{idx + 1}</span>
                   <span>{item.caption || project.title}</span>
                 </div>
               </motion.div>

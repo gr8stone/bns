@@ -96,7 +96,7 @@ export const PROJECTS: Project[] = [
   {
     slug: 'bunker-37',
     title: 'Inside Kenya’s National Infrastructure Fund',
-    subtitle: 'Investigative Public Finance Dossier / 4-Part Special',
+    subtitle: 'Investigative Public Finance Report / 4-Part Special',
     location: 'National Assembly & Treasury, Nairobi',
     year: '2026',
     client: 'BNS Studios & Committee on Fiscal Studies',
@@ -114,11 +114,11 @@ export const PROJECTS: Project[] = [
       'Investigative Video Production',
       'Citizen Accountability Briefings'
     ],
-    summary: 'A deep-dive investigative dossier unpacking Kenya\'s National Infrastructure Fund law, highlighting citizen oversight, fiscal debt implications, and procurement red flags.',
+    summary: 'A deep-dive investigative series unpacking Kenya\'s National Infrastructure Fund law, highlighting citizen oversight, fiscal debt implications, and procurement red flags.',
     description: [
       'Kenya\'s National Infrastructure Fund is now law, establishing a new mechanism to finance mega-projects, highways, energy grids, and water dams.',
       'In this 4-part investigative series, Budget Ndio Story unpacks how the fund is structured, how public money is pledged, and why sovereign debt guarantees must remain transparent.',
-      'By bringing fiscal lawyers, youth leaders, and economists to the microphone, the dossier raised pivotal accountability questions directly with policymakers and oversight bodies.'
+      'By bringing fiscal lawyers, youth leaders, and economists to the microphone, the investigation raised pivotal accountability questions directly with policymakers and oversight bodies.'
     ],
     stats: [
       { label: 'Investigative Parts', value: '4 In-Depth Episodes' },
@@ -246,35 +246,37 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: 'berliner-strasse-69',
+    aliases: ['red-flags-in-government-contracts', 'redflags', 'red-flags'],
     title: 'Red Flags in Government Contracts & Sovereign Debt',
     subtitle: 'AFRODAD Debt Conference & Book Launch Convening',
     location: 'Safari Park Hotel & Virtual Broadcast, Nairobi',
     year: '2026',
-    client: 'AFRODAD & Committee on Fiscal Studies',
-    architect: 'Dr. Lyla Latiff & BNS Dialogue Desk',
+    client: 'AFRODAD, Committee on Fiscal Studies & Cents Governance Academy (CGA)',
+    architect: 'Dr. Lyla Latif, PhD & James Maingi Mutinda (CGA)',
     category: 'Wanahabari Lab',
     services: ['BNS Connect', 'BNS Wanahabari'],
-    tags: ['All', 'Sovereign Debt', 'AFRODAD', 'Procurement', 'Investigation', 'Policy'],
+    tags: ['All', 'Sovereign Debt', 'AFRODAD', 'Procurement', 'Investigation', 'Policy', 'CGA'],
     heroImage: '/images/bns/AFRODAD debt Conference 2026  also Dr LYLA Latiff Book Launch called Red Flags in Government contracts/latiff.jpeg',
     videoDuration: 'Keynote & Conference Panels',
-    clientMaterial: 'Public Procurement Records, Sovereign Bond Prospectuses, and Dr. Latiff Research Dossier',
+    clientMaterial: 'Public Procurement Records, Sovereign Loan Agreements, and Dr. Latif Research Archive',
     transformationPipeline: [
       'Forensic Contract Pattern Recognition',
       'High-Level Policy Convening Delivery',
-      'Live Media & Press Briefing Broadcast',
+      'Continental Deal-Making Capacity Analysis',
       'Published Investigative Policy Brief'
     ],
-    summary: 'A landmark convening examining illicit financial flows, opaque procurement clauses, and sovereign debt risks in public development contracts across Eastern Africa.',
+    summary: '“The most important decisions a state takes about its wealth and its future are increasingly taken in contracts rather than in chambers.” — Dr. Lyla Latif, PhD, Red Flags in Government Contracts',
     description: [
-      'In partnership with AFRODAD and the Committee on Fiscal Studies, Budget Ndio Story co-convened the 2026 Sovereign Debt Conference and the official launch of Dr. Lyla Latiff\'s groundbreaking book *Red Flags in Government Contracts*.',
-      'The convening brought together parliamentarians, regional fiscal auditors, investigative journalists, and civic activists to interrogate how public infrastructure contracts secretly burden taxpayers.',
-      'Our team delivered plenary livestreams, rapid media briefs, and visual quote carousels that made complex legal critiques widely digestible.'
+      '“The most important decisions a state takes about its wealth and its future are increasingly taken in contracts rather than in chambers.” In partnership with AFRODAD and the Committee on Fiscal Studies, Budget Ndio Story co-convened the 2026 Sovereign Debt Conference and the official launch of Dr. Lyla Latif\'s groundbreaking book Red Flags in Government Contracts.',
+      'Reflecting on the findings, James Maingi Mutinda (Cents Governance Academy - CGA) highlighted that across Africa, investment figures are escalating rapidly: billions of dollars in the DRC around critical minerals, infrastructure, and strategic partnerships; hundreds of millions flowing into Angola\'s Lobito Corridor railway operated under a 30-year concession; more than $250M in new financing linked to the Lobito Economic Corridor in Zambia; tens of billions in Mozambique LNG; and proposed mega-deals in Kenya like the $1.2B JKIA expansion alongside sovereign debt refinancings.',
+      'These are significant numbers, but the size of a deal is not the same thing as the value of a deal. Beyond the announcements, citizens and oversight bodies must interrogate: What has the country actually negotiated? Who carries the risk? What revenues or assets have been committed? What happens when circumstances change? What does it cost to renegotiate or exit? And most importantly: What public value remains after the billions have been announced?',
+      'This is why Africa must invest not only in attracting capital, but in deal-making capacity: lawyers, economists, financial modellers, engineers, tax specialists, and public officials capable of interrogating and negotiating complex agreements. Mobilising billions is one capability; negotiating those billions in the public interest is another. The real measure of a successful deal is not what is announced when cameras are present, but what the public still gains 10, 20, or 30 years later.'
     ],
     stats: [
-      { label: 'Delegates', value: '350+ Fiscal Experts' },
+      { label: 'Continental Deals Audited', value: '5 Major Nations' },
+      { label: 'Delegates & Auditors', value: '350+ Fiscal Experts' },
       { label: 'Countries Represented', value: '14 African Nations' },
-      { label: 'Media Outlets', value: '28 Regional Houses' },
-      { label: 'Book Circulation', value: 'Open Access Download' }
+      { label: 'Key Governance Partner', value: 'Cents Governance Academy' }
     ],
     beforeAfter: {
       beforeImage: '/images/bns/AFRODAD debt Conference 2026  also Dr LYLA Latiff Book Launch called Red Flags in Government contracts/red Flags in Government contacts .jpeg',
@@ -286,20 +288,36 @@ export const PROJECTS: Project[] = [
     process: [
       {
         step: '01',
-        title: 'Research Harmonization',
-        description: 'Synthesizing empirical contract findings into visual infographics and press releases.',
+        title: 'Forensic Contract Interrogation',
+        description: 'Analyzing legal covenants, indemnity clauses, and sovereign revenue commitments behind mega-infrastructure deals across Africa.',
+        image: '/images/bns/AFRODAD debt Conference 2026  also Dr LYLA Latiff Book Launch called Red Flags in Government contracts/red Flags in Government contacts .jpeg'
+      },
+      {
+        step: '02',
+        title: 'Deal-Making Capacity Synthesis',
+        description: 'James Maingi Mutinda (CGA) and Dr. Lyla Latif articulating the 6 critical interrogation tests for African public investment.',
         image: '/images/bns/AFRODAD debt Conference 2026  also Dr LYLA Latiff Book Launch called Red Flags in Government contracts/James Maingi Mutinda.jpeg'
       }
     ],
     gallery: [
       {
         url: '/images/bns/AFRODAD debt Conference 2026  also Dr LYLA Latiff Book Launch called Red Flags in Government contracts/latiff.jpeg',
-        caption: 'Dr. Lyla Latiff presenting key findings on contract red flags',
+        caption: 'Dr. Lyla Latif, PhD presenting key findings from Red Flags in Government Contracts',
+        aspectRatio: 'landscape'
+      },
+      {
+        url: '/images/bns/AFRODAD debt Conference 2026  also Dr LYLA Latiff Book Launch called Red Flags in Government contracts/James Maingi Mutinda.jpeg',
+        caption: 'James Maingi Mutinda (Cents Governance Academy - CGA) on deal-making capacity vs deal size',
+        aspectRatio: 'portrait'
+      },
+      {
+        url: '/images/bns/AFRODAD debt Conference 2026  also Dr LYLA Latiff Book Launch called Red Flags in Government contracts/red Flags in Government contacts .jpeg',
+        caption: 'Official launch of Red Flags in Government Contracts with AFRODAD & Committee on Fiscal Studies',
         aspectRatio: 'landscape'
       },
       {
         url: '/images/bns/AFRODAD debt Conference 2026  also Dr LYLA Latiff Book Launch called Red Flags in Government contracts/wajakoyah.jpeg',
-        caption: 'Plenary debate on African sovereign debt sovereignty',
+        caption: 'Plenary debate on African sovereign debt sovereignty and parliamentary oversight',
         aspectRatio: 'portrait'
       }
     ],
@@ -333,8 +351,18 @@ export const PROJECTS: Project[] = [
     ],
     gallery: [
       {
+        url: '/images/bns/cohort1 groundworks/129A3964.jpg',
+        caption: 'Cohort 001 field gathering and grassroots budget deconstruction',
+        aspectRatio: 'landscape'
+      },
+      {
         url: '/images/bns/cohort1 groundworks/129A3987.jpg',
         caption: 'Community listening session and ward budget analysis',
+        aspectRatio: 'portrait'
+      },
+      {
+        url: '/images/bns/survey/bnssurvey1.jpeg',
+        caption: 'Ward budget tracking survey and civic petition collation',
         aspectRatio: 'landscape'
       }
     ],
@@ -380,6 +408,16 @@ export const PROJECTS: Project[] = [
         url: '/images/bns/reels/reel-05-opportunities.jpg',
         caption: 'Animated step-by-step application walkthrough',
         aspectRatio: 'landscape'
+      },
+      {
+        url: '/images/bns/reels/reel-04-myth-fact.jpg',
+        caption: 'Public affirmative action funds: debunking misconceptions',
+        aspectRatio: 'portrait'
+      },
+      {
+        url: '/images/bns/reels/reel-01-poster.jpg',
+        caption: 'Seed fund eligibility criteria and vetting protocols',
+        aspectRatio: 'landscape'
       }
     ],
     process: [
@@ -424,6 +462,16 @@ export const PROJECTS: Project[] = [
         url: '/images/bns/treasury/budget-reading-2026.jpg',
         caption: 'National Treasury Budget Speech presentation',
         aspectRatio: 'landscape'
+      },
+      {
+        url: '/images/bns/treasury/budget sasa ni delivery.jpg',
+        caption: 'Citizen budget tracking scorecard and delivery audit',
+        aspectRatio: 'portrait'
+      },
+      {
+        url: '/images/bns/marketing newsletter subcribe/Nelly with The Mic.jpg',
+        caption: 'Real-time citizen vox pops outside Parliament grounds',
+        aspectRatio: 'landscape'
       }
     ],
     process: [
@@ -436,54 +484,6 @@ export const PROJECTS: Project[] = [
     ],
     featured: false,
     featuredOrder: 7,
-    nextProjectSlug: 'park-seefeld'
-  },
-  {
-    slug: 'park-seefeld',
-    title: 'BNS Connect: May Town Hall on Sovereign Debt',
-    subtitle: 'Citizen Convening & Parliamentary Audit Roundtable',
-    location: 'UoN Towers / Charter Hall, Nairobi',
-    year: '2026',
-    client: 'Citizen Assembly for Fiscal Accountability',
-    architect: 'BNS Convening Committee',
-    category: 'BNS Connect',
-    services: ['BNS Connect'],
-    tags: ['All', 'Town Hall', 'Sovereign Debt', 'Citizens', 'Accountability', 'BNS Connect'],
-    heroImage: '/images/bns/towwnhallmay/129A3912.jpg',
-    summary: 'A participatory civic town hall bringing youth, traders, and legislative leaders face-to-face to audit ballooning public debt and interest repayments.',
-    description: [
-      'Over 600 citizens gathered in central Nairobi to debate how public debt servicing crowds out funding for healthcare, education, and essential local public services.',
-      'The town hall hosted fiery constructive sessions with MPs and senators, demanding an independent audit of all commercial external debt.',
-      'The resolutions formed the *Citizens\' Sovereign Debt Manifesto 2026*, presented formally to Parliament and regional oversight bodies.'
-    ],
-    stats: [
-      { label: 'In-Person Attendees', value: '650+ Participants' },
-      { label: 'Legislators Present', value: '8 MPs & Senators' },
-      { label: 'Manifesto Signatures', value: '12,500 Citizens' },
-      { label: 'Follow-up Audits', value: '3 Active Petitions' }
-    ],
-    gallery: [
-      {
-        url: '/images/bns/towwnhallmay/129A3912.jpg',
-        caption: 'Plenary hall session during citizen testimony',
-        aspectRatio: 'landscape'
-      },
-      {
-        url: '/images/bns/towwnhallmay/129A3923.jpg',
-        caption: 'Youth delegates addressing legislative committee chairs',
-        aspectRatio: 'portrait'
-      }
-    ],
-    process: [
-      {
-        step: '01',
-        title: 'Citizen Testimony Collection',
-        description: 'Documenting local community impacts of public spending cutbacks.',
-        image: '/images/bns/hall/129A4248.jpg'
-      }
-    ],
-    featured: false,
-    featuredOrder: 8,
     nextProjectSlug: 'riviera-residence'
   }
 ];

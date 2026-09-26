@@ -72,7 +72,7 @@ export function LightboxModal({
             </span>
             <span className="text-white/40 hidden sm:inline">&mdash;</span>
             <span className="text-white/60 hidden sm:inline tabular-nums">
-              PLATE {String(currentIndex + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
+              {String(currentIndex + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
             </span>
           </div>
 
@@ -118,7 +118,7 @@ export function LightboxModal({
             >
               <img
                 src={currentImage.url}
-                alt={currentImage.caption || 'Archviz 4K Render'}
+                alt={currentImage.caption || 'BNS Civic Visual'}
                 className="max-w-full max-h-[78vh] w-auto h-auto object-contain border border-white/10 shadow-2xl"
               />
             </motion.div>
@@ -148,7 +148,7 @@ export function LightboxModal({
               </span>
             )}
             <span className="text-white/60 font-sans text-xs">
-              {currentImage.caption || 'High-fidelity civic media still'}
+              {currentImage.caption || 'High-fidelity civic media visual'}
             </span>
           </div>
 

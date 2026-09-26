@@ -115,7 +115,7 @@ export function TermsPage() {
                 <strong>8.4 Non-Partisan Editorial Firewall:</strong> Commercial commissions awarded to BNS Studios do not confer editorial authority, influence, or veto over BNS Foundation&apos;s civic publications, public hearings, grassroots scorecards, or investigative disclosures. BNS Foundation preserves an inviolable, non-partisan editorial firewall.
               </p>
               <p>
-                <strong>8.5 Independent Audit &amp; Reporting:</strong> BNS Studios produces annual audited financial statements prepared by certified independent public accountants. Inter-entity endowment transfers and financial distributions are published transparently in the BNS Annual Public Impact Dossier.
+                <strong>8.5 Independent Audit &amp; Reporting:</strong> BNS Studios produces annual audited financial statements prepared by certified independent public accountants. Inter-entity endowment transfers and financial distributions are published transparently in the BNS Annual Public Impact Report.
               </p>
             </div>
           </div>

@@ -26,6 +26,7 @@ export interface GalleryItem {
 
 export interface Project {
   slug: string;
+  aliases?: string[];
   title: string;
   subtitle: string;
   location: string;

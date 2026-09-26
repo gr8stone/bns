@@ -77,7 +77,7 @@ export function SolumMediaBreak() {
 
       <div className="absolute bottom-6 right-6 md:right-10 z-20 pointer-events-none hidden sm:block text-right">
         <span className="font-mono text-[11px] uppercase tracking-widest text-white/60">
-          REPORT 2026 &bull; BUDGET NDIO STORY
+          BUDGET NDIO STORY
         </span>
       </div>
     </section>

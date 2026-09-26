@@ -47,7 +47,7 @@ export function Footer() {
               to={ROUTES.contact}
               className="inline-flex items-center gap-3 px-6 py-3.5 bg-white text-[#2446EC] hover:bg-[#101010] hover:text-white transition-colors font-mono text-xs uppercase tracking-wider rounded-none font-semibold group self-start lg:self-auto shadow-sm"
             >
-              <span>Get Involved [03]</span>
+              <span>Get Involved</span>
               <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
           </div>
@@ -292,8 +292,6 @@ export function Footer() {
 
           <div className="flex items-center gap-4 text-white/60">
             <span>KENYA DEVOLUTION ARTICLE 10 &bull; 201</span>
-            <span className="text-white font-semibold">&bull;</span>
-            <span className="text-white font-semibold">REPORT 2026</span>
           </div>
         </div>
       </div>

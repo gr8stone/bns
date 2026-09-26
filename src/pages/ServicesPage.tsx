@@ -100,12 +100,7 @@ export function ServicesPage() {
         </div>
 
         {/* ========================================================= */}
-        {/* 3) METRICS ROW WITH TABULAR FIGURES                       */}
-        {/* ========================================================= */}
-
-
-        {/* ========================================================= */}
-        {/* 4) PROGRAMME ETHOS & WORD REVEAL (MATCHING ABOUT)        */}
+        {/* 3) PROGRAMME ETHOS & WORD REVEAL                          */}
         {/* ========================================================= */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 py-20 border-b border-[#101010]/12 items-start">
           <div className="col-span-1">
@@ -147,42 +142,36 @@ export function ServicesPage() {
         </div>
 
         {/* ========================================================= */}
-        {/* 5) THE 3 PROGRAMMES CARDS (EXACT EDITORIAL STYLE)        */}
+        {/* 4) THE 3 PROGRAMMES (MINIMALIST EDITORIAL LIST)           */}
         {/* ========================================================= */}
         <div className="py-20 border-b border-[#101010]/12">
           <div className="flex items-center justify-between mb-12">
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
               <span className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#101010] font-medium">
-                CORE PILLARS &bull; 3 INITIATIVES
+                3 STRATEGIC INITIATIVES
               </span>
             </div>
-            <span className="font-mono text-xs text-[#757575] uppercase hidden sm:inline">
-              SELECT A PROGRAMME TO EXPLORE
-            </span>
           </div>
 
-          {/* Architectural Editorial List Layout (Monogram® Class) */}
+          {/* Minimalist Editorial List Layout */}
           <div className="divide-y divide-[#101010]/15 border-t border-b border-[#101010]/15">
             {SERVICES.map((prog) => (
               <div
                 key={prog.slug}
                 className="group py-12 lg:py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start hover:bg-[#FAFAF8] transition-colors -mx-6 px-6 md:-mx-10 md:px-10"
               >
-                {/* Column 1: Pillar Number & Tag */}
-                <div className="lg:col-span-2 space-y-2">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-[#2446EC] inline-block" />
-                    <span className="font-mono text-xs uppercase tracking-wider text-[#2446EC] font-semibold">
-                      PILLAR {prog.number}
-                    </span>
-                  </div>
+                {/* Column 1: Just Number (No PILLAR text) */}
+                <div className="lg:col-span-2 space-y-1">
+                  <span className="font-mono text-2xl lg:text-3xl font-light text-[#2446EC] block">
+                    {prog.number}
+                  </span>
                   <span className="font-mono text-[11px] text-[#757575] block uppercase tracking-wider">
                     {prog.slug.replace('-', ' ')}
                   </span>
                 </div>
 
-                {/* Column 2: Large Title, Headline, and Deliverable Pills */}
+                {/* Column 2: Minimalist Title, Headline, and Clean Link */}
                 <div className="lg:col-span-6 space-y-4">
                   <h3 className="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight uppercase text-[#101010] group-hover:text-[#2446EC] transition-colors leading-[0.98]">
                     <Link to={`/programmes/${prog.slug}`}>
@@ -190,54 +179,24 @@ export function ServicesPage() {
                     </Link>
                   </h3>
 
-                  <p className="font-sans text-base text-[#101010]/90 font-normal leading-relaxed">
-                    {prog.heroHeadline}
+                  <p className="font-sans text-sm sm:text-base text-[#101010]/80 font-normal leading-relaxed max-w-xl">
+                    {prog.shortDescription}
                   </p>
-
-                  <p className="font-sans text-xs sm:text-sm text-[#757575] leading-relaxed font-light">
-                    {prog.heroSubhead}
-                  </p>
-
-                  {/* Minimalist Deliverables Reveal (Clean Architectural Ledger) */}
-                  {prog.deliverables && prog.deliverables.length > 0 && (
-                    <div className="pt-3 pb-1 border-t border-[#101010]/10 space-y-2">
-                      <span className="font-mono text-[10px] uppercase tracking-widest text-[#757575] block">
-                        KEY OUTPUTS //
-                      </span>
-                      <ul className="space-y-1.5 font-mono text-xs text-[#101010]/85">
-                        {prog.deliverables.slice(0, 3).map((d, dIdx) => (
-                          <motion.li
-                            key={d.name}
-                            initial={{ opacity: 0, x: -6 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.3, delay: dIdx * 0.06 }}
-                            className="flex items-center gap-2 group/item"
-                          >
-                            <span className="w-1.5 h-1.5 bg-[#2446EC] inline-block flex-shrink-0 transition-transform group-hover/item:scale-125" />
-                            <span className="tracking-tight font-medium text-[#101010] group-hover/item:text-[#2446EC] transition-colors">
-                              {d.name}
-                            </span>
-                          </motion.li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
 
                   <div className="pt-2">
                     <Link
                       to={`/programmes/${prog.slug}`}
                       className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[#101010] group-hover:text-[#2446EC] font-semibold border-b border-current pb-0.5 transition-colors"
                     >
-                      <span>Explore Full Programme Dossier</span>
+                      <span>Explore {prog.title}</span>
                       <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </Link>
                   </div>
                 </div>
 
-                {/* Column 3: High-Res Visual Frame */}
+                {/* Column 3: High-Res Visual Frame (No card borders) */}
                 <div className="lg:col-span-4">
-                  <Link to={`/programmes/${prog.slug}`} className="block overflow-hidden bg-black border border-black/10 aspect-[16/10] relative group/img">
+                  <Link to={`/programmes/${prog.slug}`} className="block overflow-hidden bg-black aspect-[16/10] relative group/img">
                     <img
                       src={prog.image}
                       alt={prog.title}
@@ -245,9 +204,6 @@ export function ServicesPage() {
                       className="w-full h-full object-cover filter brightness-95 group-hover/img:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-[#2446EC]/0 group-hover/img:bg-[#2446EC]/15 transition-colors duration-300" />
-                    <div className="absolute bottom-3 left-3 bg-[#2446EC] text-white font-mono text-[10px] uppercase tracking-widest px-2.5 py-1">
-                      VIEW PILLAR {prog.number} &rarr;
-                    </div>
                   </Link>
                 </div>
               </div>

@@ -62,7 +62,7 @@ export const COMPREHENSIVE_FAQS: DetailedFAQItem[] = [
     category: 'model',
     categoryLabel: 'Two-Entity Model & Governance',
     question: 'Does BNS produce audited financial statements?',
-    answer: 'Yes. BNS Studios produces annual audited financial statements prepared by certified independent public accountants. Inter-entity endowment transfers to BNS Foundation and statutory tax compliance records are reported transparently each year in the BNS Annual Public Impact Dossier.',
+    answer: 'Yes. BNS Studios produces annual audited financial statements prepared by certified independent public accountants. Inter-entity endowment transfers to BNS Foundation and statutory tax compliance records are reported transparently each year in the BNS Annual Public Impact Report.',
     sourceDoc: 'Prospectus 2026, Fiduciary Charter',
   },
 
@@ -130,8 +130,8 @@ export const COMPREHENSIVE_FAQS: DetailedFAQItem[] = [
     categoryLabel: 'Civic Programmes & Operations',
     question: 'How does BNS Connect support statutory public participation?',
     answer: 'Public participation is a mandatory constitutional duty under Articles 10, 201, and 232 and the Public Finance Management Act (PFM 2012/2015). BNS Connect assists county governments and national MDAs by designing, facilitating, and documenting public hearings that translate technical Budget Policy Statements into accessible dialogue, generating documented evidence that satisfies statutory oversight requirements.',
-    sourceDoc: 'BNS Connect Programme Dossier',
-    relatedLinks: [{ label: 'BNS Connect Dossier', url: '/programmes/bns-connect' }],
+    sourceDoc: 'BNS Connect Programme Overview',
+    relatedLinks: [{ label: 'BNS Connect Overview', url: '/programmes/bns-connect' }],
   },
   {
     id: 'prog-03',
@@ -139,8 +139,8 @@ export const COMPREHENSIVE_FAQS: DetailedFAQItem[] = [
     categoryLabel: 'Civic Programmes & Operations',
     question: 'What does BNS Mashinani do at the ward level in the 47 counties?',
     answer: 'BNS Mashinani equips grassroots youth champions and community groups to inspect local projects funded under County Annual Development Plans (ADPs), Ward Development Funds, and NG-CDF. Volunteers use ground scorecards to verify whether allocated funds correspond to physical realities for local dispensaries, rural access roads, and water kiosks.',
-    sourceDoc: 'BNS Mashinani Programme Dossier',
-    relatedLinks: [{ label: 'BNS Mashinani Dossier', url: '/programmes/bns-mashinani' }],
+    sourceDoc: 'BNS Mashinani Programme Overview',
+    relatedLinks: [{ label: 'BNS Mashinani Overview', url: '/programmes/bns-mashinani' }],
   },
   {
     id: 'prog-04',
@@ -148,8 +148,8 @@ export const COMPREHENSIVE_FAQS: DetailedFAQItem[] = [
     categoryLabel: 'Civic Programmes & Operations',
     question: 'What is Wanahabari Lab and who can participate?',
     answer: 'Wanahabari Lab is our media training and investigative journalism incubator. It runs quarterly capacity-building workshops, pairs reporters with data scientists and public finance attorneys, and issues reporting grants to Kenyan journalists, freelance storytellers, and community radio broadcasters investigating sovereign debt, procurement, and public audits.',
-    sourceDoc: 'Wanahabari Lab Programme Dossier',
-    relatedLinks: [{ label: 'Wanahabari Lab Dossier', url: '/programmes/bns-wanahabari' }],
+    sourceDoc: 'Wanahabari Lab Programme Overview',
+    relatedLinks: [{ label: 'Wanahabari Lab Overview', url: '/programmes/bns-wanahabari' }],
   },
   {
     id: 'prog-05',

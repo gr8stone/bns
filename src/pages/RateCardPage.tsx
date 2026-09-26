@@ -1,4 +1,4 @@
-import { ArrowLeft, Download, Printer } from 'lucide-react';
+import { ArrowLeft, Printer } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { RateCard } from '../components/studio/RateCard';
 import { ROUTES } from '../lib/routes';
@@ -30,15 +30,6 @@ export function RateCardPage() {
               <Printer className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Print Schedule</span>
             </button>
-
-            <a
-              href="/docs/BNS_Partnership_Prospectus_2026.pdf"
-              download="BNS_Rate_Card_Prospectus_2026.pdf"
-              className="inline-flex items-center gap-2 px-4 py-2 font-mono text-xs uppercase tracking-wider bg-white text-[#2446EC] hover:bg-[#101010] hover:text-white transition-colors font-semibold"
-            >
-              <Download className="w-3.5 h-3.5" />
-              <span>Download PDF</span>
-            </a>
           </div>
         </div>
 
