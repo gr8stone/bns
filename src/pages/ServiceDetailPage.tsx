@@ -1,9 +1,14 @@
-import { useMemo, useRef, useState } from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Play } from 'lucide-react';
-import { SERVICES } from '../data/services';
-import { getYouTubeId, getYouTubeThumbnail } from '../lib/media';
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import { ArrowLeft, ArrowRight, Play } from "lucide-react";
+import { useMemo, useRef, useState } from "react";
+import { Link, Navigate, useParams } from "react-router-dom";
+import { SERVICES } from "../data/services";
+import { getYouTubeId, getYouTubeThumbnail } from "../lib/media";
 
 const EASE_EDITORIAL = [0.22, 1, 0.36, 1] as const;
 
@@ -11,14 +16,20 @@ export function ServiceDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const shouldReduceMotion = useReducedMotion();
   const [isPlayingVideo, setIsPlayingVideo] = useState(false);
-  const [activeScriptTab, setActiveScriptTab] = useState<'deliverables' | 'pipeline'>('deliverables');
+  const [activeScriptTab, setActiveScriptTab] = useState<
+    "deliverables" | "pipeline"
+  >("deliverables");
 
   const service = useMemo(() => {
-    return SERVICES.find((s) => s.slug === slug || s.aliases?.includes(slug || ''));
+    return SERVICES.find(
+      (s) => s.slug === slug || s.aliases?.includes(slug || ""),
+    );
   }, [slug]);
 
   const currentIndex = useMemo(() => {
-    return SERVICES.findIndex((s) => s.slug === slug || s.aliases?.includes(slug || ''));
+    return SERVICES.findIndex(
+      (s) => s.slug === slug || s.aliases?.includes(slug || ""),
+    );
   }, [slug]);
 
   const prevService = useMemo(() => {
@@ -27,7 +38,8 @@ export function ServiceDetailPage() {
   }, [currentIndex]);
 
   const nextService = useMemo(() => {
-    if (currentIndex < 0 || currentIndex >= SERVICES.length - 1) return SERVICES[0];
+    if (currentIndex < 0 || currentIndex >= SERVICES.length - 1)
+      return SERVICES[0];
     return SERVICES[currentIndex + 1];
   }, [currentIndex]);
 
@@ -35,15 +47,15 @@ export function ServiceDetailPage() {
   const challengeRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: challengeScroll } = useScroll({
     target: challengeRef,
-    offset: ['start end', 'end start'],
+    offset: ["start end", "end start"],
   });
-  const challengeImgY = useTransform(challengeScroll, [0, 1], ['-8%', '8%']);
+  const challengeImgY = useTransform(challengeScroll, [0, 1], ["-8%", "8%"]);
 
   // Scene 2: Video Scaling
   const videoRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: videoScroll } = useScroll({
     target: videoRef,
-    offset: ['start end', 'center center'],
+    offset: ["start end", "center center"],
   });
   const videoScale = useTransform(videoScroll, [0, 1], [0.96, 1]);
   const videoOpacity = useTransform(videoScroll, [0, 0.8], [0.5, 1]);
@@ -52,7 +64,7 @@ export function ServiceDetailPage() {
   const workflowRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: workflowScroll } = useScroll({
     target: workflowRef,
-    offset: ['start 80%', 'end 70%'],
+    offset: ["start 80%", "end 70%"],
   });
 
   if (!service) {
@@ -60,7 +72,9 @@ export function ServiceDetailPage() {
   }
 
   const ytId = getYouTubeId(service.video);
-  const videoPoster = ytId ? getYouTubeThumbnail(ytId, 'maxres') || service.image : service.image;
+  const videoPoster = ytId
+    ? getYouTubeThumbnail(ytId, "maxres") || service.image
+    : service.image;
 
   return (
     <main className="w-full bg-white text-[#101010] select-none overflow-x-hidden pt-28 md:pt-36">
@@ -100,9 +114,6 @@ export function ServiceDetailPage() {
           {/* Massive Typographic Thesis */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             <div className="lg:col-span-7">
-              <span className="font-mono text-xs text-[#2446EC] uppercase tracking-widest font-semibold block mb-3">
-                {service.number} // {service.title}
-              </span>
               <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-[-0.04em] uppercase text-[#101010] leading-[0.94]">
                 Why Traditional Systems Fail To Deliver Accountability.
               </h1>
@@ -157,7 +168,7 @@ export function ServiceDetailPage() {
           {/* Full-Bleed Panoramic Visual (Zero card border) */}
           <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] overflow-hidden bg-black select-none">
             <motion.img
-              style={{ y: shouldReduceMotion ? '0%' : challengeImgY }}
+              style={{ y: shouldReduceMotion ? "0%" : challengeImgY }}
               src={service.image}
               alt={service.title}
               loading="lazy"
@@ -239,7 +250,9 @@ export function ServiceDetailPage() {
                 {/* Minimalist Bottom Scene Telemetry */}
                 <div className="absolute bottom-4 left-6 right-6 flex items-center justify-between font-mono text-[11px] uppercase tracking-widest text-white/90 bg-black/70 backdrop-blur-md px-5 py-3">
                   <span>WATCH BROADCAST EVIDENCE STREAM</span>
-                  <span className="text-[#2446EC] font-semibold">1080P PROCEEDINGS</span>
+                  <span className="text-[#2446EC] font-semibold">
+                    1080P PROCEEDINGS
+                  </span>
                 </div>
               </div>
             )}
@@ -269,21 +282,21 @@ export function ServiceDetailPage() {
             {/* Interactive Script Mode Tabs (Zero Cards, Pure Affordance) */}
             <div className="flex items-center gap-3">
               <button
-                onClick={() => setActiveScriptTab('deliverables')}
+                onClick={() => setActiveScriptTab("deliverables")}
                 className={`px-4 py-2 font-mono text-xs uppercase tracking-wider transition-all duration-200 border ${
-                  activeScriptTab === 'deliverables'
-                    ? 'bg-[#101010] text-white border-[#101010]'
-                    : 'bg-white text-[#757575] border-[#101010]/15 hover:border-[#101010] hover:text-[#101010]'
+                  activeScriptTab === "deliverables"
+                    ? "bg-[#101010] text-white border-[#101010]"
+                    : "bg-white text-[#757575] border-[#101010]/15 hover:border-[#101010] hover:text-[#101010]"
                 }`}
               >
                 [01 TANGIBLE DELIVERABLES]
               </button>
               <button
-                onClick={() => setActiveScriptTab('pipeline')}
+                onClick={() => setActiveScriptTab("pipeline")}
                 className={`px-4 py-2 font-mono text-xs uppercase tracking-wider transition-all duration-200 border ${
-                  activeScriptTab === 'pipeline'
-                    ? 'bg-[#101010] text-white border-[#101010]'
-                    : 'bg-white text-[#757575] border-[#101010]/15 hover:border-[#101010] hover:text-[#101010]'
+                  activeScriptTab === "pipeline"
+                    ? "bg-[#101010] text-white border-[#101010]"
+                    : "bg-white text-[#757575] border-[#101010]/15 hover:border-[#101010] hover:text-[#101010]"
                 }`}
               >
                 [02 4-PHASE METHODOLOGY]
@@ -292,7 +305,7 @@ export function ServiceDetailPage() {
           </div>
 
           {/* VIEW 1: DELIVERABLES AS KINETIC SCREENPLAY (ZERO CARDS) */}
-          {activeScriptTab === 'deliverables' && (
+          {activeScriptTab === "deliverables" && (
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -333,7 +346,7 @@ export function ServiceDetailPage() {
           )}
 
           {/* VIEW 2: METHODOLOGY PIPELINE (KINETIC TIMELINE, ZERO CARDS) */}
-          {activeScriptTab === 'pipeline' && (
+          {activeScriptTab === "pipeline" && (
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -346,7 +359,7 @@ export function ServiceDetailPage() {
                 <motion.div
                   style={{
                     scaleY: shouldReduceMotion ? 1 : workflowScroll,
-                    transformOrigin: 'top',
+                    transformOrigin: "top",
                   }}
                   className="absolute -left-[2px] top-0 bottom-0 w-[2px] bg-[#2446EC] will-change-transform"
                 />
@@ -356,7 +369,7 @@ export function ServiceDetailPage() {
                     key={wf.step}
                     initial={{ opacity: 0, x: -16 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: '-10% 0px' }}
+                    viewport={{ once: true, margin: "-10% 0px" }}
                     transition={{ duration: 0.5, ease: EASE_EDITORIAL }}
                     className="relative space-y-3"
                   >

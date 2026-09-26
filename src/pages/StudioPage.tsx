@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { ArrowLeft, ArrowRight, ArrowUpRight, Plus, Minus } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { WordReveal } from '../components/common/WordReveal';
-import { STUDIO_RATE_CARD } from '../data/studio';
-import { STUDIO_FAQS } from '../data/comprehensiveFaq';
-import { ROUTES } from '../lib/routes';
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Minus, Plus } from "lucide-react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { WordReveal } from "../components/common/WordReveal";
+import { STUDIO_FAQS } from "../data/comprehensiveFaq";
+import { STUDIO_RATE_CARD } from "../data/studio";
+import { ROUTES } from "../lib/routes";
 
 export function StudioPage() {
   const shouldReduceMotion = useReducedMotion();
@@ -28,13 +28,15 @@ export function StudioPage() {
             className="inline-flex items-center gap-2 hover:text-[#2446EC] transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>BNS ECOSYSTEM</span>
+            <span>BNS FOUNDATION</span>
           </Link>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 bg-[#2446EC] inline-block" />
             <span className="text-[#2446EC] font-semibold">STUDIO</span>
             <span>//</span>
-            <span className="text-[#101010] font-semibold">COMMERCIAL MANDATE</span>
+            <span className="text-[#101010] font-semibold">
+              COMMERCIAL MANDATE
+            </span>
           </div>
         </div>
 
@@ -44,30 +46,25 @@ export function StudioPage() {
         <section className="py-16 sm:py-24 md:py-32">
           <div className="space-y-16">
             {/* Act Label */}
-            <div className="flex items-center gap-3">
-              <span className="w-2.5 h-2.5 bg-[#2446EC] inline-block" />
-              <span className="font-mono text-xs uppercase tracking-widest text-[#2446EC] font-semibold">
-                01 // THE PRODUCTION MANDATE
-              </span>
-            </div>
 
             {/* Massive Typographic Thesis */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
               <div className="lg:col-span-7">
-                <span className="font-mono text-xs text-[#2446EC] uppercase tracking-widest font-semibold block mb-3">
-                  COMMERCIAL ARM // TWO-ENTITY ENTERPRISE
-                </span>
                 <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-[-0.04em] uppercase text-[#101010] leading-[0.94]">
-                  We Translate Evidence Into Culture That <span className="text-[#2446EC]">Compels Action.</span>
+                  We Translate Evidence Into Culture That{" "}
+                  <span className="text-[#2446EC]">Compels Action.</span>
                 </h1>
               </div>
 
               <div className="lg:col-span-5 space-y-6 pt-2">
                 <p className="font-sans text-lg sm:text-xl text-[#101010] font-normal leading-relaxed">
-                  Commissioned research documentaries, animated explainers, podcasts, and campaigns.
+                  Commissioned research documentaries, animated explainers,
+                  podcasts, and campaigns.
                 </p>
                 <p className="font-sans text-sm sm:text-base text-[#757575] font-light leading-relaxed">
-                  A minimum of 40% of net profits is returned annually to BNS Foundation to fund open civic accountability and grassroots budget monitoring across all 47 counties.
+                  A minimum of 40% of net profits is returned annually to BNS
+                  Foundation to fund open civic accountability and grassroots
+                  budget monitoring across all 47 counties.
                 </p>
                 <div className="pt-2">
                   <Link
@@ -88,7 +85,7 @@ export function StudioPage() {
                   CIVIC REINVESTMENT
                 </span>
                 <span className="font-mono text-base sm:text-lg font-semibold text-[#2446EC]">
-                  &ge; 40% NET PROFIT
+                  &ge; MASHINANI
                 </span>
               </div>
               <div>
@@ -104,7 +101,7 @@ export function StudioPage() {
                   MASTER SPECIFICATION
                 </span>
                 <span className="font-mono text-base sm:text-lg font-semibold text-[#101010]">
-                  4K DCI &bull; EBU R128
+                  4K VISUALS &bull; AUDIO
                 </span>
               </div>
               <div>
@@ -112,7 +109,7 @@ export function StudioPage() {
                   MODEL ARCHITECTURE
                 </span>
                 <span className="font-mono text-base sm:text-lg font-semibold text-[#101010]">
-                  TWO-ENTITY ENTERPRISE
+                   ENTERPRISE
                 </span>
               </div>
             </div>
@@ -152,7 +149,10 @@ export function StudioPage() {
                 </h2>
               </div>
               <p className="font-sans text-sm sm:text-base text-[#757575] font-light max-w-md leading-relaxed">
-                Millions of dollars are invested into public finance audits and baseline evaluations that sit unread. BNS Studios turns technical findings into high-retention films, audio, and visual journalism that citizens debate.
+                Millions of dollars are invested into public finance audits and
+                baseline evaluations that sit unread. BNS Studios turns
+                technical findings into high-retention films, audio, and visual
+                journalism that citizens debate.
               </p>
             </div>
 
@@ -174,24 +174,46 @@ export function StudioPage() {
             {/* Production Discipline Telemetry Strip */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-6 font-mono text-xs text-[#101010] border-t border-[#101010]/12">
               <div className="p-4 border border-[#101010]/10 flex flex-col justify-between">
-                <span className="text-[#757575] uppercase text-[10px] block mb-1">FORMAT 01</span>
-                <span className="font-semibold block mb-2">RESEARCH CINEMATOGRAPHY</span>
+                <span className="text-[#757575] uppercase text-[10px] block mb-1">
+                  FORMAT 01
+                </span>
+                <span className="font-semibold block mb-2">
+                  RESEARCH CINEMATOGRAPHY
+                </span>
                 <span className="text-[#2446EC] font-bold">4K DCI MASTER</span>
               </div>
               <div className="p-4 border border-[#101010]/10 flex flex-col justify-between">
-                <span className="text-[#757575] uppercase text-[10px] block mb-1">FORMAT 02</span>
-                <span className="font-semibold block mb-2">PROCEDURAL 2D/3D EXPLAINERS</span>
-                <span className="text-[#2446EC] font-bold">9:16 + 16:9 MULTI-FORMAT</span>
+                <span className="text-[#757575] uppercase text-[10px] block mb-1">
+                  FORMAT 02
+                </span>
+                <span className="font-semibold block mb-2">
+                  PROCEDURAL 2D/3D EXPLAINERS
+                </span>
+                <span className="text-[#2446EC] font-bold">
+                  9:16 + 16:9 MULTI-FORMAT
+                </span>
               </div>
               <div className="p-4 border border-[#101010]/10 flex flex-col justify-between">
-                <span className="text-[#757575] uppercase text-[10px] block mb-1">FORMAT 03</span>
-                <span className="font-semibold block mb-2">BROADCAST AUDIO &amp; PODCASTS</span>
-                <span className="text-[#2446EC] font-bold">STUDIO + FIELD DEPLOYMENT</span>
+                <span className="text-[#757575] uppercase text-[10px] block mb-1">
+                  FORMAT 03
+                </span>
+                <span className="font-semibold block mb-2">
+                  BROADCAST AUDIO &amp; PODCASTS
+                </span>
+                <span className="text-[#2446EC] font-bold">
+                  STUDIO + FIELD DEPLOYMENT
+                </span>
               </div>
               <div className="p-4 border border-[#101010]/10 flex flex-col justify-between">
-                <span className="text-[#757575] uppercase text-[10px] block mb-1">FORMAT 04</span>
-                <span className="font-semibold block mb-2">STATUTORY TOWN HALL HEARINGS</span>
-                <span className="text-[#2446EC] font-bold">47 COUNTIES NETWORK</span>
+                <span className="text-[#757575] uppercase text-[10px] block mb-1">
+                  FORMAT 04
+                </span>
+                <span className="font-semibold block mb-2">
+                  STATUTORY TOWN HALL HEARINGS
+                </span>
+                <span className="text-[#2446EC] font-bold">
+                  47 COUNTIES NETWORK
+                </span>
               </div>
             </div>
           </div>
@@ -252,16 +274,25 @@ export function StudioPage() {
               {/* 6 Minimalist Compact Rows (Receipt Style) */}
               <div className="py-2 divide-y divide-white/10">
                 {STUDIO_RATE_CARD.map((item, idx) => (
-                  <div key={item.code} className="py-3 flex items-baseline justify-between gap-3">
+                  <div
+                    key={item.code}
+                    className="py-3 flex items-baseline justify-between gap-3"
+                  >
                     <div className="flex items-baseline gap-2">
-                      <span className="font-mono text-[10px] text-white/60">0{idx + 1}</span>
+                      <span className="font-mono text-[10px] text-white/60">
+                        0{idx + 1}
+                      </span>
                       <span className="font-display font-medium text-sm text-white uppercase tracking-tight">
                         {item.format}
                       </span>
                     </div>
                     <div className="text-right font-mono shrink-0">
-                      <span className="text-sm font-bold text-white tabular-nums">{item.startingRate}</span>
-                      <span className="text-[10px] text-white/70 ml-1">{item.unit}</span>
+                      <span className="text-sm font-bold text-white tabular-nums">
+                        {item.startingRate}
+                      </span>
+                      <span className="text-[10px] text-white/70 ml-1">
+                        {item.unit}
+                      </span>
                     </div>
                   </div>
                 ))}
@@ -300,7 +331,9 @@ export function StudioPage() {
                       }`}
                     >
                       <div className="flex items-center gap-3">
-                        <span className={`font-mono text-xs ${isActive ? "text-[#2446EC]" : "text-white/70"}`}>
+                        <span
+                          className={`font-mono text-xs ${isActive ? "text-[#2446EC]" : "text-white/70"}`}
+                        >
                           0{idx + 1}
                         </span>
                         <span className="font-display text-base uppercase tracking-tight">
@@ -308,7 +341,11 @@ export function StudioPage() {
                         </span>
                       </div>
                       <div className="flex items-center gap-3 font-mono text-xs">
-                        <span className={isActive ? "text-[#2446EC]" : "text-white/80"}>
+                        <span
+                          className={
+                            isActive ? "text-[#2446EC]" : "text-white/80"
+                          }
+                        >
                           {item.startingRate}
                         </span>
                         <ArrowUpRight
@@ -330,7 +367,8 @@ export function StudioPage() {
                   {/* Meta Top Line */}
                   <div className="flex items-center justify-between pb-4 border-b border-[#101010]/10">
                     <span className="font-mono text-xs font-semibold text-[#2446EC] tracking-wider uppercase">
-                      {STUDIO_RATE_CARD[activeRateIndex].code} // SCOPE &amp; SPECIFICATIONS
+                      {STUDIO_RATE_CARD[activeRateIndex].code} // SCOPE &amp;
+                      SPECIFICATIONS
                     </span>
                     <span className="font-mono text-xs text-[#757575] uppercase">
                       ITEM 0{activeRateIndex + 1} OF 06
@@ -380,13 +418,22 @@ export function StudioPage() {
             {/* 4. Compact 3-Column Disclosures Footer */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-6 pt-4 border-t border-white/20 font-mono text-[10px] md:text-[11px] text-white/70 leading-normal">
               <div>
-                <span className="text-white uppercase font-semibold">DISBURSEMENTS:</span> Outside Nairobi invoiced at verified net cost.
+                <span className="text-white uppercase font-semibold">
+                  DISBURSEMENTS:
+                </span>{" "}
+                Outside Nairobi invoiced at verified net cost.
               </div>
               <div>
-                <span className="text-white uppercase font-semibold">EDITORIAL FIREWALL:</span> BNS maintains independent civic oversight.
+                <span className="text-white uppercase font-semibold">
+                  EDITORIAL FIREWALL:
+                </span>{" "}
+                BNS maintains independent civic oversight.
               </div>
               <div>
-                <span className="text-white uppercase font-semibold">RETAINERS:</span> Multi-year grants receive customized rate models.
+                <span className="text-white uppercase font-semibold">
+                  RETAINERS:
+                </span>{" "}
+                Multi-year grants receive customized rate models.
               </div>
             </div>
           </div>
@@ -405,7 +452,7 @@ export function StudioPage() {
           </div>
 
           {/* Ethos Word Reveal Statement */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-16 border-b border-[#101010]/12 items-start">
+          {/* <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-16 border-b border-[#101010]/12 items-start">
             <div className="col-span-1">
               <span className="font-mono text-xs uppercase tracking-wider text-[#2446EC] font-semibold block">
                 THE COMMERCIAL PRINCIPLE
@@ -426,7 +473,7 @@ export function StudioPage() {
                 budget monitoring across all 47 counties.
               </p>
             </div>
-          </div>
+          </div> */}
 
           {/* Studio Commissioning FAQ Accordion */}
           <div className="pt-12">
@@ -460,7 +507,7 @@ export function StudioPage() {
                     >
                       <div className="md:col-span-11 flex gap-4 md:gap-8 items-start">
                         <span className="font-mono text-xs text-[#757575] pt-0.5 shrink-0 w-6">
-                          {String(idx + 1).padStart(2, '0')}
+                          {String(idx + 1).padStart(2, "0")}
                         </span>
                         <div className="space-y-1">
                           <span className="font-mono text-[10px] uppercase tracking-wider text-[#757575] block">
@@ -484,10 +531,17 @@ export function StudioPage() {
                       {isOpen && (
                         <motion.div
                           key="answer"
-                          initial={shouldReduceMotion ? false : { height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
+                          initial={
+                            shouldReduceMotion
+                              ? false
+                              : { height: 0, opacity: 0 }
+                          }
+                          animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                          transition={{
+                            duration: 0.3,
+                            ease: [0.22, 1, 0.36, 1],
+                          }}
                           className="overflow-hidden"
                         >
                           <div className="pb-7 pl-10 md:pl-[calc(2rem+1.5rem)] pr-4 sm:pr-6 space-y-3">
