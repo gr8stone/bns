@@ -29,17 +29,6 @@ export function ServicesPage() {
         {/* ========================================================= */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-20 border-b border-[#101010]/12 items-end">
           <div className="col-span-1 md:col-span-3">
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.36, ease: [0.22, 1, 0.36, 1] }}
-              className="flex items-center gap-2 mb-4"
-            >
-              <span className="w-1.5 h-1.5 bg-[#2446EC] inline-block" />
-              <span className="font-mono text-xs uppercase tracking-wider text-[#2446EC] font-semibold">
-                CIVIC ACTION FRAMEWORK // 3 STRATEGIC PROGRAMMES
-              </span>
-            </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}

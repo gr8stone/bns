@@ -429,7 +429,7 @@ export function ArchvizProjectShowcase({
           <div className="flex items-center justify-between px-1 py-0.5 font-mono text-[10px] text-slate border-t border-black/[0.06]">
             <span className="uppercase tracking-wider">FIELD EVIDENCE</span>
             <span className="text-[#2446EC] font-semibold uppercase">
-              CLICK TO ENLARGE &rarr;
+              View &rarr;
             </span>
           </div>
         </div>

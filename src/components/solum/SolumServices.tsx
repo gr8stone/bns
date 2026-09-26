@@ -209,8 +209,8 @@ export function SolumServices() {
       {/* ========================================================= */}
       <div className="block md:hidden w-full pb-12">
         <div className="px-6 pb-3 flex items-center justify-between font-mono text-[11px] text-[#757575] uppercase tracking-wider">
-          <span>SWIPE PROGRAMMES &rarr;</span>
-          <span>3 FLAGSHIP PILLARS</span>
+          <span>SWIPE  &rarr;</span>
+          <span> FLAGSHIP PROGRAMMES</span>
         </div>
 
         {/* Snap Slider Track */}
@@ -229,7 +229,7 @@ export function SolumServices() {
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute top-3 left-3 bg-[#101010] text-white font-mono text-[10px] uppercase tracking-widest px-2.5 py-1">
-                  PILLAR {service.number}
+                   {service.number}
                 </div>
                 <div className="absolute top-3 right-3 bg-white/20 backdrop-blur-md text-white font-mono text-[10px] tracking-widest px-2 py-0.5">
                   0{index + 1} / 03
@@ -306,7 +306,7 @@ export function SolumServices() {
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-white inline-block" />
               <span className="font-mono text-xs uppercase tracking-wider text-white font-semibold">
-                COMMERCIAL IMPACT 
+                COMMERCIAL IMPACT
               </span>
             </div>
             <h3 className="font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight uppercase leading-[0.98] text-white">
