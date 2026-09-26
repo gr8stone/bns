@@ -131,6 +131,7 @@ export interface FAQItem {
 
 export interface JournalArticle {
   slug: string;
+  projectSlug?: string;
   title: string;
   subtitle: string;
   date: string;

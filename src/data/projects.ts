@@ -26,12 +26,12 @@ export const PROJECTS: Project[] = [
     description: [
       'Counties provide the essential services citizens interact with every day: healthcare, early childhood education, local roads, clean water, community markets, and agriculture support.',
       'Through this 3-part series, Budget Ndio Story decodes the financial architecture of devolution, investigating where the funds come from, how revenue targets are set, and why fiscal absorption matters.',
-      'Broadcasted across YouTube, TikTok, and screened at localized community listening sessions, the series reached over 150,000 citizens, sparking discussions on county revenue transparency.'
+      'Shared through YouTube, TikTok, and community listening sessions, the series creates a starting point for discussions about county revenue transparency.'
     ],
     stats: [
       { label: 'Counties Analyzed', value: '47 Counties' },
       { label: 'Episodes', value: '3 Part Series' },
-      { label: 'Citizen Reach', value: '150,000+' },
+      { label: 'Civic Focus', value: 'Revenue Transparency' },
       { label: 'Data Sources', value: 'COB, CRA & Treasury' }
     ],
     beforeAfter: {
@@ -123,7 +123,7 @@ export const PROJECTS: Project[] = [
     stats: [
       { label: 'Investigative Parts', value: '4 In-Depth Episodes' },
       { label: 'Legal Audit', value: 'Full Act Review' },
-      { label: 'Document Views', value: '85,000+' },
+      { label: 'Public Oversight', value: 'Citizen Accountability' },
       { label: 'Policy Impact', value: 'Parliamentary Brief' }
     ],
     beforeAfter: {
@@ -197,13 +197,13 @@ export const PROJECTS: Project[] = [
     ],
     summary: 'A nationwide campaign educating youth and civic champions on the Budget Policy Statement—the critical document where government priorities take shape before Budget Day.',
     description: [
-      'Most citizens wait for National Budget Day in June, but by then 90% of spending choices have already been locked. The real battle for priorities happens months earlier during the Budget Policy Statement (BPS).',
+      'Many citizens focus on National Budget Day in June, while important spending choices are shaped earlier during the Budget Policy Statement (BPS).',
       'Budget Ndio Story created this multi-episode campaign to mobilize young people, micro-entrepreneurs, and civic groups to participate in public hearings before decisions are cast in stone.',
       'The campaign produced accessible breakdowns of education spending, healthcare deficits, national debt servicing, and youth enterprise funds.'
     ],
     stats: [
-      { label: 'Public Submissions', value: '1,200+ Citizen Memos' },
-      { label: 'Youth Engagement', value: '42 Campus Hubs' },
+      { label: 'Public Submissions', value: 'Citizen Memos' },
+      { label: 'Youth Engagement', value: 'Campus Hubs' },
       { label: 'Video Series', value: '3 Part BPS Guide' },
       { label: 'Budget Cycle Impact', value: 'Pre-Budget Phase' }
     ],
@@ -273,9 +273,9 @@ export const PROJECTS: Project[] = [
       'This is why Africa must invest not only in attracting capital, but in deal-making capacity: lawyers, economists, financial modellers, engineers, tax specialists, and public officials capable of interrogating and negotiating complex agreements. Mobilising billions is one capability; negotiating those billions in the public interest is another. The real measure of a successful deal is not what is announced when cameras are present, but what the public still gains 10, 20, or 30 years later.'
     ],
     stats: [
-      { label: 'Continental Deals Audited', value: '5 Major Nations' },
-      { label: 'Delegates & Auditors', value: '350+ Fiscal Experts' },
-      { label: 'Countries Represented', value: '14 African Nations' },
+      { label: 'Focus', value: 'Public Deal Terms' },
+      { label: 'Participants', value: 'Fiscal Practitioners' },
+      { label: 'Scope', value: 'African Public Investment' },
       { label: 'Key Governance Partner', value: 'Cents Governance Academy' }
     ],
     beforeAfter: {
@@ -344,10 +344,10 @@ export const PROJECTS: Project[] = [
       'Residents mapped approved county projects against actual ground reality, creating grassroots scorecards presented directly to Ward Administrators.'
     ],
     stats: [
-      { label: 'Wards Audited', value: '36 Wards' },
-      { label: 'Ground Volunteers', value: '450 Champions' },
-      { label: 'Projects Tracked', value: '112 Community Facilities' },
-      { label: 'Resolution Rate', value: '48% Interventions' }
+      { label: 'Review Area', value: 'Ward Allocations' },
+      { label: 'Participants', value: 'Community Champions' },
+      { label: 'Projects Tracked', value: 'Local Facilities' },
+      { label: 'Follow-Up', value: 'Community Scorecards' }
     ],
     gallery: [
       {
@@ -391,17 +391,17 @@ export const PROJECTS: Project[] = [
     tags: ['All', 'Civic Tech', 'BNS Studio', 'Animation', 'Youth', 'Economic Inclusion'],
     heroImage: '/images/bns/reels/reel-05-opportunities.jpg',
     heroVideo: '/images/bns/reels/animation reel opportunities . Where do I start ( nyota programmes  uwezo fund) main landing page .mp4',
-    summary: 'A viral animated explainer detailing public funding avenues for youth, demystifying the Uwezo Fund, NYOTA programs, and entrepreneurship seed grants.',
+    summary: 'An animated youth-opportunities explainer follows Brian, an everyday Kenyan hustling for a living, and points young people toward opportunities that can make the hustle easier.',
     description: [
-      'Billions in public funds are annually allocated to affirmative action funds like Uwezo and NYOTA, yet complex paperwork and lack of awareness prevent target youth from accessing them.',
-      'BNS Studio designed a rapid, engaging 2D animation breaking down eligibility criteria, group formation, and interest-free loan schedules.',
-      'The explainer achieved viral circulation on WhatsApp and TikTok, driving record applications from youth enterprises across 18 counties.'
+      'Every young Kenyan is looking for opportunities in one way or another. The reel starts from that familiar search for a way to make a living.',
+      'Brian stands in for an everyday Kenyan. His story connects the work of hustling with opportunities intended to make that work easier.',
+      'The message is direct: discover the opportunities available and see how they could support your next step.'
     ],
     stats: [
-      { label: 'Reel Views', value: '320,000+' },
-      { label: 'WhatsApp Shares', value: '45,000+' },
-      { label: 'Funds Demystified', value: 'Uwezo & NYOTA' },
-      { label: 'Helpdesk Calls', value: '2,400+ Inquiries' }
+      { label: 'Format', value: 'Social Animation' },
+      { label: 'Audience', value: 'Young Kenyans' },
+      { label: 'Story', value: 'Everyday Hustle' },
+      { label: 'Focus', value: 'Youth Opportunities' }
     ],
     gallery: [
       {
@@ -452,10 +452,10 @@ export const PROJECTS: Project[] = [
       'Through live street vox pops and studio commentaries, we centered ordinary citizens\' voices during the national budget ritual.'
     ],
     stats: [
-      { label: 'Live Broadcast', value: '6 Hours Continuous' },
-      { label: 'Real-Time Fact Checks', value: '34 Fiscal Claims' },
-      { label: 'Online Impressions', value: '1.2M Reach' },
-      { label: 'Vox Pop Coverage', value: '7 Major Towns' }
+      { label: 'Format', value: 'Live Budget Analysis' },
+      { label: 'Verification', value: 'Speech vs. Budget Books' },
+      { label: 'Distribution', value: 'Digital Coverage' },
+      { label: 'Public Voice', value: 'Street Interviews' }
     ],
     gallery: [
       {
@@ -484,6 +484,254 @@ export const PROJECTS: Project[] = [
     ],
     featured: false,
     featuredOrder: 7,
+    nextProjectSlug: 'project-terra'
+  },
+  {
+    slug: 'project-terra',
+    title: 'Project TERRA: Tech Equality and Regulatory Risk Assessment',
+    subtitle: 'A film on digital-economy risks, public value, and who shapes the rules.',
+    location: 'Africa',
+    year: '2026',
+    client: 'House of Fiscal Wisdom',
+    architect: 'BNS Studios',
+    category: 'BNS Connect',
+    services: ['BNS Connect', 'BNS Studio'],
+    tags: ['All', 'Civic Tech', 'Digital Economy', 'Technology', 'Policy', 'Public Finance'],
+    heroImage: '/images/bns/projects/project terra.webp',
+    heroVideo: 'https://www.youtube.com/watch?v=it8rOKSYKnc',
+    videoDuration: 'Project TERRA Film',
+    clientMaterial: 'Tech Equality Regulatory Risk Assessment',
+    transformationPipeline: [
+      'Digital Investment Impact Mapping',
+      'App and Algorithm Risk Assessment',
+      'Technology Equity Analysis',
+      'Public-Interest Rule Testing'
+    ],
+    summary: 'Project TERRA asks who benefits, who is protected, and who writes the rules as digital platforms and technologies reshape African economies and public resources.',
+    description: [
+      'Digital services reach into homes, markets, transport, payments, and work. The film brings the human stories behind those interactions into focus, including work that can power the digital economy while remaining unseen or unrecorded.',
+      'TERRA examines risks hidden in apps and algorithms and maps the public impact of digital investments, including data centres and platforms.',
+      'Its stated aim is to test better rules before they become permanent, so Africa\'s digital future can deliver recognition, protection, fairness, accountability, and public value.'
+    ],
+    stats: [
+      { label: 'Assessment', value: 'Tech Equality' },
+      { label: 'Risk Focus', value: 'Apps & Algorithms' },
+      { label: 'Investment Focus', value: 'Digital Public Impact' },
+      { label: 'Public Values', value: 'Fairness & Accountability' }
+    ],
+    process: [
+      {
+        step: '01',
+        title: 'Identify Digital Risks',
+        description: 'Investigating risks embedded in apps, algorithms, and digital platforms.',
+        image: '/images/bns/projects/project terra.webp'
+      },
+      {
+        step: '02',
+        title: 'Map Public Impact',
+        description: 'Examining how digital investments affect people, public resources, and the wider economy.',
+        image: '/images/bns/projects/project terra.webp'
+      },
+      {
+        step: '03',
+        title: 'Test Better Rules',
+        description: 'Assessing protections and regulatory choices before they become permanent.',
+        image: '/images/bns/projects/project terra.webp'
+      }
+    ],
+    gallery: [
+      {
+        url: '/images/bns/projects/project terra.webp',
+        caption: 'Project TERRA: Tech Equality Regulatory Risk Assessment',
+        aspectRatio: 'landscape'
+      }
+    ],
+    featured: false,
+    featuredOrder: 8,
+    nextProjectSlug: 'house-of-fiscal-wisdom-illicit-flows'
+  },
+  {
+    slug: 'house-of-fiscal-wisdom-illicit-flows',
+    title: 'Illicit Financial Flows: The Cashew Trade’s Missing Value',
+    subtitle: 'A Benin-Cabo Verde explainer tracing the gaps between goods, payments, invoices, and profits.',
+    location: 'Benin, Cabo Verde, and India',
+    year: '2026',
+    client: 'House of Fiscal Wisdom',
+    architect: 'BNS Studios',
+    category: 'BNS Connect',
+    services: ['BNS Connect', 'BNS Studio', 'BNS Wanahabari'],
+    tags: ['All', 'Public Finance', 'Trade', 'Tax', 'Illicit Financial Flows', 'Africa'],
+    heroImage: '/images/bns/optimized/house-of-fiscal-wisdom.webp',
+    heroVideo: 'https://www.youtube.com/watch?v=G5ddu4I6mNs',
+    videoDuration: 'Fiscal Explainer',
+    clientMaterial: 'House of Fiscal Wisdom country-experience film',
+    transformationPipeline: [
+      'Trade-Record Comparison',
+      'Digital Payment-Path Explanation',
+      'Public-Revenue Context',
+      'Civic Fiscal Storytelling'
+    ],
+    summary: 'A cashew-export example shows how a shipment can appear differently in trading partners\' records, raising questions about where value is recorded and where public revenue follows.',
+    description: [
+      'The film follows a cashew shipment from Benin to India and sets four parts of a transaction side by side: the goods, payment, invoice, and profits.',
+      'It cites about $81 million in Benin-recorded cashew exports to India and about $113 million recorded by India as arriving from Benin. The difference is presented as a gap in the trade story, not as proof by itself of what happened to the value.',
+      'The narrative asks whether customs, tax systems, institutions, and public records can follow the full transaction when payment paths and commercial records diverge.'
+    ],
+    stats: [
+      { label: 'Export Record', value: 'About $81M' },
+      { label: 'Import Record', value: 'About $113M' },
+      { label: 'Commodity', value: 'Cashew' },
+      { label: 'Trade Route', value: 'Benin to India' }
+    ],
+    process: [
+      {
+        step: '01',
+        title: 'Follow the Goods',
+        description: 'Trace the cashew shipment from its country of export to its destination market.',
+        image: '/images/bns/optimized/house-of-fiscal-wisdom.webp'
+      },
+      {
+        step: '02',
+        title: 'Compare the Records',
+        description: 'Set export and import values beside one another and identify the reported discrepancy.',
+        image: '/images/bns/optimized/house-of-fiscal-wisdom.webp'
+      },
+      {
+        step: '03',
+        title: 'Ask Where Value Is Seen',
+        description: 'Connect transaction visibility, public records, and revenue collection.',
+        image: '/images/bns/optimized/house-of-fiscal-wisdom.webp'
+      }
+    ],
+    gallery: [
+      {
+        url: '/images/bns/optimized/house-of-fiscal-wisdom.webp',
+        caption: 'House of Fiscal Wisdom: illicit financial flows explainer',
+        aspectRatio: 'landscape'
+      }
+    ],
+    featured: false,
+    featuredOrder: 9,
+    nextProjectSlug: 'cabri-digital-pfm-anglophone'
+  },
+  {
+    slug: 'cabri-digital-pfm-anglophone',
+    title: 'Digital Public Finance Management: Anglophone Country Experiences',
+    subtitle: 'CABRI reform stories from South Africa, Ghana, Namibia, Kenya, Rwanda, and Malawi.',
+    location: 'South Africa, Ghana, Namibia, Kenya, Rwanda, and Malawi',
+    year: '2026',
+    client: 'CABRI',
+    architect: 'BNS Studios',
+    category: 'BNS Connect',
+    services: ['BNS Connect', 'BNS Studio', 'BNS Wanahabari'],
+    tags: ['All', 'Public Finance', 'Digital Government', 'Procurement', 'Transparency', 'Africa'],
+    heroImage: '/images/bns/media/main media image.jpg',
+    heroVideo: 'https://youtu.be/kWpY4K1uI20',
+    videoDuration: 'Digital PFM Country-Experience Film',
+    clientMaterial: 'Digital PF Reform Stories: Anglophone country experiences',
+    transformationPipeline: [
+      'Country-Experience Interviews',
+      'Digital Procurement Explainers',
+      'Public-Record and Audit-Trail Storytelling',
+      'Regional Reform Documentation'
+    ],
+    summary: 'A CABRI country-experience film examines how digital public financial management can make procurement easier to navigate and public transactions easier to trace.',
+    description: [
+      'The series spans six country experiences: South Africa, Ghana, Namibia, Kenya, Rwanda, and Malawi. Its central question is how public money can be tracked through systems grounded in law, oversight, and accountability.',
+      'In the South African example, speakers describe a central supplier database and an e-tender portal. Suppliers can register once, while public bodies publish opportunities and procurement information through shared digital systems.',
+      'The film highlights public access to tender, contract, and payment records, alongside open contracting data that researchers and civil society can download and analyze.'
+    ],
+    stats: [
+      { label: 'Country Experiences', value: '6 Countries' },
+      { label: 'South Africa Example', value: 'Supplier Database' },
+      { label: 'Procurement Tool', value: 'E-Tender Portal' },
+      { label: 'Public Record', value: 'Contracts & Payments' }
+    ],
+    process: [
+      {
+        step: '01',
+        title: 'Document Reform Journeys',
+        description: 'Present public financial management experiences across six Anglophone African countries.',
+        image: '/images/bns/media/main media image.jpg'
+      },
+      {
+        step: '02',
+        title: 'Explain Digital Procurement',
+        description: 'Show how supplier registration and e-tender platforms connect suppliers with public opportunities.',
+        image: '/images/bns/media/main media image.jpg'
+      },
+      {
+        step: '03',
+        title: 'Make Records Traceable',
+        description: 'Describe publication of tenders, awards, contracts, and payments as an accountability trail.',
+        image: '/images/bns/media/main media image.jpg'
+      }
+    ],
+    gallery: [
+      {
+        url: '/images/bns/media/main media image.jpg',
+        caption: 'CABRI digital public financial management country experiences',
+        aspectRatio: 'landscape'
+      }
+    ],
+    featured: false,
+    featuredOrder: 10,
+    nextProjectSlug: 'cabri-digital-pfm-francophone'
+  },
+  {
+    slug: 'cabri-digital-pfm-francophone',
+    title: 'Digital Public Finance Management: Francophone Country Experiences',
+    subtitle: 'CABRI country stories from Benin, Côte d\'Ivoire, the Central African Republic, and Tunisia.',
+    location: 'Benin, Côte d\'Ivoire, Central African Republic, and Tunisia',
+    year: '2026',
+    client: 'CABRI',
+    architect: 'BNS Studios',
+    category: 'BNS Connect',
+    services: ['BNS Connect', 'BNS Studio', 'BNS Wanahabari'],
+    tags: ['All', 'Public Finance', 'Digital Government', 'Francophone Africa', 'Policy', 'Africa'],
+    heroImage: '/images/bns/media/main media image.jpg',
+    heroVideo: 'https://youtu.be/GPebC3wHTus',
+    videoDuration: 'Digital PFM Country-Experience Film',
+    clientMaterial: 'Récits de GFPn: Expériences-pays',
+    transformationPipeline: [
+      'Country-Experience Interviews',
+      'Public Finance Reform Documentation',
+      'Francophone Regional Storytelling'
+    ],
+    summary: 'A CABRI country-experience film presents public financial management reform stories from Benin, Côte d\'Ivoire, the Central African Republic, and Tunisia.',
+    description: [
+      'The film identifies four country experiences: Benin, Côte d\'Ivoire, the Central African Republic, and Tunisia.',
+      'The country-story format places public financial management reform in distinct national contexts and invites comparison across the region.'
+    ],
+    stats: [
+      { label: 'Country Experiences', value: '4 Countries' },
+      { label: 'Language', value: 'French' },
+      { label: 'Subject', value: 'Public Finance Management' },
+      { label: 'Format', value: 'Country Stories' }
+    ],
+    process: [
+      {
+        step: '01',
+        title: 'Present Country Stories',
+        description: 'Bring together public financial management experiences from four named country contexts.',
+        image: '/images/bns/media/main media image.jpg'
+      },
+      {
+        step: '02',
+        title: 'Document Reform Context',
+        description: 'Share country experience through CABRI\'s French-language series.',
+        image: '/images/bns/media/main media image.jpg'
+      }
+    ],
+    gallery: [
+      {
+        url: '/images/bns/media/main media image.jpg',
+        caption: 'CABRI French-language public financial management country experiences',
+        aspectRatio: 'landscape'
+      }
+    ],
+    featured: false,
+    featuredOrder: 11,
     nextProjectSlug: 'riviera-residence'
   }
 ];

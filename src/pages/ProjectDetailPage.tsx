@@ -7,6 +7,7 @@ import {
 import { ArrowLeft, ArrowRight, Play } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
+import { JOURNAL_ARTICLES } from "../data/journal";
 import { PROJECTS } from "../data/projects";
 import { getYouTubeId, getYouTubeThumbnail } from "../lib/media";
 
@@ -50,6 +51,9 @@ export function ProjectDetailPage() {
     return <Navigate to="/projects" replace />;
   }
 
+  const projectArticle = JOURNAL_ARTICLES.find(
+    (article) => article.projectSlug === project.slug,
+  );
   const youtubeId = getYouTubeId(project.heroVideo);
   const youtubeThumb = youtubeId
     ? getYouTubeThumbnail(youtubeId, thumbError ? "hq" : "maxres")
@@ -204,9 +208,9 @@ export function ProjectDetailPage() {
 
           <div className="col-span-1 md:col-span-2 space-y-6 text-sm sm:text-base text-[#101010]/85 font-light leading-relaxed">
             <p className="font-display text-xl sm:text-2xl font-normal tracking-[-0.03em] leading-snug text-[#101010]">
-              {project.summary}
+              {projectArticle?.subtitle ?? project.summary}
             </p>
-            {project.description.map((paragraph, i) => (
+            {(projectArticle?.content ?? project.description).map((paragraph, i) => (
               <p
                 key={i}
                 className="text-xs sm:text-sm text-[#757575] leading-relaxed"
