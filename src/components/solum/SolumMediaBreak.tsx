@@ -61,7 +61,7 @@ export function SolumMediaBreak() {
           className="flex items-center whitespace-nowrap text-5xl sm:text-7xl md:text-8xl lg:text-[110px] font-medium tracking-[-0.06em] text-white/95 uppercase will-change-transform leading-none"
         >
           <span>{marqueeText}</span>
-          <span className="text-[#2446EC]">{marqueeText}</span>
+          <span className="text">{marqueeText}</span>
         </motion.div>
       </div>
 
