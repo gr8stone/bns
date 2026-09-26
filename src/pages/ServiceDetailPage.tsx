@@ -1,8 +1,8 @@
 import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
+    motion,
+    useReducedMotion,
+    useScroll,
+    useTransform,
 } from "framer-motion";
 import { ArrowLeft, ArrowRight, Play } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
@@ -410,7 +410,9 @@ export function ServiceDetailPage() {
               <div className="flex items-center gap-2 font-mono text-[10px] sm:text-xs uppercase text-[#757575] mb-3 sm:mb-4">
                 <ArrowLeft className="w-3.5 h-3.5 shrink-0 group-hover:-translate-x-1 transition-transform text-[#2446EC]" />
                 <span className="sm:hidden">PREV</span>
-                <span className="hidden sm:inline">PREVIOUS INITIATIVE // {prevService.number}</span>
+                <span className="hidden sm:inline">
+                  PREVIOUS INITIATIVE // {prevService.number}
+                </span>
               </div>
               <h4 className="font-display text-base sm:text-3xl font-medium tracking-tight text-[#101010] uppercase group-hover:text-[#2446EC] transition-colors leading-tight">
                 {prevService.title}
@@ -428,7 +430,9 @@ export function ServiceDetailPage() {
             >
               <div className="flex items-center sm:justify-end gap-2 font-mono text-[10px] sm:text-xs uppercase text-[#757575] mb-3 sm:mb-4">
                 <span className="sm:hidden">NEXT</span>
-                <span className="hidden sm:inline">NEXT INITIATIVE // {nextService.number}</span>
+                <span className="hidden sm:inline">
+                  NEXT INITIATIVE // {nextService.number}
+                </span>
                 <ArrowRight className="w-3.5 h-3.5 shrink-0 group-hover:translate-x-1 transition-transform text-[#2446EC]" />
               </div>
               <h4 className="font-display text-base sm:text-3xl font-medium tracking-tight text-[#101010] uppercase group-hover:text-[#2446EC] transition-colors leading-tight">

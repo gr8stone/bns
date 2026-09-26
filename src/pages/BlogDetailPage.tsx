@@ -1,7 +1,7 @@
-import { useMemo } from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { JOURNAL_ARTICLES } from '../data/journal';
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useMemo } from "react";
+import { Link, Navigate, useParams } from "react-router-dom";
+import { JOURNAL_ARTICLES } from "../data/journal";
 
 export function BlogDetailPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -20,7 +20,8 @@ export function BlogDetailPage() {
   }, [currentIndex]);
 
   const nextArticle = useMemo(() => {
-    if (currentIndex < 0 || currentIndex >= JOURNAL_ARTICLES.length - 1) return JOURNAL_ARTICLES[0];
+    if (currentIndex < 0 || currentIndex >= JOURNAL_ARTICLES.length - 1)
+      return JOURNAL_ARTICLES[0];
     return JOURNAL_ARTICLES[currentIndex + 1];
   }, [currentIndex]);
 

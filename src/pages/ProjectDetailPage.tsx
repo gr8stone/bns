@@ -1,9 +1,14 @@
-import { useMemo, useRef, useState } from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Play } from 'lucide-react';
-import { PROJECTS } from '../data/projects';
-import { getYouTubeId, getYouTubeThumbnail } from '../lib/media';
+import {
+    motion,
+    useReducedMotion,
+    useScroll,
+    useTransform,
+} from "framer-motion";
+import { ArrowLeft, ArrowRight, Play } from "lucide-react";
+import { useMemo, useRef, useState } from "react";
+import { Link, Navigate, useParams } from "react-router-dom";
+import { PROJECTS } from "../data/projects";
+import { getYouTubeId, getYouTubeThumbnail } from "../lib/media";
 
 export function ProjectDetailPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -13,11 +18,15 @@ export function ProjectDetailPage() {
   const [thumbError, setThumbError] = useState(false);
 
   const project = useMemo(() => {
-    return PROJECTS.find((p) => p.slug === slug || p.aliases?.includes(slug || ''));
+    return PROJECTS.find(
+      (p) => p.slug === slug || p.aliases?.includes(slug || ""),
+    );
   }, [slug]);
 
   const currentIndex = useMemo(() => {
-    return PROJECTS.findIndex((p) => p.slug === slug || p.aliases?.includes(slug || ''));
+    return PROJECTS.findIndex(
+      (p) => p.slug === slug || p.aliases?.includes(slug || ""),
+    );
   }, [slug]);
 
   const prevProject = useMemo(() => {
@@ -26,26 +35,29 @@ export function ProjectDetailPage() {
   }, [currentIndex]);
 
   const nextProject = useMemo(() => {
-    if (currentIndex < 0 || currentIndex >= PROJECTS.length - 1) return PROJECTS[0];
+    if (currentIndex < 0 || currentIndex >= PROJECTS.length - 1)
+      return PROJECTS[0];
     return PROJECTS[currentIndex + 1];
   }, [currentIndex]);
 
   const { scrollYProgress } = useScroll({
     target: leadImageRef,
-    offset: ['start end', 'end start'],
+    offset: ["start end", "end start"],
   });
-  const parallaxY = useTransform(scrollYProgress, [0, 1], ['-5%', '5%']);
+  const parallaxY = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
 
   if (!project) {
     return <Navigate to="/projects" replace />;
   }
 
   const youtubeId = getYouTubeId(project.heroVideo);
-  const youtubeThumb = youtubeId ? getYouTubeThumbnail(youtubeId, thumbError ? 'hq' : 'maxres') : null;
+  const youtubeThumb = youtubeId
+    ? getYouTubeThumbnail(youtubeId, thumbError ? "hq" : "maxres")
+    : null;
   const leadPoster = youtubeThumb || project.heroImage;
   const isDirectVideo = Boolean(
     project.heroVideo &&
-    (project.heroVideo.endsWith('.mp4') || project.heroVideo.endsWith('.webm'))
+    (project.heroVideo.endsWith(".mp4") || project.heroVideo.endsWith(".webm")),
   );
 
   return (
@@ -62,7 +74,9 @@ export function ProjectDetailPage() {
           </Link>
           <div className="flex items-center gap-2 text-[#101010]">
             <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
-            <span>{project.category} // {project.year}</span>
+            <span>
+              {project.category} // {project.year}
+            </span>
           </div>
         </div>
 
@@ -82,20 +96,36 @@ export function ProjectDetailPage() {
         {/* Ruled Details / Credits Table */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-8 border-t border-b border-[#101010]/12 text-xs font-mono">
           <div>
-            <span className="text-[#757575] block uppercase mb-1">PARTNER / INITIATIVE</span>
-            <span className="text-[#101010] font-sans font-medium">{project.client}</span>
+            <span className="text-[#757575] block uppercase mb-1">
+              PARTNER / INITIATIVE
+            </span>
+            <span className="text-[#101010] font-sans font-medium">
+              {project.client}
+            </span>
           </div>
           <div>
-            <span className="text-[#757575] block uppercase mb-1">RESEARCH &amp; PRODUCTION</span>
-            <span className="text-[#101010] font-sans font-medium">{project.architect}</span>
+            <span className="text-[#757575] block uppercase mb-1">
+              RESEARCH &amp; PRODUCTION
+            </span>
+            <span className="text-[#101010] font-sans font-medium">
+              {project.architect}
+            </span>
           </div>
           <div>
-            <span className="text-[#757575] block uppercase mb-1">PILLAR / THEME</span>
-            <span className="text-[#101010] font-sans font-medium">{project.category}</span>
+            <span className="text-[#757575] block uppercase mb-1">
+              PILLAR / THEME
+            </span>
+            <span className="text-[#101010] font-sans font-medium">
+              {project.category}
+            </span>
           </div>
           <div>
-            <span className="text-[#757575] block uppercase mb-1">CIVIC FOCUS</span>
-            <span className="text-[#101010] font-sans font-medium">{project.services.join(', ')}</span>
+            <span className="text-[#757575] block uppercase mb-1">
+              CIVIC FOCUS
+            </span>
+            <span className="text-[#101010] font-sans font-medium">
+              {project.services.join(", ")}
+            </span>
           </div>
         </div>
       </div>
@@ -124,7 +154,7 @@ export function ProjectDetailPage() {
         ) : (
           <div className="relative w-full h-full">
             <motion.div
-              style={{ y: shouldReduceMotion ? '0%' : parallaxY }}
+              style={{ y: shouldReduceMotion ? "0%" : parallaxY }}
               className="absolute inset-0 w-full h-[120%] -top-[10%]"
             >
               <img
@@ -177,7 +207,10 @@ export function ProjectDetailPage() {
               {project.summary}
             </p>
             {project.description.map((paragraph, i) => (
-              <p key={i} className="text-xs sm:text-sm text-[#757575] leading-relaxed">
+              <p
+                key={i}
+                className="text-xs sm:text-sm text-[#757575] leading-relaxed"
+              >
                 {paragraph}
               </p>
             ))}
@@ -213,13 +246,18 @@ export function ProjectDetailPage() {
             {project.gallery.map((item, idx) => (
               <motion.div
                 key={item.url + idx}
-                initial={{ opacity: shouldReduceMotion ? 1 : 0, y: shouldReduceMotion ? 0 : 28 }}
+                initial={{
+                  opacity: shouldReduceMotion ? 1 : 0,
+                  y: shouldReduceMotion ? 0 : 28,
+                }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className={idx === 0 ? 'md:col-span-2' : 'col-span-1'}
+                className={idx === 0 ? "md:col-span-2" : "col-span-1"}
               >
-                <div className={`relative ${idx === 0 ? 'aspect-[21/9]' : 'aspect-[4/3]'} w-full overflow-hidden bg-zinc-100 border border-[#101010]/12`}>
+                <div
+                  className={`relative ${idx === 0 ? "aspect-[21/9]" : "aspect-[4/3]"} w-full overflow-hidden bg-zinc-100 border border-[#101010]/12`}
+                >
                   <img
                     src={item.url}
                     alt={item.caption || project.title}
