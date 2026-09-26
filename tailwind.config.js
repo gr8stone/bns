@@ -47,9 +47,9 @@ export default {
 
       // ── Font Families (Beausite Classic Medium ramp) ─────────────────────────
       fontFamily: {
-        sans: ["Inter", "system-ui", "-apple-system", "sans-serif"],
-        display: ["Inter", "system-ui", "-apple-system", "sans-serif"],
-        mono: ["Geist Mono", "JetBrains Mono", "ui-monospace", "monospace"],
+        sans: ["Inter Variable", "system-ui", "-apple-system", "sans-serif"],
+        display: ["Inter Variable", "system-ui", "-apple-system", "sans-serif"],
+        mono: ["Geist Mono Variable", "ui-monospace", "monospace"],
       },
 
       // ── Letter Spacing ──────────────────────────────────────────────────────

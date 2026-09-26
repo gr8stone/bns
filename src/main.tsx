@@ -1,3 +1,5 @@
+import "@fontsource-variable/geist-mono";
+import "@fontsource-variable/inter";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { StrictMode } from "react";
