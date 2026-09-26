@@ -294,7 +294,6 @@ export function ContactPage() {
           SECTION 2: VISUAL "WHAT WE NEED FROM YOU" (MINIMALIST CARDS WITH IMAGES)
           Direct visual answers with real imagery, concise punchy copy, no clutter
           ───────────────────────────────────────────────────────────── */}
-     
     </main>
   );
 }

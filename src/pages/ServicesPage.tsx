@@ -1,8 +1,8 @@
 import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
+    motion,
+    useReducedMotion,
+    useScroll,
+    useTransform,
 } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
@@ -54,8 +54,8 @@ export function ServicesPage() {
             </span>
             <p className="font-sans text-sm text-[#757575] leading-relaxed font-light">
               From grassroots community barazas and investigative journalism to
-              live national town halls and civic budget monitoring, our three programmes
-              make public money understandable and actionable.
+              live national town halls and civic budget monitoring, our three
+              programmes make public money understandable and actionable.
             </p>
           </motion.div>
         </div>
@@ -122,10 +122,10 @@ export function ServicesPage() {
               Too often, public finance reports are buried in technical jargon,
               locking ordinary Kenyans out of critical spending decisions. Under
               BNS Foundation, our three flagship programmes function as cohesive
-              civic machinery: BNS Connect opens legislative doors, BNS Mashinani
-              mobilizes grassroots communities, and Wanahabari Lab equips data
-              journalists. Commercial impact productions are delivered by our
-              sister entity, BNS Studios.
+              civic machinery: BNS Connect opens legislative doors, BNS
+              Mashinani mobilizes grassroots communities, and Wanahabari Lab
+              equips data journalists. Commercial impact productions are
+              delivered by our sister entity, BNS Studios.
             </motion.p>
           </div>
         </div>
@@ -156,16 +156,14 @@ export function ServicesPage() {
                     {prog.number}
                   </span>
                   <span className="font-mono text-[11px] text-[#757575] block uppercase tracking-wider">
-                    {prog.slug.replace('-', ' ')}
+                    {prog.slug.replace("-", " ")}
                   </span>
                 </div>
 
                 {/* Column 2: Minimalist Title, Headline, and Clean Link */}
                 <div className="lg:col-span-6 space-y-4">
                   <h3 className="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight uppercase text-[#101010] group-hover:text-[#2446EC] transition-colors leading-[0.98]">
-                    <Link to={`/programmes/${prog.slug}`}>
-                      {prog.title}
-                    </Link>
+                    <Link to={`/programmes/${prog.slug}`}>{prog.title}</Link>
                   </h3>
 
                   <p className="font-sans text-sm sm:text-base text-[#101010]/80 font-normal leading-relaxed max-w-xl">
@@ -185,7 +183,10 @@ export function ServicesPage() {
 
                 {/* Column 3: High-Res Visual Frame (No card borders) */}
                 <div className="lg:col-span-4">
-                  <Link to={`/programmes/${prog.slug}`} className="block overflow-hidden bg-black aspect-[16/10] relative group/img">
+                  <Link
+                    to={`/programmes/${prog.slug}`}
+                    className="block overflow-hidden bg-black aspect-[16/10] relative group/img"
+                  >
                     <img
                       src={prog.image}
                       alt={prog.title}
@@ -203,7 +204,6 @@ export function ServicesPage() {
         {/* ========================================================= */}
         {/* 6) PROGRAMME METHODOLOGY WORKFLOW (CHRONOLOGY STYLE)     */}
         {/* ========================================================= */}
-
 
         {/* ========================================================= */}
         {/* 7) CLOSING INITIATIVE CALLOUT (MATCHING ABOUT)            */}

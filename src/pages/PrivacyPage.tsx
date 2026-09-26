@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export function PrivacyPage() {
   return (
@@ -39,7 +39,11 @@ export function PrivacyPage() {
               01 // DATA MINIMIZATION &amp; CITIZEN PRIVACY
             </h2>
             <p>
-              Budget Ndio Story operates on strict minimization and citizen privacy principles. We only collect information provided directly through our civic inquiry forms, whistleblower tip channels, or event registrations for the sole purpose of advancing public finance education and community reporting.
+              Budget Ndio Story operates on strict minimization and citizen
+              privacy principles. We only collect information provided directly
+              through our civic inquiry forms, whistleblower tip channels, or
+              event registrations for the sole purpose of advancing public
+              finance education and community reporting.
             </p>
           </div>
 
@@ -48,7 +52,10 @@ export function PrivacyPage() {
               02 // EVIDENCE STORAGE &amp; SOURCE SECURITY
             </h2>
             <p>
-              Public finance datasets, community monitoring logs, and whistleblower documents are stored on secure encrypted servers with restricted access. We never sell, monetize, or disclose citizen or whistleblower data to commercial third parties.
+              Public finance datasets, community monitoring logs, and
+              whistleblower documents are stored on secure encrypted servers
+              with restricted access. We never sell, monetize, or disclose
+              citizen or whistleblower data to commercial third parties.
             </p>
           </div>
 
@@ -57,7 +64,10 @@ export function PrivacyPage() {
               03 // OPEN PLATFORM &amp; METRICS
             </h2>
             <p>
-              Our website uses lightweight, privacy-respecting analytics to gauge civic reach and explainer engagement without deploying invasive tracking cookies or profiling individual citizens across external web services.
+              Our website uses lightweight, privacy-respecting analytics to
+              gauge civic reach and explainer engagement without deploying
+              invasive tracking cookies or profiling individual citizens across
+              external web services.
             </p>
           </div>
 
@@ -66,7 +76,9 @@ export function PrivacyPage() {
               04 // PRIVACY &amp; WHISTLEBLOWER DESK
             </h2>
             <p>
-              For data access, correction, or inquiries regarding our source confidentiality protocols under Kenyan data protection laws, contact our privacy desk directly at info@budgetndiostory.org.
+              For data access, correction, or inquiries regarding our source
+              confidentiality protocols under Kenyan data protection laws,
+              contact our privacy desk directly at info@budgetndiostory.org.
             </p>
           </div>
         </div>

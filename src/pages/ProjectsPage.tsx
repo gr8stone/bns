@@ -1,25 +1,26 @@
-import { useState, useMemo, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
-import { Filter } from 'lucide-react';
-import { PROJECTS } from '../data/projects';
-import { ArchvizProjectShowcase } from '../components/common/ArchvizProjectShowcase';
+import { motion } from "framer-motion";
+import { Filter } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { ArchvizProjectShowcase } from "../components/common/ArchvizProjectShowcase";
+import { PROJECTS } from "../data/projects";
 
 const CATEGORIES = [
-  'All Projects',
-  'Wanahabari Lab',
-  'BNS Connect',
-  'BNS Mashinani',
-  'BNS Studios',
+  "All Projects",
+  "Wanahabari Lab",
+  "BNS Connect",
+  "BNS Mashinani",
+  "BNS Studios",
 ];
 
 export function ProjectsPage() {
-  const [selectedCategory, setSelectedCategory] = useState('All Projects');
-  const [activeScrollCategory, setActiveScrollCategory] = useState('All Projects');
+  const [selectedCategory, setSelectedCategory] = useState("All Projects");
+  const [activeScrollCategory, setActiveScrollCategory] =
+    useState("All Projects");
   const [isFilterOnly, setIsFilterOnly] = useState(false);
   const mobileNavRef = useRef<HTMLDivElement>(null);
 
   const filteredProjects = useMemo(() => {
-    if (selectedCategory === 'All Projects') return PROJECTS;
+    if (selectedCategory === "All Projects") return PROJECTS;
     return PROJECTS.filter((p) => p.category === selectedCategory);
   }, [selectedCategory]);
 
@@ -27,7 +28,7 @@ export function ProjectsPage() {
   // 1. SCROLLSPY OBSERVER: Tracks which desk is currently in view
   // ─────────────────────────────────────────────────────────────
   useEffect(() => {
-    if (selectedCategory !== 'All Projects') {
+    if (selectedCategory !== "All Projects") {
       setActiveScrollCategory(selectedCategory);
       return;
     }
@@ -35,28 +36,29 @@ export function ProjectsPage() {
     const handleScroll = () => {
       // Near top of page, activate 'All Projects'
       if (window.scrollY < 260) {
-        setActiveScrollCategory('All Projects');
+        setActiveScrollCategory("All Projects");
         return;
       }
 
-      const elements = document.querySelectorAll<HTMLElement>('[data-category]');
+      const elements =
+        document.querySelectorAll<HTMLElement>("[data-category]");
       if (!elements || elements.length === 0) return;
 
       const triggerY = 200; // reading line below navbar
-      let detectedCategory = 'All Projects';
+      let detectedCategory = "All Projects";
 
       for (let i = 0; i < elements.length; i++) {
         const el = elements[i];
         const rect = el.getBoundingClientRect();
         // If element spans the reading line:
         if (rect.top <= triggerY && rect.bottom > triggerY) {
-          const cat = el.getAttribute('data-category');
+          const cat = el.getAttribute("data-category");
           if (cat) {
             detectedCategory = cat;
             break;
           }
         } else if (rect.top > triggerY && i === 0) {
-          detectedCategory = 'All Projects';
+          detectedCategory = "All Projects";
           break;
         }
       }
@@ -64,25 +66,25 @@ export function ProjectsPage() {
       setActiveScrollCategory(detectedCategory);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [selectedCategory]);
 
   // ─────────────────────────────────────────────────────────────
   // 2. MOBILE AUTO-CENTER: Keeps the active tab visible on mobile
   // ─────────────────────────────────────────────────────────────
   useEffect(() => {
-    if (typeof window === 'undefined' || window.innerWidth >= 768) return;
+    if (typeof window === "undefined" || window.innerWidth >= 768) return;
     const activeBtn = mobileNavRef.current?.querySelector<HTMLElement>(
-      `[data-nav-cat="${activeScrollCategory}"]`
+      `[data-nav-cat="${activeScrollCategory}"]`,
     );
     if (activeBtn) {
       activeBtn.scrollIntoView({
-        behavior: 'smooth',
-        inline: 'center',
-        block: 'nearest',
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest",
       });
     }
   }, [activeScrollCategory]);
@@ -91,19 +93,20 @@ export function ProjectsPage() {
   // 3. CATEGORY CLICK HANDLER: Smooth scroll or filter
   // ─────────────────────────────────────────────────────────────
   const handleCategoryClick = (cat: string) => {
-    if (cat === 'All Projects') {
-      setSelectedCategory('All Projects');
-      setActiveScrollCategory('All Projects');
+    if (cat === "All Projects") {
+      setSelectedCategory("All Projects");
+      setActiveScrollCategory("All Projects");
       setIsFilterOnly(false);
 
-      const topAnchor = document.getElementById('projects-top');
+      const topAnchor = document.getElementById("projects-top");
       if (topAnchor) {
         const lenis = (window as any).lenis;
-        if (lenis && typeof lenis.scrollTo === 'function') {
+        if (lenis && typeof lenis.scrollTo === "function") {
           lenis.scrollTo(topAnchor, { offset: -120, duration: 1.0 });
         } else {
-          const y = topAnchor.getBoundingClientRect().top + window.pageYOffset - 120;
-          window.scrollTo({ top: y, behavior: 'smooth' });
+          const y =
+            topAnchor.getBoundingClientRect().top + window.pageYOffset - 120;
+          window.scrollTo({ top: y, behavior: "smooth" });
         }
       }
       return;
@@ -116,28 +119,37 @@ export function ProjectsPage() {
     }
 
     // Scroll Mode (Default): smoothly scroll to that category's first card
-    if (selectedCategory !== 'All Projects') {
-      setSelectedCategory('All Projects');
+    if (selectedCategory !== "All Projects") {
+      setSelectedCategory("All Projects");
     }
 
-    setTimeout(() => {
-      const target = document.querySelector<HTMLElement>(`[data-category="${cat}"]`);
-      if (target) {
-        setActiveScrollCategory(cat);
-        const lenis = (window as any).lenis;
-        if (lenis && typeof lenis.scrollTo === 'function') {
-          lenis.scrollTo(target, { offset: -110, duration: 1.1 });
-        } else {
-          const y = target.getBoundingClientRect().top + window.pageYOffset - 110;
-          window.scrollTo({ top: y, behavior: 'smooth' });
+    setTimeout(
+      () => {
+        const target = document.querySelector<HTMLElement>(
+          `[data-category="${cat}"]`,
+        );
+        if (target) {
+          setActiveScrollCategory(cat);
+          const lenis = (window as any).lenis;
+          if (lenis && typeof lenis.scrollTo === "function") {
+            lenis.scrollTo(target, { offset: -110, duration: 1.1 });
+          } else {
+            const y =
+              target.getBoundingClientRect().top + window.pageYOffset - 110;
+            window.scrollTo({ top: y, behavior: "smooth" });
+          }
         }
-      }
-    }, selectedCategory !== 'All Projects' ? 50 : 0);
+      },
+      selectedCategory !== "All Projects" ? 50 : 0,
+    );
   };
 
   return (
     <main className="w-full bg-white text-text-base pt-28 md:pt-36 pb-24 md:pb-36 select-none">
-      <div id="projects-top" className="max-w-[1425px] mx-auto px-5 sm:px-8 md:px-10">
+      <div
+        id="projects-top"
+        className="max-w-[1425px] mx-auto px-5 sm:px-8 md:px-10"
+      >
         {/* Header: Swiss 4-Column Layout */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-16 border-b border-black/[0.08] items-end">
           <div className="col-span-1 md:col-span-3">
@@ -148,7 +160,8 @@ export function ProjectsPage() {
               </span>
             </div>
             <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-medium tracking-[-0.05em] text-text-base uppercase leading-[0.94]">
-              Productions &amp; <span className="text-[#2446EC]">campaigns.</span>
+              Productions &amp;{" "}
+              <span className="text-[#2446EC]">campaigns.</span>
             </h1>
           </div>
 
@@ -157,7 +170,9 @@ export function ProjectsPage() {
               ARCHIVE SCOPE
             </span>
             <p className="font-sans text-xs sm:text-sm text-text-muted leading-relaxed font-normal">
-              Docuseries, investigations, plain-language budget explainers, and grassroots tracking campaigns produced for citizen accountability across 47 counties.
+              Docuseries, investigations, plain-language budget explainers, and
+              grassroots tracking campaigns produced for citizen accountability
+              across 47 counties.
             </p>
           </div>
         </div>
@@ -174,12 +189,16 @@ export function ProjectsPage() {
                 onClick={() => {
                   const nextMode = !isFilterOnly;
                   setIsFilterOnly(nextMode);
-                  if (!nextMode && selectedCategory !== 'All Projects') {
-                    setSelectedCategory('All Projects');
+                  if (!nextMode && selectedCategory !== "All Projects") {
+                    setSelectedCategory("All Projects");
                   }
                 }}
                 className="font-mono text-[10px] uppercase text-text-muted hover:text-[#2446EC] transition-colors flex items-center gap-1.5 cursor-pointer rounded-none border-0"
-                title={isFilterOnly ? "Switch to Scroll Navigation Mode" : "Switch to Filter-Only Mode"}
+                title={
+                  isFilterOnly
+                    ? "Switch to Scroll Navigation Mode"
+                    : "Switch to Filter-Only Mode"
+                }
               >
                 <Filter className="w-3 h-3 text-[#2446EC]" />
                 <span className="text-slate font-medium">
@@ -195,12 +214,12 @@ export function ProjectsPage() {
             >
               {CATEGORIES.map((cat) => {
                 const isActive =
-                  selectedCategory === 'All Projects'
+                  selectedCategory === "All Projects"
                     ? activeScrollCategory === cat
                     : selectedCategory === cat;
 
                 const count =
-                  cat === 'All Projects'
+                  cat === "All Projects"
                     ? PROJECTS.length
                     : PROJECTS.filter((p) => p.category === cat).length;
 
@@ -211,8 +230,8 @@ export function ProjectsPage() {
                     onClick={() => handleCategoryClick(cat)}
                     className={`whitespace-nowrap px-3.5 py-2 md:p-0 border md:border-0 text-left font-mono text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer flex-shrink-0 rounded-none flex items-center justify-between ${
                       isActive
-                        ? 'border-[#2446EC] bg-[#2446EC]/5 md:bg-transparent text-text-base font-semibold'
-                        : 'border-black/10 text-text-muted hover:text-text-base hover:border-black/30'
+                        ? "border-[#2446EC] bg-[#2446EC]/5 md:bg-transparent text-text-base font-semibold"
+                        : "border-black/10 text-text-muted hover:text-text-base hover:border-black/30"
                     }`}
                   >
                     <div className="flex items-center">
@@ -225,7 +244,7 @@ export function ProjectsPage() {
                     </div>
                     <span
                       className={`text-[10px] ml-2 font-mono tabular-nums ${
-                        isActive ? 'text-[#2446EC] font-medium' : 'text-slate'
+                        isActive ? "text-[#2446EC] font-medium" : "text-slate"
                       }`}
                     >
                       ({count})
@@ -254,7 +273,7 @@ export function ProjectsPage() {
                   NO PRODUCTIONS IN THIS DESK
                 </h3>
                 <button
-                  onClick={() => handleCategoryClick('All Projects')}
+                  onClick={() => handleCategoryClick("All Projects")}
                   className="px-6 py-3 border border-black/20 text-xs font-mono uppercase tracking-wider hover:bg-text-base hover:text-white transition-colors cursor-pointer rounded-none"
                 >
                   RESET FILTER

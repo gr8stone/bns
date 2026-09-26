@@ -108,7 +108,7 @@ export function StudioPage() {
                   MODEL ARCHITECTURE
                 </span>
                 <span className="font-mono text-base sm:text-lg font-semibold text-[#101010]">
-                   ENTERPRISE
+                  ENTERPRISE
                 </span>
               </div>
             </div>
@@ -171,7 +171,6 @@ export function StudioPage() {
             </div>
 
             {/* Production Discipline Telemetry Strip */}
-           
           </div>
         </section>
 

@@ -1,16 +1,16 @@
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import { PROJECTS } from '../../data/projects';
-import { ArchvizProjectShowcase } from '../common/ArchvizProjectShowcase';
-import { TRANSITION, VIEWPORT } from '../../lib/motion';
-import { ROUTES } from '../../lib/routes';
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { PROJECTS } from "../../data/projects";
+import { TRANSITION, VIEWPORT } from "../../lib/motion";
+import { ROUTES } from "../../lib/routes";
+import { ArchvizProjectShowcase } from "../common/ArchvizProjectShowcase";
 
 export function SolumRecentProjects() {
-  const pLead     = PROJECTS[0];
+  const pLead = PROJECTS[0];
   const pSupport1 = PROJECTS[1];
   const pSupport2 = PROJECTS[2];
-  const pBroad    = PROJECTS[3];
+  const pBroad = PROJECTS[3];
 
   const cardReveal = (delay: number) => ({
     initial: { opacity: 0, y: 20 },
@@ -60,7 +60,10 @@ export function SolumRecentProjects() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
             {/* Supporting Card 1: Cols 1–6 */}
             <motion.div {...cardReveal(0.1)} className="md:col-span-6">
-              <Link to={ROUTES.project(pSupport1.slug)} className="group block select-none">
+              <Link
+                to={ROUTES.project(pSupport1.slug)}
+                className="group block select-none"
+              >
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-zinc-100 border border-black/[0.08] rounded-none">
                   <img
                     src={pSupport1.heroImage}
@@ -83,7 +86,10 @@ export function SolumRecentProjects() {
 
             {/* Supporting Card 2: Cols 7–12 (vertical offset) */}
             <motion.div {...cardReveal(0.2)} className="md:col-span-6 md:pt-16">
-              <Link to={ROUTES.project(pSupport2.slug)} className="group block select-none">
+              <Link
+                to={ROUTES.project(pSupport2.slug)}
+                className="group block select-none"
+              >
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-zinc-100 border border-black/[0.08] rounded-none">
                   <img
                     src={pSupport2.heroImage}
@@ -112,12 +118,16 @@ export function SolumRecentProjects() {
                 EXHIBITION 04
               </span>
               <span className="font-sans text-xs text-text-muted leading-relaxed block font-normal">
-                National sovereign debt conferences, open fiscal audits, and contract transparency broadcasts.
+                National sovereign debt conferences, open fiscal audits, and
+                contract transparency broadcasts.
               </span>
             </div>
 
             <motion.div {...cardReveal(0.15)} className="md:col-span-9">
-              <Link to={ROUTES.project(pBroad.slug)} className="group block select-none">
+              <Link
+                to={ROUTES.project(pBroad.slug)}
+                className="group block select-none"
+              >
                 <div className="relative aspect-[16/10] sm:aspect-[21/9] w-full overflow-hidden bg-zinc-100 border border-black/[0.08] rounded-none">
                   <img
                     src={pBroad.heroImage}

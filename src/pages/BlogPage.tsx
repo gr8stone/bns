@@ -1,14 +1,19 @@
-import { useState, useMemo, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Search } from 'lucide-react';
-import { JOURNAL_ARTICLES } from '../data/journal';
+import { Search } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
+import { JOURNAL_ARTICLES } from "../data/journal";
 
-const CATEGORIES = ['All', 'CGI Craft', 'AI Technology', 'Real Estate Strategy'];
+const CATEGORIES = [
+  "All",
+  "CGI Craft",
+  "AI Technology",
+  "Real Estate Strategy",
+];
 
 export function BlogPage() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [debouncedSearch, setDebouncedSearch] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   // Debounce search 200ms
   useEffect(() => {
@@ -20,9 +25,10 @@ export function BlogPage() {
 
   const filteredArticles = useMemo(() => {
     return JOURNAL_ARTICLES.filter((article) => {
-      const matchesCat = selectedCategory === 'All' || article.category === selectedCategory;
+      const matchesCat =
+        selectedCategory === "All" || article.category === selectedCategory;
       const matchesSearch =
-        debouncedSearch.trim() === '' ||
+        debouncedSearch.trim() === "" ||
         article.title.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
         article.excerpt.toLowerCase().includes(debouncedSearch.toLowerCase());
       return matchesCat && matchesSearch;
@@ -51,7 +57,8 @@ export function BlogPage() {
               DISCOURSE SUMMARY
             </span>
             <p className="font-sans text-xs sm:text-sm text-[#757575] leading-relaxed">
-              Research, technical essays, and strategic notes on architectural daylight physics, neural video pipelines, and capital formation.
+              Research, technical essays, and strategic notes on architectural
+              daylight physics, neural video pipelines, and capital formation.
             </p>
           </div>
         </div>
@@ -91,8 +98,8 @@ export function BlogPage() {
                       onClick={() => setSelectedCategory(cat)}
                       className={`block w-full text-left font-mono text-xs uppercase tracking-wider transition-colors duration-180 cursor-pointer ${
                         isActive
-                          ? 'text-[#101010] font-semibold flex items-center'
-                          : 'text-[#757575] hover:text-[#101010]'
+                          ? "text-[#101010] font-semibold flex items-center"
+                          : "text-[#757575] hover:text-[#101010]"
                       }`}
                     >
                       {isActive && (
@@ -119,8 +126,8 @@ export function BlogPage() {
                 </h3>
                 <button
                   onClick={() => {
-                    setSearchTerm('');
-                    setSelectedCategory('All');
+                    setSearchTerm("");
+                    setSelectedCategory("All");
                   }}
                   className="solum-btn px-5 py-2.5 border border-[#101010] text-xs font-mono uppercase tracking-wider hover:bg-[#101010] hover:text-white transition-colors"
                 >
@@ -132,12 +139,17 @@ export function BlogPage() {
                 {filteredArticles.map((article, idx) => (
                   <div
                     key={article.slug}
-                    className={idx === 0 ? 'sm:col-span-2 lg:col-span-2' : 'col-span-1'}
+                    className={
+                      idx === 0 ? "sm:col-span-2 lg:col-span-2" : "col-span-1"
+                    }
                   >
-                    <Link to={`/blog/${article.slug}`} className="group block select-none">
+                    <Link
+                      to={`/blog/${article.slug}`}
+                      className="group block select-none"
+                    >
                       <div
                         className={`relative ${
-                          idx === 0 ? 'aspect-[16/10]' : 'aspect-[4/5]'
+                          idx === 0 ? "aspect-[16/10]" : "aspect-[4/5]"
                         } w-full overflow-hidden bg-zinc-900 border border-[#101010]/12`}
                       >
                         <img
@@ -163,7 +175,9 @@ export function BlogPage() {
                           </span>
                           <h3
                             className={`font-display font-semibold tracking-[-0.04em] leading-snug group-hover:text-white/90 ${
-                              idx === 0 ? 'text-xl sm:text-2xl lg:text-3xl' : 'text-base sm:text-lg'
+                              idx === 0
+                                ? "text-xl sm:text-2xl lg:text-3xl"
+                                : "text-base sm:text-lg"
                             }`}
                           >
                             {article.title}

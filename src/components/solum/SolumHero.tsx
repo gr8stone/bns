@@ -47,7 +47,7 @@ export function SolumHero() {
     "50,000+ YOUNG KENYANS ENGAGED",
     "ALL 47 COUNTIES ACROSS KENYA",
     "CROSS-SUBSIDISED CIVIC IMPACT",
-  
+
     "BUDGET NDIO STORY",
   ];
 
@@ -85,8 +85,6 @@ export function SolumHero() {
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end mb-12 lg:mb-16">
           {/* Left: Giant Typography Ramp */}
           <div className="lg:col-span-8">
-
-
             <motion.h1
               initial={shouldReduceMotion ? false : { opacity: 0.5, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -94,14 +92,18 @@ export function SolumHero() {
               className="font-display text-[clamp(44px,7.5vw,112px)] font-medium leading-[0.93] tracking-[-0.06em] text-text-base"
             >
               Follow the budget.{" "}
-              <span className="text-[#2446EC] block sm:inline">Find the story.</span>
+              <span className="text-[#2446EC] block sm:inline">
+                Find the story.
+              </span>
             </motion.h1>
           </div>
 
           {/* Right: Actions & Micro Metadata */}
           <div className="lg:col-span-4 flex flex-col justify-end lg:items-end gap-6">
             <p className="font-sans text-xs sm:text-sm text-text-muted leading-relaxed font-normal max-w-sm">
-              A platform for budget literacy, civic accountability & impact storytelling. Making Kenya&apos;s public budgets readable, relatable, and responsive across all 47 counties.
+              A platform for budget literacy, civic accountability & impact
+              storytelling. Making Kenya&apos;s public budgets readable,
+              relatable, and responsive across all 47 counties.
             </p>
 
             <div className="flex flex-wrap items-center gap-3">
@@ -182,7 +184,8 @@ export function SolumHero() {
                   47 / 47
                 </div>
                 <p className="font-sans text-xs text-text-muted leading-relaxed font-normal">
-                  Counties engaged through surveys, town halls, digital storytelling, and community dialogues.
+                  Counties engaged through surveys, town halls, digital
+                  storytelling, and community dialogues.
                 </p>
               </div>
 
@@ -222,7 +225,8 @@ export function SolumHero() {
                   50,000+ Engaged
                 </div>
                 <p className="font-sans text-xs text-text-muted leading-tight mt-1">
-                  Young Kenyans mobilized across all 47 counties, scaling beyond 200,000.
+                  Young Kenyans mobilized across all 47 counties, scaling beyond
+                  200,000.
                 </p>
               </div>
 

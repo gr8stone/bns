@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { PROCESS_STEPS } from '../data/process';
-import { FinalCTASection } from '../components/home/FinalCTASection';
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { FinalCTASection } from "../components/home/FinalCTASection";
+import { PROCESS_STEPS } from "../data/process";
 
 export function ProcessPage() {
   const [activeStepIndex, setActiveStepIndex] = useState(0);
@@ -9,7 +9,7 @@ export function ProcessPage() {
   useEffect(() => {
     const handleScroll = () => {
       const stepElements = PROCESS_STEPS.map((_, idx) =>
-        document.getElementById(`process-step-${idx}`)
+        document.getElementById(`process-step-${idx}`),
       );
 
       const scrollPosition = window.scrollY + window.innerHeight / 3;
@@ -23,8 +23,8 @@ export function ProcessPage() {
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -39,7 +39,9 @@ export function ProcessPage() {
             From drawing to final frame.
           </h1>
           <p className="text-zinc-600 text-base md:text-lg font-light leading-relaxed">
-            Our 7-stage architectural visualization pipeline is engineered for institutional precision, transparency, and timely delivery across international time zones.
+            Our 7-stage architectural visualization pipeline is engineered for
+            institutional precision, transparency, and timely delivery across
+            international time zones.
           </p>
         </div>
 
@@ -59,8 +61,8 @@ export function ProcessPage() {
                       href={`#process-step-${idx}`}
                       className={`group flex items-center justify-between text-xs tracking-wider transition-colors duration-200 ${
                         isActive
-                          ? 'text-black font-semibold translate-x-1'
-                          : 'text-zinc-400 hover:text-black'
+                          ? "text-black font-semibold translate-x-1"
+                          : "text-zinc-400 hover:text-black"
                       }`}
                     >
                       <div className="flex items-center gap-3">
@@ -77,9 +79,12 @@ export function ProcessPage() {
             </ul>
 
             <div className="mt-12 p-6 bg-white border border-black/10 text-xs">
-              <span className="font-semibold text-black block mb-1">Standard Project Cycle:</span>
+              <span className="font-semibold text-black block mb-1">
+                Standard Project Cycle:
+              </span>
               <p className="text-zinc-500 font-light">
-                Typically 3–5 weeks from initial CAD ingestion to final 8K delivery and film launch cutdowns.
+                Typically 3–5 weeks from initial CAD ingestion to final 8K
+                delivery and film launch cutdowns.
               </p>
             </div>
           </div>
@@ -92,7 +97,7 @@ export function ProcessPage() {
                 id={`process-step-${idx}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
+                viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6 }}
                 className="border-t border-black/15 pt-12"
               >

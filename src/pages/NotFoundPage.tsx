@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export function NotFoundPage() {
   return (
@@ -20,7 +20,8 @@ export function NotFoundPage() {
         </h1>
 
         <p className="font-sans text-sm sm:text-base text-[#757575] leading-relaxed max-w-md mx-auto">
-          The requested episode, campaign archive, or civic story cannot be located within our index.
+          The requested episode, campaign archive, or civic story cannot be
+          located within our index.
         </p>
 
         <div className="pt-4">

@@ -1,30 +1,30 @@
-import { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { PROJECTS } from '../data/projects';
-import { ProjectCard } from '../components/work/ProjectCard';
-import { ProjectFilter } from '../components/work/ProjectFilter';
-import { FinalCTASection } from '../components/home/FinalCTASection';
+import { AnimatePresence, motion } from "framer-motion";
+import { useMemo, useState } from "react";
+import { FinalCTASection } from "../components/home/FinalCTASection";
+import { ProjectCard } from "../components/work/ProjectCard";
+import { ProjectFilter } from "../components/work/ProjectFilter";
+import { PROJECTS } from "../data/projects";
 
 export function WorkPage() {
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeCategory, setActiveCategory] = useState("All");
 
   const categories = [
-    'All',
-    'CGI',
-    'Architecture',
-    'Real Estate',
-    'AI Film',
-    'Animation',
-    'Interior',
-    'Exterior',
-    'Renovation',
+    "All",
+    "CGI",
+    "Architecture",
+    "Real Estate",
+    "AI Film",
+    "Animation",
+    "Interior",
+    "Exterior",
+    "Renovation",
   ];
 
   // Calculate project counts per filter
   const projectCounts = useMemo(() => {
     const counts: Record<string, number> = { All: PROJECTS.length };
     categories.forEach((cat) => {
-      if (cat !== 'All') {
+      if (cat !== "All") {
         counts[cat] = PROJECTS.filter((p) => p.tags.includes(cat)).length;
       }
     });
@@ -32,7 +32,7 @@ export function WorkPage() {
   }, []);
 
   const filteredProjects = useMemo(() => {
-    if (activeCategory === 'All') return PROJECTS;
+    if (activeCategory === "All") return PROJECTS;
     return PROJECTS.filter((p) => p.tags.includes(activeCategory));
   }, [activeCategory]);
 
@@ -48,7 +48,8 @@ export function WorkPage() {
             Selected Works
           </h1>
           <p className="text-zinc-600 text-base md:text-lg font-light leading-relaxed">
-            Selected commissions across luxury real estate, civic architecture, adaptive reuse, and cinematic digital storytelling.
+            Selected commissions across luxury real estate, civic architecture,
+            adaptive reuse, and cinematic digital storytelling.
           </p>
         </div>
 
@@ -63,27 +64,30 @@ export function WorkPage() {
         </div>
 
         {/* Filtered Projects Grid (Asymmetric Editorial Layout) */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 items-start">
+        <motion.div
+          layout
+          className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 items-start"
+        >
           <AnimatePresence>
             {filteredProjects.map((project, idx) => {
               // Asymmetric column spans: alternating 7 / 5 / 12
               const colSpan =
                 idx % 4 === 0
-                  ? 'md:col-span-8'
+                  ? "md:col-span-8"
                   : idx % 4 === 1
-                  ? 'md:col-span-4 md:pt-16'
-                  : idx % 4 === 2
-                  ? 'md:col-span-5'
-                  : 'md:col-span-7 md:pt-12';
+                    ? "md:col-span-4 md:pt-16"
+                    : idx % 4 === 2
+                      ? "md:col-span-5"
+                      : "md:col-span-7 md:pt-12";
 
               const aspect =
                 idx % 4 === 0
-                  ? 'aspect-[16/10]'
+                  ? "aspect-[16/10]"
                   : idx % 4 === 1
-                  ? 'aspect-[3/4]'
-                  : idx % 4 === 2
-                  ? 'aspect-[4/5]'
-                  : 'aspect-[16/10]';
+                    ? "aspect-[3/4]"
+                    : idx % 4 === 2
+                      ? "aspect-[4/5]"
+                      : "aspect-[16/10]";
 
               return (
                 <motion.div

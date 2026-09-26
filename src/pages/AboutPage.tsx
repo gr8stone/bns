@@ -1,6 +1,11 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
-import { WordReveal } from '../components/common/WordReveal';
+import {
+    motion,
+    useReducedMotion,
+    useScroll,
+    useTransform,
+} from "framer-motion";
+import { useRef } from "react";
+import { WordReveal } from "../components/common/WordReveal";
 
 export function AboutPage() {
   const mediaRef = useRef<HTMLDivElement>(null);
@@ -9,54 +14,53 @@ export function AboutPage() {
   // Clipped frame parallax within 10% range
   const { scrollYProgress } = useScroll({
     target: mediaRef,
-    offset: ['start end', 'end start'],
+    offset: ["start end", "end start"],
   });
-  const yParallax = useTransform(scrollYProgress, [0, 1], ['-5%', '5%']);
+  const yParallax = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
 
   const leadership = [
     {
-      name: 'Millicent Makina',
-      role: 'Board Advisor',
-      bio: 'Distinguished governance expert advising non-profit boards and international development initiatives. Formulated the inaugural 5-year Strategic Governance & Accountability Framework.',
-      image: '/images/avatars/team/Millicent Makina.jpeg',
+      name: "Millicent Makina",
+      role: "Board Advisor",
+      bio: "Distinguished governance expert advising non-profit boards and international development initiatives. Formulated the inaugural 5-year Strategic Governance & Accountability Framework.",
+      image: "/images/avatars/team/Millicent Makina.jpeg",
     },
     {
-      name: 'Movine Omondi',
-      role: 'Executive Director & Founder',
-      bio: 'Over a decade of experience in public policy, youth advocacy, and fiscal governance. Leads BNS’s strategic vision, institutional partnerships, and legislative advocacy.',
-      image: '/images/avatars/team/Movine Omondi_HeadShot.jpg',
+      name: "Movine Omondi",
+      role: "Executive Director & Founder",
+      bio: "Over a decade of experience in public policy, youth advocacy, and fiscal governance. Leads BNS’s strategic vision, institutional partnerships, and legislative advocacy.",
+      image: "/images/avatars/team/Movine Omondi_HeadShot.jpg",
     },
     {
-      name: 'Peculiar Koros',
-      role: 'Director ICT & Chief Technologist',
-      bio: 'Directs the technological architecture and digital verification systems, cross-referencing Treasury books with parliamentary acts for 100% data audit accuracy.',
-      image: '/images/avatars/team/Koros.jpeg',
+      name: "Peculiar Koros",
+      role: "Director ICT & Chief Technologist",
+      bio: "Directs the technological architecture and digital verification systems, cross-referencing Treasury books with parliamentary acts for 100% data audit accuracy.",
+      image: "/images/avatars/team/Koros.jpeg",
     },
     {
-      name: 'Shem Odhiambo Ojunga',
-      role: 'Director Media',
-      bio: 'Award-winning digital strategist pioneering high-retention civic storytelling across TikTok, Instagram, and YouTube, demystifying technical fiscal documents.',
-      image: '/images/avatars/team/Shem Odhiambo Ojunga.jpeg',
+      name: "Shem Odhiambo Ojunga",
+      role: "Director Media",
+      bio: "Award-winning digital strategist pioneering high-retention civic storytelling across TikTok, Instagram, and YouTube, demystifying technical fiscal documents.",
+      image: "/images/avatars/team/Shem Odhiambo Ojunga.jpeg",
     },
     {
-      name: 'James Maingi Mutinda',
-      role: 'Director Partnerships',
-      bio: 'Drives strategic alliances with academic institutions, civil society coalitions, and international development agencies, scaling BNS budget workshops nationwide.',
-      image: '/images/avatars/team/James Mutinda.jpeg',
+      name: "James Maingi Mutinda",
+      role: "Director Partnerships",
+      bio: "Drives strategic alliances with academic institutions, civil society coalitions, and international development agencies, scaling BNS budget workshops nationwide.",
+      image: "/images/avatars/team/James Mutinda.jpeg",
     },
     {
-      name: 'Nelly Maina',
-      role: 'Lead Podcast Host',
-      bio: 'Charismatic broadcaster and community storyteller anchoring the Budget Mtaani podcast, translating complex macroeconomic policies into everyday Sheng.',
-      image: '/images/avatars/team/Nelly Maina.jpg',
+      name: "Nelly Maina",
+      role: "Lead Podcast Host",
+      bio: "Charismatic broadcaster and community storyteller anchoring the Budget Mtaani podcast, translating complex macroeconomic policies into everyday Sheng.",
+      image: "/images/avatars/team/Nelly Maina.jpg",
     },
     {
-      name: 'Calvina Praise',
-      role: 'Lead Youth Content Strategist & Producer',
-      bio: 'Architects youth-centered visual campaigns for digital channels, demystifying taxation formulas, public debt, and county budgets through bite-sized explainer reels.',
-      image: '/images/avatars/team/Calvina Praise.jpg',
+      name: "Calvina Praise",
+      role: "Lead Youth Content Strategist & Producer",
+      bio: "Architects youth-centered visual campaigns for digital channels, demystifying taxation formulas, public debt, and county budgets through bite-sized explainer reels.",
+      image: "/images/avatars/team/Calvina Praise.jpg",
     },
-
   ];
 
   return (
@@ -79,10 +83,15 @@ export function AboutPage() {
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+              transition={{
+                duration: 0.6,
+                delay: 0.08,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               className="font-display text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-[-0.06em] text-[#101010] uppercase leading-[0.94]"
             >
-              Turning public finance into <span className="text-[#2446EC]">citizen power.</span>
+              Turning public finance into{" "}
+              <span className="text-[#2446EC]">citizen power.</span>
             </motion.h1>
           </div>
 
@@ -96,16 +105,21 @@ export function AboutPage() {
               MISSION SUMMARY
             </span>
             <p className="font-sans text-sm text-[#757575] leading-relaxed font-light">
-              We operate as an independent civic media and budget accountability platform combining data forensics with creative storytelling and grassroots action.
+              We operate as an independent civic media and budget accountability
+              platform combining data forensics with creative storytelling and
+              grassroots action.
             </p>
           </motion.div>
         </div>
 
         {/* Full-Bleed Grayscale/Muted Studio Media with Restrained Parallax */}
-        <div ref={mediaRef} className="py-16 md:py-24 border-b border-[#101010]/12">
+        <div
+          ref={mediaRef}
+          className="py-16 md:py-24 border-b border-[#101010]/12"
+        >
           <div className="relative aspect-[16/9] md:aspect-[21/9] w-full overflow-hidden bg-zinc-900 border border-[#101010]/12">
             <motion.img
-              style={{ y: shouldReduceMotion ? '0%' : yParallax }}
+              style={{ y: shouldReduceMotion ? "0%" : yParallax }}
               src="/images/bns/towwnhallmay/129A3912.jpg"
               alt="Budget Ndio Story National Civic Convening"
               initial={{ scale: 1.06, opacity: 0 }}
@@ -120,8 +134,6 @@ export function AboutPage() {
             </div>
           </div>
         </div>
-
-
 
         {/* Studio Philosophy & Narrative with Word-by-Word Reveal */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 py-20 border-b border-[#101010]/12 items-start">
@@ -145,19 +157,34 @@ export function AboutPage() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              transition={{
+                duration: 0.6,
+                delay: 0.3,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               className="text-sm sm:text-base text-[#757575] leading-relaxed font-light"
             >
-              When reviewing national estimates or county fiscal strategy papers, we do not simply cite statutory tables. We investigate how treasury disbursements translate into medicine in dispensaries, desks in primary schools, and transparent market access for youth and grassroots traders.
+              When reviewing national estimates or county fiscal strategy
+              papers, we do not simply cite statutory tables. We investigate how
+              treasury disbursements translate into medicine in dispensaries,
+              desks in primary schools, and transparent market access for youth
+              and grassroots traders.
             </motion.p>
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              transition={{
+                duration: 0.6,
+                delay: 0.4,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               className="text-sm sm:text-base text-[#757575] leading-relaxed font-light"
             >
-              While our initiative harnesses digital docuseries, open data journalism, and community town halls to accelerate civic literacy, factual rigour remains our foundation, and grassroots empowerment remains our compass.
+              While our initiative harnesses digital docuseries, open data
+              journalism, and community town halls to accelerate civic literacy,
+              factual rigour remains our foundation, and grassroots empowerment
+              remains our compass.
             </motion.p>
           </div>
         </div>

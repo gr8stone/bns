@@ -1,21 +1,29 @@
-import { useState, useMemo, useRef } from 'react';
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { ArrowRight, Mail, Plus, Minus, SlidersHorizontal, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { COMPREHENSIVE_FAQS, FAQ_CATEGORIES } from '../data/comprehensiveFaq';
-import { ROUTES } from '../lib/routes';
-import { WordReveal } from '../components/common/WordReveal';
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import {
+    ArrowRight,
+    Mail,
+    Minus,
+    Plus,
+    SlidersHorizontal,
+    X,
+} from "lucide-react";
+import { useMemo, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { WordReveal } from "../components/common/WordReveal";
+import { COMPREHENSIVE_FAQS, FAQ_CATEGORIES } from "../data/comprehensiveFaq";
+import { ROUTES } from "../lib/routes";
 
 export function FaqPage() {
   const shouldReduceMotion = useReducedMotion();
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [openIds, setOpenIds] = useState<Set<string>>(new Set());
   const listRef = useRef<HTMLDivElement>(null);
 
   const filteredFaqs = useMemo(() => {
-    return COMPREHENSIVE_FAQS.filter((item) =>
-      selectedCategory === 'all' || item.category === selectedCategory
+    return COMPREHENSIVE_FAQS.filter(
+      (item) =>
+        selectedCategory === "all" || item.category === selectedCategory,
     );
   }, [selectedCategory]);
 
@@ -24,7 +32,7 @@ export function FaqPage() {
     setFiltersOpen(false);
     setOpenIds(new Set()); // collapse all when switching topic
     setTimeout(() => {
-      listRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      listRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 80);
   }
 
@@ -37,14 +45,14 @@ export function FaqPage() {
   }
 
   const activeLabel =
-    selectedCategory === 'all'
-      ? 'All Topics'
-      : FAQ_CATEGORIES.find((c) => c.id === selectedCategory)?.label ?? 'All Topics';
+    selectedCategory === "all"
+      ? "All Topics"
+      : (FAQ_CATEGORIES.find((c) => c.id === selectedCategory)?.label ??
+        "All Topics");
 
   return (
     <main className="w-full bg-white text-[#101010] pt-28 md:pt-36 pb-24 md:pb-36">
       <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10">
-
         {/* ========================================================= */}
         {/* 1. HERO                                                    */}
         {/* ========================================================= */}
@@ -80,7 +88,8 @@ export function FaqPage() {
                 SCOPE OF KNOWLEDGE
               </span>
               <p className="font-sans text-sm text-[#757575] leading-relaxed font-light">
-                Drawn directly from the BNS Institutional Framework, Whitepaper, Terms, and Fiduciary Charters.
+                Drawn directly from the BNS Institutional Framework, Whitepaper,
+                Terms, and Fiduciary Charters.
               </p>
             </div>
           </motion.div>
@@ -90,14 +99,14 @@ export function FaqPage() {
         {/* 2. STICKY BAR — filter icon + active label                 */}
         {/* ========================================================= */}
         <div className="sticky top-[72px] md:top-[88px] z-30 bg-white border-b border-[#101010]/12 -mx-5 sm:-mx-8 md:-mx-10 px-5 sm:px-8 md:px-10">
-
           {/* Trigger row */}
           <div className="flex items-center justify-between py-3">
             <div className="flex items-center gap-3">
               <span className="font-mono text-[10px] uppercase tracking-wider text-[#757575]">
-                {filteredFaqs.length} question{filteredFaqs.length !== 1 ? 's' : ''}
+                {filteredFaqs.length} question
+                {filteredFaqs.length !== 1 ? "s" : ""}
               </span>
-              {selectedCategory !== 'all' && (
+              {selectedCategory !== "all" && (
                 <span className="font-mono text-[10px] uppercase tracking-wider text-[#101010] bg-[#101010]/06 px-2 py-0.5 border border-[#101010]/10">
                   {activeLabel}
                 </span>
@@ -105,9 +114,9 @@ export function FaqPage() {
             </div>
 
             <div className="flex items-center gap-2">
-              {selectedCategory !== 'all' && (
+              {selectedCategory !== "all" && (
                 <button
-                  onClick={() => handleCategoryChange('all')}
+                  onClick={() => handleCategoryChange("all")}
                   className="font-mono text-[10px] uppercase tracking-wider text-[#757575] hover:text-[#101010] transition-colors"
                 >
                   Clear
@@ -117,14 +126,15 @@ export function FaqPage() {
                 onClick={() => setFiltersOpen((v) => !v)}
                 className={`flex items-center gap-2 px-3 py-2 border font-mono text-[10px] uppercase tracking-wider transition-colors ${
                   filtersOpen
-                    ? 'bg-[#101010] text-white border-[#101010]'
-                    : 'bg-white text-[#101010] border-[#101010]/20 hover:border-[#101010]'
+                    ? "bg-[#101010] text-white border-[#101010]"
+                    : "bg-white text-[#101010] border-[#101010]/20 hover:border-[#101010]"
                 }`}
               >
-                {filtersOpen
-                  ? <X className="w-3.5 h-3.5" />
-                  : <SlidersHorizontal className="w-3.5 h-3.5" />
-                }
+                {filtersOpen ? (
+                  <X className="w-3.5 h-3.5" />
+                ) : (
+                  <SlidersHorizontal className="w-3.5 h-3.5" />
+                )}
                 <span>Filter by topic</span>
               </button>
             </div>
@@ -136,7 +146,7 @@ export function FaqPage() {
               <motion.div
                 key="filters"
                 initial={shouldReduceMotion ? false : { height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
+                animate={{ height: "auto", opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
                 transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
                 className="overflow-hidden"
@@ -145,9 +155,11 @@ export function FaqPage() {
                   {FAQ_CATEGORIES.map((cat) => {
                     const isActive = selectedCategory === cat.id;
                     const count =
-                      cat.id === 'all'
+                      cat.id === "all"
                         ? COMPREHENSIVE_FAQS.length
-                        : COMPREHENSIVE_FAQS.filter((f) => f.category === cat.id).length;
+                        : COMPREHENSIVE_FAQS.filter(
+                            (f) => f.category === cat.id,
+                          ).length;
 
                     return (
                       <button
@@ -155,12 +167,14 @@ export function FaqPage() {
                         onClick={() => handleCategoryChange(cat.id)}
                         className={`px-4 py-2 font-mono text-[10px] uppercase tracking-wider transition-all border ${
                           isActive
-                            ? 'bg-[#101010] text-white border-[#101010]'
-                            : 'bg-white text-[#757575] border-[#101010]/20 hover:border-[#101010] hover:text-[#101010]'
+                            ? "bg-[#101010] text-white border-[#101010]"
+                            : "bg-white text-[#757575] border-[#101010]/20 hover:border-[#101010] hover:text-[#101010]"
                         }`}
                       >
                         {cat.label}
-                        <span className={`ml-1.5 tabular-nums ${isActive ? 'opacity-60' : 'opacity-40'}`}>
+                        <span
+                          className={`ml-1.5 tabular-nums ${isActive ? "opacity-60" : "opacity-40"}`}
+                        >
                           {count}
                         </span>
                       </button>
@@ -186,7 +200,10 @@ export function FaqPage() {
                   initial={shouldReduceMotion ? false : { opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.22, delay: Math.min(idx * 0.025, 0.18) }}
+                  transition={{
+                    duration: 0.22,
+                    delay: Math.min(idx * 0.025, 0.18),
+                  }}
                 >
                   {/* Question row */}
                   <button
@@ -194,7 +211,7 @@ export function FaqPage() {
                     className="w-full text-left py-6 flex items-start gap-4 group hover:bg-[#FAFAF8] transition-colors -mx-4 px-4 sm:-mx-6 sm:px-6"
                   >
                     <span className="font-mono text-xs text-[#757575] pt-0.5 shrink-0 w-7 tabular-nums">
-                      {String(idx + 1).padStart(2, '0')}
+                      {String(idx + 1).padStart(2, "0")}
                     </span>
                     <div className="flex-1 space-y-0.5">
                       <span className="font-mono text-[10px] uppercase tracking-wider text-[#757575] block">
@@ -205,7 +222,11 @@ export function FaqPage() {
                       </h2>
                     </div>
                     <span className="shrink-0 pt-1 text-[#757575]">
-                      {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+                      {isOpen ? (
+                        <Minus className="w-4 h-4" />
+                      ) : (
+                        <Plus className="w-4 h-4" />
+                      )}
                     </span>
                   </button>
 
@@ -214,8 +235,10 @@ export function FaqPage() {
                     {isOpen && (
                       <motion.div
                         key="body"
-                        initial={shouldReduceMotion ? false : { height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
+                        initial={
+                          shouldReduceMotion ? false : { height: 0, opacity: 0 }
+                        }
+                        animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                         className="overflow-hidden"

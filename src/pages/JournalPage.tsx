@@ -1,20 +1,24 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Clock, Calendar, ArrowRight, BookOpen } from 'lucide-react';
-import { JOURNAL_ARTICLES } from '../data/journal';
+import { motion } from "framer-motion";
+import { ArrowRight, BookOpen, Calendar, Clock } from "lucide-react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { JOURNAL_ARTICLES } from "../data/journal";
 
 export function JournalPage() {
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
-  const categories = ['All', ...Array.from(new Set(JOURNAL_ARTICLES.map((a) => a.category)))];
+  const categories = [
+    "All",
+    ...Array.from(new Set(JOURNAL_ARTICLES.map((a) => a.category))),
+  ];
 
   const filteredArticles =
-    selectedCategory === 'All'
+    selectedCategory === "All"
       ? JOURNAL_ARTICLES
       : JOURNAL_ARTICLES.filter((a) => a.category === selectedCategory);
 
-  const featured = JOURNAL_ARTICLES.find((a) => a.featured) || JOURNAL_ARTICLES[0];
+  const featured =
+    JOURNAL_ARTICLES.find((a) => a.featured) || JOURNAL_ARTICLES[0];
 
   return (
     <main className="w-full bg-[#FAF9F6] text-[#0B0B0A] pt-32 pb-24 md:pb-36 min-h-screen">
@@ -26,15 +30,19 @@ export function JournalPage() {
           </span>
           <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-normal tracking-tight leading-[0.98] text-[#0B0B0A] mb-8">
             SPATIAL INSIGHTS &amp; <br />
-            <span className="italic font-serif text-black/70">COMPUTATIONAL CRAFT</span>
+            <span className="italic font-serif text-black/70">
+              COMPUTATIONAL CRAFT
+            </span>
           </h1>
           <p className="max-w-2xl text-base sm:text-lg text-black/70 font-sans leading-relaxed">
-            Critical essays and whitepapers exploring physical daylight physics, hybrid generative AI motion pipelines, and high-conversion pre-sales strategy for the unbuilt world.
+            Critical essays and whitepapers exploring physical daylight physics,
+            hybrid generative AI motion pipelines, and high-conversion pre-sales
+            strategy for the unbuilt world.
           </p>
         </div>
 
         {/* Featured Article Banner */}
-        {selectedCategory === 'All' && featured && (
+        {selectedCategory === "All" && featured && (
           <div className="mb-20">
             <Link
               to={`/journal/${featured.slug}`}
@@ -51,7 +59,9 @@ export function JournalPage() {
                 <div className="lg:col-span-5 p-8 md:p-12 lg:p-16 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center gap-3 text-xs font-mono text-black/50 mb-4 uppercase tracking-wider">
-                      <span className="text-[#C5A880] font-semibold">{featured.category}</span>
+                      <span className="text-[#C5A880] font-semibold">
+                        {featured.category}
+                      </span>
                       <span>•</span>
                       <span className="flex items-center gap-1">
                         <Clock className="w-3.5 h-3.5" />
@@ -72,7 +82,8 @@ export function JournalPage() {
                       {featured.date}
                     </span>
                     <span className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#0B0B0A] group-hover:text-[#C5A880] transition-colors">
-                      READ ESSAY <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      READ ESSAY{" "}
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </span>
                   </div>
                 </div>
@@ -92,8 +103,8 @@ export function JournalPage() {
               onClick={() => setSelectedCategory(cat)}
               className={`px-4 py-2 text-xs font-mono uppercase tracking-wider transition-all duration-300 ${
                 selectedCategory === cat
-                  ? 'bg-[#0B0B0A] text-white'
-                  : 'bg-black/5 text-black/70 hover:bg-black/10 hover:text-black'
+                  ? "bg-[#0B0B0A] text-white"
+                  : "bg-black/5 text-black/70 hover:bg-black/10 hover:text-black"
               }`}
             >
               {cat}
@@ -123,7 +134,9 @@ export function JournalPage() {
                 </div>
                 <div className="p-6 md:p-8">
                   <div className="flex items-center gap-3 text-xs font-mono text-black/50 mb-3 uppercase tracking-wider">
-                    <span className="text-[#C5A880] font-medium">{article.category}</span>
+                    <span className="text-[#C5A880] font-medium">
+                      {article.category}
+                    </span>
                     <span>•</span>
                     <span>{article.readTime}</span>
                   </div>
@@ -146,7 +159,8 @@ export function JournalPage() {
                   to={`/journal/${article.slug}`}
                   className="font-mono text-[11px] uppercase tracking-wider text-[#0B0B0A] group-hover:text-[#C5A880] inline-flex items-center gap-1"
                 >
-                  READ <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                  READ{" "}
+                  <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                 </Link>
               </div>
             </motion.article>
@@ -163,7 +177,9 @@ export function JournalPage() {
               Quarterly Spatial Research Papers
             </h3>
             <p className="text-sm text-white/60 font-sans leading-relaxed">
-              We publish in-depth architectural visualization case studies, generative AI workflow benchmarks, and off-plan conversion metrics for real estate development executives.
+              We publish in-depth architectural visualization case studies,
+              generative AI workflow benchmarks, and off-plan conversion metrics
+              for real estate development executives.
             </p>
           </div>
 

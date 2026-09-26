@@ -90,10 +90,7 @@ function ServiceCard({
       <div className="w-full md:w-1/2 flex-1 md:h-full flex flex-col justify-center px-5 sm:px-8 md:px-12 lg:px-16 py-8 md:py-16 bg-[#2446EC] z-10 overflow-y-auto sm:overflow-visible">
         <div className="max-w-xl space-y-4 md:space-y-6 my-auto">
           {/* Number & Phase Tag */}
-          <motion.div
-            {...reveal(0)}
-            className="flex items-center gap-3"
-          >
+          <motion.div {...reveal(0)} className="flex items-center gap-3">
             <span className="font-mono text-sm text-white block font-medium">
               {service.number} // {service.tag}
             </span>
@@ -108,7 +105,10 @@ function ServiceCard({
             {...reveal(0.04)}
             className="font-display font-medium text-3xl sm:text-4xl md:text-5xl xl:text-6xl text-white tracking-[-0.05em] leading-[0.96]"
           >
-            <Link to={ROUTES.programme(service.slug)} className="hover:text-white/80 transition-colors">
+            <Link
+              to={ROUTES.programme(service.slug)}
+              className="hover:text-white/80 transition-colors"
+            >
               {service.title}
             </Link>
           </motion.h3>
@@ -129,9 +129,7 @@ function ServiceCard({
                 className="flex items-center gap-2.5 font-sans text-xs sm:text-sm text-white"
               >
                 <span className="w-1.5 h-1.5 bg-white inline-block flex-shrink-0" />
-                <span className="leading-normal">
-                  {bullet}
-                </span>
+                <span className="leading-normal">{bullet}</span>
               </li>
             ))}
           </ul>
@@ -180,12 +178,13 @@ export function SolumServices() {
               </span>
             </div>
             <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-medium tracking-[-0.05em] text-text-base leading-[0.98]">
-              Good accountability starts with <span className="text-[#2446EC]">good questions.</span>
+              Good accountability starts with{" "}
+              <span className="text-[#2446EC]">good questions.</span>
             </h2>
             <p className="font-sans text-sm sm:text-base text-text-muted max-w-xl font-normal leading-relaxed">
               From grassroots community barazas to high-impact media broadcasts,
-              Budget Ndio Story delivers creative civic education, public finance
-              tracking, and youth-led budget storytelling.
+              Budget Ndio Story delivers creative civic education, public
+              finance tracking, and youth-led budget storytelling.
             </p>
           </div>
 
@@ -209,7 +208,7 @@ export function SolumServices() {
       {/* ========================================================= */}
       <div className="block md:hidden w-full pb-12">
         <div className="px-5 sm:px-8 pb-3 flex items-center justify-between font-mono text-[11px] text-[#757575] uppercase tracking-wider">
-          <span>SWIPE  &rarr;</span>
+          <span>SWIPE &rarr;</span>
           <span> FLAGSHIP PROGRAMMES</span>
         </div>
 
@@ -229,7 +228,7 @@ export function SolumServices() {
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute top-3 left-3 bg-[#101010] text-white font-mono text-[10px] uppercase tracking-widest px-2.5 py-1">
-                   {service.number}
+                  {service.number}
                 </div>
                 <div className="absolute top-3 right-3 bg-white/20 backdrop-blur-md text-white font-mono text-[10px] tracking-widest px-2 py-0.5">
                   0{index + 1} / 03
@@ -254,7 +253,10 @@ export function SolumServices() {
                   {/* Top 3 Bullets for Emphasis */}
                   <ul className="space-y-1.5 pt-3 border-t border-white/20">
                     {service.bullets.slice(0, 3).map((bullet, bIdx) => (
-                      <li key={bIdx} className="flex items-start gap-2 font-sans text-[11px] text-white/95">
+                      <li
+                        key={bIdx}
+                        className="flex items-start gap-2 font-sans text-[11px] text-white/95"
+                      >
                         <span className="w-1.5 h-1.5 bg-white inline-block mt-1 flex-shrink-0" />
                         <span className="leading-snug">{bullet}</span>
                       </li>
@@ -313,7 +315,10 @@ export function SolumServices() {
               LOOKING FOR COMMISSIONED PRODUCTION?
             </h3>
             <p className="font-sans text-xs sm:text-sm text-white/90 leading-relaxed font-light">
-              BNS Studios translates complex research into high-impact podcasts, animations, and documentaries. Operating under our Two-Entity Model, &ge; 40% of studio profits are reinvested into BNS Foundation&apos;s civic mission.
+              BNS Studios translates complex research into high-impact podcasts,
+              animations, and documentaries. Operating under our Two-Entity
+              Model, &ge; 40% of studio profits are reinvested into BNS
+              Foundation&apos;s civic mission.
             </p>
           </div>
           <Link

@@ -1,6 +1,6 @@
-import { useParams, Link, Navigate } from 'react-router-dom';
-import { ArrowLeft, Clock, Calendar, ArrowRight, Share2 } from 'lucide-react';
-import { JOURNAL_ARTICLES } from '../data/journal';
+import { ArrowLeft, ArrowRight, Calendar, Clock, Share2 } from "lucide-react";
+import { Link, Navigate, useParams } from "react-router-dom";
+import { JOURNAL_ARTICLES } from "../data/journal";
 
 export function JournalDetailPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -29,7 +29,9 @@ export function JournalDetailPage() {
         {/* Article Header */}
         <header className="max-w-4xl mb-12">
           <div className="flex items-center gap-3 text-xs font-mono text-black/50 mb-4 uppercase tracking-wider">
-            <span className="text-[#C5A880] font-semibold">{article.category}</span>
+            <span className="text-[#C5A880] font-semibold">
+              {article.category}
+            </span>
             <span>•</span>
             <span className="flex items-center gap-1">
               <Clock className="w-3.5 h-3.5" />
@@ -72,7 +74,8 @@ export function JournalDetailPage() {
                 {article.category}
               </p>
               <p className="text-xs text-black/60 font-sans leading-relaxed">
-                Published under Budget Ndio Story’s Civic Research &amp; Media Desk.
+                Published under Budget Ndio Story’s Civic Research &amp; Media
+                Desk.
               </p>
             </div>
 
@@ -89,7 +92,7 @@ export function JournalDetailPage() {
                     });
                   } else {
                     navigator.clipboard.writeText(window.location.href);
-                    alert('Article link copied to clipboard.');
+                    alert("Article link copied to clipboard.");
                   }
                 }}
                 className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[#0B0B0A] hover:text-[#C5A880] transition-colors"
@@ -104,7 +107,8 @@ export function JournalDetailPage() {
                 GET INVOLVED
               </h4>
               <p className="text-xs text-white/70 leading-relaxed mb-4">
-                Want to bring these budget analysis tools and explainers to your community or newsroom?
+                Want to bring these budget analysis tools and explainers to your
+                community or newsroom?
               </p>
               <Link
                 to="/contact"
@@ -119,14 +123,20 @@ export function JournalDetailPage() {
           {/* Main Content (Col 8) */}
           <div className="lg:col-span-8 order-1 lg:order-2 space-y-6 text-base md:text-lg text-black/80 font-sans leading-relaxed">
             {article.content.map((paragraph, idx) => (
-              <p key={idx} className="first-letter:text-5xl first-letter:font-display first-letter:font-semibold first-letter:mr-3 first-letter:float-left first-letter:text-[#0B0B0A]">
+              <p
+                key={idx}
+                className="first-letter:text-5xl first-letter:font-display first-letter:font-semibold first-letter:mr-3 first-letter:float-left first-letter:text-[#0B0B0A]"
+              >
                 {paragraph}
               </p>
             ))}
 
             <div className="my-10 p-8 bg-[#F4F2EE] border-l-2 border-[#C5A880]">
               <p className="font-serif italic text-xl md:text-2xl text-[#0B0B0A]">
-                &ldquo;Public money must be accounted for before it can serve citizens. Budgets are not mere accounting exercises, but the living financial contract between government and the public.&rdquo;
+                &ldquo;Public money must be accounted for before it can serve
+                citizens. Budgets are not mere accounting exercises, but the
+                living financial contract between government and the
+                public.&rdquo;
               </p>
               <span className="block mt-4 font-mono text-xs uppercase tracking-wider text-black/50">
                 &mdash; Budget Ndio Story Research Desk
@@ -134,7 +144,10 @@ export function JournalDetailPage() {
             </div>
 
             <p>
-              Whether analyzing parliamentary ceilings, tracing county disbursements, or documenting field service delivery, our initiative ensures that public finances are transparent, verified, and placed in the hands of citizens.
+              Whether analyzing parliamentary ceilings, tracing county
+              disbursements, or documenting field service delivery, our
+              initiative ensures that public finances are transparent, verified,
+              and placed in the hands of citizens.
             </p>
           </div>
         </div>

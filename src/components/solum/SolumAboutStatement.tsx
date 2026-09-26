@@ -1,6 +1,6 @@
-import { motion, useReducedMotion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export function SolumAboutStatement() {
   const shouldReduceMotion = useReducedMotion();
@@ -23,30 +23,52 @@ export function SolumAboutStatement() {
           {/* Cols 2-4: Massive Editorial Statement */}
           <div className="col-span-1 md:col-span-3 space-y-6">
             <motion.h2
-              initial={{ opacity: shouldReduceMotion ? 1 : 0, y: shouldReduceMotion ? 0 : 20 }}
+              initial={{
+                opacity: shouldReduceMotion ? 1 : 0,
+                y: shouldReduceMotion ? 0 : 20,
+              }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-[-0.05em] text-[#101010] leading-[1.08]"
             >
-              Different counties. <span className="text-[#2446EC]">Shared public money.</span> An independent civic media and public finance platform across all 47 counties.
+              Different counties.{" "}
+              <span className="text-[#2446EC]">Shared public money.</span> An
+              independent civic media and public finance platform across all 47
+              counties.
             </motion.h2>
 
             <motion.p
-              initial={{ opacity: shouldReduceMotion ? 1 : 0, y: shouldReduceMotion ? 0 : 20 }}
+              initial={{
+                opacity: shouldReduceMotion ? 1 : 0,
+                y: shouldReduceMotion ? 0 : 20,
+              }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              transition={{
+                duration: 0.6,
+                delay: 0.1,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               className="font-sans text-sm sm:text-base md:text-lg text-[#757575] leading-relaxed max-w-2xl font-light"
             >
-              We translate national budgets, county allocations, and public debt into accessible stories, citizen barazas, and grassroots accountability tools.
+              We translate national budgets, county allocations, and public debt
+              into accessible stories, citizen barazas, and grassroots
+              accountability tools.
             </motion.p>
 
             <motion.div
-              initial={{ opacity: shouldReduceMotion ? 1 : 0, y: shouldReduceMotion ? 0 : 20 }}
+              initial={{
+                opacity: shouldReduceMotion ? 1 : 0,
+                y: shouldReduceMotion ? 0 : 20,
+              }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              transition={{
+                duration: 0.6,
+                delay: 0.15,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               className="pt-2"
             >
               <Link
