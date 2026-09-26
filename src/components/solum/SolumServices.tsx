@@ -306,7 +306,7 @@ export function SolumServices() {
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-white inline-block" />
               <span className="font-mono text-xs uppercase tracking-wider text-white font-semibold">
-                COMMERCIAL IMPACT CONTENT // TWO-ENTITY MODEL
+                COMMERCIAL IMPACT 
               </span>
             </div>
             <h3 className="font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight uppercase leading-[0.98] text-white">

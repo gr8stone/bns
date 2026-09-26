@@ -47,7 +47,7 @@ export function SolumHero() {
     "50,000+ YOUNG KENYANS ENGAGED",
     "ALL 47 COUNTIES ACROSS KENYA",
     "CROSS-SUBSIDISED CIVIC IMPACT",
-    "PARTNERSHIP PROSPECTUS 2026",
+  
     "BUDGET NDIO STORY",
   ];
 
@@ -85,7 +85,7 @@ export function SolumHero() {
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end mb-12 lg:mb-16">
           {/* Left: Giant Typography Ramp */}
           <div className="lg:col-span-8">
-           
+
 
             <motion.h1
               initial={shouldReduceMotion ? false : { opacity: 0.5, y: 16 }}

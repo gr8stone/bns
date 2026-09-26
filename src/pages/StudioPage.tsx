@@ -171,50 +171,7 @@ export function StudioPage() {
             </div>
 
             {/* Production Discipline Telemetry Strip */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-6 font-mono text-xs text-[#101010] border-t border-[#101010]/12">
-              <div className="p-4 border border-[#101010]/10 flex flex-col justify-between">
-                <span className="text-[#757575] uppercase text-[10px] block mb-1">
-                  FORMAT 01
-                </span>
-                <span className="font-semibold block mb-2">
-                  RESEARCH CINEMATOGRAPHY
-                </span>
-                <span className="text-[#2446EC] font-bold">4K DCI MASTER</span>
-              </div>
-              <div className="p-4 border border-[#101010]/10 flex flex-col justify-between">
-                <span className="text-[#757575] uppercase text-[10px] block mb-1">
-                  FORMAT 02
-                </span>
-                <span className="font-semibold block mb-2">
-                  PROCEDURAL 2D/3D EXPLAINERS
-                </span>
-                <span className="text-[#2446EC] font-bold">
-                  9:16 + 16:9 MULTI-FORMAT
-                </span>
-              </div>
-              <div className="p-4 border border-[#101010]/10 flex flex-col justify-between">
-                <span className="text-[#757575] uppercase text-[10px] block mb-1">
-                  FORMAT 03
-                </span>
-                <span className="font-semibold block mb-2">
-                  BROADCAST AUDIO &amp; PODCASTS
-                </span>
-                <span className="text-[#2446EC] font-bold">
-                  STUDIO + FIELD DEPLOYMENT
-                </span>
-              </div>
-              <div className="p-4 border border-[#101010]/10 flex flex-col justify-between">
-                <span className="text-[#757575] uppercase text-[10px] block mb-1">
-                  FORMAT 04
-                </span>
-                <span className="font-semibold block mb-2">
-                  STATUTORY TOWN HALL HEARINGS
-                </span>
-                <span className="text-[#2446EC] font-bold">
-                  47 COUNTIES NETWORK
-                </span>
-              </div>
-            </div>
+           
           </div>
         </section>
 
