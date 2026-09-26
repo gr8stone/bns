@@ -7,44 +7,48 @@
     --one-if-corner-shape-supported: 1;
 
     /* ── Palette (AI in Design Report 2026 / State of AI Design) ── */
-    --color-coral:      #4E58AA;   /* Dominant brand indigo (#4E58AA) */
-    --color-peach:      #fa9c7b;   /* Surface support  */
-    --color-terracotta: #9c4527;   /* Accent ink       */
-    --color-sage:       #7d9590;   /* Muted teal       */
-    --color-slate:      #b4b7b6;   /* Detail slate     */
+    --color-coral: #4e58aa; /* Dominant brand indigo (#4E58AA) */
+    --color-peach: #fa9c7b; /* Surface support  */
+    --color-terracotta: #9c4527; /* Accent ink       */
+    --color-sage: #7d9590; /* Muted teal       */
+    --color-slate: #b4b7b6; /* Detail slate     */
 
     /* ── Section Backgrounds ── */
-    --bns-ink:         #0B0C0E;   /* bg-ink        — Deep charcoal ink     */
-    --bns-ink-soft:    #1A1C1E;   /* bg-ink-soft   — Soft charcoal         */
-    --bns-paper-warm:  #FAFAF8;   /* bg-paper-warm — Clean warm surface    */
-    --bns-paper:       #FFFFFF;   /* bg-paper      — Stark white           */
-    --bns-near-black:  #070809;   /* bg-near-black — Footer                */
+    --bns-ink: #0b0c0e; /* bg-ink        — Deep charcoal ink     */
+    --bns-ink-soft: #1a1c1e; /* bg-ink-soft   — Soft charcoal         */
+    --bns-paper-warm: #fafaf8; /* bg-paper-warm — Clean warm surface    */
+    --bns-paper: #ffffff; /* bg-paper      — Stark white           */
+    --bns-near-black: #070809; /* bg-near-black — Footer                */
 
     /* ── Typography on light sections ── */
-    --bns-text-base:   #111214;   /* text-text-base  — High-contrast ink   */
-    --bns-text-muted:  #656563;   /* text-text-muted — Secondary           */
+    --bns-text-base: #111214; /* text-text-base  — High-contrast ink   */
+    --bns-text-muted: #656563; /* text-text-muted — Secondary           */
 
     /* ── Typography on dark sections ── */
-    --bns-text-light:  #FFFFFF;   /* text-text-light — Stark white         */
-    --bns-text-dim:    #b4b7b6;   /* text-text-dim   — Slate muted         */
+    --bns-text-light: #ffffff; /* text-text-light — Stark white         */
+    --bns-text-dim: #b4b7b6; /* text-text-dim   — Slate muted         */
 
     /* ── Hairline Borders ── */
-    --bns-line-dark:   rgba(16, 16, 16, 0.12);    /* border-line-dark  */
-    --bns-line-light:  rgba(255, 255, 255, 0.12); /* border-line-light */
+    --bns-line-dark: rgba(16, 16, 16, 0.12); /* border-line-dark  */
+    --bns-line-light: rgba(255, 255, 255, 0.12); /* border-line-light */
 
     /* ── Brand Accent (Terracotta & Brand Indigo) ── */
-    --bns-accent:       #9c4527;   /* Primary accent                        */
-    --bns-accent-coral: #4E58AA;   /* Brand indigo accent (#4E58AA)         */
+    --bns-accent: #9c4527; /* Primary accent                        */
+    --bns-accent-coral: #4e58aa; /* Brand indigo accent (#4E58AA)         */
 
     /* ── Interactive Surfaces ── */
-    --bns-ivory:       #FAFAF8;   /* bg-ivory    — Card surfaces           */
-    --bns-form-bg:     #FFFFFF;   /* bg-form-bg  — Form inputs             */
+    --bns-ivory: #fafaf8; /* bg-ivory    — Card surfaces           */
+    --bns-form-bg: #ffffff; /* bg-form-bg  — Form inputs             */
   }
 
   html {
     background-color: var(--bns-paper);
     color: var(--bns-text-base);
-    font-family: 'Inter Variable', system-ui, -apple-system, sans-serif;
+    font-family:
+      "Inter Variable",
+      system-ui,
+      -apple-system,
+      sans-serif;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -52,7 +56,8 @@
   }
 
   /* Lenis smooth scrolling rules */
-  html.lenis, html.lenis body {
+  html.lenis,
+  html.lenis body {
     height: auto;
   }
   .lenis.lenis-smooth {
@@ -76,7 +81,7 @@
     background: var(--bns-paper);
   }
   ::-webkit-scrollbar-thumb {
-    background: #D4D4D0;
+    background: #d4d4d0;
     transition: background 200ms ease-out;
   }
   ::-webkit-scrollbar-thumb:hover {
@@ -131,12 +136,20 @@
 
 /* Marquee Left & Right */
 @keyframes marquee {
-  0% { transform: translate3d(0%, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
+  0% {
+    transform: translate3d(0%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 @keyframes marquee-reverse {
-  0% { transform: translate3d(-50%, 0, 0); }
-  100% { transform: translate3d(0%, 0, 0); }
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0%, 0, 0);
+  }
 }
 .animate-marquee {
   display: flex;
@@ -156,4 +169,3 @@
 .animate-marquee-reverse:hover {
   animation-play-state: paused;
 }
-
