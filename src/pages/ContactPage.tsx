@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -27,41 +27,6 @@ export function ContactPage() {
     window.location.href = `mailto:info@budgetndiostory.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setSubmitted(true);
   };
-
-  const requirements = [
-    {
-      step: "01",
-      title: "Budget Documents or Fiscal Reports",
-      description:
-        "National budget estimates, County Fiscal Strategy Papers (CFSP), Auditor General reports, or public procurement notices.",
-      formats: ".PDF · .XLSX · .CSV · Scanned Hansards",
-      image: "/images/bns/survey/bnssurvey1.jpeg",
-    },
-    {
-      step: "02",
-      title: "Field Intelligence & Ground Evidence",
-      description:
-        "Ward-level project status, photo evidence, citizen petitions, dispensary stock audits, or community baraza resolutions.",
-      formats: "Citizen Photos · Field Logs · Signed Petitions",
-      image: "/images/bns/cohort1 groundworks/129A3964.jpg",
-    },
-    {
-      step: "03",
-      title: "Media & Co-Production Pitches",
-      description:
-        "Collaborative investigative pitches, community radio syndication, animated explainer scripts, or podcast dialogue requests.",
-      formats: "Story Pitch · Broadcast Specs · Topic Synopsis",
-      image: "/images/bns/media/129A4039.jpg",
-    },
-    {
-      step: "04",
-      title: "Town Hall & Workshop Convenings",
-      description:
-        "Host a BNS Connect town hall in your county, request BNS Mashinani budget literacy toolkits, or invite our team to campus.",
-      formats: "Venue Scope · Community Size · Proposed Agenda",
-      image: "/images/bns/towwnhallmay/129A3912.jpg",
-    },
-  ];
 
   return (
     <main className="w-full bg-white text-[#101010] select-none">

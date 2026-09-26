@@ -2,7 +2,6 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Minus, Plus } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { WordReveal } from "../components/common/WordReveal";
 import { STUDIO_FAQS } from "../data/comprehensiveFaq";
 import { STUDIO_RATE_CARD } from "../data/studio";
 import { ROUTES } from "../lib/routes";
