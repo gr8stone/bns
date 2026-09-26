@@ -34,7 +34,7 @@ export function ContactPage() {
           SECTION 1: SOLUM CONTACT & MINIMALIST FORM
           ───────────────────────────────────────────────────────────── */}
       <section className="pt-28 md:pt-36 pb-20 md:pb-28 border-b border-[#101010]/12">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-10">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left Column: Heading & Key Details */}
             <div className="lg:col-span-6 lg:pr-8 lg:border-r border-[#101010]/12 space-y-12">

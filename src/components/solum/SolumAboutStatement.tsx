@@ -7,7 +7,7 @@ export function SolumAboutStatement() {
 
   return (
     <section className="w-full bg-white text-[#101010] border-b border-[#101010]/12 select-none">
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 md:px-16 lg:px-24 py-20 md:py-28">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-16 lg:px-24 py-20 md:py-28">
         {/* Top 4-Column Layout */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-16 md:pb-20 border-b border-[#101010]/12">
           {/* Col 1: Category Tag */}

@@ -79,7 +79,7 @@ export function ServiceDetailPage() {
   return (
     <main className="w-full bg-white text-[#101010] select-none overflow-x-hidden pt-28 md:pt-36">
       {/* Top Header / Breadcrumb Navigation */}
-      <div className="px-6 md:px-12 max-w-[1440px] mx-auto w-full pb-8 border-b border-[#101010]/12 flex items-center justify-between font-mono text-xs text-[#757575] uppercase tracking-wider">
+      <div className="px-5 sm:px-8 md:px-12 max-w-[1440px] mx-auto w-full pb-8 border-b border-[#101010]/12 flex items-center justify-between font-mono text-xs text-[#757575] uppercase tracking-wider">
         <Link
           to="/programmes"
           className="inline-flex items-center gap-2 hover:text-[#2446EC] transition-colors"
@@ -100,7 +100,7 @@ export function ServiceDetailPage() {
       {/* ========================================================= */}
       <section
         ref={challengeRef}
-        className="w-full py-16 sm:py-24 md:py-32 px-6 md:px-12 max-w-[1440px] mx-auto"
+        className="w-full py-16 sm:py-24 md:py-32 px-5 sm:px-8 md:px-12 max-w-[1440px] mx-auto"
       >
         <div className="space-y-16">
           {/* Act Label */}
@@ -187,7 +187,7 @@ export function ServiceDetailPage() {
       {/* ========================================================= */}
       <section
         ref={videoRef}
-        className="w-full py-24 sm:py-36 md:py-44 px-6 md:px-12 max-w-[1440px] mx-auto border-t border-[#101010]/12"
+        className="w-full py-24 sm:py-36 md:py-44 px-5 sm:px-8 md:px-12 max-w-[1440px] mx-auto border-t border-[#101010]/12"
       >
         <div className="space-y-12">
           {/* Header Typography */}
@@ -263,7 +263,7 @@ export function ServiceDetailPage() {
       {/* ========================================================= */}
       {/* 🎬 SCENE 04: THE MOTION SCRIPT (OUTPUTS & PIPELINE)       */}
       {/* ========================================================= */}
-      <section className="w-full py-24 sm:py-36 md:py-44 px-6 md:px-12 max-w-[1440px] mx-auto border-t border-[#101010]/12">
+      <section className="w-full py-24 sm:py-36 md:py-44 px-5 sm:px-8 md:px-12 max-w-[1440px] mx-auto border-t border-[#101010]/12">
         <div className="space-y-16">
           {/* Header & Interactive Script Switcher */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-8 border-b border-[#101010]/15">
@@ -315,7 +315,7 @@ export function ServiceDetailPage() {
               {service.deliverables.map((item, idx) => (
                 <div
                   key={item.name}
-                  className="group py-10 sm:py-14 grid grid-cols-1 lg:grid-cols-12 gap-6 items-baseline transition-colors hover:bg-[#FAFAF8] -mx-6 px-6 sm:-mx-12 sm:px-12"
+                  className="group py-10 sm:py-14 grid grid-cols-1 lg:grid-cols-12 gap-6 items-baseline transition-colors hover:bg-[#FAFAF8] -mx-5 sm:-mx-8 md:-mx-12 px-5 sm:px-8 md:px-12"
                 >
                   {/* Huge Number */}
                   <div className="lg:col-span-2">
@@ -401,7 +401,7 @@ export function ServiceDetailPage() {
       {/* PREVIOUS & NEXT PROGRAMME NAVIGATION STRIP                 */}
       {/* ========================================================= */}
       <div className="w-full border-t border-[#101010]/12 bg-[#F6F6F2]">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-10 grid grid-cols-2 divide-x divide-[#101010]/12">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10 grid grid-cols-2 divide-x divide-[#101010]/12">
           {prevService && (
             <Link
               to={`/programmes/${prevService.slug}`}

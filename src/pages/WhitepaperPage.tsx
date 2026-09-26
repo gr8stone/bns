@@ -68,7 +68,7 @@ const SECTIONS: { n: string; id: string; title: string; body: string[] }[] = [
 export function WhitepaperPage() {
   return (
     <main className="w-full bg-white text-[#101010] pt-28 md:pt-36 pb-24">
-      <article className="max-w-[740px] mx-auto px-6 md:px-10">
+      <article className="max-w-[740px] mx-auto px-5 sm:px-8 md:px-10">
         <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-[#757575]">
           Budget Ndio Story · Nairobi · 2026
         </p>

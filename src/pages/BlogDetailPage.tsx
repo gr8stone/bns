@@ -31,7 +31,7 @@ export function BlogDetailPage() {
 
   return (
     <main className="w-full bg-white text-[#101010] pt-28 md:pt-36 pb-24 md:pb-36">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10">
         {/* Back Link & Category */}
         <div className="flex items-center justify-between pb-8 border-b border-[#101010]/12 font-mono text-xs text-[#757575] uppercase tracking-wider">
           <Link
@@ -78,7 +78,7 @@ export function BlogDetailPage() {
       </div>
 
       {/* 680–760px Readable Content Column */}
-      <div className="max-w-[740px] mx-auto px-6 py-12 md:py-16">
+      <div className="max-w-[740px] mx-auto px-5 sm:px-8 py-12 md:py-16">
         <div className="space-y-8 font-sans text-base sm:text-lg text-[#101010]/85 font-light leading-relaxed">
           <p className="text-xl sm:text-2xl font-normal leading-snug text-[#101010] border-l-2 border-[#101010] pl-6 py-1">
             {article.excerpt}
@@ -113,7 +113,7 @@ export function BlogDetailPage() {
       </div>
 
       {/* Adjacent Article Navigation */}
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10 border-t border-[#101010]/12 bg-[#F6F6F2]">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10 border-t border-[#101010]/12 bg-[#F6F6F2]">
         <div className="grid grid-cols-2 divide-x divide-[#101010]/12">
           {prevArticle && (
             <Link

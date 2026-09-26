@@ -23,7 +23,7 @@ export function ServicesPage() {
 
   return (
     <main className="w-full bg-white text-[#101010] pt-28 md:pt-36 pb-24 md:pb-36 select-none">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10">
         {/* ========================================================= */}
         {/* 1) WHITE GRID HERO WITH OVERSIZED TITLE (MATCHING ABOUT)  */}
         {/* ========================================================= */}
@@ -148,7 +148,7 @@ export function ServicesPage() {
             {SERVICES.map((prog) => (
               <div
                 key={prog.slug}
-                className="group py-12 lg:py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start hover:bg-[#FAFAF8] transition-colors -mx-6 px-6 md:-mx-10 md:px-10"
+                className="group py-12 lg:py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start hover:bg-[#FAFAF8] transition-colors -mx-5 sm:-mx-8 md:-mx-10 px-5 sm:px-8 md:px-10"
               >
                 {/* Column 1: Just Number (No PILLAR text) */}
                 <div className="lg:col-span-2 space-y-1">

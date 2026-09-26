@@ -17,7 +17,7 @@ export function StudioPage() {
 
   return (
     <main className="w-full bg-white text-[#101010] pt-28 md:pt-36 pb-24 md:pb-36 select-none">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10">
         {/* ========================================================= */}
         {/* TOP HEADER / BREADCRUMB (MATCHING 3 PROGRAMMES STYLE)     */}
         {/* ========================================================= */}

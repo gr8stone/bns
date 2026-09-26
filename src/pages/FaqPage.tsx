@@ -43,7 +43,7 @@ export function FaqPage() {
 
   return (
     <main className="w-full bg-white text-[#101010] pt-28 md:pt-36 pb-24 md:pb-36">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10">
 
         {/* ========================================================= */}
         {/* 1. HERO                                                    */}
@@ -89,7 +89,7 @@ export function FaqPage() {
         {/* ========================================================= */}
         {/* 2. STICKY BAR — filter icon + active label                 */}
         {/* ========================================================= */}
-        <div className="sticky top-[72px] md:top-[88px] z-30 bg-white border-b border-[#101010]/12 -mx-6 md:-mx-10 px-6 md:px-10">
+        <div className="sticky top-[72px] md:top-[88px] z-30 bg-white border-b border-[#101010]/12 -mx-5 sm:-mx-8 md:-mx-10 px-5 sm:px-8 md:px-10">
 
           {/* Trigger row */}
           <div className="flex items-center justify-between py-3">

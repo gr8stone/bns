@@ -72,9 +72,9 @@ export function SolumHero() {
       {/* ========================================================= */}
       {/* 2) MAIN HERO CONTAINER (1425px Max Width per DESIGN.md)   */}
       {/* ========================================================= */}
-      <div className="max-w-[1425px] mx-auto px-6 md:px-10 pt-12 md:pt-16 pb-12 relative">
+      <div className="max-w-[1425px] mx-auto px-5 sm:px-8 md:px-10 pt-12 md:pt-16 pb-12 relative">
         {/* Subtle Swiss grid guides */}
-        <div className="absolute inset-0 pointer-events-none grid grid-cols-1 md:grid-cols-4 px-6 md:px-10">
+        <div className="absolute inset-0 pointer-events-none grid grid-cols-1 md:grid-cols-4 px-5 sm:px-8 md:px-10">
           <div className="border-r border-black/[0.04] h-full hidden md:block" />
           <div className="border-r border-black/[0.04] h-full hidden md:block" />
           <div className="border-r border-black/[0.04] h-full hidden md:block" />

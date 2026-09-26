@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react';
 
 export function NotFoundPage() {
   return (
-    <main className="w-full min-h-screen bg-white text-[#101010] flex items-center justify-center px-6 md:px-10">
+    <main className="w-full min-h-screen bg-white text-[#101010] flex items-center justify-center px-5 sm:px-8 md:px-10">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

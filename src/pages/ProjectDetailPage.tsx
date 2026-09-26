@@ -66,7 +66,7 @@ export function ProjectDetailPage() {
 
   return (
     <main className="w-full bg-white text-[#101010] pt-28 md:pt-36">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10">
         {/* Breadcrumb / Rail Label */}
         <div className="flex items-center justify-between pb-8 border-b border-[#101010]/12 font-mono text-xs text-[#757575] uppercase tracking-wider">
           <Link
@@ -192,7 +192,7 @@ export function ProjectDetailPage() {
       </div>
 
       {/* Narrow Narrative Column (4-Column System, Content Starts Column 2) */}
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-16 md:py-24">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10 py-16 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
           <div className="col-span-1">
             <div className="flex items-center gap-2 mb-2">
@@ -240,7 +240,7 @@ export function ProjectDetailPage() {
 
       {/* Alternating Full-Bleed and Grid Gallery from CMS */}
       {project.gallery && project.gallery.length > 0 && (
-        <div className="max-w-[1440px] mx-auto px-6 md:px-10 pb-24 space-y-12">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10 pb-24 space-y-12">
           <div className="border-b border-[#101010]/12 pb-4">
             <span className="font-mono text-xs uppercase tracking-wider text-[#101010]">
               PRODUCTION &amp; FIELD GALLERY ({project.gallery.length})
@@ -283,7 +283,7 @@ export function ProjectDetailPage() {
 
       {/* Previous & Next Project Navigation Links */}
       <div className="w-full border-t border-[#101010]/12 bg-[#F6F6F2]">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-10 grid grid-cols-2 divide-x divide-[#101010]/12">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10 grid grid-cols-2 divide-x divide-[#101010]/12">
           {prevProject && (
             <Link
               to={`/projects/${prevProject.slug}`}

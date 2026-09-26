@@ -87,7 +87,7 @@ function ServiceCard({
       className="sticky top-0 w-full h-[100svh] min-h-[100svh] flex flex-col md:flex-row bg-[#2446EC] text-white overflow-hidden border-t border-white/20"
     >
       {/* Editorial Content Column — Left 50% on desktop */}
-      <div className="w-full md:w-1/2 flex-1 md:h-full flex flex-col justify-center px-6 md:px-12 lg:px-16 py-8 md:py-16 bg-[#2446EC] z-10 overflow-y-auto sm:overflow-visible">
+      <div className="w-full md:w-1/2 flex-1 md:h-full flex flex-col justify-center px-5 sm:px-8 md:px-12 lg:px-16 py-8 md:py-16 bg-[#2446EC] z-10 overflow-y-auto sm:overflow-visible">
         <div className="max-w-xl space-y-4 md:space-y-6 my-auto">
           {/* Number & Phase Tag */}
           <motion.div
@@ -170,7 +170,7 @@ export function SolumServices() {
       {/* ========================================================= */}
       {/* 1) INTRODUCTION BLOCK (Light Swiss Header)                */}
       {/* ========================================================= */}
-      <div className="w-full py-16 md:py-24 px-6 md:px-10 max-w-[1425px] mx-auto">
+      <div className="w-full py-16 md:py-24 px-5 sm:px-8 md:px-10 max-w-[1425px] mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="space-y-3">
             <div className="flex items-center gap-2">
@@ -208,13 +208,13 @@ export function SolumServices() {
       {/* 2A) MOBILE HORIZONTAL SCROLL SLIDER (Enhanced Emphasis)    */}
       {/* ========================================================= */}
       <div className="block md:hidden w-full pb-12">
-        <div className="px-6 pb-3 flex items-center justify-between font-mono text-[11px] text-[#757575] uppercase tracking-wider">
+        <div className="px-5 sm:px-8 pb-3 flex items-center justify-between font-mono text-[11px] text-[#757575] uppercase tracking-wider">
           <span>SWIPE  &rarr;</span>
           <span> FLAGSHIP PROGRAMMES</span>
         </div>
 
         {/* Snap Slider Track */}
-        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 px-6 no-scrollbar pb-4 pt-1">
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 px-5 sm:px-8 no-scrollbar pb-4 pt-1">
           {SERVICES.map((service, index) => (
             <div
               key={`mobile-${service.number}`}
@@ -277,7 +277,7 @@ export function SolumServices() {
         </div>
 
         {/* Scroll Progress / Swipe Hint Pill */}
-        <div className="px-6 pt-2 flex items-center justify-center gap-2">
+        <div className="px-5 sm:px-8 pt-2 flex items-center justify-center gap-2">
           {SERVICES.map((s, idx) => (
             <div
               key={s.number}
@@ -300,7 +300,7 @@ export function SolumServices() {
       {/* ========================================================= */}
       {/* 3) BNS STUDIOS COMMISSIONING BRIDGE                       */}
       {/* ========================================================= */}
-      <div className="w-full bg-[#2446EC] text-white py-16 md:py-20 px-6 md:px-10 border-t border-white/20 relative z-20">
+      <div className="w-full bg-[#2446EC] text-white py-16 md:py-20 px-5 sm:px-8 md:px-10 border-t border-white/20 relative z-20">
         <div className="max-w-[1425px] mx-auto flex flex-col md:flex-row md:items-center justify-between gap-8">
           <div className="space-y-3 max-w-2xl">
             <div className="flex items-center gap-2">

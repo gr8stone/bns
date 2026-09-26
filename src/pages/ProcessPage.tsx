@@ -29,7 +29,7 @@ export function ProcessPage() {
 
   return (
     <main className="w-full bg-[#f7f6f2] text-[#121214] pt-32 md:pt-44">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 pb-24">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 pb-24">
         {/* Header */}
         <div className="max-w-3xl mb-20 md:mb-28">
           <span className="text-xs uppercase tracking-widest text-zinc-500 font-medium block mb-3">

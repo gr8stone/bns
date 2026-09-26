@@ -38,7 +38,7 @@ export function WorkPage() {
 
   return (
     <main className="w-full bg-[#f7f6f2] text-[#121214] pt-32 md:pt-44">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 pb-24">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 pb-24">
         {/* Page Title & Editorial Header */}
         <div className="max-w-3xl mb-16">
           <span className="text-xs uppercase tracking-widest text-zinc-500 font-semibold block mb-3">

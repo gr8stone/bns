@@ -31,7 +31,7 @@ export function SolumMediaBreak() {
   );
 
   const marqueeText =
-    "FOLLOW THE BUDGET ◆ FIND THE STORY ◆ BNS FOUNDATION ◆ BNS STUDIOS ◆ 47 COUNTIES ◆ ";
+    "BUDGET NDIO STORY";
 
   return (
     <section
@@ -68,10 +68,8 @@ export function SolumMediaBreak() {
       {/* Corner Swiss Markers (0px radius) */}
       <div className="absolute bottom-6 left-6 md:left-10 z-20 pointer-events-none">
         <div className="flex items-center gap-2">
-          <span className="w-1.5 h-1.5 bg-[#2446EC] inline-block" />
-          <span className="font-mono text-[11px] uppercase tracking-widest text-white/80">
-            CIVIC DIALOGUE // CITIZEN CONVENING
-          </span>
+
+
         </div>
       </div>
 

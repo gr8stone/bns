@@ -14,7 +14,7 @@ export function JournalDetailPage() {
 
   return (
     <main className="w-full bg-[#FAF9F6] text-[#0B0B0A] pt-32 pb-24 md:pb-36 min-h-screen">
-      <article className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16">
+      <article className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-12 lg:px-16">
         {/* Back Link */}
         <div className="mb-10">
           <Link

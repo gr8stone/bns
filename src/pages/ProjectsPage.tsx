@@ -137,7 +137,7 @@ export function ProjectsPage() {
 
   return (
     <main className="w-full bg-white text-text-base pt-28 md:pt-36 pb-24 md:pb-36 select-none">
-      <div id="projects-top" className="max-w-[1425px] mx-auto px-6 md:px-10">
+      <div id="projects-top" className="max-w-[1425px] mx-auto px-5 sm:px-8 md:px-10">
         {/* Header: Swiss 4-Column Layout */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-16 border-b border-black/[0.08] items-end">
           <div className="col-span-1 md:col-span-3">

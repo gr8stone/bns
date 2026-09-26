@@ -20,7 +20,7 @@ export function SolumRecentProjects() {
   });
 
   return (
-    <section className="relative z-20 w-full bg-white text-text-base py-16 md:py-24 px-6 md:px-10 border-b border-black/[0.08] select-none">
+    <section className="relative z-20 w-full bg-white text-text-base py-16 md:py-24 px-5 sm:px-8 md:px-10 border-b border-black/[0.08] select-none">
       <div className="max-w-[1425px] mx-auto">
         {/* Section Header: Swiss 4-Column Layout */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-black/[0.08]">
@@ -36,7 +36,7 @@ export function SolumRecentProjects() {
 
           {/* Columns 2–4: Large Heading + All Projects Link */}
           <div className="md:col-span-9 flex flex-col sm:flex-row sm:items-baseline justify-between gap-6">
-            <h2 className="font-display text-4xl sm:text-5xl lg:text-[64px] font-medium tracking-[-0.05em] text-text-base uppercase leading-[0.98]">
+            <h2 className="font-display text-4xl sm:text-5xl lg:text-[32px] font-medium tracking-[-0.05em] text-text-base uppercase leading-[0.98]">
               SELECTED PRODUCTIONS.
             </h2>
             <Link
