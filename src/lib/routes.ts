@@ -7,7 +7,7 @@
  * @example
  * import { ROUTES } from '@/lib/routes';
  * <Link to={ROUTES.about}>About</Link>
- * <Link to={ROUTES.project('bns-connect')}>BNS Connect</Link>
+ * <Link to={ROUTES.project('county-budget-where-money-comes-from')}>County Budget Investigation</Link>
  */
 
 // ─── Core Route Paths ─────────────────────────────────────────────────────────

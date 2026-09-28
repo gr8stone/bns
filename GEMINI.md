@@ -1,8 +1,8 @@
 # Project Rules & Working Constraints
 
 ## 1. Branch Requirement
-- **Working Branch**: All development and content replacement must take place in the `dev-temp` branch.
-- No direct content or code modifications should occur on `main` until this phase is finished and reviewed.
+- **Working Branch**: Work on any branch specified or requested by the user.
+
 
 ## 2. Layout & Styling Freeze (Strict Constraint)
 - **No Layout Alterations**: Do not modify layouts, grids, flex structures, DOM hierarchies, component arrangement, or page architecture.

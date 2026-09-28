@@ -23,7 +23,7 @@ export const COLORS = {
   accent:      '#9c4527',   // Primary accent (terracotta)
   accentCoral: '#4E58AA',   // Vibrant accent (#4E58AA)
   accentSage:  '#7d9590',   // Secondary sage accent
-  agencyBlue:  '#374EAB',   // Agency Brand Royal Blue (Vantage Studio / BNS classic blue #374EAB)
+  agencyBlue:  '#374EAB',   // Agency Brand Royal Blue (BNS classic blue #374EAB)
 
   // Section backgrounds (Light mode focus with stark contrast)
   paper:       '#FFFFFF',   // Stark white background

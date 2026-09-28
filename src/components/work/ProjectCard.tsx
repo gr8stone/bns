@@ -15,7 +15,7 @@ export function ProjectCard({
 }: ProjectCardProps) {
   return (
     <Link
-      to={`/work/${project.slug}`}
+      to={`/projects/${project.slug}`}
       data-cursor="VIEW"
       className={`group block overflow-hidden ${className}`}
     >

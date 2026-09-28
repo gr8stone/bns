@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Core Pages -->
   <url>
     <loc>https://budgetndiostory.org/</loc>
     <changefreq>weekly</changefreq>
@@ -21,46 +22,89 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://budgetndiostory.org/studio</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://budgetndiostory.org/ratecard</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://budgetndiostory.org/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://budgetndiostory.org/projects/riviera-residence</loc>
+    <loc>https://budgetndiostory.org/whitepaper</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://budgetndiostory.org/faq</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- BNS Civic Productions / Projects -->
+  <url>
+    <loc>https://budgetndiostory.org/projects/county-budget-where-money-comes-from</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budgetndiostory.org/projects/bunker-37</loc>
+    <loc>https://budgetndiostory.org/projects/national-infrastructure-fund</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budgetndiostory.org/projects/australia-residence</loc>
+    <loc>https://budgetndiostory.org/projects/before-budget-day</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budgetndiostory.org/projects/berliner-strasse-69</loc>
+    <loc>https://budgetndiostory.org/projects/red-flags-in-government-contracts</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budgetndiostory.org/projects/marlow-on-mill</loc>
+    <loc>https://budgetndiostory.org/projects/bns-mashinani-groundworks</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budgetndiostory.org/projects/venetian-penthouse</loc>
+    <loc>https://budgetndiostory.org/projects/youth-economic-opportunities</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://budgetndiostory.org/projects/papes-residences</loc>
+    <loc>https://budgetndiostory.org/projects/national-budget-day-peoples-watch</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://budgetndiostory.org/projects/project-terra</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://budgetndiostory.org/projects/house-of-fiscal-wisdom-illicit-flows</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://budgetndiostory.org/projects/cabri-digital-pfm-anglophone</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://budgetndiostory.org/projects/cabri-digital-pfm-francophone</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
+  <!-- BNS Civic Programmes -->
   <url>
     <loc>https://budgetndiostory.org/programmes/bns-connect</loc>
     <changefreq>monthly</changefreq>
@@ -73,11 +117,6 @@
   </url>
   <url>
     <loc>https://budgetndiostory.org/programmes/bns-wanahabari</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://budgetndiostory.org/programmes/bns-studio</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

@@ -4,17 +4,16 @@ import { ArrowLeft, ArrowRight, MapPin, Building2, Quote } from 'lucide-react';
 import { TESTIMONIALS } from '../../data/testimonials';
 
 const PARTNERS = [
-  'FOSTER + PARTNERS',
-  'HERZOG & DE MEURON',
-  'GENSLER',
-  'PATRIZIA DEV',
-  'BROOKFIELD',
-  'CBRE GLOBAL',
-  'BIG BJARKE INGELS',
-  'HINES REAL ESTATE',
-  'ZAHA HADID ARCH',
-  'JLL CAPITAL',
-  'SKIDMORE OWINGS & MERRILL',
+  'TISA KENYA',
+  'AFRODAD',
+  'COMMITTEE ON FISCAL STUDIES',
+  'CENTS GOVERNANCE ACADEMY',
+  'HOUSE OF FISCAL WISDOM',
+  'CABRI',
+  'TRANSPARENCY INTERNATIONAL',
+  'OPEN GOVERNANCE COALITION',
+  'KENYA CIVIC ALLIANCE',
+  'DEVOLUTION HUB',
 ];
 
 export function TestimonialSection() {

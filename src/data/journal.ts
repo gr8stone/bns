@@ -3,7 +3,7 @@ import type { JournalArticle } from "../types";
 export const JOURNAL_ARTICLES: JournalArticle[] = [
   {
     slug: "demystifying-county-allocations-where-the-money-comes-from",
-    projectSlug: "riviera-residence",
+    projectSlug: "county-budget-where-money-comes-from",
     title: "Demystifying County Budgets: Where Does the Money Come From?",
     subtitle:
       "Breaking down the equitable share, national conditional grants, and county own-source revenues in Kenya's devolved system.",
@@ -22,7 +22,7 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
   },
   {
     slug: "inside-the-national-infrastructure-fund-civic-oversight",
-    projectSlug: "bunker-37",
+    projectSlug: "national-infrastructure-fund",
     title:
       "Inside Kenya’s National Infrastructure Fund: The Questions We Must Ask",
     subtitle:
@@ -42,7 +42,7 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
   },
   {
     slug: "budget-policy-statement-why-citizens-must-engage-early",
-    projectSlug: "australia-residence",
+    projectSlug: "before-budget-day",
     title:
       "Before Budget Day: Why the Budget Policy Statement (BPS) is the Real Battleground",
     subtitle:
@@ -141,7 +141,7 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
   },
   {
     slug: "youth-opportunities-everyday-hustle-and-public-support",
-    projectSlug: "venetian-penthouse",
+    projectSlug: "youth-economic-opportunities",
     title: "Youth Opportunities: Making the Everyday Hustle Easier",
     subtitle:
       "A BNS animation follows Brian, an everyday Kenyan, and points young people toward opportunities that can support their hustle.",
@@ -160,7 +160,7 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
   },
   {
     slug: "red-flags-public-contract-value-and-accountability",
-    projectSlug: "berliner-strasse-69",
+    projectSlug: "red-flags-in-government-contracts",
     title: "Public Contracts: Looking Beyond the Headline Deal",
     subtitle:
       "The questions that help citizens judge who carries the risk and what value remains after an agreement is signed.",
@@ -181,7 +181,7 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
   },
   {
     slug: "groundworks-community-budget-tracking-at-ward-level",
-    projectSlug: "marlow-on-mill",
+    projectSlug: "bns-mashinani-groundworks",
     title: "Groundworks: Following the Budget from Paper to the Ward",
     subtitle:
       "Community listening and local scorecards connect approved spending to the services residents encounter.",
@@ -201,7 +201,7 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
   },
   {
     slug: "national-budget-day-the-peoples-watch",
-    projectSlug: "papes-residences",
+    projectSlug: "national-budget-day-peoples-watch",
     title: "National Budget Day: The People’s Watch",
     subtitle:
       "Live reporting connects the budget speech to the allocations in the published documents and the questions citizens ask.",

@@ -8,12 +8,12 @@ interface SelectedWorkSectionProps {
 }
 
 export function SelectedWorkSection({ projects }: SelectedWorkSectionProps) {
-  const p1 = projects.find(p => p.slug === 'riviera-residence') || projects[0];
-  const p2 = projects.find(p => p.slug === 'bunker-37') || projects[1];
-  const p3 = projects.find(p => p.slug === 'australia-residence') || projects[2];
-  const p4 = projects.find(p => p.slug === 'berliner-strasse-69') || projects[3];
-  const p5 = projects.find(p => p.slug === 'marlow-on-mill') || projects[4];
-  const p6 = projects.find(p => p.slug === 'venetian-penthouse') || projects[5];
+  const p1 = projects.find(p => p.slug === 'county-budget-where-money-comes-from') || projects[0];
+  const p2 = projects.find(p => p.slug === 'national-infrastructure-fund') || projects[1];
+  const p3 = projects.find(p => p.slug === 'before-budget-day') || projects[2];
+  const p4 = projects.find(p => p.slug === 'red-flags-in-government-contracts') || projects[3];
+  const p5 = projects.find(p => p.slug === 'bns-mashinani-groundworks') || projects[4];
+  const p6 = projects.find(p => p.slug === 'youth-economic-opportunities') || projects[5];
 
   return (
     <section id="selected-work" className="bg-[#FAF9F6] text-[#11110F] py-28 md:py-40 border-t border-[#11110F]/15 overflow-hidden">
@@ -44,7 +44,7 @@ export function SelectedWorkSection({ projects }: SelectedWorkSectionProps) {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             <Link
-              to="/work"
+              to="/projects"
               className="group inline-flex items-center gap-2.5 text-xs font-mono uppercase tracking-[0.2em] font-semibold text-[#11110F] hover:text-[#77736C] transition-colors pb-1 border-b border-[#11110F] self-start md:self-auto"
             >
               <span>View All Projects ({projects.length})</span>
@@ -64,7 +64,7 @@ export function SelectedWorkSection({ projects }: SelectedWorkSectionProps) {
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             >
               <Link
-                to={`/work/${p1.slug}`}
+                to={`/projects/${p1.slug}`}
                 className="group block"
               >
                 <div className="relative aspect-[16/9] md:aspect-[21/9] overflow-hidden bg-zinc-200 border border-[#11110F]/10 shadow-sm">
@@ -113,7 +113,7 @@ export function SelectedWorkSection({ projects }: SelectedWorkSectionProps) {
                 transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
                 className="lg:col-span-8"
               >
-                <Link to={`/work/${p2.slug}`} className="group block">
+                <Link to={`/projects/${p2.slug}`} className="group block">
                   <div className="relative aspect-[16/10] overflow-hidden bg-zinc-200 border border-[#11110F]/10 shadow-sm">
                     <img
                       src={p2.heroImage}
@@ -141,7 +141,7 @@ export function SelectedWorkSection({ projects }: SelectedWorkSectionProps) {
                   <span className="text-[10px] uppercase tracking-[0.25em] text-[#77736C] font-mono block mb-3">
                     PROJECT 02 // MASTERPLAN
                   </span>
-                  <Link to={`/work/${p2.slug}`} className="group">
+                  <Link to={`/projects/${p2.slug}`} className="group">
                     <h3 className="font-display text-3xl sm:text-4xl font-light tracking-tight text-[#11110F] transition-transform duration-300 group-hover:-translate-y-1 mb-3">
                       {p2.title}
                     </h3>
@@ -159,7 +159,7 @@ export function SelectedWorkSection({ projects }: SelectedWorkSectionProps) {
                     {p2.category}
                   </span>
                   <Link
-                    to={`/work/${p2.slug}`}
+                    to={`/projects/${p2.slug}`}
                     className="group inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] font-semibold text-[#11110F]"
                   >
                     <span>Explore</span>
@@ -180,7 +180,7 @@ export function SelectedWorkSection({ projects }: SelectedWorkSectionProps) {
                 transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
                 className="lg:col-span-5"
               >
-                <Link to={`/work/${p3.slug}`} className="group block">
+                <Link to={`/projects/${p3.slug}`} className="group block">
                   <div className="relative aspect-[3/4] overflow-hidden bg-zinc-200 border border-[#11110F]/10 shadow-sm">
                     <img
                       src={p3.heroImage}
@@ -207,7 +207,7 @@ export function SelectedWorkSection({ projects }: SelectedWorkSectionProps) {
                 <span className="text-[10px] uppercase tracking-[0.25em] text-[#77736C] font-mono block mb-4">
                   PROJECT 03 // LUXURY RESIDENTIAL
                 </span>
-                <Link to={`/work/${p3.slug}`} className="group">
+                <Link to={`/projects/${p3.slug}`} className="group">
                   <h3 className="font-display text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-[#11110F] leading-[1.02] transition-transform duration-300 group-hover:-translate-y-1 mb-6">
                     {p3.title}
                   </h3>
@@ -226,7 +226,7 @@ export function SelectedWorkSection({ projects }: SelectedWorkSectionProps) {
                   </div>
                 </div>
                 <Link
-                  to={`/work/${p3.slug}`}
+                  to={`/projects/${p3.slug}`}
                   className="group inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] font-semibold text-[#11110F] pb-1 border-b border-[#11110F]"
                 >
                   <span>View Full Case Study</span>
@@ -245,7 +245,7 @@ export function SelectedWorkSection({ projects }: SelectedWorkSectionProps) {
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             >
               <Link
-                to={`/work/${p4.slug}`}
+                to={`/projects/${p4.slug}`}
                 className="group block"
               >
                 <div className="relative aspect-[16/9] md:aspect-[21/9] overflow-hidden bg-zinc-900 border border-[#11110F]/10 shadow-sm">
@@ -298,7 +298,7 @@ export function SelectedWorkSection({ projects }: SelectedWorkSectionProps) {
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="md:col-span-7"
               >
-                <Link to={`/work/${p5.slug}`} className="group block">
+                <Link to={`/projects/${p5.slug}`} className="group block">
                   <div className="relative aspect-[4/3] overflow-hidden bg-zinc-200 border border-[#11110F]/10 shadow-sm">
                     <img
                       src={p5.heroImage}
@@ -338,7 +338,7 @@ export function SelectedWorkSection({ projects }: SelectedWorkSectionProps) {
                 transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
                 className="md:col-span-5 md:pt-16"
               >
-                <Link to={`/work/${p6.slug}`} className="group block">
+                <Link to={`/projects/${p6.slug}`} className="group block">
                   <div className="relative aspect-[3/4] overflow-hidden bg-zinc-200 border border-[#11110F]/10 shadow-sm">
                     <img
                       src={p6.heroImage}

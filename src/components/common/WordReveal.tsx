@@ -1,4 +1,4 @@
-import { motion, useReducedMotion, type Variants } from 'framer-motion';
+import { motion, useReducedMotion, type Variants, type MotionValue } from 'framer-motion';
 
 interface WordRevealProps {
   text: string;
@@ -6,6 +6,9 @@ interface WordRevealProps {
   as?: 'h1' | 'h2' | 'h3' | 'p' | 'blockquote' | 'span';
   staggerMs?: number;
   delayMs?: number;
+  highlightWords?: string[];
+  highlightColor?: MotionValue<string> | string;
+  highlightClassName?: string;
 }
 
 export function WordReveal({
@@ -14,6 +17,9 @@ export function WordReveal({
   as = 'p',
   staggerMs = 30,
   delayMs = 0,
+  highlightWords,
+  highlightColor,
+  highlightClassName = '',
 }: WordRevealProps) {
   const shouldReduceMotion = useReducedMotion();
   const words = text.split(/\s+/).filter(Boolean);
@@ -46,6 +52,12 @@ export function WordReveal({
 
   const Component = motion[as] as any;
 
+  const isHighlighted = (w: string) => {
+    if (!highlightWords || highlightWords.length === 0) return false;
+    const clean = w.toLowerCase().replace(/[^a-z0-9]/g, '');
+    return highlightWords.some((hw) => hw.toLowerCase().replace(/[^a-z0-9]/g, '') === clean);
+  };
+
   return (
     <Component
       variants={containerVariants}
@@ -54,13 +66,20 @@ export function WordReveal({
       viewport={{ once: true, amount: 0.2 }}
       className={`inline-block ${className}`}
     >
-      {words.map((word, idx) => (
-        <span key={`${word}-${idx}`} className="inline-block whitespace-nowrap overflow-hidden mr-[0.28em] last:mr-0">
-          <motion.span variants={wordVariants} className="inline-block">
-            {word}
-          </motion.span>
-        </span>
-      ))}
+      {words.map((word, idx) => {
+        const highlighted = isHighlighted(word);
+        return (
+          <span key={`${word}-${idx}`} className="inline-block whitespace-nowrap overflow-hidden mr-[0.28em] last:mr-0">
+            <motion.span
+              variants={wordVariants}
+              style={highlighted && highlightColor ? { color: highlightColor } : undefined}
+              className={`inline-block ${highlighted && highlightClassName ? highlightClassName : ''}`}
+            >
+              {word}
+            </motion.span>
+          </span>
+        );
+      })}
     </Component>
   );
 }

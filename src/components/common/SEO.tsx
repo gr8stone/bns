@@ -52,6 +52,34 @@ const STATIC_METADATA: Record<string, PageMetadata> = {
     canonicalPath: '/programmes',
     schemaType: 'CollectionPage',
   },
+  '/studio': {
+    title: 'BNS Studios | Impact Production & Creative Civic Media | Budget Ndio Story',
+    description:
+      'BNS Studios translates complex research into high-impact podcasts, animations, and documentaries, with ≥ 40% of net profits reinvested into BNS Foundation civic work.',
+    canonicalPath: '/studio',
+    schemaType: 'WebPage',
+  },
+  '/ratecard': {
+    title: 'Rate Card | BNS Studios Commercial Production Pricing | Budget Ndio Story',
+    description:
+      'Official production tariffs for BNS Studios podcasts, kinetic animated explainers, research documentaries, digital campaigns, and town halls.',
+    canonicalPath: '/ratecard',
+    schemaType: 'WebPage',
+  },
+  '/whitepaper': {
+    title: 'Two-Entity Model Whitepaper | Budget Ndio Story',
+    description:
+      'The institutional governance architecture, fiduciary endowment covenant, and commercial studio model powering Budget Ndio Story.',
+    canonicalPath: '/whitepaper',
+    schemaType: 'Article',
+  },
+  '/faq': {
+    title: 'Frequently Asked Questions | Budget Ndio Story',
+    description:
+      'Common questions regarding the Two-Entity Model, BNS Studios tariffs, civic programmes, partnerships, and public finance data integrity.',
+    canonicalPath: '/faq',
+    schemaType: 'WebPage',
+  },
   '/contact': {
     title: 'Contact Budget Ndio Story | Civic Action & Public Finance',
     description:
@@ -105,7 +133,9 @@ const ORGANIZATION_SCHEMA = {
 function getDetailMetadata(pathname: string): PageMetadata | undefined {
   const projectMatch = pathname.match(/^\/(?:projects|work)\/([^/]+)$/);
   if (projectMatch) {
-    const project = PROJECTS.find((item) => item.slug === projectMatch[1]);
+    const project = PROJECTS.find(
+      (item) => item.slug === projectMatch[1] || item.aliases?.includes(projectMatch[1])
+    );
     if (!project) return undefined;
 
     return {
@@ -143,7 +173,7 @@ function getMetadata(pathname: string): PageMetadata {
   const detailMetadata = getDetailMetadata(pathname);
   if (detailMetadata) return detailMetadata;
 
-  if (pathname.startsWith('/blog') || pathname.startsWith('/journal') || pathname === '/process' || pathname === '/studio') {
+  if (pathname.startsWith('/blog') || pathname.startsWith('/journal') || pathname === '/process') {
     return {
       ...STATIC_METADATA['/about'],
       canonicalPath: '/about',

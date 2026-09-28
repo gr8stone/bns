@@ -29,7 +29,7 @@ export function BeforeAfterFeature() {
       afterLabel: 'FINAL CGI',
       heading: 'From preliminary concept render to photorealistic dusk reality.',
       description: 'The client supplied 2 rough preliminary concept renders. Our studio rebuilt lighting physics, layered botanical landscaping, and created high-converting marketing visuals in 3 weeks.',
-      projectSlug: 'riviera-residence',
+      projectSlug: 'county-budget-where-money-comes-from',
     },
     {
       id: 'viewport-to-final',
@@ -40,7 +40,7 @@ export function BeforeAfterFeature() {
       afterLabel: 'FINAL',
       heading: 'Turning raw wireframes into corporate leasing collateral.',
       description: 'Raw structural column grids and Revit blueprints transformed into a luminous corporate headquarters with triple-glazed acoustic facades.',
-      projectSlug: 'berliner-strasse-69',
+      projectSlug: 'red-flags-in-government-contracts',
     },
     {
       id: 'plot-to-development',
@@ -51,7 +51,7 @@ export function BeforeAfterFeature() {
       afterLabel: 'FINAL',
       heading: 'Pre-selling luxury estates before groundbreaking.',
       description: 'Empty coastal sand topography brought to life with 8 exclusive cantilevered pavilions, resulting in a 100% off-plan sellout within 120 days.',
-      projectSlug: 'australia-residence',
+      projectSlug: 'before-budget-day',
     },
     {
       id: 'old-to-renovated',
@@ -62,7 +62,7 @@ export function BeforeAfterFeature() {
       afterLabel: 'FINAL',
       heading: 'Visualizing potential across historical adaptive reuse.',
       description: 'A 1943 reinforced concrete monolith reimagined into a contemporary cultural foundation and rooftop lantern over Hamburg.',
-      projectSlug: 'bunker-37',
+      projectSlug: 'national-infrastructure-fund',
     },
   ];
 
@@ -99,7 +99,7 @@ export function BeforeAfterFeature() {
               Drag the hairline slider to inspect how we transform blueprints, raw CAD, and client concept sketches into sensory marketing reality.
             </p>
             <Link
-              to={`/work/${current.projectSlug}`}
+              to={`/projects/${current.projectSlug}`}
               className="group inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] font-semibold text-[#11110F] hover:text-[#77736C] transition-colors pb-1 border-b border-[#11110F]"
             >
               <span>View Project Case Study</span>

@@ -2,20 +2,20 @@ import { motion } from 'framer-motion';
 
 export function TrustSection() {
   const partners = [
-    { name: 'ARCHITECTURE STUDIO', role: 'International Masterplanners' },
-    { name: 'PATRIZIA REAL ESTATE', role: 'Pan-European Investment Fund' },
-    { name: 'SHERPA DEVELOPMENTS', role: 'Luxury Residential Group' },
-    { name: 'GALA DEVELOPMENTS', role: 'Commercial Real Estate' },
-    { name: 'KAURI CAB URBAN', role: 'Metropolitan Housing Fund' },
-    { name: 'EZA ARCHITEKTEN', role: 'Swiss Architectural Atelier' },
-    { name: 'CASTELMAN PARTNERS', role: 'Hospitality Assets' },
-    { name: 'HAMMER & SCHMIDT', role: 'Heritage Restoration' },
+    { name: 'TISA KENYA', role: 'Devolution & Citizen Accountability' },
+    { name: 'AFRODAD', role: 'African Sovereign Debt Coalition' },
+    { name: 'COMMITTEE ON FISCAL STUDIES', role: 'University of Nairobi Research Desk' },
+    { name: 'CENTS GOVERNANCE ACADEMY', role: 'Public Finance Governance & Training' },
+    { name: 'HOUSE OF FISCAL WISDOM', role: 'Macroeconomic & Trade Forensics' },
+    { name: 'CABRI', role: 'Collaborative Africa Budget Reform' },
+    { name: 'COMMUNITY VOICES NETWORK', role: 'Grassroots Citizen Organizing' },
+    { name: 'YOUTH BUDGET COALITION', role: 'County Accountability Champions' },
   ];
 
   const locations = [
-    { city: 'London', role: 'Creative Direction & Client Strategy', address: '18 Berkeley Square, Mayfair' },
-    { city: 'Zurich', role: 'BIM & Technical Precision Hub', address: 'Gotthardstrasse 26, Enge' },
-    { city: 'Tashkent', role: 'Central Asia Production Atelier', address: 'Amir Timur Avenue 107B' },
+    { city: 'Nairobi', role: 'Civic Studio & Research Newsroom', address: 'National Headquarters, Nairobi' },
+    { city: 'Mombasa', role: 'Coastal Civic Desk & Grassroots Hub', address: 'Coast Region Regional Desk' },
+    { city: 'Kisumu', role: 'Western Devolution & Ward Desk', address: 'Lake Region Civic Coordinating Center' },
   ];
 
   return (
