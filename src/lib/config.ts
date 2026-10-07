@@ -5,7 +5,7 @@ type Env = Record<string, string | undefined>;
 const env: Env =
   import.meta.env ?? (globalThis as { process?: { env: Env } }).process?.env ?? {};
 
-export const SANITY_PROJECT_ID: string = env.VITE_SANITY_PROJECT_ID || "REPLACE_WITH_SANITY_PROJECT_ID";
+export const SANITY_PROJECT_ID: string = env.VITE_SANITY_PROJECT_ID || "zwv26w8q";
 export const SANITY_DATASET: string = env.VITE_SANITY_DATASET || "production";
 export const SANITY_API_VERSION: string = env.VITE_SANITY_API_VERSION || "2025-01-01";
 
