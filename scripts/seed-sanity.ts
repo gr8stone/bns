@@ -71,9 +71,10 @@ function prepare(value: unknown): unknown {
   return value;
 }
 
+// IDs containing "." are private in Sanity (not publicly readable), so use "-".
 function docId(type: string, item: Record<string, unknown>, index: number): string {
   const key = String(item.slug ?? item.id ?? item.code ?? item.number ?? index);
-  return `${type}.${key.replace(/[^a-zA-Z0-9_-]/g, "-")}`;
+  return `${type}-${key.replace(/[^a-zA-Z0-9_-]/g, "-")}`;
 }
 
 const docs = Object.entries(COLLECTIONS).flatMap(([type, items]) =>
@@ -84,6 +85,12 @@ const docs = Object.entries(COLLECTIONS).flatMap(([type, items]) =>
     ...(prepare(item) as object),
   })),
 );
+
+const seededTypes = Object.keys(COLLECTIONS);
+await client.delete({
+  query: `*[_type in $types && !(_id in path("*")) && !(_id in path("drafts.**"))]`,
+  params: { types: seededTypes },
+});
 
 const BATCH = 50;
 for (let i = 0; i < docs.length; i += BATCH) {
