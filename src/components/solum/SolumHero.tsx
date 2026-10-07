@@ -2,54 +2,21 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { HOME_CONTENT } from "../../data/content/home";
 import { ROUTES } from "../../lib/routes";
 
-const CLIENT_AVATARS = [
-  "/images/bns/optimized/nelly-avatar.webp",
-  "/images/bns/optimized/latiff-avatar.webp",
-  "/images/bns/optimized/james-avatar.webp",
-  "/images/bns/optimized/calvina-avatar.webp",
-];
-
-const CLIENT_LOGOS = [
-  {
-    name: "TISA",
-    label: "The Institute for Social Accountability (TISA)",
-    src: "/images/bns/partners/tisa.svg",
-  },
-  {
-    name: "House of Fiscal Wisdom",
-    label: "House of Fiscal Wisdom",
-    src: "/images/bns/optimized/house-of-fiscal-wisdom.webp",
-  },
-  {
-    name: "UON CFS",
-    label: "University of Nairobi Committee on Fiscal Studies (UON CFS)",
-    src: "/images/bns/optimized/committee-on-fiscal-studies.webp",
-  },
-  {
-    name: "Budget Ndio Story",
-    label: "Budget Ndio Story",
-    src: "/images/bns/logo.svg",
-  },
-];
+const CONTENT = HOME_CONTENT.hero;
+const CLIENT_AVATARS = CONTENT.youthCard.avatars;
+const CLIENT_LOGOS = CONTENT.partnerLogos;
 
 export function SolumHero() {
   const shouldReduceMotion = useReducedMotion();
   const [isPlayingVideo, setIsPlayingVideo] = useState(false);
 
-  const heroImage = "/images/bns/optimized/129A3912-hero.webp";
-  const heroVideoUrl = "/images/bns/tiktoklanding.mp4";
+  const heroImage = CONTENT.heroImage;
+  const heroVideoUrl = CONTENT.heroVideoUrl;
 
-  const tickerItems = [
-    "FOLLOW THE BUDGET. FIND THE STORY.",
-    "BNS FOUNDATION • BNS STUDIOS",
-    "50,000+ YOUNG KENYANS ENGAGED",
-    "ALL 47 COUNTIES ACROSS KENYA",
-    "CROSS-SUBSIDISED CIVIC IMPACT",
-
-    "BUDGET NDIO STORY",
-  ];
+  const tickerItems = CONTENT.tickerItems;
 
   return (
     <section className="relative w-full bg-white text-text-base pt-16 sm:pt-20 border-b border-black/[0.08] overflow-hidden select-none">
@@ -91,9 +58,9 @@ export function SolumHero() {
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="font-display text-[clamp(44px,7.5vw,112px)] font-medium leading-[0.93] tracking-[-0.06em] text-text-base"
             >
-              Follow the budget.{" "}
+              {CONTENT.headlineLead}{" "}
               <span className="text-[#2446EC] block sm:inline">
-                Find the story.
+                {CONTENT.headlineAccent}
               </span>
             </motion.h1>
           </div>
@@ -101,9 +68,7 @@ export function SolumHero() {
           {/* Right: Actions & Micro Metadata */}
           <div className="lg:col-span-4 flex flex-col justify-end lg:items-end gap-6">
             <p className="font-sans text-xs sm:text-sm text-text-muted leading-relaxed font-normal max-w-sm">
-              A platform for budget literacy, civic accountability & impact
-              storytelling. Making Kenya&apos;s public budgets readable,
-              relatable, and responsive across all 47 counties.
+              {CONTENT.description}
             </p>
 
             <div className="flex flex-wrap items-center gap-3">
@@ -111,14 +76,14 @@ export function SolumHero() {
                 to={ROUTES.contact}
                 className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-[#2446EC] text-white hover:bg-[#101010] transition-colors font-mono text-xs uppercase tracking-wider rounded-none group border-0"
               >
-                <span>GET INVOLVED</span>
+                <span>{CONTENT.primaryCtaLabel}</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
               </Link>
               <Link
                 to={ROUTES.projects}
                 className="inline-flex items-center gap-2 px-5 py-3.5 border border-black/20 text-text-base hover:border-black hover:bg-ivory transition-colors font-mono text-xs uppercase tracking-wider rounded-none"
               >
-                <span>EXPLORE WORK</span>
+                <span>{CONTENT.secondaryCtaLabel}</span>
               </Link>
             </div>
           </div>
@@ -142,7 +107,7 @@ export function SolumHero() {
               <>
                 <img
                   src={heroImage}
-                  alt="Budget Ndio Story Civic Convening"
+                  alt={CONTENT.heroImageAlt}
                   fetchPriority="high"
                   className="w-full h-full object-cover filter contrast-[1.05] brightness-95 group-hover:scale-[1.02] transition-transform duration-700 ease-out"
                 />
@@ -152,18 +117,18 @@ export function SolumHero() {
                 {/* Video Play Button Overlay */}
                 <button
                   onClick={() => setIsPlayingVideo(true)}
-                  aria-label="Play documentary reel"
+                  aria-label={CONTENT.playButtonAriaLabel}
                   className="absolute bottom-5 left-5 z-20 flex items-center gap-3 px-4 py-2.5 bg-white text-text-base hover:bg-[#2446EC] hover:text-white transition-colors border border-black/10 rounded-none shadow-sm cursor-pointer group/btn"
                 >
                   <Play className="w-3.5 h-3.5 fill-current" />
                   <span className="font-mono text-xs font-semibold uppercase tracking-wider">
-                    Watch Reel &bull; 2026
+                    {CONTENT.playButtonLabel}
                   </span>
                 </button>
 
                 {/* Saturated Color Tag */}
                 <div className="absolute top-4 right-4 z-20 bg-[#2446EC] text-white font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-none">
-                  LIVE DOC
+                  {CONTENT.liveTag}
                 </div>
               </>
             )}
@@ -178,14 +143,13 @@ export function SolumHero() {
 
               <div>
                 <span className="font-mono text-[10px] uppercase tracking-widest text-slate block mb-2">
-                  COVERAGE & REACH
+                  {CONTENT.coverageCard.eyebrow}
                 </span>
                 <div className="font-display text-4xl sm:text-5xl font-medium tracking-tight text-text-base leading-none mb-3">
-                  47 / 47
+                  {CONTENT.coverageCard.metric}
                 </div>
                 <p className="font-sans text-xs text-text-muted leading-relaxed font-normal">
-                  Counties engaged through surveys, town halls, digital
-                  storytelling, and community dialogues.
+                  {CONTENT.coverageCard.description}
                 </p>
               </div>
 
@@ -193,8 +157,8 @@ export function SolumHero() {
                 to={ROUTES.projects}
                 className="pt-4 mt-4 border-t border-black/[0.08] flex items-center justify-between text-xs font-mono text-[#2446EC] font-medium hover:underline"
               >
-                <span>OPEN DATA ARCHIVE</span>
-                <span className="text-[#2446EC]">&rarr;</span>
+                <span>{CONTENT.coverageCard.linkLabel}</span>
+                <span className="text-[#2446EC]">{CONTENT.coverageCard.linkArrow}</span>
               </Link>
             </div>
 
@@ -203,7 +167,7 @@ export function SolumHero() {
               <div>
                 <div className="flex items-center justify-between mb-3">
                   <span className="font-mono text-[10px] uppercase tracking-widest text-[#2446EC] font-medium">
-                    YOUTH CONSTITUENCY
+                    {CONTENT.youthCard.eyebrow}
                   </span>
                   <span className="w-2 h-2 bg-[#2446EC] rounded-none animate-pulse" />
                 </div>
@@ -213,7 +177,7 @@ export function SolumHero() {
                     <img
                       key={i}
                       src={src}
-                      alt="Citizen advocate"
+                      alt={CONTENT.youthCard.avatarAlt}
                       width={32}
                       height={32}
                       className="inline-block w-8 h-8 rounded-none border border-white object-cover"
@@ -222,16 +186,15 @@ export function SolumHero() {
                 </div>
 
                 <div className="font-display text-xl font-medium tracking-tight text-text-base">
-                  50,000+ Engaged
+                  {CONTENT.youthCard.metric}
                 </div>
                 <p className="font-sans text-xs text-text-muted leading-tight mt-1">
-                  Young Kenyans mobilized across all 47 counties, scaling beyond
-                  200,000.
+                  {CONTENT.youthCard.description}
                 </p>
               </div>
 
               <div className="pt-3 mt-3 border-t border-black/[0.08] flex items-center gap-2 font-mono text-[11px] text-slate">
-                <span className="text-coral">&#9670;</span> Verified Civic Reach
+                <span className="text-coral">{CONTENT.youthCard.verifiedIcon}</span> {CONTENT.youthCard.verifiedLabel}
               </div>
             </div>
           </div>
@@ -243,7 +206,7 @@ export function SolumHero() {
         <div className="mt-12 pt-8 border-t border-black/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           <div className="flex items-center gap-2 font-mono text-[11px] text-text-muted uppercase tracking-wider">
             <span className="w-1.5 h-1.5 bg-black/40 inline-block" />
-            <span>PARTNERS & COLLABORATORS</span>
+            <span>{CONTENT.partnersLabel}</span>
           </div>
 
           <div className="flex items-center flex-wrap gap-6 sm:gap-10">

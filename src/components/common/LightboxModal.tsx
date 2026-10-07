@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { SHOWCASE_CONTENT } from '../../data/content/showcase';
+
+const content = SHOWCASE_CONTENT.lightbox;
 
 export interface LightboxImage {
   url: string;
@@ -68,21 +71,21 @@ export function LightboxModal({
           <div className="flex items-center gap-3">
             <span className="w-1.5 h-1.5 bg-white rounded-full inline-block" />
             <span className="uppercase tracking-widest text-white font-medium">
-              4K CIVIC MEDIA INSPECTOR
+              {content.title}
             </span>
-            <span className="text-white/40 hidden sm:inline">&mdash;</span>
+            <span className="text-white/40 hidden sm:inline">{content.titleDivider}</span>
             <span className="text-white/60 hidden sm:inline tabular-nums">
-              {String(currentIndex + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
+              {String(currentIndex + 1).padStart(2, '0')} {content.counterSeparator} {String(images.length).padStart(2, '0')}
             </span>
           </div>
 
           <div className="flex items-center gap-3">
             <span className="text-[11px] text-white/40 hidden md:inline">
-              [ ESC TO CLOSE &bull; &larr; &rarr; TO NAVIGATE ]
+              {content.keyboardHint}
             </span>
             <button
               onClick={onClose}
-              aria-label="Close Lightbox"
+              aria-label={content.closeAriaLabel}
               className="w-10 h-10 border border-white/20 hover:border-white text-white flex items-center justify-center transition-colors cursor-pointer"
             >
               <X className="w-5 h-5" />
@@ -99,7 +102,7 @@ export function LightboxModal({
           {images.length > 1 && (
             <button
               onClick={() => onNavigate((currentIndex - 1 + images.length) % images.length)}
-              aria-label="Previous image"
+              aria-label={content.previousAriaLabel}
               className="absolute left-2 sm:left-4 z-20 w-12 h-12 border border-white/20 bg-black/60 hover:bg-white hover:text-black hover:border-white text-white flex items-center justify-center transition-colors cursor-pointer group"
             >
               <ChevronLeft className="w-6 h-6 transform group-hover:-translate-x-0.5 transition-transform" />
@@ -118,7 +121,7 @@ export function LightboxModal({
             >
               <img
                 src={currentImage.url}
-                alt={currentImage.caption || 'BNS Civic Visual'}
+                alt={currentImage.caption || content.imageAltFallback}
                 className="max-w-full max-h-[78vh] w-auto h-auto object-contain border border-white/10 shadow-2xl"
               />
             </motion.div>
@@ -128,7 +131,7 @@ export function LightboxModal({
           {images.length > 1 && (
             <button
               onClick={() => onNavigate((currentIndex + 1) % images.length)}
-              aria-label="Next image"
+              aria-label={content.nextAriaLabel}
               className="absolute right-2 sm:right-4 z-20 w-12 h-12 border border-white/20 bg-black/60 hover:bg-white hover:text-black hover:border-white text-white flex items-center justify-center transition-colors cursor-pointer group"
             >
               <ChevronRight className="w-6 h-6 transform group-hover:translate-x-0.5 transition-transform" />
@@ -148,7 +151,7 @@ export function LightboxModal({
               </span>
             )}
             <span className="text-white/60 font-sans text-xs">
-              {currentImage.caption || 'High-fidelity civic media visual'}
+              {currentImage.caption || content.captionFallback}
             </span>
           </div>
 
@@ -166,7 +169,7 @@ export function LightboxModal({
               >
                 <img
                   src={img.url}
-                  alt="Thumbnail"
+                  alt={content.thumbnailAlt}
                   className="w-full h-full object-cover"
                 />
               </button>

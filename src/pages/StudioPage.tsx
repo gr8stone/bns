@@ -3,10 +3,13 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, Minus, Plus } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { STUDIO_FAQS } from "../data/comprehensiveFaq";
+import { STUDIO_PAGE_CONTENT } from "../data/content/studioPage";
 import { STUDIO_RATE_CARD } from "../data/studio";
 import { ROUTES } from "../lib/routes";
 
 export function StudioPage() {
+  const { breadcrumb, hero, metrics, panorama, reel, rateSchedule, faq: faqSection, closing } =
+    STUDIO_PAGE_CONTENT;
   const shouldReduceMotion = useReducedMotion();
   const [openFaqId, setOpenFaqId] = useState<string | null>(null);
   const [activeRateIndex, setActiveRateIndex] = useState<number>(0);
@@ -27,14 +30,14 @@ export function StudioPage() {
             className="inline-flex items-center gap-2 hover:text-[#2446EC] transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>BNS FOUNDATION</span>
+            <span>{breadcrumb.backLabel}</span>
           </Link>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 bg-[#2446EC] inline-block" />
-            <span className="text-[#2446EC] font-semibold">STUDIO</span>
-            <span>//</span>
+            <span className="text-[#2446EC] font-semibold">{breadcrumb.sectionLabel}</span>
+            <span>{breadcrumb.separator}</span>
             <span className="text-[#101010] font-semibold">
-              COMMERCIAL MANDATE
+              {breadcrumb.pageLabel}
             </span>
           </div>
         </div>
@@ -50,27 +53,24 @@ export function StudioPage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
               <div className="lg:col-span-7">
                 <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-[-0.04em] uppercase text-[#101010] leading-[0.94]">
-                  We Translate Evidence Into Culture That{" "}
-                  <span className="text-[#2446EC]">Compels Action.</span>
+                  {hero.titleLead}{" "}
+                  <span className="text-[#2446EC]">{hero.titleHighlight}</span>
                 </h1>
               </div>
 
               <div className="lg:col-span-5 space-y-6 pt-2">
                 <p className="font-sans text-lg sm:text-xl text-[#101010] font-normal leading-relaxed">
-                  Commissioned research documentaries, animated explainers,
-                  podcasts, and campaigns.
+                  {hero.lead}
                 </p>
                 <p className="font-sans text-sm sm:text-base text-[#757575] font-light leading-relaxed">
-                  A minimum of 40% of net profits is returned annually to BNS
-                  Foundation to fund open civic accountability and grassroots
-                  budget monitoring across all 47 counties.
+                  {hero.body}
                 </p>
                 <div className="pt-2">
                   <Link
                     to={ROUTES.contact}
                     className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#2446EC] text-white hover:bg-[#101010] transition-colors font-mono text-xs uppercase tracking-wider font-semibold rounded-none shadow-sm"
                   >
-                    <span>Commission Brief</span>
+                    <span>{hero.ctaLabel}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
@@ -81,34 +81,34 @@ export function StudioPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-[#101010]/15">
               <div>
                 <span className="font-mono text-[11px] text-[#757575] uppercase tracking-wider block mb-1">
-                  CIVIC REINVESTMENT
+                  {metrics[0].label}
                 </span>
                 <span className="font-mono text-base sm:text-lg font-semibold text-[#2446EC]">
-                  &ge; MASHINANI
+                  {metrics[0].value}
                 </span>
               </div>
               <div>
                 <span className="font-mono text-[11px] text-[#757575] uppercase tracking-wider block mb-1">
-                  TERRITORIAL REACH
+                  {metrics[1].label}
                 </span>
                 <span className="font-mono text-base sm:text-lg font-semibold text-[#101010]">
-                  47 COUNTIES
+                  {metrics[1].value}
                 </span>
               </div>
               <div>
                 <span className="font-mono text-[11px] text-[#757575] uppercase tracking-wider block mb-1">
-                  MASTER SPECIFICATION
+                  {metrics[2].label}
                 </span>
                 <span className="font-mono text-base sm:text-lg font-semibold text-[#101010]">
-                  4K VISUALS &bull; AUDIO
+                  {metrics[2].value}
                 </span>
               </div>
               <div>
                 <span className="font-mono text-[11px] text-[#757575] uppercase tracking-wider block mb-1">
-                  MODEL ARCHITECTURE
+                  {metrics[3].label}
                 </span>
                 <span className="font-mono text-base sm:text-lg font-semibold text-[#101010]">
-                  ENTERPRISE
+                  {metrics[3].value}
                 </span>
               </div>
             </div>
@@ -116,14 +116,14 @@ export function StudioPage() {
             {/* Full-Bleed Panoramic Visual (Zero card border) */}
             <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] overflow-hidden bg-black select-none">
               <img
-                src="/images/bns/studio/studio_cinema_cam.jpg"
-                alt="BNS Studios Cinema Lab"
+                src={panorama.imageSrc}
+                alt={panorama.imageAlt}
                 loading="lazy"
                 className="w-full h-full object-cover filter brightness-95"
               />
               <div className="absolute bottom-4 left-6 right-6 flex items-center justify-between font-mono text-xs text-white/80 uppercase">
-                <span>BNS STUDIOS CINEMA LAB &bull; PRODUCTION EVIDENCE</span>
-                <span>COMMERCIAL REVENUE CIRCULARITY</span>
+                <span>{panorama.captionLeft}</span>
+                <span>{panorama.captionRight}</span>
               </div>
             </div>
           </div>
@@ -140,18 +140,15 @@ export function StudioPage() {
                 <div className="flex items-center gap-3">
                   <span className="w-2.5 h-2.5 bg-[#2446EC] inline-block" />
                   <span className="font-mono text-xs uppercase tracking-widest text-[#2446EC] font-semibold">
-                    02 // PRODUCTION REEL &amp; DISCIPLINE
+                    {reel.eyebrow}
                   </span>
                 </div>
                 <h2 className="font-display text-4xl sm:text-6xl lg:text-7xl font-medium tracking-tight uppercase text-[#101010] leading-[0.94]">
-                  Research Should Not Die In A PDF.
+                  {reel.title}
                 </h2>
               </div>
               <p className="font-sans text-sm sm:text-base text-[#757575] font-light max-w-md leading-relaxed">
-                Millions of dollars are invested into public finance audits and
-                baseline evaluations that sit unread. BNS Studios turns
-                technical findings into high-retention films, audio, and visual
-                journalism that citizens debate.
+                {reel.body}
               </p>
             </div>
 
@@ -160,14 +157,14 @@ export function StudioPage() {
               <video
                 controls
                 playsInline
-                poster="/images/bns/studio/studio_motion_vfx.jpg"
-                src="/images/bns/reels/animation reel opportunities . Where do I start ( nyota programmes  uwezo fund) main landing page .mp4"
+                poster={reel.videoPoster}
+                src={reel.videoSrc}
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-wider text-[#757575]">
-              <span>BNS Studios Motion &amp; Animation Reel</span>
-              <span>4K UHD Master &bull; Rec.709 &bull; EBU R128</span>
+              <span>{reel.captionLeft}</span>
+              <span>{reel.captionRight}</span>
             </div>
 
             {/* Production Discipline Telemetry Strip */}
@@ -182,7 +179,7 @@ export function StudioPage() {
           <div className="flex items-center gap-3 mb-8">
             <span className="w-2.5 h-2.5 bg-[#2446EC] inline-block" />
             <span className="font-mono text-xs uppercase tracking-widest text-[#2446EC] font-semibold">
-              03 // COMMISSION TARIFFS &amp; RATE SCHEDULE
+              {rateSchedule.eyebrow}
             </span>
           </div>
 
@@ -194,21 +191,21 @@ export function StudioPage() {
                 <div className="flex items-center gap-2 mb-1.5">
                   <span className="w-1.5 h-1.5 bg-white inline-block animate-pulse" />
                   <span className="font-mono text-[11px] uppercase tracking-wider text-white font-medium">
-                    RATE SCHEDULE // PROSPECTUS 2026 TARIFFS
+                    {rateSchedule.headerTag}
                   </span>
                 </div>
                 <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-medium tracking-[-0.05em] text-white uppercase leading-none">
-                  COMMERCIAL RATE CARD.
+                  {rateSchedule.title}
                 </h2>
               </div>
               <div className="font-mono text-[11px] text-white/70 space-y-1 sm:text-right">
-                <div>REF: BNS-STUDIO-2026-V1 &bull; USD &bull; NET 30</div>
+                <div>{rateSchedule.reference}</div>
                 <div className="flex items-center sm:justify-end gap-3 pt-0.5">
                   <Link
                     to={ROUTES.ratecard}
                     className="underline underline-offset-4 text-white hover:opacity-80"
                   >
-                    Dedicated /ratecard view &rarr;
+                    {rateSchedule.dedicatedLinkLabel}
                   </Link>
                 </div>
               </div>
@@ -219,10 +216,10 @@ export function StudioPage() {
               {/* Mobile Header Info */}
               <div className="pb-3 flex items-center justify-between">
                 <span className="font-mono text-[10px] uppercase tracking-wider text-white font-semibold">
-                  COMMISSION TARIFFS 2026
+                  {rateSchedule.mobileHeaderLabel}
                 </span>
                 <span className="font-mono text-[10px] text-white/70 uppercase">
-                  6 FLAGSHIP FORMATS
+                  {rateSchedule.mobileFormatsLabel}
                 </span>
               </div>
 
@@ -256,13 +253,13 @@ export function StudioPage() {
               {/* Mobile Bottom Action */}
               <div className="pt-3.5 flex items-center justify-between">
                 <span className="font-mono text-[9px] text-white/70 uppercase tracking-tight">
-                  &ge;40% CIVIC ENDOWMENT
+                  {rateSchedule.mobileEndowmentLabel}
                 </span>
                 <Link
                   to={ROUTES.contact}
                   className="group/btn inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider px-4 py-2 bg-white text-[#2446EC] hover:bg-[#101010] hover:text-white transition-colors font-semibold"
                 >
-                  <span>Brief Desk</span>
+                  <span>{rateSchedule.mobileCtaLabel}</span>
                   <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 ease-out group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
                 </Link>
               </div>
@@ -322,11 +319,10 @@ export function StudioPage() {
                   {/* Meta Top Line */}
                   <div className="flex items-center justify-between pb-4 border-b border-[#101010]/10">
                     <span className="font-mono text-xs font-semibold text-[#2446EC] tracking-wider uppercase">
-                      {STUDIO_RATE_CARD[activeRateIndex].code} // SCOPE &amp;
-                      SPECIFICATIONS
+                      {STUDIO_RATE_CARD[activeRateIndex].code} {rateSchedule.inspectorScopeLabel}
                     </span>
                     <span className="font-mono text-xs text-[#757575] uppercase">
-                      ITEM 0{activeRateIndex + 1} OF 06
+                      {rateSchedule.inspectorItemPrefix}{activeRateIndex + 1} {rateSchedule.inspectorItemSuffix}
                     </span>
                   </div>
 
@@ -345,7 +341,7 @@ export function StudioPage() {
                 <div className="pt-6 mt-6 border-t border-[#101010]/10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
                   <div>
                     <span className="font-mono text-[10px] text-[#757575] uppercase tracking-wider block">
-                      BASE INVESTMENT
+                      {rateSchedule.investmentLabel}
                     </span>
                     <div className="flex items-baseline gap-2">
                       <span className="font-mono text-xl sm:text-3xl font-bold text-[#101010] tabular-nums">
@@ -362,7 +358,7 @@ export function StudioPage() {
                       to={ROUTES.contact}
                       className="group/btn inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider px-5 py-3 bg-[#2446EC] text-white hover:bg-[#101010] transition-colors font-semibold shadow-sm"
                     >
-                      <span>Commission Brief</span>
+                      <span>{rateSchedule.ctaLabel}</span>
                       <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 ease-out group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
                     </Link>
                   </div>
@@ -372,24 +368,14 @@ export function StudioPage() {
 
             {/* 4. Compact 3-Column Disclosures Footer */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-6 pt-4 border-t border-white/20 font-mono text-[10px] md:text-[11px] text-white/70 leading-normal">
-              <div>
-                <span className="text-white uppercase font-semibold">
-                  DISBURSEMENTS:
-                </span>{" "}
-                Outside Nairobi invoiced at verified net cost.
-              </div>
-              <div>
-                <span className="text-white uppercase font-semibold">
-                  EDITORIAL FIREWALL:
-                </span>{" "}
-                BNS maintains independent civic oversight.
-              </div>
-              <div>
-                <span className="text-white uppercase font-semibold">
-                  RETAINERS:
-                </span>{" "}
-                Multi-year grants receive customized rate models.
-              </div>
+              {rateSchedule.disclosures.map((disclosure) => (
+                <div key={disclosure.label}>
+                  <span className="text-white uppercase font-semibold">
+                    {disclosure.label}
+                  </span>{" "}
+                  {disclosure.body}
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -402,7 +388,7 @@ export function StudioPage() {
           <div className="flex items-center gap-3 mb-12">
             <span className="w-2.5 h-2.5 bg-[#2446EC] inline-block" />
             <span className="font-mono text-xs uppercase tracking-widest text-[#2446EC] font-semibold">
-              04 // PRODUCTION ETHOS &amp; COMMONLY ASKED QUESTIONS
+              {faqSection.eyebrow}
             </span>
           </div>
 
@@ -435,10 +421,10 @@ export function StudioPage() {
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-[#101010]/12 items-end">
               <div className="md:col-span-8">
                 <span className="font-mono text-xs uppercase tracking-wider text-[#757575] block mb-2">
-                  KNOWLEDGE BASE
+                  {faqSection.kicker}
                 </span>
                 <h3 className="font-display text-3xl sm:text-5xl font-medium tracking-tight text-[#101010] uppercase leading-none">
-                  Frequently Asked Questions.
+                  {faqSection.title}
                 </h3>
               </div>
               <div className="md:col-span-4 md:text-right">
@@ -446,7 +432,7 @@ export function StudioPage() {
                   to={ROUTES.faq}
                   className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[#2446EC] hover:underline font-semibold"
                 >
-                  <span>Complete Knowledge Base &rarr;</span>
+                  <span>{faqSection.allLinkLabel}</span>
                 </Link>
               </div>
             </div>
@@ -534,11 +520,10 @@ export function StudioPage() {
         <div className="mt-16 sm:mt-24 pt-10 border-t border-[#101010]/12 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
             <h3 className="font-display text-2xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#101010] leading-tight uppercase">
-              READY TO MAKE YOUR EVIDENCE LAND?
+              {closing.title}
             </h3>
             <p className="font-sans text-xs sm:text-sm text-[#757575] font-light max-w-xl leading-relaxed">
-              Reach out to our production team in Nairobi to discuss project
-              scoping, review retainer agreements, or submit a commission brief.
+              {closing.body}
             </p>
           </div>
 
@@ -547,13 +532,13 @@ export function StudioPage() {
               to={ROUTES.contact}
               className="px-7 py-3.5 bg-[#2446EC] text-white border border-[#2446EC] font-mono text-xs uppercase tracking-wider hover:bg-[#101010] hover:border-[#101010] transition-colors rounded-none font-semibold shadow-sm"
             >
-              Write to Production Desk &rarr;
+              {closing.primaryCtaLabel}
             </Link>
             <Link
               to={ROUTES.faq}
               className="px-6 py-3.5 border border-[#101010]/20 text-[#101010] font-mono text-xs uppercase tracking-wider hover:border-[#2446EC] hover:text-[#2446EC] transition-colors rounded-none font-medium"
             >
-              Help &amp; FAQ &rarr;
+              {closing.secondaryCtaLabel}
             </Link>
           </div>
         </div>

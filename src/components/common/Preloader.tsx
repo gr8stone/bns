@@ -1,5 +1,8 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { SITE_CONTENT } from "../../data/content/site";
+
+const { preloader } = SITE_CONTENT;
 
 interface PreloaderProps {
   onSequenceStart?: () => void;
@@ -77,11 +80,11 @@ export function Preloader({ onSequenceStart, onComplete }: PreloaderProps) {
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 bg-[#101010]" />
               <span>
-                Budget Ndio Story&reg; // Civic Media &amp; Public Finance
+                {preloader.topLeftText}
               </span>
             </div>
             <div className="hidden sm:block">
-              <span>Edition 2026 // Civic Tech &amp; Storytelling</span>
+              <span>{preloader.topRightText}</span>
             </div>
           </div>
 
@@ -97,7 +100,7 @@ export function Preloader({ onSequenceStart, onComplete }: PreloaderProps) {
                 }}
                 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-[92px] font-bold tracking-[-0.05em] text-[#101010] leading-none uppercase"
               >
-                Budget Ndio Story&reg;
+                {preloader.wordmark}
               </motion.h1>
             </div>
 
@@ -111,21 +114,21 @@ export function Preloader({ onSequenceStart, onComplete }: PreloaderProps) {
               }}
               className="mt-4 flex items-center gap-3 font-mono text-xs sm:text-sm uppercase tracking-[0.28em] text-[#757575]"
             >
-              <span>Civic Media</span>
+              <span>{preloader.taglines[0].label}</span>
               <span className="w-1 h-1 rounded-full bg-[#757575]" />
-              <span>Budget Literacy</span>
+              <span>{preloader.taglines[1].label}</span>
               <span className="w-1 h-1 rounded-full bg-[#757575]" />
-              <span>Public Finance</span>
+              <span>{preloader.taglines[2].label}</span>
             </motion.div>
           </div>
 
           {/* Bottom Architectural Registry Strip */}
           <div className="relative z-10 pb-8 px-6 md:px-10 flex items-center justify-between font-mono text-[11px] sm:text-xs uppercase tracking-[0.2em] text-[#101010]/60 border-t border-[#101010]/[0.08]">
             <div className="flex items-center gap-4">
-              <span>Index 01 // Public Finance Archive</span>
+              <span>{preloader.bottomLeftText}</span>
             </div>
             <div className="tabular-nums font-mono">
-              <span>Loading [{Math.min(100, progress)}%]</span>
+              <span>{preloader.loadingPrefix}{Math.min(100, progress)}{preloader.loadingSuffix}</span>
             </div>
           </div>
         </motion.div>

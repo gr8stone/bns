@@ -1,8 +1,10 @@
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { CONTACT_PAGE_CONTENT } from "../data/content/contact";
 
 export function ContactPage() {
+  const { hero, details, social, success, form, email } = CONTACT_PAGE_CONTENT;
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -14,17 +16,17 @@ export function ContactPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const subject = formData.service
-      ? `BNS inquiry: ${formData.service}`
-      : "BNS civic inquiry";
+      ? `${email.subjectPrefix}${formData.service}`
+      : email.defaultSubject;
     const body = [
-      `Name: ${formData.name}`,
-      `Email: ${formData.email}`,
-      `Initiative: ${formData.service || "Not specified"}`,
+      `${email.nameLine}${formData.name}`,
+      `${email.emailLine}${formData.email}`,
+      `${email.initiativeLine}${formData.service || email.initiativeFallback}`,
       "",
       formData.message,
     ].join("\n");
 
-    window.location.href = `mailto:info@budgetndiostory.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:${email.recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setSubmitted(true);
   };
 
@@ -40,12 +42,10 @@ export function ContactPage() {
             <div className="lg:col-span-6 lg:pr-8 lg:border-r border-[#101010]/12 space-y-12">
               <div>
                 <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-[108px] font-semibold tracking-[-0.06em] text-[#101010] leading-[0.9] uppercase mb-6">
-                  Contact
+                  {hero.title}
                 </h1>
                 <p className="font-sans text-sm sm:text-base text-[#757575] leading-relaxed max-w-md">
-                  We believe that public finance is a public contract. Reach out
-                  to collaborate, report, or bring budget literacy to your
-                  community.
+                  {hero.intro}
                 </p>
               </div>
 
@@ -53,43 +53,43 @@ export function ContactPage() {
               <div className="space-y-8 pt-2">
                 <div>
                   <span className="font-mono text-xs uppercase tracking-wider text-[#757575] block mb-1">
-                    Email
+                    {details.emailLabel}
                   </span>
                   <a
-                    href="mailto:info@budgetndiostory.org"
+                    href={details.emailHref}
                     className="font-sans font-semibold text-lg sm:text-xl text-[#101010] hover:underline"
                   >
-                    info@budgetndiostory.org
+                    {details.email}
                   </a>
                 </div>
 
                 <div>
                   <span className="font-mono text-xs uppercase tracking-wider text-[#757575] block mb-1">
-                    Phone
+                    {details.phoneLabel}
                   </span>
                   <a
-                    href="tel:+254790631623"
+                    href={details.phoneHref}
                     className="font-sans font-semibold text-lg sm:text-xl text-[#101010] hover:underline"
                   >
-                    +254 790 631 623
+                    {details.phone}
                   </a>
                 </div>
 
                 <div>
                   <span className="font-mono text-xs uppercase tracking-wider text-[#757575] block mb-1">
-                    Address
+                    {details.addressLabel}
                   </span>
                   <p className="font-sans font-semibold text-lg sm:text-xl text-[#101010]">
-                    Nairobi Civic Media Hub, Kenya
+                    {details.address}
                   </p>
                 </div>
 
                 <div>
                   <span className="font-mono text-xs uppercase tracking-wider text-[#757575] block mb-1">
-                    Office hours
+                    {details.hoursLabel}
                   </span>
                   <p className="font-sans font-semibold text-lg sm:text-xl text-[#101010]">
-                    Monday to Friday: 8:30 AM – 5:30 PM EAT
+                    {details.hours}
                   </p>
                 </div>
               </div>
@@ -99,48 +99,19 @@ export function ContactPage() {
             <div className="lg:col-span-6 lg:pl-4">
               {/* Follow Us Bar */}
               <div className="flex items-center justify-between pb-5 mb-8 border-b border-[#101010]/12 text-xs font-mono text-[#757575]">
-                <span>Follow us:</span>
+                <span>{social.label}</span>
                 <div className="flex items-center gap-5 text-xs sm:text-sm text-[#101010]">
-                  <a
-                    href="https://x.com/budgetndiostory"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:opacity-60 transition-opacity font-semibold tracking-wider uppercase"
-                  >
-                    𝕏
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/company/budget-ndio-story/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:opacity-60 transition-opacity font-semibold tracking-wider uppercase"
-                  >
-                    LinkedIn
-                  </a>
-                  <a
-                    href="https://instagram.com/budgetndiostory"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:opacity-60 transition-opacity font-semibold tracking-wider uppercase"
-                  >
-                    Instagram
-                  </a>
-                  <a
-                    href="https://www.facebook.com/share/1CPg2LgfVJ/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:opacity-60 transition-opacity font-semibold tracking-wider uppercase"
-                  >
-                    Facebook
-                  </a>
-                  <a
-                    href="https://wa.me/254790631623"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:opacity-60 transition-opacity font-semibold tracking-wider uppercase"
-                  >
-                    WhatsApp
-                  </a>
+                  {social.links.map((link) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:opacity-60 transition-opacity font-semibold tracking-wider uppercase"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
                 </div>
               </div>
 
@@ -149,17 +120,16 @@ export function ContactPage() {
                 <div className="bg-[#F9F9F8] p-10 md:p-14 border border-[#101010]/12 text-center">
                   <CheckCircle2 className="w-10 h-10 text-[#101010] mx-auto mb-4" />
                   <h3 className="font-display text-2xl md:text-3xl font-semibold uppercase text-[#101010] mb-2 tracking-tight">
-                    Inquiry Received
+                    {success.title}
                   </h3>
                   <p className="font-sans text-xs sm:text-sm text-[#757575] leading-relaxed mb-8 max-w-md mx-auto">
-                    Thank you. A member of our civic research desk will review
-                    your inquiry and respond within 24 hours.
+                    {success.body}
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
                     className="px-6 py-3 bg-[#101010] text-white text-xs font-mono uppercase tracking-wider hover:bg-black transition-colors cursor-pointer"
                   >
-                    Send Another Message
+                    {success.resetLabel}
                   </button>
                 </div>
               ) : (
@@ -167,7 +137,7 @@ export function ContactPage() {
                   {/* Name */}
                   <div>
                     <label className="block font-sans text-xs text-[#757575] mb-2">
-                      Name
+                      {form.nameLabel}
                     </label>
                     <input
                       type="text"
@@ -176,7 +146,7 @@ export function ContactPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, name: e.target.value })
                       }
-                      placeholder="Jane Wanjiku"
+                      placeholder={form.namePlaceholder}
                       className="w-full bg-[#F9F9F8] border border-[#101010]/10 px-4 py-3 text-sm font-sans text-[#101010] placeholder-[#757575]/50 focus:outline-none focus:border-[#101010] transition-colors rounded-none"
                     />
                   </div>
@@ -184,7 +154,7 @@ export function ContactPage() {
                   {/* Email */}
                   <div>
                     <label className="block font-sans text-xs text-[#757575] mb-2">
-                      Email
+                      {form.emailLabel}
                     </label>
                     <input
                       type="email"
@@ -193,7 +163,7 @@ export function ContactPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, email: e.target.value })
                       }
-                      placeholder="info@budgetndiostory.org"
+                      placeholder={form.emailPlaceholder}
                       className="w-full bg-[#F9F9F8] border border-[#101010]/10 px-4 py-3 text-sm font-sans text-[#101010] placeholder-[#757575]/50 focus:outline-none focus:border-[#101010] transition-colors rounded-none"
                     />
                   </div>
@@ -201,7 +171,7 @@ export function ContactPage() {
                   {/* Service */}
                   <div>
                     <label className="block font-sans text-xs text-[#757575] mb-2">
-                      Civic Initiative / Pillar
+                      {form.serviceLabel}
                     </label>
                     <div className="relative">
                       <select
@@ -211,28 +181,15 @@ export function ContactPage() {
                         }
                         className="w-full bg-[#F9F9F8] border border-[#101010]/10 px-4 py-3 text-sm font-sans text-[#101010] focus:outline-none focus:border-[#101010] transition-colors rounded-none appearance-none cursor-pointer"
                       >
-                        <option value="">Select initiative</option>
-                        <option value="connect">
-                          BNS Connect (Town Halls &amp; Legislative Dialogues)
-                        </option>
-                        <option value="mashinani">
-                          BNS Mashinani (Grassroots &amp; Ward Budget Audits)
-                        </option>
-                        <option value="wanahabari">
-                          BNS Wanahabari (Journalism Grants &amp; Fellowships)
-                        </option>
-                        <option value="studio">
-                          BNS Studio (Docuseries, Podcasts &amp; Explainers)
-                        </option>
-                        <option value="whistleblower">
-                          Whistleblower Tip &amp; Document Submission
-                        </option>
-                        <option value="partnership">
-                          General Civic Partnership &amp; Research
-                        </option>
+                        <option value="">{form.servicePlaceholder}</option>
+                        {form.serviceOptions.map((option) => (
+                          <option key={option.value} value={option.value}>
+                            {option.label}
+                          </option>
+                        ))}
                       </select>
                       <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-xs text-[#757575]">
-                        ▼
+                        {form.selectIndicator}
                       </div>
                     </div>
                   </div>
@@ -240,7 +197,7 @@ export function ContactPage() {
                   {/* Message */}
                   <div>
                     <label className="block font-sans text-xs text-[#757575] mb-2">
-                      Message / Tip Details
+                      {form.messageLabel}
                     </label>
                     <textarea
                       rows={5}
@@ -249,7 +206,7 @@ export function ContactPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, message: e.target.value })
                       }
-                      placeholder="Share your inquiry, community issue, or tip..."
+                      placeholder={form.messagePlaceholder}
                       className="w-full bg-[#F9F9F8] border border-[#101010]/10 px-4 py-3 text-sm font-sans text-[#101010] placeholder-[#757575]/50 focus:outline-none focus:border-[#101010] transition-colors rounded-none resize-none"
                     />
                   </div>
@@ -260,27 +217,27 @@ export function ContactPage() {
                       type="submit"
                       className="w-full flex items-center justify-between bg-[#101010] text-white px-5 py-3.5 text-xs font-mono uppercase tracking-wider hover:bg-black transition-colors group cursor-pointer"
                     >
-                      <span className="font-semibold">Send Message</span>
+                      <span className="font-semibold">{form.submitLabel}</span>
                       <div className="w-6 h-6 border border-white/30 group-hover:border-white flex items-center justify-center transition-colors">
                         <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
                       </div>
                     </button>
                     <p className="font-sans text-xs text-[#757575] mt-3">
-                      By submitting, you agree to our{" "}
+                      {form.consentLead}{" "}
                       <Link
                         to="/terms"
                         className="underline text-[#101010] hover:opacity-75"
                       >
-                        Terms
+                        {form.termsLabel}
                       </Link>{" "}
-                      and{" "}
+                      {form.consentJoin}{" "}
                       <Link
                         to="/privacy"
                         className="underline text-[#101010] hover:opacity-75"
                       >
-                        Privacy policy
+                        {form.privacyLabel}
                       </Link>
-                      .
+                      {form.consentEnd}
                     </p>
                   </div>
                 </form>

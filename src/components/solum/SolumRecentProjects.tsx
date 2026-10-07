@@ -1,10 +1,13 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { HOME_CONTENT } from "../../data/content/home";
 import { PROJECTS } from "../../data/projects";
 import { TRANSITION, VIEWPORT } from "../../lib/motion";
 import { ROUTES } from "../../lib/routes";
 import { ArchvizProjectShowcase } from "../common/ArchvizProjectShowcase";
+
+const CONTENT = HOME_CONTENT.recentProjects;
 
 export function SolumRecentProjects() {
   const pLead = PROJECTS[0];
@@ -29,7 +32,7 @@ export function SolumRecentProjects() {
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-coral inline-block" />
               <span className="font-mono text-xs uppercase tracking-wider text-terracotta font-semibold">
-                04 // CIVIC PRODUCTIONS
+                {CONTENT.eyebrow}
               </span>
             </div>
           </div>
@@ -37,13 +40,13 @@ export function SolumRecentProjects() {
           {/* Columns 2–4: Large Heading + All Projects Link */}
           <div className="md:col-span-9 flex flex-col sm:flex-row sm:items-baseline justify-between gap-6">
             <h2 className="font-display text-4xl sm:text-5xl lg:text-[32px] font-medium tracking-[-0.05em] text-text-base uppercase leading-[0.98]">
-              SELECTED PRODUCTIONS.
+              {CONTENT.heading}
             </h2>
             <Link
               to={ROUTES.projects}
               className="inline-flex items-center gap-2.5 px-5 py-3 border border-black/20 text-xs font-mono uppercase tracking-wider text-text-base hover:bg-text-base hover:text-white hover:border-text-base transition-colors rounded-none group self-start sm:self-auto"
             >
-              <span>ALL PRODUCTIONS ({PROJECTS.length})</span>
+              <span>{CONTENT.allLinkLabelPrefix}{PROJECTS.length}{CONTENT.allLinkLabelSuffix}</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
             </Link>
           </div>
@@ -78,7 +81,7 @@ export function SolumRecentProjects() {
                     {pSupport1.title}
                   </span>
                   <span className="text-xs font-mono text-slate tabular-nums font-normal">
-                    {pSupport1.category} &bull; {pSupport1.year}
+                    {pSupport1.category} {CONTENT.metaSeparator} {pSupport1.year}
                   </span>
                 </div>
               </Link>
@@ -104,7 +107,7 @@ export function SolumRecentProjects() {
                     {pSupport2.title}
                   </span>
                   <span className="text-xs font-mono text-slate tabular-nums font-normal">
-                    {pSupport2.category} &bull; {pSupport2.year}
+                    {pSupport2.category} {CONTENT.metaSeparator} {pSupport2.year}
                   </span>
                 </div>
               </Link>
@@ -115,11 +118,10 @@ export function SolumRecentProjects() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
             <div className="md:col-span-3 hidden md:block pt-4">
               <span className="font-mono text-xs uppercase text-slate font-medium block mb-2">
-                EXHIBITION 04
+                {CONTENT.exhibitionLabel}
               </span>
               <span className="font-sans text-xs text-text-muted leading-relaxed block font-normal">
-                National sovereign debt conferences, open fiscal audits, and
-                contract transparency broadcasts.
+                {CONTENT.exhibitionDescription}
               </span>
             </div>
 
@@ -142,7 +144,7 @@ export function SolumRecentProjects() {
                     {pBroad.title}
                   </span>
                   <span className="text-xs font-mono text-slate tabular-nums font-normal">
-                    {pBroad.category} &bull; {pBroad.year}
+                    {pBroad.category} {CONTENT.metaSeparator} {pBroad.year}
                   </span>
                 </div>
               </Link>

@@ -1,9 +1,12 @@
 import { ArrowLeft, Printer } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { RateCard } from '../components/studio/RateCard';
+import { RATE_CARD_CONTENT } from '../data/content/rateCard';
 import { ROUTES } from '../lib/routes';
 
 export function RateCardPage() {
+  const { page } = RATE_CARD_CONTENT;
+
   function handlePrint() {
     window.print();
   }
@@ -19,7 +22,7 @@ export function RateCardPage() {
             className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-white/80 hover:text-white transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Back to Studio</span>
+            <span>{page.backLabel}</span>
           </Link>
 
           <div className="flex items-center gap-3">
@@ -28,7 +31,7 @@ export function RateCardPage() {
               className="inline-flex items-center gap-2 px-3.5 py-2 font-mono text-xs uppercase tracking-wider border border-white/30 text-white hover:bg-white/10 transition-colors"
             >
               <Printer className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Print Schedule</span>
+              <span className="hidden sm:inline">{page.printLabel}</span>
             </button>
           </div>
         </div>
@@ -39,18 +42,18 @@ export function RateCardPage() {
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-white inline-block animate-pulse" />
               <span className="font-mono text-xs uppercase tracking-wider text-white font-medium">
-                BNS STUDIOS // OFFICIAL RATE CARD 2026
+                {page.eyebrow}
               </span>
             </div>
             <h1 className="font-display text-3xl sm:text-5xl lg:text-7xl font-bold tracking-[-0.05em] uppercase leading-[0.92] text-white">
-              COMMERCIAL RATE CARD.
+              {page.title}
             </h1>
           </div>
 
           <div className="font-mono text-xs text-white/70 space-y-1 md:text-right shrink-0">
-            <div>SCHEDULE REF: BNS-STUDIO-2026-V1</div>
-            <div>CURRENCY: USD &bull; TERMS: 50/50 &bull; NET 30</div>
-            <div>&ge; 40% REINVESTED IN CIVIC ENDOWMENT</div>
+            <div>{page.scheduleRef}</div>
+            <div>{page.terms}</div>
+            <div>{page.reinvestment}</div>
           </div>
         </div>
 

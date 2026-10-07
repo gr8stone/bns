@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUp } from 'lucide-react';
+import { SITE_CONTENT } from '../../data/content/site';
+
+const { backToTop } = SITE_CONTENT;
 
 export function BackToTopButton() {
   const [visible, setVisible] = useState(false);
@@ -29,7 +32,7 @@ export function BackToTopButton() {
           transition={{ duration: 0.3 }}
           className="fixed bottom-8 right-8 z-40 px-4 py-2.5 bg-white text-[#101010] border border-[#101010] font-mono text-xs uppercase tracking-wider hover:bg-[#101010] hover:text-white transition-colors duration-180 flex items-center gap-2 group cursor-pointer"
         >
-          <span>TOP</span>
+          <span>{backToTop.label}</span>
           <ArrowUp className="w-3.5 h-3.5 transition-transform group-hover:-translate-y-0.5" />
         </motion.button>
       )}

@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import type { Project } from "../../types";
 import { LightboxModal, type LightboxImage } from "./LightboxModal";
 import { getYouTubeId, getYouTubeThumbnail } from "../../lib/media";
+import { SHOWCASE_CONTENT } from "../../data/content/showcase";
+
+const content = SHOWCASE_CONTENT.showcase;
 
 interface ArchvizProjectShowcaseProps {
   project: Project;
@@ -39,7 +42,9 @@ export function ArchvizProjectShowcase({
       if (g.url && !stillsMap.has(g.url)) {
         stillsMap.set(g.url, {
           url: g.url,
-          caption: g.caption || `${project.title} — Production Visual`,
+          caption:
+            g.caption ||
+            `${project.title} ${content.captionSeparator} ${content.captions.galleryFallback}`,
           title: project.title,
         });
       }
@@ -51,7 +56,7 @@ export function ArchvizProjectShowcase({
       if (p.image && !stillsMap.has(p.image)) {
         stillsMap.set(p.image, {
           url: p.image,
-          caption: `${p.step} // ${p.title} — ${p.description}`,
+          caption: `${p.step} ${content.separator} ${p.title} ${content.captionSeparator} ${p.description}`,
           title: project.title,
         });
       }
@@ -61,7 +66,7 @@ export function ArchvizProjectShowcase({
   if (project.heroImage && !stillsMap.has(project.heroImage)) {
     stillsMap.set(project.heroImage, {
       url: project.heroImage,
-      caption: `${project.title} — Lead Production Visual`,
+      caption: `${project.title} ${content.captionSeparator} ${content.captions.leadVisual}`,
       title: project.title,
     });
   }
@@ -74,7 +79,8 @@ export function ArchvizProjectShowcase({
       stillsMap.set(project.beforeAfter.beforeImage, {
         url: project.beforeAfter.beforeImage,
         caption:
-          project.beforeAfter.beforeLabel || `${project.title} — Archival Dossier`,
+          project.beforeAfter.beforeLabel ||
+          `${project.title} ${content.captionSeparator} ${content.captions.beforeFallback}`,
         title: project.title,
       });
     }
@@ -85,7 +91,8 @@ export function ArchvizProjectShowcase({
       stillsMap.set(project.beforeAfter.afterImage, {
         url: project.beforeAfter.afterImage,
         caption:
-          project.beforeAfter.afterLabel || `${project.title} — Citizen Delivery`,
+          project.beforeAfter.afterLabel ||
+          `${project.title} ${content.captionSeparator} ${content.captions.afterFallback}`,
         title: project.title,
       });
     }
@@ -93,17 +100,13 @@ export function ArchvizProjectShowcase({
 
   // If project is hosted on YouTube, leverage authentic YouTube frames (25%, 50%, 75% video keyframes)
   if (youtubeId) {
-    const ytFrames = [
-      { key: "1", label: "Opening Briefing" },
-      { key: "2", label: "Key Investigative Finding" },
-      { key: "3", label: "Civic Resolution & Citizen Impact" },
-    ];
+    const ytFrames = content.youtubeFrames;
     ytFrames.forEach((f) => {
-      const url = `https://img.youtube.com/vi/${youtubeId}/${f.key}.jpg`;
+      const url = `https://img.youtube.com/vi/${youtubeId}/${f.frame}.jpg`;
       if (!stillsMap.has(url)) {
         stillsMap.set(url, {
           url,
-          caption: `${project.title} — YouTube Episode: ${f.label}`,
+          caption: `${project.title} ${content.captionSeparator} ${content.captions.youtubeEpisodePrefix} ${f.label}`,
           title: project.title,
         });
       }
@@ -168,9 +171,10 @@ export function ArchvizProjectShowcase({
           <div className="flex items-center gap-2 mb-2 font-mono text-xs uppercase tracking-wider text-slate">
             <span className="w-1.5 h-1.5 bg-[#2446EC] inline-block" />
             <span className="text-[#2446EC] font-semibold">
-              PRODUCTION {formattedNumber} // {project.category}
+              {content.header.productionLabel} {formattedNumber}{" "}
+              {content.separator} {project.category}
             </span>
-            <span>&bull;</span>
+            <span>{content.bullet}</span>
             <span>{project.location}</span>
           </div>
 
@@ -185,13 +189,15 @@ export function ArchvizProjectShowcase({
         </div>
 
         <div className="flex items-center gap-4 font-mono text-xs text-slate">
-          <span className="hidden sm:inline">YEAR: {project.year}</span>
-          <span>&bull;</span>
+          <span className="hidden sm:inline">
+            {content.header.yearLabel} {project.year}
+          </span>
+          <span>{content.bullet}</span>
           <Link
             to={`/projects/${project.slug}`}
             className="text-[#2446EC] font-semibold uppercase hover:underline inline-flex items-center gap-1.5"
           >
-            <span>View Full Campaign</span>
+            <span>{content.header.viewCampaignLabel}</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
@@ -226,14 +232,14 @@ export function ArchvizProjectShowcase({
                   <div className="absolute inset-0 flex items-center justify-center z-20">
                     <button
                       onClick={() => setIsPlayingYouTube(true)}
-                      aria-label="Play documentary video"
+                      aria-label={content.stage.playAriaLabel}
                       className="group/btn flex items-center gap-3 px-6 py-3.5 bg-[#2446EC] hover:bg-[#1B35B8] text-white backdrop-blur-md border border-white/20 shadow-2xl shadow-[#2446EC]/40 transition-all duration-200 cursor-pointer"
                     >
                       <span className="w-8 h-8 rounded-full bg-white text-[#2446EC] group-hover/btn:scale-105 flex items-center justify-center transition-transform">
                         <Play className="w-4 h-4 fill-current ml-0.5" />
                       </span>
                       <span className="font-mono text-xs uppercase tracking-wider font-semibold">
-                        PLAY EPISODE
+                        {content.stage.playLabel}
                       </span>
                     </button>
                   </div>
@@ -282,20 +288,20 @@ export function ArchvizProjectShowcase({
                 <span className="px-3 py-1 bg-[#2446EC] text-white text-[10px] sm:text-xs font-mono uppercase tracking-widest font-semibold border border-white/20 shadow-md">
                   {project.videoDuration ||
                     (youtubeId
-                      ? "YOUTUBE CIVIC BROADCAST"
+                      ? content.stage.youtubeBadge
                       : isDirectVideo
-                      ? "CIVIC REEL"
-                      : "PHOTOJOURNALISM ARCHIVE")}
+                      ? content.stage.directVideoBadge
+                      : content.stage.photoBadge)}
                 </span>
 
                 {youtubeId && (
                   <a
-                    href={`https://www.youtube.com/watch?v=${youtubeId}`}
+                    href={`${content.stage.youtubeWatchUrlBase}${youtubeId}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="pointer-events-auto inline-flex items-center gap-1.5 px-3 py-1 bg-white/95 hover:bg-[#2446EC] text-[#2446EC] hover:text-white border border-[#2446EC]/30 text-[10px] sm:text-xs font-mono uppercase tracking-wider font-semibold shadow-md transition-colors"
                   >
-                    <span>WATCH ON YOUTUBE</span>
+                    <span>{content.stage.watchOnYoutubeLabel}</span>
                     <ArrowRight className="w-3 h-3" />
                   </a>
                 )}
@@ -306,10 +312,10 @@ export function ArchvizProjectShowcase({
             {(!youtubeId || !isPlayingYouTube) && (
               <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 z-10 pointer-events-none">
                 <span className="font-mono text-xs text-white/95 uppercase tracking-wider block font-semibold drop-shadow-sm">
-                  {project.title} &bull; {project.location}
+                  {project.title} {content.bullet} {project.location}
                 </span>
                 <span className="font-mono text-[10px] text-[#2446EC] bg-white/95 px-2 py-0.5 uppercase tracking-widest inline-block font-semibold mt-1">
-                  BUDGET NDIO STORY ARCHIVE
+                  {content.stage.archiveWatermark}
                 </span>
               </div>
             )}
@@ -319,7 +325,11 @@ export function ArchvizProjectShowcase({
               <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 z-20 flex items-center gap-2">
                 <button
                   onClick={toggleSound}
-                  aria-label={isMuted ? "Enable audio" : "Mute audio"}
+                  aria-label={
+                    isMuted
+                      ? content.stage.enableAudioAriaLabel
+                      : content.stage.muteAudioAriaLabel
+                  }
                   className="w-8 h-8 rounded-full bg-white/90 hover:bg-[#2446EC] text-[#2446EC] hover:text-white border border-black/10 flex items-center justify-center transition-all cursor-pointer shadow-lg"
                 >
                   {isMuted ? (
@@ -330,7 +340,7 @@ export function ArchvizProjectShowcase({
                 </button>
                 <button
                   onClick={openFullscreenVideo}
-                  aria-label="Fullscreen video"
+                  aria-label={content.stage.fullscreenAriaLabel}
                   className="w-8 h-8 rounded-full bg-white/90 hover:bg-[#2446EC] text-[#2446EC] hover:text-white border border-black/10 flex items-center justify-center transition-all cursor-pointer shadow-lg"
                 >
                   <Maximize2 className="w-3.5 h-3.5" />
@@ -347,11 +357,11 @@ export function ArchvizProjectShowcase({
             <div className="flex items-center gap-2 text-[#2446EC] font-semibold">
               <span className="w-2 h-2 bg-[#2446EC] inline-block" />
               <span className="uppercase tracking-wider">
-                PRODUCTION ARCHIVE ({stills.length})
+                {content.stills.archiveLabel} ({stills.length})
               </span>
             </div>
             <span className="text-slate text-[10px] uppercase">
-              HOVER TO PAUSE
+              {content.stills.hoverHint}
             </span>
           </div>
 
@@ -370,7 +380,8 @@ export function ArchvizProjectShowcase({
                   <img
                     src={entry.item.url}
                     alt={
-                      entry.item.caption || `${project.title} // 0${entry.originalIndex + 1}`
+                      entry.item.caption ||
+                      `${project.title} ${content.separator} 0${entry.originalIndex + 1}`
                     }
                     loading="lazy"
                     className="w-full h-full object-cover filter brightness-[0.98] group-hover:scale-105 transition-all duration-500 pointer-events-none select-none"
@@ -405,7 +416,8 @@ export function ArchvizProjectShowcase({
                   <img
                     src={entry.item.url}
                     alt={
-                      entry.item.caption || `${project.title} // 0${entry.originalIndex + 1}`
+                      entry.item.caption ||
+                      `${project.title} ${content.separator} 0${entry.originalIndex + 1}`
                     }
                     loading="lazy"
                     className="w-full h-full object-cover filter brightness-[0.98] group-hover:scale-105 transition-all duration-500 pointer-events-none select-none"
@@ -427,9 +439,11 @@ export function ArchvizProjectShowcase({
 
           {/* Panel Footer */}
           <div className="flex items-center justify-between px-1 py-0.5 font-mono text-[10px] text-slate border-t border-black/[0.06]">
-            <span className="uppercase tracking-wider">FIELD EVIDENCE</span>
+            <span className="uppercase tracking-wider">
+              {content.stills.footerLabel}
+            </span>
             <span className="text-[#2446EC] font-semibold uppercase">
-              View &rarr;
+              {content.stills.footerAction}
             </span>
           </div>
         </div>
@@ -450,14 +464,14 @@ export function ArchvizProjectShowcase({
         <div className="md:col-span-6 lg:col-span-5 flex flex-col justify-between h-full space-y-4 md:pl-6 md:border-l border-black/[0.08]">
           <div className="flex items-center justify-between pt-2">
             <span className="font-mono text-xs text-[#2446EC] font-semibold uppercase tracking-wider">
-              {project.category} &bull; {project.year}
+              {project.category} {content.bullet} {project.year}
             </span>
             <Link
               to={`/projects/${project.slug}`}
               className="solum-btn px-6 py-2.5 bg-[#2446EC] hover:bg-[#1B35B8] text-white border border-[#2446EC] transition-colors text-xs font-mono uppercase tracking-wider font-semibold inline-flex items-center gap-2 shadow-sm"
             >
-              <span>VIEW FULL CAMPAIGN</span>
-              <span className="btn-arrow ml-1">&rarr;</span>
+              <span>{content.synopsis.ctaLabel}</span>
+              <span className="btn-arrow ml-1">{content.synopsis.ctaArrow}</span>
             </Link>
           </div>
         </div>

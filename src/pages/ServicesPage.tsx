@@ -8,7 +8,10 @@ import { ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { WordReveal } from "../components/common/WordReveal";
+import { PROGRAMMES_PAGE_CONTENT } from "../data/content/programmes";
 import { SERVICES } from "../data/services";
+
+const content = PROGRAMMES_PAGE_CONTENT;
 
 export function ServicesPage() {
   const mediaRef = useRef<HTMLDivElement>(null);
@@ -39,7 +42,8 @@ export function ServicesPage() {
               }}
               className="font-display text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-[-0.06em] text-[#101010] uppercase leading-[0.94]"
             >
-              Our three <span className="text-[#2446EC]">programmes.</span>
+              {content.hero.titleLead}{" "}
+              <span className="text-[#2446EC]">{content.hero.titleAccent}</span>
             </motion.h1>
           </div>
 
@@ -50,12 +54,10 @@ export function ServicesPage() {
             className="col-span-1"
           >
             <span className="font-mono text-xs text-[#757575] block mb-2 font-medium">
-              SCOPE OF ACTION
+              {content.hero.scopeLabel}
             </span>
             <p className="font-sans text-sm text-[#757575] leading-relaxed font-light">
-              From grassroots community barazas and investigative journalism to
-              live national town halls and civic budget monitoring, our three
-              programmes make public money understandable and actionable.
+              {content.hero.scopeText}
             </p>
           </motion.div>
         </div>
@@ -70,8 +72,8 @@ export function ServicesPage() {
           <div className="relative aspect-[16/9] md:aspect-[21/9] w-full overflow-hidden bg-zinc-900 border border-[#101010]/12">
             <motion.img
               style={{ y: shouldReduceMotion ? "0%" : yParallax }}
-              src="/images/bns/towwnhallmay/129A4056.jpg"
-              alt="Budget Ndio Story Civic Programmes in Action"
+              src={content.media.imageSrc}
+              alt={content.media.imageAlt}
               initial={{ scale: 1.06, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
@@ -79,11 +81,8 @@ export function ServicesPage() {
               className="w-full h-full object-cover filter grayscale contrast-125 brightness-95 will-change-transform"
             />
             <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between font-mono text-xs text-white/80 uppercase">
-              <span>
-                NAIROBI &amp; 47 COUNTIES // CITIZEN PARTICIPATION &amp; OPEN
-                FINANCE
-              </span>
-              <span>3 ACTIVE CIVIC PROGRAMMES</span>
+              <span>{content.media.captionLeft}</span>
+              <span>{content.media.captionRight}</span>
             </div>
           </div>
         </div>
@@ -96,14 +95,14 @@ export function ServicesPage() {
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
               <span className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#101010] font-medium">
-                PROGRAMME ETHOS
+                {content.ethos.label}
               </span>
             </div>
           </div>
 
           <div className="col-span-1 md:col-span-3 space-y-6 max-w-3xl text-sm sm:text-base text-[#101010]/85 font-light leading-relaxed">
             <WordReveal
-              text="Public participation must never be an afterthought. We build platforms that take citizens from passive observers to active monitors of public money."
+              text={content.ethos.revealText}
               as="p"
               className="font-display text-2xl sm:text-3xl font-normal tracking-[-0.03em] leading-snug text-[#101010]"
               staggerMs={30}
@@ -119,13 +118,7 @@ export function ServicesPage() {
               }}
               className="text-sm sm:text-base text-[#757575] leading-relaxed font-light"
             >
-              Too often, public finance reports are buried in technical jargon,
-              locking ordinary Kenyans out of critical spending decisions. Under
-              BNS Foundation, our three flagship programmes function as cohesive
-              civic machinery: BNS Connect opens legislative doors, BNS
-              Mashinani mobilizes grassroots communities, and Wanahabari Lab
-              equips data journalists. Commercial impact productions are
-              delivered by our sister entity, BNS Studios.
+              {content.ethos.body}
             </motion.p>
           </div>
         </div>
@@ -138,7 +131,7 @@ export function ServicesPage() {
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
               <span className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#101010] font-medium">
-                3 STRATEGIC INITIATIVES
+                {content.list.label}
               </span>
             </div>
           </div>
@@ -175,7 +168,9 @@ export function ServicesPage() {
                       to={`/programmes/${prog.slug}`}
                       className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[#101010] group-hover:text-[#2446EC] font-semibold border-b border-current pb-0.5 transition-colors"
                     >
-                      <span>Explore {prog.title}</span>
+                      <span>
+                        {content.list.exploreLinkPrefix} {prog.title}
+                      </span>
                       <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </Link>
                   </div>
@@ -211,21 +206,19 @@ export function ServicesPage() {
         <div className="mt-16 sm:mt-24 pt-10 border-t border-[#101010]/12 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
             <h3 className="font-display text-2xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#101010] leading-tight">
-              BRING OUR PROGRAMMES TO YOUR COMMUNITY.
+              {content.closing.title}
             </h3>
             <p className="font-sans text-xs sm:text-sm text-[#757575] font-light max-w-xl leading-relaxed">
-              Whether you want to host a county town hall, request ward budget
-              literacy training, or pitch an investigative story, connect with
-              our team.
+              {content.closing.text}
             </p>
           </div>
 
           <div className="flex items-center gap-4">
             <Link
-              to="/contact"
+              to={content.closing.ctaHref}
               className="solum-btn px-7 py-3.5 bg-[#101010] text-white border border-[#101010] font-mono text-xs uppercase tracking-wider hover:bg-white hover:text-[#101010] transition-colors"
             >
-              Get Involved &rarr;
+              {content.closing.ctaLabel}
             </Link>
           </div>
         </div>

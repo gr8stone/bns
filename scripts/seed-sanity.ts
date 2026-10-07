@@ -4,6 +4,7 @@
 import { requireEnv } from "./env";
 import { createClient } from "@sanity/client";
 import { COMPREHENSIVE_FAQS } from "../src/data/comprehensiveFaq";
+import { PAGE_CONTENT, contentDocId, contentDocType } from "../src/data/content";
 import { FAQ_ITEMS } from "../src/data/faq";
 import { JOURNAL_ARTICLES } from "../src/data/journal";
 import { PROCESS_STEPS } from "../src/data/process";
@@ -77,14 +78,21 @@ function docId(type: string, item: Record<string, unknown>, index: number): stri
   return `${type}-${key.replace(/[^a-zA-Z0-9_-]/g, "-")}`;
 }
 
-const docs = Object.entries(COLLECTIONS).flatMap(([type, items]) =>
-  items.map((item, index) => ({
-    _id: docId(type, item as Record<string, unknown>, index),
-    _type: type,
-    order: index,
-    ...(prepare(item) as object),
+const docs = [
+  ...Object.entries(COLLECTIONS).flatMap(([type, items]) =>
+    items.map((item, index) => ({
+      _id: docId(type, item as Record<string, unknown>, index),
+      _type: type,
+      order: index,
+      ...(prepare(item) as object),
+    })),
+  ),
+  ...PAGE_CONTENT.map((entry) => ({
+    _id: contentDocId(entry.key),
+    _type: contentDocType(entry.key),
+    ...(prepare(entry.content) as object),
   })),
-);
+];
 
 const seededTypes = Object.keys(COLLECTIONS);
 await client.delete({
@@ -99,6 +107,8 @@ for (let i = 0; i < docs.length; i += BATCH) {
   await tx.commit();
 }
 
-const counts = Object.entries(COLLECTIONS).map(([type, items]) => `${type}: ${items.length}`);
+const counts = Object.entries(COLLECTIONS)
+  .map(([type, items]) => `${type}: ${items.length}`)
+  .concat(`page content: ${PAGE_CONTENT.length}`);
 console.log(`Seeded ${docs.length} documents into ${SANITY_PROJECT_ID}/${SANITY_DATASET} (media: ${useR2 ? "R2" : "local"})`);
 console.log(counts.join("\n"));

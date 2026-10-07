@@ -1,4 +1,5 @@
 import { COMPREHENSIVE_FAQS, STUDIO_FAQS } from "../data/comprehensiveFaq";
+import { PAGE_CONTENT, contentDocId } from "../data/content";
 import { FAQ_ITEMS } from "../data/faq";
 import { JOURNAL_ARTICLES } from "../data/journal";
 import { PROCESS_STEPS } from "../data/process";
@@ -25,13 +26,19 @@ const COLLECTIONS: Record<string, unknown[]> = {
 
 const QUERY = `{${Object.keys(COLLECTIONS)
   .map((type) => `"${type}": *[_type == "${type}"] | order(order asc)`)
+  .concat(`"pageContent": *[_id in $contentIds]`)
   .join(",")}}`;
 
 const TIMEOUT_MS = 3000;
 
+type PlainObject = Record<string, unknown>;
+
+const isPlainObject = (value: unknown): value is PlainObject =>
+  !!value && typeof value === "object" && !Array.isArray(value);
+
 function stripSystemFields(value: unknown): unknown {
   if (Array.isArray(value)) return value.map(stripSystemFields);
-  if (value && typeof value === "object") {
+  if (isPlainObject(value)) {
     return Object.fromEntries(
       Object.entries(value)
         .filter(([key]) => !key.startsWith("_") && key !== "order")
@@ -45,12 +52,26 @@ function replaceContents<T>(target: T[], next: T[]) {
   target.splice(0, target.length, ...next);
 }
 
+// Arrays and objects are updated in place because modules alias nested values
+// (e.g. NAV_LINKS = SITE_CONTENT.navLinks). Fields missing remotely keep local values.
+function mergeInPlace(target: PlainObject, remote: PlainObject) {
+  for (const [key, local] of Object.entries(target)) {
+    const next = remote[key];
+    if (next === undefined || next === null) continue;
+    if (Array.isArray(local) && Array.isArray(next)) replaceContents(local, next);
+    else if (isPlainObject(local) && isPlainObject(next)) mergeInPlace(local, next);
+    else if (typeof local === typeof next) target[key] = next;
+  }
+}
+
 export async function hydrateContent(): Promise<void> {
   if (!SANITY_ENABLED) return;
 
   try {
     const result = await Promise.race([
-      sanityClient.fetch<Record<string, unknown[]>>(QUERY),
+      sanityClient.fetch<Record<string, PlainObject[]>>(QUERY, {
+        contentIds: PAGE_CONTENT.map((entry) => contentDocId(entry.key)),
+      }),
       new Promise<null>((resolve) => setTimeout(() => resolve(null), TIMEOUT_MS)),
     ]);
     if (!result) return;
@@ -66,6 +87,11 @@ export async function hydrateContent(): Promise<void> {
       STUDIO_FAQS,
       COMPREHENSIVE_FAQS.filter((f) => f.category === "studio" || f.category === "model"),
     );
+
+    for (const doc of result.pageContent ?? []) {
+      const entry = PAGE_CONTENT.find((e) => contentDocId(e.key) === doc._id);
+      if (entry) mergeInPlace(entry.content, stripSystemFields(doc) as PlainObject);
+    }
   } catch (error) {
     console.warn("[cms] Sanity fetch failed, using bundled content.", error);
   }

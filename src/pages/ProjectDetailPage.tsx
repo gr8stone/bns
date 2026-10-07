@@ -7,9 +7,12 @@ import {
 import { ArrowLeft, ArrowRight, Play } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
+import { PRODUCTION_DETAIL_CONTENT } from "../data/content/productionDetail";
 import { JOURNAL_ARTICLES } from "../data/journal";
 import { PROJECTS } from "../data/projects";
 import { getYouTubeId, getYouTubeThumbnail } from "../lib/media";
+
+const content = PRODUCTION_DETAIL_CONTENT;
 
 export function ProjectDetailPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -74,12 +77,12 @@ export function ProjectDetailPage() {
             className="flex items-center gap-2 hover:text-[#101010] transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>PROJECTS ARCHIVE</span>
+            <span>{content.breadcrumb.backLabel}</span>
           </Link>
           <div className="flex items-center gap-2 text-[#101010]">
             <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
             <span>
-              {project.category} // {project.year}
+              {project.category} {content.separator} {project.year}
             </span>
           </div>
         </div>
@@ -92,8 +95,12 @@ export function ProjectDetailPage() {
             </h1>
           </div>
           <div className="col-span-1 text-left md:text-right font-mono text-xs text-[#757575] uppercase">
-            <span>YEAR: {project.year}</span>
-            <span className="block mt-1">LOCATION: {project.location}</span>
+            <span>
+              {content.header.yearLabel} {project.year}
+            </span>
+            <span className="block mt-1">
+              {content.header.locationLabel} {project.location}
+            </span>
           </div>
         </div>
 
@@ -101,7 +108,7 @@ export function ProjectDetailPage() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-8 border-t border-b border-[#101010]/12 text-xs font-mono">
           <div>
             <span className="text-[#757575] block uppercase mb-1">
-              PARTNER / INITIATIVE
+              {content.credits.partnerLabel}
             </span>
             <span className="text-[#101010] font-sans font-medium">
               {project.client}
@@ -109,7 +116,7 @@ export function ProjectDetailPage() {
           </div>
           <div>
             <span className="text-[#757575] block uppercase mb-1">
-              RESEARCH &amp; PRODUCTION
+              {content.credits.productionLabel}
             </span>
             <span className="text-[#101010] font-sans font-medium">
               {project.architect}
@@ -117,7 +124,7 @@ export function ProjectDetailPage() {
           </div>
           <div>
             <span className="text-[#757575] block uppercase mb-1">
-              PILLAR / THEME
+              {content.credits.pillarLabel}
             </span>
             <span className="text-[#101010] font-sans font-medium">
               {project.category}
@@ -125,10 +132,10 @@ export function ProjectDetailPage() {
           </div>
           <div>
             <span className="text-[#757575] block uppercase mb-1">
-              CIVIC FOCUS
+              {content.credits.focusLabel}
             </span>
             <span className="text-[#101010] font-sans font-medium">
-              {project.services.join(", ")}
+              {project.services.join(content.listSeparator)}
             </span>
           </div>
         </div>
@@ -175,11 +182,11 @@ export function ProjectDetailPage() {
               <div className="absolute inset-0 flex items-center justify-center z-20">
                 <button
                   onClick={() => setIsPlaying(true)}
-                  aria-label="Play documentary video"
+                  aria-label={content.leadMedia.playAriaLabel}
                   className="flex items-center gap-3 px-6 py-3.5 bg-[#2446EC] text-white hover:bg-[#101010] transition-colors rounded-none font-mono text-xs uppercase tracking-wider font-semibold cursor-pointer shadow-xl border-0"
                 >
                   <Play className="w-4 h-4 fill-current ml-0.5" />
-                  <span>Watch Feature &bull; 2026</span>
+                  <span>{content.leadMedia.watchLabel}</span>
                 </button>
               </div>
             )}
@@ -187,7 +194,7 @@ export function ProjectDetailPage() {
         )}
 
         <div className="absolute bottom-4 left-6 md:left-10 text-white font-mono text-xs uppercase tracking-wider z-20 pointer-events-none">
-          PRIMARY EPISODE VISUAL &bull; {project.title}
+          {content.leadMedia.visualLabel} {content.bullet} {project.title}
         </div>
       </div>
 
@@ -198,11 +205,11 @@ export function ProjectDetailPage() {
             <div className="flex items-center gap-2 mb-2">
               <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
               <span className="font-mono text-xs uppercase tracking-wider text-[#101010]">
-                NARRATIVE
+                {content.narrative.label}
               </span>
             </div>
             <span className="font-mono text-xs text-[#757575]">
-              STATEMENT OF INTENT
+              {content.narrative.subLabel}
             </span>
           </div>
 
@@ -243,7 +250,7 @@ export function ProjectDetailPage() {
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10 pb-24 space-y-12">
           <div className="border-b border-[#101010]/12 pb-4">
             <span className="font-mono text-xs uppercase tracking-wider text-[#101010]">
-              PRODUCTION &amp; FIELD GALLERY ({project.gallery.length})
+              {content.gallery.label} ({project.gallery.length})
             </span>
           </div>
 
@@ -291,14 +298,18 @@ export function ProjectDetailPage() {
             >
               <div className="flex items-center gap-2 font-mono text-[10px] sm:text-xs uppercase text-[#757575] mb-3 sm:mb-4">
                 <ArrowLeft className="w-3.5 h-3.5 shrink-0 group-hover:-translate-x-1 transition-transform" />
-                <span className="sm:hidden">PREV</span>
-                <span className="hidden sm:inline">PREVIOUS CAMPAIGN</span>
+                <span className="sm:hidden">
+                  {content.navigation.prevShortLabel}
+                </span>
+                <span className="hidden sm:inline">
+                  {content.navigation.prevLongLabel}
+                </span>
               </div>
               <h4 className="font-display text-base sm:text-3xl font-semibold tracking-[-0.04em] text-[#101010] uppercase">
                 {prevProject.title}
               </h4>
               <span className="font-mono text-[10px] sm:text-xs text-[#757575] mt-2">
-                {prevProject.category} &bull; {prevProject.year}
+                {prevProject.category} {content.bullet} {prevProject.year}
               </span>
             </Link>
           )}
@@ -309,15 +320,19 @@ export function ProjectDetailPage() {
               className={`py-6 px-3 sm:py-12 sm:pl-8 flex flex-col justify-between group select-none hover:bg-white transition-colors duration-200 sm:text-right ${prevProject ? "" : "col-span-2"}`}
             >
               <div className="flex items-center sm:justify-end gap-2 font-mono text-[10px] sm:text-xs uppercase text-[#757575] mb-3 sm:mb-4">
-                <span className="sm:hidden">NEXT</span>
-                <span className="hidden sm:inline">NEXT CAMPAIGN</span>
+                <span className="sm:hidden">
+                  {content.navigation.nextShortLabel}
+                </span>
+                <span className="hidden sm:inline">
+                  {content.navigation.nextLongLabel}
+                </span>
                 <ArrowRight className="w-3.5 h-3.5 shrink-0 group-hover:translate-x-1 transition-transform" />
               </div>
               <h4 className="font-display text-base sm:text-3xl font-semibold tracking-[-0.04em] text-[#101010] uppercase">
                 {nextProject.title}
               </h4>
               <span className="font-mono text-[10px] sm:text-xs text-[#757575] mt-2">
-                {nextProject.category} &bull; {nextProject.year}
+                {nextProject.category} {content.bullet} {nextProject.year}
               </span>
             </Link>
           )}

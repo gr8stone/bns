@@ -5,7 +5,10 @@ import {
   useTransform,
 } from "framer-motion";
 import { useRef } from "react";
+import { HOME_CONTENT } from "../../data/content/home";
 import { PARALLAX } from "../../lib/motion";
+
+const CONTENT = HOME_CONTENT.mediaBreak;
 
 export function SolumMediaBreak() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -30,8 +33,7 @@ export function SolumMediaBreak() {
     shouldReduceMotion ? ["0%", "0%"] : ["2%", "-16%"],
   );
 
-  const marqueeText =
-    "BUDGET NDIO STORY";
+  const marqueeText = CONTENT.marqueeText;
 
   return (
     <section
@@ -44,8 +46,8 @@ export function SolumMediaBreak() {
         className="absolute inset-0 w-full h-[120%] -top-[10%]"
       >
         <img
-          src="/images/bns/optimized/129A4248-media.webp"
-          alt="Budget Ndio Story National Civic Convening"
+          src={CONTENT.image}
+          alt={CONTENT.imageAlt}
           loading="lazy"
           className="w-full h-full object-cover object-center filter grayscale contrast-125 brightness-75"
         />
@@ -75,7 +77,7 @@ export function SolumMediaBreak() {
 
       <div className="absolute bottom-6 right-6 md:right-10 z-20 pointer-events-none hidden sm:block text-right">
         <span className="font-mono text-[11px] uppercase tracking-widest text-white/60">
-          BUDGET NDIO STORY
+          {CONTENT.cornerLabel}
         </span>
       </div>
     </section>

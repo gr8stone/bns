@@ -1,4 +1,5 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
+import { pageContentTypes } from "./pageContent";
 
 // Field names mirror src/types/index.ts and src/data/*.ts exactly; the site
 // reads documents as-is. Media fields are URL strings (R2 or /public paths).
@@ -252,6 +253,7 @@ export const audienceAlignment = defineType({
 });
 
 export const schemaTypes = [
+  ...pageContentTypes,
   project,
   service,
   processStep,

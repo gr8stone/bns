@@ -1,0 +1,41 @@
+export const PROGRAMME_DETAIL_CONTENT = {
+  separator: "//",
+  breadcrumb: {
+    backLabel: "ALL PROGRAMMES",
+  },
+  challenge: {
+    actLabel: "01 // THE CIVIC CHALLENGE",
+    title: "Why Traditional Systems Fail To Deliver Accountability.",
+    mandateLabel: "CONSTITUTIONAL MANDATE",
+    mandateValue: "ARTICLES 10 & 201",
+    reachLabel: "TERRITORIAL REACH",
+    reachValue: "ALL 47 COUNTIES",
+    cycleLabel: "CYCLE WINDOW",
+    cycleValue: "ANNUAL STATUTORY REVIEW",
+    trackLabel: "INITIATIVE TRACK",
+    imageCaption: "EVIDENCE GROUNDWORK ARCHIVE",
+    fieldReportLabel: "FIELD REPORT",
+  },
+  video: {
+    actLabel: "02 // DOCUMENTARY EVIDENCE & PROCEEDINGS",
+    title: "Data Rigor Meets Mass Action.",
+    iframeTitleSuffix: "Civic Video",
+    watchLabel: "WATCH BROADCAST EVIDENCE STREAM",
+    qualityLabel: "1080P PROCEEDINGS",
+  },
+  script: {
+    actLabel: "03 // THE MOTION SCRIPT ARCHITECTURE",
+    title: "Audited Outputs & Execution.",
+    deliverablesTabLabel: "[01 TANGIBLE DELIVERABLES]",
+    pipelineTabLabel: "[02 4-PHASE METHODOLOGY]",
+    deliverableCaptionPrefix: "AUDITED STATUTORY OUTPUT // CHAPTER",
+    phaseLabel: "PHASE",
+    timelineLabel: "EXECUTION TIMELINE",
+  },
+  navigation: {
+    prevShortLabel: "PREV",
+    prevLongLabel: "PREVIOUS INITIATIVE",
+    nextShortLabel: "NEXT",
+    nextLongLabel: "NEXT INITIATIVE",
+  },
+};

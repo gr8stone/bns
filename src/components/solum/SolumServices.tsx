@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { HOME_CONTENT } from "../../data/content/home";
 import { TRANSITION, VIEWPORT } from "../../lib/motion";
 import { ROUTES } from "../../lib/routes";
 
@@ -14,56 +15,9 @@ interface ServicePanel {
   tag: string;
 }
 
-const SERVICES: ServicePanel[] = [
-  {
-    number: "01",
-    slug: "bns-connect",
-    title: "BNS Connect",
-    tag: "CIVIC PROGRAMME PARTNERSHIPS",
-    description:
-      "Co-designing budget literacy programmes, national youth town halls, scorecards, and statutory public hearings to bridge the gap between citizens and budget makers under the PFM Act and Constitution 2010 Articles 10 & 232.",
-    bullets: [
-      "Budget Town Halls at ward, sub-county & county levels",
-      "Youth Budget Scorecards tracking commitments vs expenditure",
-      "Community Budget Surveys generating citizen evidence",
-      "Citizen Legislative Memoranda to Parliamentary Committees",
-      "Free Budget Explainer Content translating official documents",
-    ],
-    image: "/images/bns/optimized/129A3912-hero.webp",
-  },
-  {
-    number: "02",
-    slug: "bns-mashinani",
-    title: "BNS Mashinani",
-    tag: "GRASSROOTS 47 COUNTIES",
-    description:
-      "Grassroots budget organizing, community listening sessions, and ward-level expenditure tracking across all 47 counties to demystify Annual Development Plans (ADPs) and monitor local project delivery.",
-    bullets: [
-      "Community Listening Sessions with consent management",
-      "County-level budget tracking & citizen monitoring",
-      "Ward-level project ground scorecards (dispensaries, roads, water)",
-      "Vernacular budget breakdowns & localized community barazas",
-      "Devolved funds oversight & social audits (ADPs, CDF, county funds)",
-    ],
-    image: "/images/bns/optimized/129A3964-card.webp",
-  },
-  {
-    number: "03",
-    slug: "bns-wanahabari",
-    title: "Wanahabari Lab",
-    tag: "TRAINING & CAPACITY BUILDING",
-    description:
-      "Supporting Kenyan journalists and digital storytellers with quarterly capacity building training, investigative reporting grants, and data toolkits to report accurately and effectively on public finance.",
-    bullets: [
-      "Quarterly capacity building training on public finance",
-      "Data journalism fellowships & expert mentorship",
-      "Investigative public finance reporting grants",
-      "Budget analysis toolkits & Controller of Budget guides",
-      "Community radio & vernacular broadcast syndication",
-    ],
-    image: "/images/bns/media/129A4039.jpg",
-  },
-];
+const CONTENT = HOME_CONTENT.services;
+
+const SERVICES: ServicePanel[] = CONTENT.items;
 
 function ServiceCard({
   service,
@@ -92,11 +46,11 @@ function ServiceCard({
           {/* Number & Phase Tag */}
           <motion.div {...reveal(0)} className="flex items-center gap-3">
             <span className="font-mono text-sm text-white block font-medium">
-              {service.number} // {service.tag}
+              {service.number} {CONTENT.numberTagSeparator} {service.tag}
             </span>
             <span className="w-8 h-px bg-white/40 inline-block" />
             <span className="font-mono text-[10px] sm:text-xs uppercase tracking-widest text-white/70">
-              PROGRAMME 0{index + 1}
+              {CONTENT.programmeLabelPrefix}{index + 1}
             </span>
           </motion.div>
 
@@ -139,7 +93,7 @@ function ServiceCard({
               to={ROUTES.programme(service.slug)}
               className="group/btn inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider px-4 py-2.5 bg-white text-[#2446EC] hover:bg-[#101010] hover:text-white transition-colors font-semibold"
             >
-              <span>EXPLORE PROGRAMME</span>
+              <span>{CONTENT.exploreLabel}</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
             </Link>
           </div>
@@ -174,29 +128,27 @@ export function SolumServices() {
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-[#2446EC] inline-block" />
               <span className="font-mono text-xs uppercase tracking-wider text-[#2446EC] font-semibold block">
-                03 // PROGRAMMES & OPERATIONS
+                {CONTENT.eyebrow}
               </span>
             </div>
             <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-medium tracking-[-0.05em] text-text-base leading-[0.98]">
-              Good accountability starts with{" "}
-              <span className="text-[#2446EC]">good questions.</span>
+              {CONTENT.headlineLead}{" "}
+              <span className="text-[#2446EC]">{CONTENT.headlineAccent}</span>
             </h2>
             <p className="font-sans text-sm sm:text-base text-text-muted max-w-xl font-normal leading-relaxed">
-              From grassroots community barazas to high-impact media broadcasts,
-              Budget Ndio Story delivers creative civic education, public
-              finance tracking, and youth-led budget storytelling.
+              {CONTENT.description}
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row sm:items-center gap-4">
             <span className="font-mono text-xs text-slate uppercase tracking-widest hidden sm:inline-block">
-              BUDGET NDIO STORY&reg;
+              {CONTENT.brandMark}
             </span>
             <Link
               to={ROUTES.contact}
               className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-[#2446EC] text-white hover:bg-[#101010] transition-colors font-mono text-xs uppercase tracking-wider rounded-none group border-0"
             >
-              <span>GET INVOLVED</span>
+              <span>{CONTENT.ctaLabel}</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
             </Link>
           </div>
@@ -208,8 +160,8 @@ export function SolumServices() {
       {/* ========================================================= */}
       <div className="block md:hidden w-full pb-12">
         <div className="px-5 sm:px-8 pb-3 flex items-center justify-between font-mono text-[11px] text-[#757575] uppercase tracking-wider">
-          <span>SWIPE &rarr;</span>
-          <span> FLAGSHIP PROGRAMMES</span>
+          <span>{CONTENT.swipeLabel}</span>
+          <span> {CONTENT.sliderLabel}</span>
         </div>
 
         {/* Snap Slider Track */}
@@ -231,7 +183,7 @@ export function SolumServices() {
                   {service.number}
                 </div>
                 <div className="absolute top-3 right-3 bg-white/20 backdrop-blur-md text-white font-mono text-[10px] tracking-widest px-2 py-0.5">
-                  0{index + 1} / 03
+                  {CONTENT.slideCounterPrefix}{index + 1} {CONTENT.slideCounterTotal}
                 </div>
               </div>
 
@@ -269,7 +221,7 @@ export function SolumServices() {
                     to={ROUTES.programme(service.slug)}
                     className="w-full py-3 px-4 bg-white text-[#2446EC] hover:bg-[#101010] hover:text-white transition-colors font-mono text-[11px] uppercase tracking-wider flex items-center justify-between font-semibold"
                   >
-                    <span>EXPLORE PROGRAMME</span>
+                    <span>{CONTENT.exploreLabel}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
@@ -284,7 +236,7 @@ export function SolumServices() {
             <div
               key={s.number}
               className="h-1 rounded-none transition-all duration-300 bg-[#2446EC] w-6 opacity-75"
-              aria-label={`Slide ${idx + 1}`}
+              aria-label={`${CONTENT.slideAriaLabelPrefix} ${idx + 1}`}
             />
           ))}
         </div>
@@ -308,24 +260,21 @@ export function SolumServices() {
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-white inline-block" />
               <span className="font-mono text-xs uppercase tracking-wider text-white font-semibold">
-                COMMERCIAL IMPACT
+                {CONTENT.studioBridge.eyebrow}
               </span>
             </div>
             <h3 className="font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight uppercase leading-[0.98] text-white">
-              LOOKING FOR COMMISSIONED PRODUCTION?
+              {CONTENT.studioBridge.heading}
             </h3>
             <p className="font-sans text-xs sm:text-sm text-white/90 leading-relaxed font-light">
-              BNS Studios translates complex research into high-impact podcasts,
-              animations, and documentaries. Operating under our Two-Entity
-              Model, &ge; 40% of studio profits are reinvested into BNS
-              Foundation&apos;s civic mission.
+              {CONTENT.studioBridge.description}
             </p>
           </div>
           <Link
             to={ROUTES.studio}
             className="inline-flex items-center gap-3 px-8 py-4 bg-white text-[#2446EC] hover:bg-[#101010] hover:text-white transition-colors font-mono text-xs uppercase tracking-wider self-start md:self-auto font-semibold rounded-none border-0 shadow-sm"
           >
-            <span>DISCOVER BNS STUDIOS &amp; RATE CARD</span>
+            <span>{CONTENT.studioBridge.ctaLabel}</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

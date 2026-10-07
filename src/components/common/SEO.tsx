@@ -2,9 +2,7 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { PROJECTS } from '../../data/projects';
 import { SERVICES } from '../../data/services';
-
-const SITE_URL = 'https://budgetndiostory.org';
-const DEFAULT_IMAGE = '/images/bns/towwnhallmay/129A3912.jpg';
+import { SEO_CONTENT } from '../../data/content/seo';
 
 interface PageMetadata {
   title: string;
@@ -16,119 +14,28 @@ interface PageMetadata {
   schemaType?: 'WebPage' | 'AboutPage' | 'ContactPage' | 'CollectionPage' | 'Article' | 'Service';
 }
 
-const STATIC_METADATA: Record<string, PageMetadata> = {
-  '/': {
-    title: 'Budget Ndio Story | Civic Media & Public Finance Accountability',
-    description:
-      'Budget Ndio Story turns public budgets, sovereign debt data, and fiscal policy into accessible civic media, investigative stories, and community action across Kenya.',
-    canonicalPath: '/',
-    schemaType: 'WebPage',
-  },
-  '/about': {
-    title: 'About Budget Ndio Story | Civic Media & Public Finance',
-    description:
-      'Learn how Budget Ndio Story combines public finance research, civic media, and grassroots action to make government budgets understandable and accountable.',
-    canonicalPath: '/about',
-    schemaType: 'AboutPage',
-  },
-  '/projects': {
-    title: 'Projects | Civic Media & Public Finance Stories | Budget Ndio Story',
-    description:
-      'Explore Budget Ndio Story investigations, docuseries, town halls, and visual explainers about Kenya\'s public finance and civic accountability.',
-    canonicalPath: '/projects',
-    schemaType: 'CollectionPage',
-  },
-  '/services': {
-    title: 'Programmes | Budget Ndio Story',
-    description:
-      'Discover BNS Connect, BNS Mashinani, BNS Wanahabari, and BNS Studio programmes for civic participation, grassroots budget literacy, and public-interest media.',
-    canonicalPath: '/programmes',
-    schemaType: 'CollectionPage',
-  },
-  '/programmes': {
-    title: 'Programmes | Budget Ndio Story',
-    description:
-      'Discover BNS Connect, BNS Mashinani, BNS Wanahabari, and BNS Studio programmes for civic participation, grassroots budget literacy, and public-interest media.',
-    canonicalPath: '/programmes',
-    schemaType: 'CollectionPage',
-  },
-  '/studio': {
-    title: 'BNS Studios | Impact Production & Creative Civic Media | Budget Ndio Story',
-    description:
-      'BNS Studios translates complex research into high-impact podcasts, animations, and documentaries, with ≥ 40% of net profits reinvested into BNS Foundation civic work.',
-    canonicalPath: '/studio',
-    schemaType: 'WebPage',
-  },
-  '/ratecard': {
-    title: 'Rate Card | BNS Studios Commercial Production Pricing | Budget Ndio Story',
-    description:
-      'Official production tariffs for BNS Studios podcasts, kinetic animated explainers, research documentaries, digital campaigns, and town halls.',
-    canonicalPath: '/ratecard',
-    schemaType: 'WebPage',
-  },
-  '/whitepaper': {
-    title: 'Two-Entity Model Whitepaper | Budget Ndio Story',
-    description:
-      'The institutional governance architecture, fiduciary endowment covenant, and commercial studio model powering Budget Ndio Story.',
-    canonicalPath: '/whitepaper',
-    schemaType: 'Article',
-  },
-  '/faq': {
-    title: 'Frequently Asked Questions | Budget Ndio Story',
-    description:
-      'Common questions regarding the Two-Entity Model, BNS Studios tariffs, civic programmes, partnerships, and public finance data integrity.',
-    canonicalPath: '/faq',
-    schemaType: 'WebPage',
-  },
-  '/contact': {
-    title: 'Contact Budget Ndio Story | Civic Action & Public Finance',
-    description:
-      'Connect with Budget Ndio Story to host a civic dialogue, request a budget literacy workshop, commission public-interest media, or partner on fiscal accountability work.',
-    canonicalPath: '/contact',
-    schemaType: 'ContactPage',
-  },
-  '/terms': {
-    title: 'Terms of Service | Budget Ndio Story',
-    description: 'Read the terms governing access to Budget Ndio Story civic media, public finance resources, and community programmes.',
-    canonicalPath: '/terms',
-    noIndex: true,
-  },
-  '/privacy': {
-    title: 'Privacy Policy | Budget Ndio Story',
-    description: 'Read how Budget Ndio Story protects citizen, source, and contact information across its civic media platform.',
-    canonicalPath: '/privacy',
-    noIndex: true,
-  },
-  '/404': {
-    title: 'Page Not Found | Budget Ndio Story',
-    description: 'The requested Budget Ndio Story page could not be found.',
-    canonicalPath: '/404',
-    noIndex: true,
-  },
-};
+// Built lazily: SEO_CONTENT is hydrated from the CMS after module load.
+const getStaticMetadata = (): Record<string, PageMetadata> => Object.fromEntries(
+  SEO_CONTENT.pages.map(({ path, schemaType, ...page }) => [
+    path,
+    { ...page, schemaType: schemaType as PageMetadata['schemaType'] },
+  ])
+);
 
-const ORGANIZATION_SCHEMA = {
+const getOrganizationSchema = (SITE_URL: string) => ({
   '@type': 'Organization',
   '@id': `${SITE_URL}/#organization`,
-  name: 'Budget Ndio Story',
+  name: SEO_CONTENT.organization.name,
   url: SITE_URL,
-  logo: `${SITE_URL}/images/bns/logo.svg`,
-  email: 'info@budgetndiostory.org',
+  logo: `${SITE_URL}${SEO_CONTENT.organization.logoPath}`,
+  email: SEO_CONTENT.organization.email,
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Nairobi',
-    addressCountry: 'KE',
+    addressLocality: SEO_CONTENT.organization.addressLocality,
+    addressCountry: SEO_CONTENT.organization.addressCountry,
   },
-  sameAs: [
-    'https://youtube.com/@budgetndiostory',
-    'https://x.com/budgetndiostory',
-    'https://www.tiktok.com/@budget.ndio.story',
-    'https://www.linkedin.com/company/budget-ndio-story/',
-    'https://instagram.com/budgetndiostory',
-    'https://www.facebook.com/share/1CPg2LgfVJ/',
-    'https://wa.me/254790631623',
-  ],
-};
+  sameAs: SEO_CONTENT.organization.sameAs,
+});
 
 function getDetailMetadata(pathname: string): PageMetadata | undefined {
   const projectMatch = pathname.match(/^\/(?:projects|work)\/([^/]+)$/);
@@ -139,7 +46,7 @@ function getDetailMetadata(pathname: string): PageMetadata | undefined {
     if (!project) return undefined;
 
     return {
-      title: `${project.title} | Budget Ndio Story`,
+      title: `${project.title}${SEO_CONTENT.detailTitleSuffix}`,
       description: project.summary,
       canonicalPath: `/projects/${project.slug}`,
       image: project.heroImage,
@@ -154,7 +61,7 @@ function getDetailMetadata(pathname: string): PageMetadata | undefined {
     if (!service) return undefined;
 
     return {
-      title: `${service.title} | Budget Ndio Story`,
+      title: `${service.title}${SEO_CONTENT.detailTitleSuffix}`,
       description: service.shortDescription,
       canonicalPath: `/programmes/${service.slug}`,
       image: service.image,
@@ -166,6 +73,7 @@ function getDetailMetadata(pathname: string): PageMetadata | undefined {
 }
 
 function getMetadata(pathname: string): PageMetadata {
+  const STATIC_METADATA = getStaticMetadata();
   if (pathname === '/work') {
     return { ...STATIC_METADATA['/projects'], canonicalPath: '/projects' };
   }
@@ -182,9 +90,9 @@ function getMetadata(pathname: string): PageMetadata {
   }
 
   return STATIC_METADATA[pathname] ?? {
-    title: 'Page Not Found | Budget Ndio Story',
-    description: 'The requested Budget Ndio Story page could not be found.',
-    canonicalPath: '/404',
+    title: SEO_CONTENT.notFound.title,
+    description: SEO_CONTENT.notFound.description,
+    canonicalPath: SEO_CONTENT.notFound.canonicalPath,
     noIndex: true,
   };
 }
@@ -213,29 +121,31 @@ export function SEO() {
   const { pathname } = useLocation();
 
   useEffect(() => {
+    const SITE_URL = SEO_CONTENT.siteUrl;
+    const DEFAULT_IMAGE = SEO_CONTENT.defaultImage;
     const metadata = getMetadata(pathname);
     const canonicalUrl = `${SITE_URL}${metadata.canonicalPath}`;
     const imageUrl = new URL(metadata.image ?? DEFAULT_IMAGE, SITE_URL).toString();
     const robots = metadata.noIndex
-      ? 'noindex,nofollow'
-      : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1';
+      ? SEO_CONTENT.robotsNoIndex
+      : SEO_CONTENT.robotsIndex;
 
     document.title = metadata.title;
-    document.documentElement.lang = 'en';
+    document.documentElement.lang = SEO_CONTENT.htmlLang;
     upsertMeta('name', 'title', metadata.title);
     upsertMeta('name', 'description', metadata.description);
-    upsertMeta('name', 'author', 'Budget Ndio Story');
+    upsertMeta('name', 'author', SEO_CONTENT.author);
     upsertMeta('name', 'robots', robots);
-    upsertMeta('name', 'theme-color', '#0c0c0d');
+    upsertMeta('name', 'theme-color', SEO_CONTENT.themeColor);
     upsertMeta('property', 'og:type', metadata.type ?? 'website');
     upsertMeta('property', 'og:url', canonicalUrl);
     upsertMeta('property', 'og:title', metadata.title);
     upsertMeta('property', 'og:description', metadata.description);
     upsertMeta('property', 'og:image', imageUrl);
     upsertMeta('property', 'og:image:alt', metadata.title);
-    upsertMeta('property', 'og:site_name', 'Budget Ndio Story');
-    upsertMeta('property', 'og:locale', 'en_KE');
-    upsertMeta('name', 'twitter:card', 'summary_large_image');
+    upsertMeta('property', 'og:site_name', SEO_CONTENT.siteName);
+    upsertMeta('property', 'og:locale', SEO_CONTENT.ogLocale);
+    upsertMeta('name', 'twitter:card', SEO_CONTENT.twitterCard);
     upsertMeta('name', 'twitter:url', canonicalUrl);
     upsertMeta('name', 'twitter:title', metadata.title);
     upsertMeta('name', 'twitter:description', metadata.description);
@@ -247,7 +157,7 @@ export function SEO() {
       ? {
           '@type': 'BreadcrumbList',
           itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+            { '@type': 'ListItem', position: 1, name: SEO_CONTENT.breadcrumbHomeLabel, item: SITE_URL },
             ...breadcrumbItems.map((segment, index) => ({
               '@type': 'ListItem',
               position: index + 2,
@@ -261,14 +171,14 @@ export function SEO() {
     const pageSchema = {
       '@context': 'https://schema.org',
       '@graph': [
-        ORGANIZATION_SCHEMA,
+        getOrganizationSchema(SITE_URL),
         {
           '@type': 'WebSite',
           '@id': `${SITE_URL}/#website`,
           url: SITE_URL,
-          name: 'Budget Ndio Story',
+          name: SEO_CONTENT.siteName,
           publisher: { '@id': `${SITE_URL}/#organization` },
-          inLanguage: 'en-KE',
+          inLanguage: SEO_CONTENT.inLanguage,
         },
         {
           '@type': metadata.schemaType ?? 'WebPage',

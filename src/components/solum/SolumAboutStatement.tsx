@@ -1,6 +1,9 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { HOME_CONTENT } from "../../data/content/home";
+
+const CONTENT = HOME_CONTENT.aboutStatement;
 
 export function SolumAboutStatement() {
   const shouldReduceMotion = useReducedMotion();
@@ -15,7 +18,7 @@ export function SolumAboutStatement() {
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 bg-[#2446EC] inline-block rounded-none" />
               <span className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#101010] font-medium">
-                About
+                {CONTENT.eyebrow}
               </span>
             </div>
           </div>
@@ -32,10 +35,9 @@ export function SolumAboutStatement() {
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-[-0.05em] text-[#101010] leading-[1.08]"
             >
-              Different counties.{" "}
-              <span className="text-[#2446EC]">Shared public money.</span> An
-              independent civic media and public finance platform across all 47
-              counties.
+              {CONTENT.headlineLead}{" "}
+              <span className="text-[#2446EC]">{CONTENT.headlineAccent}</span>{" "}
+              {CONTENT.headlineTrail}
             </motion.h2>
 
             <motion.p
@@ -52,9 +54,7 @@ export function SolumAboutStatement() {
               }}
               className="font-sans text-sm sm:text-base md:text-lg text-[#757575] leading-relaxed max-w-2xl font-light"
             >
-              We translate national budgets, county allocations, and public debt
-              into accessible stories, citizen barazas, and grassroots
-              accountability tools.
+              {CONTENT.description}
             </motion.p>
 
             <motion.div
@@ -75,7 +75,7 @@ export function SolumAboutStatement() {
                 to="/about"
                 className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono uppercase tracking-wider text-[#101010] pb-1 border-b border-[#101010] hover:text-[#2446EC] hover:border-[#2446EC] transition-colors group"
               >
-                <span>More about us</span>
+                <span>{CONTENT.ctaLabel}</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>

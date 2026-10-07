@@ -3,6 +3,9 @@ import { ArrowUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { NAV_LINKS, PROGRAMME_PREVIEW, ROUTES } from "../../lib/routes";
+import { SITE_CONTENT } from "../../data/content/site";
+
+const { navbar, contact } = SITE_CONTENT;
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -39,7 +42,7 @@ export function Navbar() {
   }, [menuOpen]);
 
   // Desktop direct nav items: About, Programmes, Studio, Productions, Contact
-  const desktopLinks = NAV_LINKS.filter((item) => item.label !== "Home");
+  const desktopLinks = NAV_LINKS.filter((item) => item.href !== ROUTES.home);
 
   return (
     <>
@@ -53,15 +56,15 @@ export function Navbar() {
               className="flex items-center gap-2.5 font-sans font-bold text-sm md:text-base tracking-[-0.04em] uppercase text-text-base hover:text-[#2446EC] transition-colors"
             >
               <img
-                src="/images/bns/logo.svg"
-                alt=""
+                src={navbar.logoSrc}
+                alt={navbar.logoAlt}
                 className="w-6 h-6 object-contain"
               />
-              <span className="tracking-tight font-extrabold">BUDGET NDIO STORY</span>
+              <span className="tracking-tight font-extrabold">{navbar.brandName}</span>
             </Link>
 
             {/* Desktop Direct Nav Links */}
-            <nav aria-label="Primary" className="hidden lg:flex items-center gap-7">
+            <nav aria-label={navbar.primaryNavAriaLabel} className="hidden lg:flex items-center gap-7">
               {desktopLinks.map((item) => {
                 const isActive = location.pathname === item.href;
                 return (
@@ -86,16 +89,16 @@ export function Navbar() {
                 to={ROUTES.contact}
                 className="hidden sm:inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider px-4 py-2 bg-[#2446EC] text-white hover:bg-[#101010] transition-colors rounded-none font-medium group border-0"
               >
-                <span>Get Involved</span>
+                <span>{navbar.ctaLabel}</span>
                 <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
 
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
-                aria-label={menuOpen ? "Close Menu" : "Open Menu"}
+                aria-label={menuOpen ? navbar.closeMenuAriaLabel : navbar.openMenuAriaLabel}
                 className="cursor-pointer flex items-center gap-2.5 px-3.5 py-2 font-mono text-xs font-semibold uppercase tracking-wider transition-all duration-150 border border-black/15 bg-white text-text-base hover:bg-ivory rounded-none group"
               >
-                <span>{menuOpen ? "CLOSE" : "MENU"}</span>
+                <span>{menuOpen ? navbar.closeLabel : navbar.menuLabel}</span>
                 <div
                   className={`w-3.5 h-3.5 border border-current flex items-center justify-center transition-transform duration-200 ease-out ${
                     menuOpen ? "rotate-45" : "group-hover:rotate-45"
@@ -128,19 +131,19 @@ export function Navbar() {
                 className="flex items-center gap-2.5 font-sans font-bold text-sm md:text-base tracking-[-0.04em] uppercase text-text-base hover:text-terracotta transition-colors"
               >
                 <img
-                  src="/images/bns/logo.svg"
-                  alt=""
+                  src={navbar.logoSrc}
+                  alt={navbar.logoAlt}
                   className="w-6 h-6 object-contain"
                 />
-                <span className="tracking-tight font-extrabold">BUDGET NDIO STORY</span>
+                <span className="tracking-tight font-extrabold">{navbar.brandName}</span>
               </Link>
 
               <button
                 onClick={() => setMenuOpen(false)}
-                aria-label="Close Menu"
+                aria-label={navbar.closeMenuAriaLabel}
                 className="cursor-pointer flex items-center gap-2.5 px-3.5 py-2 font-mono text-xs font-semibold uppercase tracking-wider border border-black/20 bg-text-base text-white hover:bg-terracotta rounded-none"
               >
-                <span>CLOSE</span>
+                <span>{navbar.closeLabel}</span>
                 <span className="font-bold text-xs">&times;</span>
               </button>
             </div>
@@ -157,7 +160,7 @@ export function Navbar() {
                 const isHovered = hoveredIdx === idx;
                 const isAnyHovered = hoveredIdx !== null;
                 const isDimmed = isAnyHovered && !isHovered;
-                const isProgrammes = link.label === "Programmes";
+                const isProgrammes = link.href === ROUTES.programmes;
 
                 return (
                   <motion.div
@@ -222,72 +225,47 @@ export function Navbar() {
             <div className="max-w-[1425px] w-full mx-auto pt-8 border-t border-black/[0.08] grid grid-cols-1 md:grid-cols-4 gap-6 text-xs font-mono text-text-muted">
               <div className="col-span-1">
                 <span className="text-text-base block mb-1 font-semibold">
-                  CIVIC CONTACT
+                  {navbar.contactHeading}
                 </span>
                 <a
-                  href="mailto:info@budgetndiostory.org"
+                  href={contact.emailHref}
                   className="hover:text-terracotta transition-colors"
                 >
-                  info@budgetndiostory.org
+                  {contact.email}
                 </a>
               </div>
 
               <div className="col-span-1">
                 <span className="text-text-base block mb-1 font-semibold">
-                  HUBS
+                  {navbar.hubsHeading}
                 </span>
-                <span>Nairobi &bull; Kenya (47 Counties)</span>
+                <span>{navbar.hubsText}</span>
               </div>
 
               <div className="col-span-1">
                 <span className="text-text-base block mb-1 font-semibold">
-                  INDEX
+                  {navbar.indexHeading}
                 </span>
                 <div className="flex flex-wrap gap-x-4 gap-y-1">
-                  <Link
-                    to={ROUTES.whitepaper}
-                    onClick={() => setMenuOpen(false)}
-                    className="hover:text-terracotta transition-colors"
-                  >
-                    White Paper
-                  </Link>
-                  <Link
-                    to={ROUTES.faq}
-                    onClick={() => setMenuOpen(false)}
-                    className="hover:text-terracotta transition-colors"
-                  >
-                    FAQ
-                  </Link>
-                  <Link
-                    to={ROUTES.terms}
-                    onClick={() => setMenuOpen(false)}
-                    className="hover:text-terracotta transition-colors"
-                  >
-                    Terms
-                  </Link>
-                  <Link
-                    to={ROUTES.privacy}
-                    onClick={() => setMenuOpen(false)}
-                    className="hover:text-terracotta transition-colors"
-                  >
-                    Privacy
-                  </Link>
-                  <Link
-                    to={ROUTES.cookies}
-                    onClick={() => setMenuOpen(false)}
-                    className="hover:text-terracotta transition-colors"
-                  >
-                    Cookies
-                  </Link>
+                  {navbar.indexLinks.map((item) => (
+                    <Link
+                      key={item.href}
+                      to={item.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="hover:text-terracotta transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
                 </div>
               </div>
 
               <div className="col-span-1 text-left md:text-right">
                 <span className="text-text-base block mb-1 font-semibold">
-                  &copy; 2026
+                  {navbar.copyright}
                 </span>
                 <span className="block mt-1">
-                  Budget Ndio Story &bull; AI in Civic Design
+                  {navbar.tagline}
                 </span>
               </div>
             </div>

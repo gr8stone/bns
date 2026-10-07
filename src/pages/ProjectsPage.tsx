@@ -2,25 +2,24 @@ import { motion } from "framer-motion";
 import { Filter } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ArchvizProjectShowcase } from "../components/common/ArchvizProjectShowcase";
+import { PRODUCTIONS_PAGE_CONTENT } from "../data/content/productions";
 import { PROJECTS } from "../data/projects";
 
-const CATEGORIES = [
-  "All Projects",
-  "Wanahabari Lab",
-  "BNS Connect",
-  "BNS Mashinani",
-  "BNS Studios",
-];
+const content = PRODUCTIONS_PAGE_CONTENT;
+
+const ALL_CATEGORY = content.filter.allCategoryLabel;
+
+const CATEGORIES = [ALL_CATEGORY, ...content.filter.categories];
 
 export function ProjectsPage() {
-  const [selectedCategory, setSelectedCategory] = useState("All Projects");
+  const [selectedCategory, setSelectedCategory] = useState(ALL_CATEGORY);
   const [activeScrollCategory, setActiveScrollCategory] =
-    useState("All Projects");
+    useState(ALL_CATEGORY);
   const [isFilterOnly, setIsFilterOnly] = useState(false);
   const mobileNavRef = useRef<HTMLDivElement>(null);
 
   const filteredProjects = useMemo(() => {
-    if (selectedCategory === "All Projects") return PROJECTS;
+    if (selectedCategory === ALL_CATEGORY) return PROJECTS;
     return PROJECTS.filter((p) => p.category === selectedCategory);
   }, [selectedCategory]);
 
@@ -28,7 +27,7 @@ export function ProjectsPage() {
   // 1. SCROLLSPY OBSERVER: Tracks which desk is currently in view
   // ─────────────────────────────────────────────────────────────
   useEffect(() => {
-    if (selectedCategory !== "All Projects") {
+    if (selectedCategory !== ALL_CATEGORY) {
       setActiveScrollCategory(selectedCategory);
       return;
     }
@@ -36,7 +35,7 @@ export function ProjectsPage() {
     const handleScroll = () => {
       // Near top of page, activate 'All Projects'
       if (window.scrollY < 260) {
-        setActiveScrollCategory("All Projects");
+        setActiveScrollCategory(ALL_CATEGORY);
         return;
       }
 
@@ -45,7 +44,7 @@ export function ProjectsPage() {
       if (!elements || elements.length === 0) return;
 
       const triggerY = 200; // reading line below navbar
-      let detectedCategory = "All Projects";
+      let detectedCategory = ALL_CATEGORY;
 
       for (let i = 0; i < elements.length; i++) {
         const el = elements[i];
@@ -58,7 +57,7 @@ export function ProjectsPage() {
             break;
           }
         } else if (rect.top > triggerY && i === 0) {
-          detectedCategory = "All Projects";
+          detectedCategory = ALL_CATEGORY;
           break;
         }
       }
@@ -93,9 +92,9 @@ export function ProjectsPage() {
   // 3. CATEGORY CLICK HANDLER: Smooth scroll or filter
   // ─────────────────────────────────────────────────────────────
   const handleCategoryClick = (cat: string) => {
-    if (cat === "All Projects") {
-      setSelectedCategory("All Projects");
-      setActiveScrollCategory("All Projects");
+    if (cat === ALL_CATEGORY) {
+      setSelectedCategory(ALL_CATEGORY);
+      setActiveScrollCategory(ALL_CATEGORY);
       setIsFilterOnly(false);
 
       const topAnchor = document.getElementById("projects-top");
@@ -119,8 +118,8 @@ export function ProjectsPage() {
     }
 
     // Scroll Mode (Default): smoothly scroll to that category's first card
-    if (selectedCategory !== "All Projects") {
-      setSelectedCategory("All Projects");
+    if (selectedCategory !== ALL_CATEGORY) {
+      setSelectedCategory(ALL_CATEGORY);
     }
 
     setTimeout(
@@ -140,7 +139,7 @@ export function ProjectsPage() {
           }
         }
       },
-      selectedCategory !== "All Projects" ? 50 : 0,
+      selectedCategory !== ALL_CATEGORY ? 50 : 0,
     );
   };
 
@@ -156,23 +155,21 @@ export function ProjectsPage() {
             <div className="flex items-center gap-2 mb-4">
               <span className="w-2 h-2 bg-[#2446EC] inline-block" />
               <span className="font-mono text-xs uppercase tracking-wider text-[#2446EC] font-semibold">
-                CIVIC MEDIA ARCHIVE
+                {content.hero.eyebrow}
               </span>
             </div>
             <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-medium tracking-[-0.05em] text-text-base uppercase leading-[0.94]">
-              Productions &amp;{" "}
-              <span className="text-[#2446EC]">campaigns.</span>
+              {content.hero.titleLead}{" "}
+              <span className="text-[#2446EC]">{content.hero.titleAccent}</span>
             </h1>
           </div>
 
           <div className="col-span-1">
             <span className="font-mono text-xs text-slate block mb-2 font-medium">
-              ARCHIVE SCOPE
+              {content.hero.scopeLabel}
             </span>
             <p className="font-sans text-xs sm:text-sm text-text-muted leading-relaxed font-normal">
-              Docuseries, investigations, plain-language budget explainers, and
-              grassroots tracking campaigns produced for citizen accountability
-              across 47 counties.
+              {content.hero.scopeText}
             </p>
           </div>
         </div>
@@ -183,26 +180,28 @@ export function ProjectsPage() {
           <div className="col-span-1 md:sticky md:top-28 z-20 bg-white">
             <div className="flex items-center justify-between mb-3 md:mb-6">
               <span className="font-mono text-xs uppercase tracking-wider text-[#2446EC] font-semibold block">
-                FILTER BY DESK
+                {content.filter.label}
               </span>
               <button
                 onClick={() => {
                   const nextMode = !isFilterOnly;
                   setIsFilterOnly(nextMode);
-                  if (!nextMode && selectedCategory !== "All Projects") {
-                    setSelectedCategory("All Projects");
+                  if (!nextMode && selectedCategory !== ALL_CATEGORY) {
+                    setSelectedCategory(ALL_CATEGORY);
                   }
                 }}
                 className="font-mono text-[10px] uppercase text-text-muted hover:text-[#2446EC] transition-colors flex items-center gap-1.5 cursor-pointer rounded-none border-0"
                 title={
                   isFilterOnly
-                    ? "Switch to Scroll Navigation Mode"
-                    : "Switch to Filter-Only Mode"
+                    ? content.filter.switchToScrollTitle
+                    : content.filter.switchToFilterTitle
                 }
               >
                 <Filter className="w-3 h-3 text-[#2446EC]" />
                 <span className="text-slate font-medium">
-                  {isFilterOnly ? "ISOLATE: ON" : "SCROLL NAV"}
+                  {isFilterOnly
+                    ? content.filter.isolateOnLabel
+                    : content.filter.scrollNavLabel}
                 </span>
               </button>
             </div>
@@ -214,12 +213,12 @@ export function ProjectsPage() {
             >
               {CATEGORIES.map((cat) => {
                 const isActive =
-                  selectedCategory === "All Projects"
+                  selectedCategory === ALL_CATEGORY
                     ? activeScrollCategory === cat
                     : selectedCategory === cat;
 
                 const count =
-                  cat === "All Projects"
+                  cat === ALL_CATEGORY
                     ? PROJECTS.length
                     : PROJECTS.filter((p) => p.category === cat).length;
 
@@ -267,16 +266,16 @@ export function ProjectsPage() {
                 className="py-32 text-center border border-black/[0.08] p-12 bg-[#FAFAF8]"
               >
                 <span className="font-mono text-xs text-slate uppercase block mb-3 font-medium">
-                  00 // NO ENTRIES FOUND
+                  {content.emptyState.eyebrow}
                 </span>
                 <h3 className="font-display text-2xl font-medium uppercase text-text-base mb-4 tracking-tight">
-                  NO PRODUCTIONS IN THIS DESK
+                  {content.emptyState.title}
                 </h3>
                 <button
-                  onClick={() => handleCategoryClick("All Projects")}
+                  onClick={() => handleCategoryClick(ALL_CATEGORY)}
                   className="px-6 py-3 border border-black/20 text-xs font-mono uppercase tracking-wider hover:bg-text-base hover:text-white transition-colors cursor-pointer rounded-none"
                 >
-                  RESET FILTER
+                  {content.emptyState.resetLabel}
                 </button>
               </motion.div>
             ) : (

@@ -7,10 +7,13 @@ import {
 import { ArrowLeft, ArrowRight, Play } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
+import { PROGRAMME_DETAIL_CONTENT } from "../data/content/programmeDetail";
 import { SERVICES } from "../data/services";
 import { getYouTubeId, getYouTubeThumbnail } from "../lib/media";
 
 const EASE_EDITORIAL = [0.22, 1, 0.36, 1] as const;
+
+const content = PROGRAMME_DETAIL_CONTENT;
 
 export function ServiceDetailPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -85,12 +88,12 @@ export function ServiceDetailPage() {
           className="inline-flex items-center gap-2 hover:text-[#2446EC] transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
-          <span>ALL PROGRAMMES</span>
+          <span>{content.breadcrumb.backLabel}</span>
         </Link>
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 bg-[#2446EC] inline-block" />
           <span className="text-[#2446EC] font-semibold">{service.number}</span>
-          <span>//</span>
+          <span>{content.separator}</span>
           <span className="text-[#101010] font-semibold">{service.title}</span>
         </div>
       </div>
@@ -107,7 +110,7 @@ export function ServiceDetailPage() {
           <div className="flex items-center gap-3">
             <span className="w-2.5 h-2.5 bg-[#2446EC] inline-block" />
             <span className="font-mono text-xs uppercase tracking-widest text-[#2446EC] font-semibold">
-              01 // THE CIVIC CHALLENGE
+              {content.challenge.actLabel}
             </span>
           </div>
 
@@ -115,7 +118,7 @@ export function ServiceDetailPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             <div className="lg:col-span-7">
               <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-[-0.04em] uppercase text-[#101010] leading-[0.94]">
-                Why Traditional Systems Fail To Deliver Accountability.
+                {content.challenge.title}
               </h1>
             </div>
 
@@ -133,34 +136,34 @@ export function ServiceDetailPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-[#101010]/15">
             <div>
               <span className="font-mono text-[11px] text-[#757575] uppercase tracking-wider block mb-1">
-                CONSTITUTIONAL MANDATE
+                {content.challenge.mandateLabel}
               </span>
               <span className="font-mono text-base sm:text-lg font-semibold text-[#101010]">
-                ARTICLES 10 &amp; 201
+                {content.challenge.mandateValue}
               </span>
             </div>
             <div>
               <span className="font-mono text-[11px] text-[#757575] uppercase tracking-wider block mb-1">
-                TERRITORIAL REACH
+                {content.challenge.reachLabel}
               </span>
               <span className="font-mono text-base sm:text-lg font-semibold text-[#101010]">
-                ALL 47 COUNTIES
+                {content.challenge.reachValue}
               </span>
             </div>
             <div>
               <span className="font-mono text-[11px] text-[#757575] uppercase tracking-wider block mb-1">
-                CYCLE WINDOW
+                {content.challenge.cycleLabel}
               </span>
               <span className="font-mono text-base sm:text-lg font-semibold text-[#101010]">
-                ANNUAL STATUTORY REVIEW
+                {content.challenge.cycleValue}
               </span>
             </div>
             <div>
               <span className="font-mono text-[11px] text-[#757575] uppercase tracking-wider block mb-1">
-                INITIATIVE TRACK
+                {content.challenge.trackLabel}
               </span>
               <span className="font-mono text-base sm:text-lg font-semibold text-[#2446EC]">
-                {service.number} // {service.title}
+                {service.number} {content.separator} {service.title}
               </span>
             </div>
           </div>
@@ -175,8 +178,11 @@ export function ServiceDetailPage() {
               className="w-full h-full object-cover filter brightness-95"
             />
             <div className="absolute bottom-4 left-6 right-6 flex items-center justify-between font-mono text-xs text-white/80 uppercase">
-              <span>EVIDENCE GROUNDWORK ARCHIVE</span>
-              <span>{service.number} // FIELD REPORT</span>
+              <span>{content.challenge.imageCaption}</span>
+              <span>
+                {service.number} {content.separator}{" "}
+                {content.challenge.fieldReportLabel}
+              </span>
             </div>
           </div>
         </div>
@@ -196,11 +202,11 @@ export function ServiceDetailPage() {
               <div className="flex items-center gap-3">
                 <span className="w-2.5 h-2.5 bg-[#2446EC] inline-block" />
                 <span className="font-mono text-xs uppercase tracking-widest text-[#2446EC] font-semibold">
-                  02 // DOCUMENTARY EVIDENCE &amp; PROCEEDINGS
+                  {content.video.actLabel}
                 </span>
               </div>
               <h2 className="font-display text-4xl sm:text-6xl lg:text-7xl font-medium tracking-tight uppercase text-[#101010] leading-[0.94]">
-                Data Rigor Meets Mass Action.
+                {content.video.title}
               </h2>
             </div>
             <p className="font-sans text-sm sm:text-base text-[#757575] font-light max-w-md leading-relaxed">
@@ -219,7 +225,7 @@ export function ServiceDetailPage() {
             {ytId && isPlayingVideo ? (
               <iframe
                 src={`https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0&modestbranding=1`}
-                title={`${service.title} Civic Video`}
+                title={`${service.title} ${content.video.iframeTitleSuffix}`}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 className="w-full h-full border-0"
@@ -249,9 +255,9 @@ export function ServiceDetailPage() {
 
                 {/* Minimalist Bottom Scene Telemetry */}
                 <div className="absolute bottom-4 left-6 right-6 flex items-center justify-between font-mono text-[11px] uppercase tracking-widest text-white/90 bg-black/70 backdrop-blur-md px-5 py-3">
-                  <span>WATCH BROADCAST EVIDENCE STREAM</span>
+                  <span>{content.video.watchLabel}</span>
                   <span className="text-[#2446EC] font-semibold">
-                    1080P PROCEEDINGS
+                    {content.video.qualityLabel}
                   </span>
                 </div>
               </div>
@@ -271,11 +277,11 @@ export function ServiceDetailPage() {
               <div className="flex items-center gap-3">
                 <span className="w-2.5 h-2.5 bg-[#2446EC] inline-block" />
                 <span className="font-mono text-xs uppercase tracking-widest text-[#2446EC] font-semibold">
-                  03 // THE MOTION SCRIPT ARCHITECTURE
+                  {content.script.actLabel}
                 </span>
               </div>
               <h2 className="font-display text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight uppercase text-[#101010] leading-[0.94]">
-                Audited Outputs &amp; Execution.
+                {content.script.title}
               </h2>
             </div>
 
@@ -289,7 +295,7 @@ export function ServiceDetailPage() {
                     : "bg-white text-[#757575] border-[#101010]/15 hover:border-[#101010] hover:text-[#101010]"
                 }`}
               >
-                [01 TANGIBLE DELIVERABLES]
+                {content.script.deliverablesTabLabel}
               </button>
               <button
                 onClick={() => setActiveScriptTab("pipeline")}
@@ -299,7 +305,7 @@ export function ServiceDetailPage() {
                     : "bg-white text-[#757575] border-[#101010]/15 hover:border-[#101010] hover:text-[#101010]"
                 }`}
               >
-                [02 4-PHASE METHODOLOGY]
+                {content.script.pipelineTabLabel}
               </button>
             </div>
           </div>
@@ -330,7 +336,7 @@ export function ServiceDetailPage() {
                       {item.name}
                     </h3>
                     <span className="font-mono text-[11px] text-[#757575] uppercase tracking-wider block">
-                      AUDITED STATUTORY OUTPUT // CHAPTER 0{idx + 1}
+                      {content.script.deliverableCaptionPrefix} 0{idx + 1}
                     </span>
                   </div>
 
@@ -377,9 +383,13 @@ export function ServiceDetailPage() {
                     <div className="absolute -left-[31px] sm:-left-[55px] top-2 w-3.5 h-3.5 bg-[#2446EC] ring-4 ring-white" />
 
                     <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-[#2446EC] font-semibold">
-                      <span>PHASE {wf.step}</span>
-                      <span className="text-zinc-300">//</span>
-                      <span className="text-[#757575]">EXECUTION TIMELINE</span>
+                      <span>
+                        {content.script.phaseLabel} {wf.step}
+                      </span>
+                      <span className="text-zinc-300">{content.separator}</span>
+                      <span className="text-[#757575]">
+                        {content.script.timelineLabel}
+                      </span>
                     </div>
 
                     <h4 className="font-display text-2xl sm:text-4xl font-medium uppercase tracking-tight text-[#101010]">
@@ -409,9 +419,12 @@ export function ServiceDetailPage() {
             >
               <div className="flex items-center gap-2 font-mono text-[10px] sm:text-xs uppercase text-[#757575] mb-3 sm:mb-4">
                 <ArrowLeft className="w-3.5 h-3.5 shrink-0 group-hover:-translate-x-1 transition-transform text-[#2446EC]" />
-                <span className="sm:hidden">PREV</span>
+                <span className="sm:hidden">
+                  {content.navigation.prevShortLabel}
+                </span>
                 <span className="hidden sm:inline">
-                  PREVIOUS INITIATIVE // {prevService.number}
+                  {content.navigation.prevLongLabel} {content.separator}{" "}
+                  {prevService.number}
                 </span>
               </div>
               <h4 className="font-display text-base sm:text-3xl font-medium tracking-tight text-[#101010] uppercase group-hover:text-[#2446EC] transition-colors leading-tight">
@@ -429,9 +442,12 @@ export function ServiceDetailPage() {
               className={`py-6 px-3 sm:py-12 sm:pl-8 flex flex-col justify-between group select-none hover:bg-white transition-colors duration-200 sm:text-right ${prevService ? "" : "col-span-2"}`}
             >
               <div className="flex items-center sm:justify-end gap-2 font-mono text-[10px] sm:text-xs uppercase text-[#757575] mb-3 sm:mb-4">
-                <span className="sm:hidden">NEXT</span>
+                <span className="sm:hidden">
+                  {content.navigation.nextShortLabel}
+                </span>
                 <span className="hidden sm:inline">
-                  NEXT INITIATIVE // {nextService.number}
+                  {content.navigation.nextLongLabel} {content.separator}{" "}
+                  {nextService.number}
                 </span>
                 <ArrowRight className="w-3.5 h-3.5 shrink-0 group-hover:translate-x-1 transition-transform text-[#2446EC]" />
               </div>

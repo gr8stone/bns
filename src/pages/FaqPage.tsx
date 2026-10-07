@@ -11,9 +11,11 @@ import { useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { WordReveal } from "../components/common/WordReveal";
 import { COMPREHENSIVE_FAQS, FAQ_CATEGORIES } from "../data/comprehensiveFaq";
+import { FAQ_PAGE_CONTENT } from "../data/content/faqPage";
 import { ROUTES } from "../lib/routes";
 
 export function FaqPage() {
+  const { hero, filters, answer, closing } = FAQ_PAGE_CONTENT;
   const shouldReduceMotion = useReducedMotion();
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [filtersOpen, setFiltersOpen] = useState(false);
@@ -46,9 +48,9 @@ export function FaqPage() {
 
   const activeLabel =
     selectedCategory === "all"
-      ? "All Topics"
+      ? filters.allTopicsLabel
       : (FAQ_CATEGORIES.find((c) => c.id === selectedCategory)?.label ??
-        "All Topics");
+        filters.allTopicsLabel);
 
   return (
     <main className="w-full bg-white text-[#101010] pt-28 md:pt-36 pb-24 md:pb-36">
@@ -66,12 +68,12 @@ export function FaqPage() {
             >
               <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
               <span className="font-mono text-xs uppercase tracking-wider text-[#101010] font-medium">
-                HELP CENTER &bull; INSTITUTIONAL REPOSITORY &bull; 2026
+                {hero.eyebrow}
               </span>
             </motion.div>
             <WordReveal
               as="h1"
-              text="THE COMPLETE BRIEF, IN THE OPEN."
+              text={hero.title}
               className="font-display text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-[-0.06em] text-[#101010] uppercase leading-[0.92]"
               staggerMs={28}
             />
@@ -85,11 +87,10 @@ export function FaqPage() {
           >
             <div>
               <span className="font-mono text-xs text-[#757575] block mb-2 font-medium">
-                SCOPE OF KNOWLEDGE
+                {hero.scopeLabel}
               </span>
               <p className="font-sans text-sm text-[#757575] leading-relaxed font-light">
-                Drawn directly from the BNS Institutional Framework, Whitepaper,
-                Terms, and Fiduciary Charters.
+                {hero.scopeBody}
               </p>
             </div>
           </motion.div>
@@ -103,8 +104,8 @@ export function FaqPage() {
           <div className="flex items-center justify-between py-3">
             <div className="flex items-center gap-3">
               <span className="font-mono text-[10px] uppercase tracking-wider text-[#757575]">
-                {filteredFaqs.length} question
-                {filteredFaqs.length !== 1 ? "s" : ""}
+                {filteredFaqs.length} {filters.countSingular}
+                {filteredFaqs.length !== 1 ? filters.countPluralSuffix : ""}
               </span>
               {selectedCategory !== "all" && (
                 <span className="font-mono text-[10px] uppercase tracking-wider text-[#101010] bg-[#101010]/06 px-2 py-0.5 border border-[#101010]/10">
@@ -119,7 +120,7 @@ export function FaqPage() {
                   onClick={() => handleCategoryChange("all")}
                   className="font-mono text-[10px] uppercase tracking-wider text-[#757575] hover:text-[#101010] transition-colors"
                 >
-                  Clear
+                  {filters.clearLabel}
                 </button>
               )}
               <button
@@ -135,7 +136,7 @@ export function FaqPage() {
                 ) : (
                   <SlidersHorizontal className="w-3.5 h-3.5" />
                 )}
-                <span>Filter by topic</span>
+                <span>{filters.toggleLabel}</span>
               </button>
             </div>
           </div>
@@ -250,7 +251,7 @@ export function FaqPage() {
                           <div className="flex flex-wrap items-center gap-4 font-mono text-[11px] text-[#757575]">
                             {item.sourceDoc && (
                               <span className="bg-[#101010]/04 px-2 py-0.5 border border-[#101010]/08">
-                                SOURCE: {item.sourceDoc}
+                                {answer.sourceLabel} {item.sourceDoc}
                               </span>
                             )}
                             {item.relatedLinks?.map((link) => (
@@ -280,14 +281,13 @@ export function FaqPage() {
         <div className="mt-16 sm:mt-24 pt-12 border-t border-[#101010]/12 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           <div className="md:col-span-8 space-y-2">
             <span className="font-mono text-xs uppercase tracking-wider text-[#101010] font-medium block">
-              CANNOT FIND WHAT YOU ARE LOOKING FOR?
+              {closing.eyebrow}
             </span>
             <h3 className="font-display text-2xl sm:text-4xl font-semibold tracking-tight text-[#101010] uppercase">
-              Speak directly with our team in Nairobi.
+              {closing.title}
             </h3>
             <p className="font-sans text-sm text-[#757575] font-light max-w-xl leading-relaxed">
-              We respond to institutional queries, partnership inquiries, and
-              rate card clarifications within 24 business hours.
+              {closing.body}
             </p>
           </div>
           <div className="md:col-span-4 flex flex-wrap items-center gap-3 md:justify-end">
@@ -295,15 +295,15 @@ export function FaqPage() {
               to={ROUTES.contact}
               className="solum-btn px-6 py-3.5 bg-[#101010] text-white font-mono text-xs uppercase tracking-wider hover:bg-white hover:text-[#101010] transition-colors inline-flex items-center gap-2"
             >
-              <span>Write to Desk</span>
+              <span>{closing.primaryCtaLabel}</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
             <a
-              href="mailto:info@budgetndiostory.org"
+              href={closing.emailHref}
               className="px-5 py-3.5 border border-[#101010]/20 text-[#101010] font-mono text-xs uppercase tracking-wider hover:border-[#101010] transition-colors inline-flex items-center gap-2"
             >
               <Mail className="w-3.5 h-3.5" />
-              <span>Email Us</span>
+              <span>{closing.emailCtaLabel}</span>
             </a>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { NOT_FOUND_CONTENT } from "../data/content/notFound";
 
 export function NotFoundPage() {
   return (
@@ -12,24 +13,23 @@ export function NotFoundPage() {
         className="max-w-2xl text-center space-y-6 select-none"
       >
         <span className="font-mono text-xs uppercase tracking-wider text-[#757575] block">
-          404 // CIVIC MEDIA ARCHIVE
+          {NOT_FOUND_CONTENT.eyebrow}
         </span>
 
         <h1 className="font-display text-7xl sm:text-9xl font-bold tracking-[-0.07em] leading-none text-[#101010]">
-          404
+          {NOT_FOUND_CONTENT.heading}
         </h1>
 
         <p className="font-sans text-sm sm:text-base text-[#757575] leading-relaxed max-w-md mx-auto">
-          The requested episode, campaign archive, or civic story cannot be
-          located within our index.
+          {NOT_FOUND_CONTENT.description}
         </p>
 
         <div className="pt-4">
           <Link
-            to="/"
+            to={NOT_FOUND_CONTENT.ctaHref}
             className="solum-btn px-6 py-3.5 bg-[#101010] text-white border border-[#101010] text-xs font-mono uppercase tracking-wider hover:bg-white hover:text-[#101010] transition-colors duration-180 inline-flex"
           >
-            <span>RETURN HOME</span>
+            <span>{NOT_FOUND_CONTENT.ctaLabel}</span>
             <span className="btn-arrow ml-3">
               <ArrowRight className="w-3.5 h-3.5 inline-block" />
             </span>
