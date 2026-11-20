@@ -65,6 +65,7 @@ export const project = defineType({
     strList("services"),
     strList("tags"),
     str("heroImage", "Hero image URL"),
+    str("heroImageAlt", "Hero image alt text"),
     str("heroVideo", "Hero video URL"),
     text("summary"),
     textList("description", "Description paragraphs"),

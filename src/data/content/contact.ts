@@ -30,8 +30,8 @@ export const CONTACT_PAGE_CONTENT = {
     ],
   },
   success: {
-    title: "Inquiry Received",
-    body: "Thank you. A member of our civic research desk will review your inquiry and respond within 24 hours.",
+    title: "Email Draft Opened",
+    body: "Your email application should open with this inquiry prepared. If it did not open, send the message directly to info@budgetndiostory.org.",
     resetLabel: "Send Another Message",
   },
   form: {

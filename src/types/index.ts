@@ -48,6 +48,7 @@ export interface Project {
   services: string[];
   tags: string[]; // For filtering: CGI, Architecture, Real Estate, AI Film, Animation, Interior, Exterior, Renovation
   heroImage: string;
+  heroImageAlt?: string;
   heroVideo?: string;
   summary: string;
   description: string[];

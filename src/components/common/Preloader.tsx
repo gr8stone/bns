@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { SITE_CONTENT } from "../../data/content/site";
 
@@ -10,12 +10,21 @@ interface PreloaderProps {
 }
 
 export function Preloader({ onSequenceStart, onComplete }: PreloaderProps) {
+  const shouldReduceMotion = useReducedMotion();
   const [curtainUp, setCurtainUp] = useState(false);
-  const [isDone, setIsDone] = useState(false);
+  const [isDone, setIsDone] = useState(Boolean(shouldReduceMotion));
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    if (shouldReduceMotion) {
+      onSequenceStart?.();
+      onComplete?.();
+      return;
+    }
+    if (isDone) return;
+
     // Lock scroll during the curtain sequence
+    const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
     // Rapid progress counter for architectural precision
@@ -38,7 +47,7 @@ export function Preloader({ onSequenceStart, onComplete }: PreloaderProps) {
     // T=600ms: Curtain has fully moved offscreen, unlock body
     const t2 = setTimeout(() => {
       setIsDone(true);
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousOverflow;
       onComplete?.();
     }, 600);
 
@@ -46,11 +55,11 @@ export function Preloader({ onSequenceStart, onComplete }: PreloaderProps) {
       clearInterval(progressInterval);
       clearTimeout(t1);
       clearTimeout(t2);
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousOverflow;
     };
-  }, [onSequenceStart, onComplete]);
+  }, [isDone, onSequenceStart, onComplete, shouldReduceMotion]);
 
-  if (isDone) {
+  if (shouldReduceMotion || isDone) {
     return null;
   }
 

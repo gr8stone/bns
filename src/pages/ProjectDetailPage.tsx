@@ -170,7 +170,7 @@ export function ProjectDetailPage() {
             >
               <img
                 src={leadPoster}
-                alt={project.title}
+                alt={project.heroImageAlt || project.title}
                 loading="eager"
                 onError={() => setThumbError(true)}
                 className="w-full h-full object-cover filter brightness-90"

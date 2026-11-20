@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { Routes, Route, Navigate, useLocation, type Location } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Navbar } from './components/common/Navbar';
@@ -76,28 +76,23 @@ function PageTransition() {
   const location = useLocation();
   const shouldReduceMotion = useReducedMotion();
 
-  const isFirstMountRef = useRef(true);
   const lastPathnameRef = useRef(location.pathname);
   const lastLocationRef = useRef<Location>(location);
 
   const [prevLocation, setPrevLocation] = useState<Location | null>(null);
   const [savedScrollY, setSavedScrollY] = useState(0);
 
-  // Synchronously update previous location state when pathname changes
-  if (location.pathname !== lastPathnameRef.current) {
-    const scroll = window.scrollY || document.documentElement.scrollTop || 0;
-    setSavedScrollY(scroll);
-    setPrevLocation(lastLocationRef.current);
-    lastPathnameRef.current = location.pathname;
-    lastLocationRef.current = location;
-    resetLenisScroll();
-    pauseLenis();
-  }
-
-  const isFirstMount = isFirstMountRef.current;
-  useEffect(() => {
-    isFirstMountRef.current = false;
-  }, []);
+  useLayoutEffect(() => {
+    if (location.pathname !== lastPathnameRef.current) {
+      const scroll = window.scrollY || document.documentElement.scrollTop || 0;
+      setSavedScrollY(scroll);
+      setPrevLocation(lastLocationRef.current);
+      lastPathnameRef.current = location.pathname;
+      lastLocationRef.current = location;
+      resetLenisScroll();
+      pauseLenis();
+    }
+  }, [location]);
 
   const handleAnimationComplete = () => {
     setPrevLocation(null);
@@ -140,7 +135,7 @@ function PageTransition() {
       {/* 2. INCOMING PAGE: Ascends directly from the bottom (100vh -> 0) in normal document flow */}
       <motion.div
         key={location.pathname}
-        initial={shouldReduceMotion || isFirstMount ? false : { y: '100vh' }}
+        initial={shouldReduceMotion ? false : { y: '100vh' }}
         animate={{ y: 0 }}
         transition={{
           duration: 0.85,

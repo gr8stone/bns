@@ -1,5 +1,5 @@
 import { ArrowRight, Eye, Maximize2, Play, Volume2, VolumeX } from "lucide-react";
-import { useRef, useState } from "react";
+import { useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from "react";
 import { Link } from "react-router-dom";
 import type { Project } from "../../types";
 import { LightboxModal, type LightboxImage } from "./LightboxModal";
@@ -140,6 +140,22 @@ export function ArchvizProjectShowcase({
   // Duplicate each row array for seamless 0% -> -50% infinite loop
   const row1Loop = [...row1BaseEnsured, ...row1BaseEnsured];
   const row2Loop = [...row2BaseEnsured, ...row2BaseEnsured];
+  const keyboardFocusableImages = new Set<number>();
+  const row1KeyboardIndexes = new Set<number>();
+  const row2KeyboardIndexes = new Set<number>();
+
+  row1Loop.forEach((entry, idx) => {
+    if (!keyboardFocusableImages.has(entry.originalIndex)) {
+      keyboardFocusableImages.add(entry.originalIndex);
+      row1KeyboardIndexes.add(idx);
+    }
+  });
+  row2Loop.forEach((entry, idx) => {
+    if (!keyboardFocusableImages.has(entry.originalIndex)) {
+      keyboardFocusableImages.add(entry.originalIndex);
+      row2KeyboardIndexes.add(idx);
+    }
+  });
 
   const toggleSound = () => {
     if (videoRef.current) {
@@ -157,6 +173,16 @@ export function ArchvizProjectShowcase({
   const handleOpenLightbox = (idx: number) => {
     setLightboxIndex(idx);
     setLightboxOpen(true);
+  };
+
+  const handleLightboxKeyDown = (
+    event: ReactKeyboardEvent<HTMLDivElement>,
+    idx: number,
+  ) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      handleOpenLightbox(idx);
+    }
   };
 
   const formattedNumber = String(index + 1).padStart(2, "0");
@@ -260,12 +286,15 @@ export function ArchvizProjectShowcase({
               />
             ) : (
               <div
+                role="button"
+                tabIndex={0}
                 onClick={() => handleOpenLightbox(0)}
+                onKeyDown={(event) => handleLightboxKeyDown(event, 0)}
                 className="relative w-full h-full cursor-pointer group/lead"
               >
                 <img
                   src={project.heroImage}
-                  alt={project.title}
+                  alt={project.heroImageAlt || project.title}
                   loading="lazy"
                   className="w-full h-full object-cover filter brightness-95 group-hover/lead:scale-[1.02] transition-transform duration-500"
                 />
@@ -374,7 +403,13 @@ export function ArchvizProjectShowcase({
               {row1Loop.map((entry, idx) => (
                 <div
                   key={`r1-${idx}-${entry.originalIndex}`}
+                  role="button"
+                  tabIndex={row1KeyboardIndexes.has(idx) ? 0 : -1}
+                  aria-hidden={!row1KeyboardIndexes.has(idx)}
                   onClick={() => handleOpenLightbox(entry.originalIndex)}
+                  onKeyDown={(event) =>
+                    handleLightboxKeyDown(event, entry.originalIndex)
+                  }
                   className="group relative w-48 sm:w-60 lg:w-68 h-[120px] sm:h-[160px] lg:h-[195px] flex-shrink-0 overflow-hidden bg-white border border-black/10 hover:border-[#2446EC] transition-all duration-300 cursor-pointer shadow-xs hover:shadow-md"
                 >
                   <img
@@ -410,7 +445,13 @@ export function ArchvizProjectShowcase({
               {row2Loop.map((entry, idx) => (
                 <div
                   key={`r2-${idx}-${entry.originalIndex}`}
+                  role="button"
+                  tabIndex={row2KeyboardIndexes.has(idx) ? 0 : -1}
+                  aria-hidden={!row2KeyboardIndexes.has(idx)}
                   onClick={() => handleOpenLightbox(entry.originalIndex)}
+                  onKeyDown={(event) =>
+                    handleLightboxKeyDown(event, entry.originalIndex)
+                  }
                   className="group relative w-48 sm:w-60 lg:w-68 h-[120px] sm:h-[160px] lg:h-[195px] flex-shrink-0 overflow-hidden bg-white border border-black/10 hover:border-[#2446EC] transition-all duration-300 cursor-pointer shadow-xs hover:shadow-md"
                 >
                   <img

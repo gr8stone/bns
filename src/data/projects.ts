@@ -2,6 +2,128 @@ import type { Project } from "../types";
 
 export const PROJECTS: Project[] = [
   {
+    slug: "beyond-the-pitch",
+    title: "Beyond The Pitch",
+    subtitle: "Community Sport, Enterprise & Civic Participation",
+    location: "Embakasi East, Nairobi, Kenya",
+    year: "2027",
+    client: "Beyond The Pitch initiative",
+    architect: "Proposed programme concept",
+    category: "BNS Mashinani",
+    services: ["BNS Mashinani", "BNS Connect"],
+    tags: [
+      "All",
+      "Grassroots Sport",
+      "Entrepreneurship",
+      "Youth",
+      "AI",
+      "Digital Economy",
+      "Civic Leadership",
+      "Governance",
+      "Public Finance",
+      "Community",
+    ],
+    heroImage: "/images/bns/beyond-the-pitch-football.webp",
+    heroImageAlt:
+      "Illustrative visual from the concept note: football as a gateway to community opportunity; not an actual participant or event.",
+    videoDuration: "ILLUSTRATIVE CONCEPT VISUALS",
+    clientMaterial: "Beyond The Pitch Executive Concept Note • April 2027",
+    summary:
+      "PLAY FOR THE TROPHY. BUILD FOR LIFE. A proposed community-driven initiative using grassroots football to connect young people with enterprise, digital innovation, civic leadership, and public-finance learning in Embakasi East.",
+    description: [
+      "Beyond The Pitch uses football as an entry point to practical opportunities in entrepreneurship, artificial intelligence, the digital economy, civic leadership, and public participation. The concept note proposes an April 2027 programme in Embakasi East, Nairobi.",
+      "The proposed delivery model brings together ten grassroots clubs for weekend matches, alongside enterprise development classes for club managers and players three weekday evenings each week. Community members are invited into complementary innovation, leadership, and civic-learning opportunities.",
+      "Six proposed pillars cover club enterprise sustainability; Cents & Sensibility; AI, digital economy, and community innovation; civic leadership and governance; public-finance learning through “My County. My Budget. My Responsibility.”; and women’s entrepreneurship with non-partisan politics, governance, and public-leadership learning open to women and men.",
+      "Cents & Sensibility is designed to take five-minute community pitches through mentorship, blogs, actionable policy briefs, research papers, and webinars. The concept note proposes mentoring the top 20 performers; publication, webinar participation, and internships depend on quality review and host availability.",
+      "The launch is proposed for April 2027. The detailed duration, venues, and schedules remain to be agreed with participating clubs, community representatives, and delivery partners. These are planned activities and outcomes, not completed results.",
+      "All six visuals are illustrative images from the concept note, not photographs of actual Beyond The Pitch participants or events.",
+    ],
+    stats: [
+      { label: "Proposed clubs", value: "10 grassroots clubs" },
+      { label: "Proposed launch", value: "April 2027" },
+      { label: "Programme pillars", value: "6" },
+      { label: "Cents & Sensibility", value: "Top 20 performers" },
+    ],
+    process: [
+      {
+        step: "01",
+        title: "Football, Entrepreneurship & Enterprise Sustainability",
+        description:
+          "Ten clubs are proposed to compete on weekends while managers and players attend enterprise development classes three weekday evenings each week.",
+        image: "/images/bns/beyond-the-pitch-enterprise.webp",
+      },
+      {
+        step: "02",
+        title: "Cents & Sensibility: From Podium to Publication",
+        description:
+          "Five-minute community pitches lead into proposed mentorship, blogs, policy briefs, research papers, and webinars, subject to quality review.",
+        image: "/images/bns/beyond-the-pitch-cents-sensibility.webp",
+      },
+      {
+        step: "03",
+        title: "AI, Digital Economy & Community Innovation",
+        description:
+          "Hands-on learning is proposed in responsible AI, digital enterprise, basic product development, and local problem-solving.",
+        image: "/images/bns/beyond-the-pitch-digital-learning.webp",
+      },
+      {
+        step: "04",
+        title: "Civic Leadership, Governance & Participation",
+        description:
+          "Participants identify community issues, develop practical proposals, and engage relevant institutions through non-partisan, constructive participation.",
+        image: "/images/bns/beyond-the-pitch-community-dialogue.webp",
+      },
+      {
+        step: "05",
+        title: "My County. My Budget. My Responsibility.",
+        description:
+          "The proposed public school covers budgets, public debt, allocation tracking, public participation, and lawful accountability.",
+        image: "/images/bns/beyond-the-pitch-public-finance.webp",
+      },
+      {
+        step: "06",
+        title: "Women, Governance, Politics & Entrepreneurship",
+        description:
+          "Women’s enterprise clinics accompany non-partisan political and public-leadership learning designed for women and men.",
+      },
+    ],
+    gallery: [
+      {
+        url: "/images/bns/beyond-the-pitch-enterprise.webp",
+        caption:
+          "Illustrative visual: managers and players building practical business capabilities.",
+        aspectRatio: "landscape",
+      },
+      {
+        url: "/images/bns/beyond-the-pitch-cents-sensibility.webp",
+        caption:
+          "Illustrative visual: young people presenting ideas to their community.",
+        aspectRatio: "landscape",
+      },
+      {
+        url: "/images/bns/beyond-the-pitch-digital-learning.webp",
+        caption:
+          "Illustrative visual: digital learning and collaborative problem-solving.",
+        aspectRatio: "landscape",
+      },
+      {
+        url: "/images/bns/beyond-the-pitch-community-dialogue.webp",
+        caption:
+          "Illustrative visual: community dialogue and participatory leadership.",
+        aspectRatio: "landscape",
+      },
+      {
+        url: "/images/bns/beyond-the-pitch-public-finance.webp",
+        caption:
+          "Illustrative visual: public-finance learning using accessible charts and examples.",
+        aspectRatio: "landscape",
+      },
+    ],
+    featured: true,
+    featuredOrder: 0,
+    nextProjectSlug: "county-budget-where-money-comes-from",
+  },
+  {
     slug: "county-budget-where-money-comes-from",
     aliases: [
       "riviera-residence",
@@ -913,6 +1035,6 @@ export const PROJECTS: Project[] = [
     ],
     featured: false,
     featuredOrder: 11,
-    nextProjectSlug: "county-budget-where-money-comes-from",
+    nextProjectSlug: "beyond-the-pitch",
   },
 ];

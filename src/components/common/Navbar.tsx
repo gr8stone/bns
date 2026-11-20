@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { NAV_LINKS, PROGRAMME_PREVIEW, ROUTES } from "../../lib/routes";
 import { SITE_CONTENT } from "../../data/content/site";
@@ -12,6 +12,21 @@ export function Navbar() {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const location = useLocation();
   const overlayRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const previouslyFocusedRef = useRef<HTMLElement | null>(null);
+
+  const handleMenuToggle = () => {
+    if (menuOpen) {
+      setMenuOpen(false);
+      return;
+    }
+
+    previouslyFocusedRef.current =
+      document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
+    setMenuOpen(true);
+  };
 
   // Close on route change
   useEffect(() => {
@@ -23,21 +38,63 @@ export function Navbar() {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" && menuOpen) {
         setMenuOpen(false);
+        return;
+      }
+      if (e.key === "Tab" && menuOpen && overlayRef.current) {
+        const focusable = Array.from(
+          overlayRef.current.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+          ),
+        ).filter(
+          (element) =>
+            !element.hasAttribute("hidden") &&
+            element.getAttribute("aria-hidden") !== "true" &&
+            element.getClientRects().length > 0,
+        );
+
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (!overlayRef.current.contains(document.activeElement)) {
+          e.preventDefault();
+          (e.shiftKey ? last : first).focus();
+        } else if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [menuOpen]);
 
+  useLayoutEffect(() => {
+    if (menuOpen) {
+      closeButtonRef.current?.focus();
+    } else if (previouslyFocusedRef.current) {
+      const previousFocus = previouslyFocusedRef.current;
+      const focusTarget = previousFocus.isConnected
+        ? previousFocus
+        : document.querySelector<HTMLButtonElement>(
+            'button[aria-controls="primary-menu-overlay"]',
+          );
+      focusTarget?.focus();
+      previouslyFocusedRef.current = null;
+    }
+  }, [menuOpen]);
+
   // Lock scroll when menu is open
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    if (!menuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousOverflow;
     };
   }, [menuOpen]);
 
@@ -94,8 +151,10 @@ export function Navbar() {
               </Link>
 
               <button
-                onClick={() => setMenuOpen(!menuOpen)}
+                onClick={handleMenuToggle}
                 aria-label={menuOpen ? navbar.closeMenuAriaLabel : navbar.openMenuAriaLabel}
+                aria-expanded={menuOpen}
+                aria-controls="primary-menu-overlay"
                 className="cursor-pointer flex items-center gap-2.5 px-3.5 py-2 font-mono text-xs font-semibold uppercase tracking-wider transition-all duration-150 border border-black/15 bg-white text-text-base hover:bg-ivory rounded-none group"
               >
                 <span>{menuOpen ? navbar.closeLabel : navbar.menuLabel}</span>
@@ -117,6 +176,10 @@ export function Navbar() {
         {menuOpen && (
           <motion.div
             ref={overlayRef}
+            id="primary-menu-overlay"
+            role="dialog"
+            aria-modal="true"
+            aria-label={navbar.openMenuAriaLabel}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -139,6 +202,7 @@ export function Navbar() {
               </Link>
 
               <button
+                ref={closeButtonRef}
                 onClick={() => setMenuOpen(false)}
                 aria-label={navbar.closeMenuAriaLabel}
                 className="cursor-pointer flex items-center gap-2.5 px-3.5 py-2 font-mono text-xs font-semibold uppercase tracking-wider border border-black/20 bg-text-base text-white hover:bg-terracotta rounded-none"

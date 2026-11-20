@@ -70,7 +70,7 @@ export function SolumRecentProjects() {
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-zinc-100 border border-black/[0.08] rounded-none">
                   <img
                     src={pSupport1.heroImage}
-                    alt={pSupport1.title}
+                    alt={pSupport1.heroImageAlt || pSupport1.title}
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-[550ms] ease-out group-hover:scale-[1.02]"
                   />
@@ -96,7 +96,7 @@ export function SolumRecentProjects() {
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-zinc-100 border border-black/[0.08] rounded-none">
                   <img
                     src={pSupport2.heroImage}
-                    alt={pSupport2.title}
+                    alt={pSupport2.heroImageAlt || pSupport2.title}
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-[550ms] ease-out group-hover:scale-[1.02]"
                   />
@@ -133,7 +133,7 @@ export function SolumRecentProjects() {
                 <div className="relative aspect-[16/10] sm:aspect-[21/9] w-full overflow-hidden bg-zinc-100 border border-black/[0.08] rounded-none">
                   <img
                     src={pBroad.heroImage}
-                    alt={pBroad.title}
+                    alt={pBroad.heroImageAlt || pBroad.title}
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-[550ms] ease-out group-hover:scale-[1.02]"
                   />

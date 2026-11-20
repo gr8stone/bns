@@ -117,7 +117,11 @@ export function ContactPage() {
 
               {/* Minimalist Form */}
               {submitted ? (
-                <div className="bg-[#F9F9F8] p-10 md:p-14 border border-[#101010]/12 text-center">
+                <div
+                  role="status"
+                  aria-live="polite"
+                  className="bg-[#F9F9F8] p-10 md:p-14 border border-[#101010]/12 text-center"
+                >
                   <CheckCircle2 className="w-10 h-10 text-[#101010] mx-auto mb-4" />
                   <h3 className="font-display text-2xl md:text-3xl font-semibold uppercase text-[#101010] mb-2 tracking-tight">
                     {success.title}
@@ -136,10 +140,11 @@ export function ContactPage() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Name */}
                   <div>
-                    <label className="block font-sans text-xs text-[#757575] mb-2">
+                    <label htmlFor="contact-name" className="block font-sans text-xs text-[#757575] mb-2">
                       {form.nameLabel}
                     </label>
                     <input
+                      id="contact-name"
                       type="text"
                       required
                       value={formData.name}
@@ -153,10 +158,11 @@ export function ContactPage() {
 
                   {/* Email */}
                   <div>
-                    <label className="block font-sans text-xs text-[#757575] mb-2">
+                    <label htmlFor="contact-email" className="block font-sans text-xs text-[#757575] mb-2">
                       {form.emailLabel}
                     </label>
                     <input
+                      id="contact-email"
                       type="email"
                       required
                       value={formData.email}
@@ -170,11 +176,12 @@ export function ContactPage() {
 
                   {/* Service */}
                   <div>
-                    <label className="block font-sans text-xs text-[#757575] mb-2">
+                    <label htmlFor="contact-service" className="block font-sans text-xs text-[#757575] mb-2">
                       {form.serviceLabel}
                     </label>
                     <div className="relative">
                       <select
+                        id="contact-service"
                         value={formData.service}
                         onChange={(e) =>
                           setFormData({ ...formData, service: e.target.value })
@@ -196,10 +203,11 @@ export function ContactPage() {
 
                   {/* Message */}
                   <div>
-                    <label className="block font-sans text-xs text-[#757575] mb-2">
+                    <label htmlFor="contact-message" className="block font-sans text-xs text-[#757575] mb-2">
                       {form.messageLabel}
                     </label>
                     <textarea
+                      id="contact-message"
                       rows={5}
                       required
                       value={formData.message}

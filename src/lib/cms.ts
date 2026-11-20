@@ -24,6 +24,10 @@ const COLLECTIONS: Record<string, unknown[]> = {
   audienceAlignment: AUDIENCE_ALIGNMENTS,
 };
 
+const LOCAL_PROJECT_FALLBACKS = PROJECTS.filter(
+  (project) => project.slug === "beyond-the-pitch",
+);
+
 const QUERY = `{${Object.keys(COLLECTIONS)
   .map((type) => `"${type}": *[_type == "${type}"] | order(order asc)`)
   .concat(`"pageContent": *[_id in $contentIds]`)
@@ -79,7 +83,21 @@ export async function hydrateContent(): Promise<void> {
     for (const [type, target] of Object.entries(COLLECTIONS)) {
       const docs = result[type];
       if (Array.isArray(docs) && docs.length > 0) {
-        replaceContents(target, docs.map(stripSystemFields));
+        const sanitizedDocs = docs.map(stripSystemFields);
+        if (type === "project") {
+          const remoteSlugs = new Set(
+            sanitizedDocs
+              .filter(isPlainObject)
+              .map((project) => project.slug)
+              .filter((slug): slug is string => typeof slug === "string"),
+          );
+          const localFallbacks = LOCAL_PROJECT_FALLBACKS.filter(
+            (project) => !remoteSlugs.has(project.slug),
+          );
+          replaceContents(target, [...localFallbacks, ...sanitizedDocs]);
+        } else {
+          replaceContents(target, sanitizedDocs);
+        }
       }
     }
 

@@ -22,7 +22,7 @@ export function ProjectCard({
       <div className={`relative ${aspectRatio} overflow-hidden bg-black/10 border border-black/10`}>
         <img
           src={project.heroImage}
-          alt={project.title}
+          alt={project.heroImageAlt || project.title}
           loading="lazy"
           className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
         />
