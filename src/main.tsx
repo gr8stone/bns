@@ -1,7 +1,5 @@
 import "@fontsource-variable/geist-mono";
 import "@fontsource-variable/inter";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/react";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
@@ -14,8 +12,6 @@ hydrateContent().finally(() => {
     <StrictMode>
       <BrowserRouter>
         <App />
-        <Analytics />
-        <SpeedInsights />
       </BrowserRouter>
     </StrictMode>,
   );

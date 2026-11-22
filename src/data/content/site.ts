@@ -133,6 +133,19 @@ export const SITE_CONTENT = {
     copyrightPrefix: '©',
     copyrightSuffix: 'BUDGET NDIO STORY • ALL RIGHTS RESERVED',
     legalNote: 'BNS FOUNDATION • BNS STUDIOS',
+    cookieSettingsLabel: 'Cookie settings',
+  },
+
+  // Consent banner (Kenya Data Protection Act 2019). Keep this wording in step
+  // with the Cookies and Privacy pages; bump CONSENT_VERSION in src/lib/consent.ts
+  // when the substance changes so visitors are asked again.
+  consent: {
+    title: 'Can we count your visit?',
+    body: 'With your permission we use privacy-friendly analytics to see, in aggregate, which pages are read and how fast they load. No advertising, no profiling, nothing sold. You can change your mind any time from "Cookie settings" in the footer.',
+    policyLabel: 'Cookies policy',
+    acceptLabel: 'Allow analytics',
+    rejectLabel: 'No thanks',
+    currentLabel: 'Your current choice',
   },
 
   preloader: {

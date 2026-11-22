@@ -6,6 +6,7 @@ import { Footer } from './components/common/Footer';
 import { ScrollToTop } from './components/common/ScrollToTop';
 import { SmoothScroll, resetLenisScroll, pauseLenis, resumeLenis } from './components/common/SmoothScroll';
 import { BackToTopButton } from './components/common/BackToTopButton';
+import { ConsentBanner, ConsentedAnalytics } from './components/common/ConsentBanner';
 import { Preloader } from './components/common/Preloader';
 import { SEO } from './components/common/SEO';
 
@@ -191,6 +192,10 @@ export function App() {
       {/* Solum 4-Column Footer & Back to Top (hidden on /ratecard) */}
       {!isRateCardPage && <Footer />}
       <BackToTopButton />
+
+      {/* Kenya DPA 2019: analytics load only after opt-in consent */}
+      <ConsentBanner />
+      <ConsentedAnalytics />
     </div>
   );
 }
