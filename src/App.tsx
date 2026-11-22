@@ -78,6 +78,11 @@ function PageTransition() {
 
   const lastPathnameRef = useRef(location.pathname);
   const lastLocationRef = useRef<Location>(location);
+  // The first page paints in place so its own entrance choreography reads cleanly;
+  // only subsequent navigations use the rising-page transition.
+  const [initialPathname] = useState(location.pathname);
+  const [hasNavigated, setHasNavigated] = useState(false);
+  const isInitialPage = !hasNavigated && location.pathname === initialPathname;
 
   const [prevLocation, setPrevLocation] = useState<Location | null>(null);
   const [savedScrollY, setSavedScrollY] = useState(0);
@@ -87,6 +92,7 @@ function PageTransition() {
       const scroll = window.scrollY || document.documentElement.scrollTop || 0;
       setSavedScrollY(scroll);
       setPrevLocation(lastLocationRef.current);
+      setHasNavigated(true);
       lastPathnameRef.current = location.pathname;
       lastLocationRef.current = location;
       resetLenisScroll();
@@ -135,7 +141,7 @@ function PageTransition() {
       {/* 2. INCOMING PAGE: Ascends directly from the bottom (100vh -> 0) in normal document flow */}
       <motion.div
         key={location.pathname}
-        initial={shouldReduceMotion ? false : { y: '100vh' }}
+        initial={shouldReduceMotion || isInitialPage ? false : { y: '100vh' }}
         animate={{ y: 0 }}
         transition={{
           duration: 0.85,

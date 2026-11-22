@@ -16,3 +16,4 @@
 
 ## 4. Progression Gate
 - Layout tweaks, styling enhancements, and structural redesigns will only be permitted after all content has been completely replaced and verified.
+- **Status (2026-11-22): Gate passed.** The owner confirmed content migration is verified and lifted the freeze in Sections 2–3 for the v2 storytelling redesign. Layout, styling, and motion changes are now permitted, starting with the homepage (`src/components/story/`). Facts in copy must still come from existing BNS sources (About, White Paper, Studio, Projects); do not invent claims or figures.

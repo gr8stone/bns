@@ -1,13 +1,20 @@
+/**
+ * Home page content — Budget Ndio Story (v2 storytelling homepage)
+ *
+ * The homepage reads as one narrative, in chapters:
+ *   Hero      → the promise   ("Follow the budget. Find the story.")
+ *   01 Why    → the problem   (budgets are public but not readable)
+ *   Bridge    → the stakes    (different counties, shared public money)
+ *   02 What   → the work      (three flagship programmes)
+ *   03 Proof  → the record    (reach, partners, productions)
+ *   04 Model  → the engine    (Studios funds the Foundation, ≥ 40%)
+ *   Footer    → the ask       (get involved)
+ *
+ * Every fact here is drawn from existing BNS copy (About, White Paper, Studio).
+ */
 export const HOME_CONTENT = {
   hero: {
-    tickerItems: [
-      "FOLLOW THE BUDGET. FIND THE STORY.",
-      "BNS FOUNDATION • BNS STUDIOS",
-      "50,000+ YOUNG KENYANS ENGAGED",
-      "ALL 47 COUNTIES ACROSS KENYA",
-      "CROSS-SUBSIDISED CIVIC IMPACT",
-      "BUDGET NDIO STORY",
-    ],
+    eyebrow: "Civic media & public finance • Kenya",
     headlineLead: "Follow the budget.",
     headlineAccent: "Find the story.",
     description:
@@ -19,85 +26,47 @@ export const HOME_CONTENT = {
     heroImageAlt: "Budget Ndio Story Civic Convening",
     playButtonAriaLabel: "Play documentary reel",
     playButtonLabel: "Watch Reel • 2026",
-    liveTag: "LIVE DOC",
-    coverageCard: {
-      eyebrow: "COVERAGE & REACH",
-      metric: "47 / 47",
-      description:
-        "Counties engaged through surveys, town halls, digital storytelling, and community dialogues.",
-      linkLabel: "OPEN DATA ARCHIVE",
-      linkArrow: "→",
-    },
-    youthCard: {
-      eyebrow: "YOUTH CONSTITUENCY",
-      avatars: [
-        "/images/bns/optimized/nelly-avatar.webp",
-        "/images/bns/optimized/latiff-avatar.webp",
-        "/images/bns/optimized/james-avatar.webp",
-        "/images/bns/optimized/calvina-avatar.webp",
-      ],
-      avatarAlt: "Citizen advocate",
-      metric: "50,000+ Engaged",
-      description:
-        "Young Kenyans mobilized across all 47 counties, scaling beyond 200,000.",
-      verifiedIcon: "◆",
-      verifiedLabel: "Verified Civic Reach",
-    },
-    partnersLabel: "PARTNERS & COLLABORATORS",
-    partnerLogos: [
-      {
-        name: "TISA",
-        label: "The Institute for Social Accountability (TISA)",
-        src: "/images/bns/partners/tisa.svg",
-      },
-      {
-        name: "House of Fiscal Wisdom",
-        label: "House of Fiscal Wisdom",
-        src: "/images/bns/optimized/house-of-fiscal-wisdom.webp",
-      },
-      {
-        name: "UON CFS",
-        label: "University of Nairobi Committee on Fiscal Studies (UON CFS)",
-        src: "/images/bns/optimized/committee-on-fiscal-studies.webp",
-      },
-      {
-        name: "Budget Ndio Story",
-        label: "Budget Ndio Story",
-        src: "/images/bns/logo.svg",
-      },
-    ],
+    metaLeft: "BNS FOUNDATION • BNS STUDIOS",
+    metaRight: "ALL 47 COUNTIES ACROSS KENYA",
+    scrollCue: "Scroll to follow the story",
   },
-  aboutStatement: {
-    eyebrow: "About",
-    headlineLead: "Different counties.",
-    headlineAccent: "Shared public money.",
-    headlineTrail:
-      "An independent civic media and public finance platform across all 47 counties.",
-    description:
+
+  why: {
+    chapter: "01",
+    eyebrow: "Why it matters",
+    statement:
+      "A public budget is a moral contract before it is a ledger. Kenyans have the right to read it.",
+    highlightWords: ["moral", "contract", "right", "read"],
+    problemLabel: "The gap",
+    problemBody:
+      "Participation is already written into the Constitution of 2010 and the Public Finance Management Act. What is missing is a form a person can actually use.",
+    answerLabel: "Our answer",
+    answerBody:
       "We translate national budgets, county allocations, and public debt into accessible stories, citizen barazas, and grassroots accountability tools.",
     ctaLabel: "More about us",
   },
-  mediaBreak: {
+
+  bridge: {
     image: "/images/bns/optimized/129A4248-media.webp",
     imageAlt: "Budget Ndio Story National Civic Convening",
-    marqueeText: "BUDGET NDIO STORY",
-    cornerLabel: "BUDGET NDIO STORY",
+    lineOne: "Different counties.",
+    lineTwo: "Shared public money.",
+    caption:
+      "An independent civic media and public finance platform across all 47 counties.",
   },
+
   services: {
-    eyebrow: "03 // PROGRAMMES & OPERATIONS",
+    chapter: "02",
+    eyebrow: "What we do",
     headlineLead: "Good accountability starts with",
     headlineAccent: "good questions.",
     description:
       "From grassroots community barazas to high-impact media broadcasts, Budget Ndio Story delivers creative civic education, public finance tracking, and youth-led budget storytelling.",
-    brandMark: "BUDGET NDIO STORY®",
     ctaLabel: "GET INVOLVED",
     swipeLabel: "SWIPE →",
     sliderLabel: "FLAGSHIP PROGRAMMES",
-    slideCounterPrefix: "0",
     slideCounterTotal: "/ 03",
-    slideAriaLabelPrefix: "Slide",
-    numberTagSeparator: "//",
-    programmeLabelPrefix: "PROGRAMME 0",
+    programmeLabelPrefix: "PROGRAMME",
     exploreLabel: "EXPLORE PROGRAMME",
     items: [
       {
@@ -149,22 +118,99 @@ export const HOME_CONTENT = {
         image: "/images/bns/media/129A4039.jpg",
       },
     ],
-    studioBridge: {
-      eyebrow: "COMMERCIAL IMPACT",
-      heading: "LOOKING FOR COMMISSIONED PRODUCTION?",
-      description:
-        "BNS Studios translates complex research into high-impact podcasts, animations, and documentaries. Operating under our Two-Entity Model, ≥ 40% of studio profits are reinvested into BNS Foundation's civic mission.",
-      ctaLabel: "DISCOVER BNS STUDIOS & RATE CARD",
-    },
   },
+
+  proof: {
+    chapter: "03",
+    eyebrow: "The record so far",
+    headlineLead: "Already in the field.",
+    headlineAccent: "In all 47 counties.",
+    description:
+      "Surveys, town halls, films, and localized community barazas. Paid production and dialogue mandates delivered for TISA, the House of Fiscal Wisdom, and the Committee on Fiscal Studies, among others.",
+    metrics: [
+      {
+        value: 47,
+        prefix: "",
+        suffix: " / 47",
+        label: "Counties engaged",
+        detail:
+          "Through surveys, town halls, digital storytelling, and community dialogues.",
+      },
+      {
+        value: 50000,
+        prefix: "",
+        suffix: "+",
+        label: "Young Kenyans engaged",
+        detail: "Mobilized across all 47 counties, scaling beyond 200,000.",
+      },
+      {
+        value: 3,
+        prefix: "",
+        suffix: "",
+        label: "Years of field deployment",
+        detail: "Now in the third year of active work with communities, newsrooms, and partners.",
+      },
+    ],
+    avatars: [
+      "/images/bns/optimized/nelly-avatar.webp",
+      "/images/bns/optimized/latiff-avatar.webp",
+      "/images/bns/optimized/james-avatar.webp",
+      "/images/bns/optimized/calvina-avatar.webp",
+    ],
+    avatarAlt: "Citizen advocate",
+    voicesLabel: "Voices from the convenings",
+    partnersLabel: "PARTNERS & COLLABORATORS",
+    partnerLogos: [
+      {
+        name: "TISA",
+        label: "The Institute for Social Accountability (TISA)",
+        src: "/images/bns/partners/tisa.svg",
+      },
+      {
+        name: "House of Fiscal Wisdom",
+        label: "House of Fiscal Wisdom",
+        src: "/images/bns/optimized/house-of-fiscal-wisdom.webp",
+      },
+      {
+        name: "UON CFS",
+        label: "University of Nairobi Committee on Fiscal Studies (UON CFS)",
+        src: "/images/bns/optimized/committee-on-fiscal-studies.webp",
+      },
+    ],
+  },
+
   recentProjects: {
-    eyebrow: "04 // CIVIC PRODUCTIONS",
-    heading: "SELECTED PRODUCTIONS.",
+    eyebrow: "Selected productions",
+    heading: "Stories that followed the money.",
     allLinkLabelPrefix: "ALL PRODUCTIONS (",
     allLinkLabelSuffix: ")",
     metaSeparator: "•",
-    exhibitionLabel: "EXHIBITION 04",
-    exhibitionDescription:
-      "National sovereign debt conferences, open fiscal audits, and contract transparency broadcasts.",
+    viewLabel: "View production",
+  },
+
+  model: {
+    chapter: "04",
+    eyebrow: "How it's sustained",
+    headlineLead: "Every commission",
+    headlineAccent: "funds citizen oversight.",
+    description:
+      "The work is held by two legally separated bodies that do not perform the same function, joined by a binding fiduciary covenant.",
+    foundation: {
+      label: "BNS Foundation",
+      role: "The civic mission",
+      body: "Budget literacy, town halls, community scorecards, citizen surveys, and youth organising across all 47 counties. Funded by philanthropic grants, donations, and civic programme partnerships.",
+    },
+    studios: {
+      label: "BNS Studios",
+      role: "Commercial impact storytelling",
+      body: "Podcasts, short animation, research documentaries, and multi-platform campaigns, commissioned by partners who need their evidence to land with real audiences.",
+    },
+    flowValue: "≥ 40%",
+    flowLabel:
+      "of BNS Studios net operational profits, transferred to BNS Foundation every year.",
+    independenceNote:
+      "Commercial commissions confer zero editorial control over BNS Foundation's civic work.",
+    primaryCtaLabel: "DISCOVER BNS STUDIOS & RATE CARD",
+    secondaryCtaLabel: "READ THE WHITE PAPER",
   },
 };
