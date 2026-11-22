@@ -15,24 +15,18 @@ export function RateCardPage() {
         back={{ to: ROUTES.studio, label: page.backLabel }}
         eyebrow={page.eyebrow}
         lead={page.title}
-        aside={
-          <div className="space-y-5">
-            <Lede>{page.intro}</Lede>
-            <button
-              type="button"
-              onClick={() => window.print()}
-              className="print:hidden inline-flex items-center gap-2 px-5 py-3 border border-black/20 hover:border-text-base transition-colors font-mono text-xs uppercase tracking-wider"
-            >
-              <Printer className="w-3.5 h-3.5" />
-              {page.printLabel}
-            </button>
-          </div>
+        aside={<Lede>{page.intro}</Lede>}
+        cta={
+          <button
+            type="button"
+            onClick={() => window.print()}
+            className="print:hidden inline-flex items-center gap-2 px-5 py-3 border border-black/20 hover:border-text-base transition-colors font-mono text-xs uppercase tracking-wider"
+          >
+            <Printer className="w-3.5 h-3.5" />
+            {page.printLabel}
+          </button>
         }
-      >
-        <div className="mt-14 md:mt-16">
-          <FactGrid facts={page.facts} />
-        </div>
-      </PageHero>
+      />
 
       <div className={CONTAINER}>
         <div className="hidden md:grid grid-cols-12 gap-6 pb-3 border-b border-text-base">
@@ -64,6 +58,10 @@ export function RateCardPage() {
               </li>
           ))}
         </ol>
+
+        <div className="mt-12">
+          <FactGrid facts={page.facts} />
+        </div>
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
           {disclosures.map((d) => (

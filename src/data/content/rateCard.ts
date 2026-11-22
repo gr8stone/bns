@@ -4,8 +4,7 @@ export const RATE_CARD_CONTENT = {
     printLabel: "Print or save as PDF",
     eyebrow: "BNS Studios • Rate card 2026",
     title: "Starting rates.",
-    intro:
-      "Indicative starting rates for commissioned production. Every engagement begins with a written brief; the final quote reflects scope, locations, and timelines.",
+    intro: "Starting prices in USD. Final quote after a written brief.",
     facts: [
       { label: "Currency", value: "USD" },
       { label: "Payment", value: "50% on signing, 50% on delivery" },

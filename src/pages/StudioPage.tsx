@@ -30,19 +30,21 @@ export function StudioPage() {
         lead={hero.titleLead}
         accent={hero.titleHighlight}
         aside={
-          <div className="space-y-4">
+          <div className="space-y-2">
             <p className="font-display text-xl font-medium tracking-[-0.02em] leading-snug">{hero.lead}</p>
             <Lede>{hero.body}</Lede>
-            <div className="flex flex-wrap gap-3 pt-2">
-              <Btn to={ROUTES.contact}>{hero.ctaLabel}</Btn>
-              <Btn to={ROUTES.ratecard} variant="secondary" arrow={false}>
-                {hero.rateCardLabel}
-              </Btn>
-            </div>
           </div>
         }
+        cta={
+          <>
+            <Btn to={ROUTES.contact}>{hero.ctaLabel}</Btn>
+            <Btn to={ROUTES.ratecard} variant="secondary" arrow={false}>
+              {hero.rateCardLabel}
+            </Btn>
+          </>
+        }
       >
-        <div className="mt-14 md:mt-20">
+        <div className="mt-8 md:mt-12">
           <FactGrid facts={metrics} />
         </div>
       </PageHero>

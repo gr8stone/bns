@@ -22,9 +22,11 @@ export function DocLayout({
   tocLabel,
   sections,
   summary,
+  cta,
   after,
   links,
 }: {
+  cta?: ReactNode;
   /** Skimmable key points shown before the full text. */
   summary?: ReactNode;
   eyebrow: string;
@@ -61,6 +63,7 @@ export function DocLayout({
         lead={title}
         accent={accent}
         compact
+        cta={cta}
         aside={
           (intro || meta) && (
             <div className="space-y-4">
@@ -71,7 +74,7 @@ export function DocLayout({
         }
       />
 
-      <div className={`${CONTAINER} grid grid-cols-1 lg:grid-cols-12 gap-12 border-t border-black/[0.08] pt-12 md:pt-16`}>
+      <div className={`${CONTAINER} grid grid-cols-1 lg:grid-cols-12 gap-12 border-t border-black/[0.08] pt-8 md:pt-12`}>
         <nav aria-label={tocLabel} className="hidden lg:block lg:col-span-3">
           <div className="sticky top-28">
             <MonoLabel accent>{tocLabel}</MonoLabel>
@@ -94,7 +97,11 @@ export function DocLayout({
         </nav>
 
         <article className="lg:col-span-8 lg:col-start-5 max-w-[720px]">
-          {summary && <div className="mb-16">{summary}</div>}
+          {summary && (
+            <div data-key="doc-summary" className="mb-16">
+              {summary}
+            </div>
+          )}
           {sections.map((s, i) => (
             <section key={s.id} id={s.id} className="scroll-mt-28 pb-12 mb-12 border-b border-black/[0.08] last:border-0">
               <span className="font-mono text-xs text-accent font-semibold tabular-nums">{String(i + 1).padStart(2, "0")}</span>

@@ -1,6 +1,7 @@
 import { Navigate, useParams } from "react-router-dom";
 import {
   Accordion,
+  Btn,
   FactGrid,
   Lede,
   MediaFrame,
@@ -37,14 +38,19 @@ export function ServiceDetailPage() {
         back={{ to: ROUTES.programmes, label: content.breadcrumb.backLabel }}
         eyebrow={`${service.number} ${content.separator} ${content.hero.eyebrowSuffix}`}
         lead={service.title}
-        aside={
-          <div className="space-y-4">
-            <p className="font-display text-xl sm:text-2xl font-medium tracking-[-0.02em] leading-snug">{service.heroHeadline}</p>
-            <Lede>{service.heroSubhead}</Lede>
-          </div>
+        aside={<p className="font-display text-xl sm:text-2xl font-medium tracking-[-0.02em] leading-snug">{service.heroHeadline}</p>}
+        cta={
+          <>
+            <Btn to={ROUTES.contact}>{content.hero.ctaLabel}</Btn>
+            {service.video && (
+              <Btn href="#film" variant="secondary" arrow={false}>
+                {content.hero.filmLabel}
+              </Btn>
+            )}
+          </>
         }
       >
-        <div className="mt-14 md:mt-20">
+        <div className="mt-8 md:mt-12">
           <FactGrid
             facts={[
               { label: facts.mandateLabel, value: facts.mandateValue },
@@ -76,7 +82,7 @@ export function ServiceDetailPage() {
 
       {/* 02 — Film */}
       {service.video && (
-        <Section chapter="02" label={content.video.label} tone="dark">
+        <Section id="film" chapter="02" label={content.video.label} tone="dark">
           <Reveal className="mt-10 md:mt-14">
             <VideoStage
               video={service.video}

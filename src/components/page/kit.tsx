@@ -74,51 +74,63 @@ interface PageHeroProps {
   accent?: string;
   back?: { to: string; label: string };
   aside?: ReactNode;
+  /** The page's main action. Always rendered inside the first screen. */
+  cta?: ReactNode;
   children?: ReactNode;
   /** Smaller headline for long titles (e.g. production names). */
   compact?: boolean;
 }
 
-export function PageHero({ eyebrow, lead, accent, back, aside, children, compact }: PageHeroProps) {
+/**
+ * One hero for every inner page. Sized so the page's purpose and main action
+ * fit in the first screen on a 1440×900 laptop and a 390×844 phone.
+ */
+export function PageHero({ eyebrow, lead, accent, back, aside, cta, children, compact }: PageHeroProps) {
   const size = compact
-    ? "text-[clamp(36px,5.5vw,84px)] leading-[0.98] tracking-[-0.05em]"
-    : "text-[clamp(44px,7.5vw,116px)] leading-[0.92] tracking-[-0.06em]";
+    ? "text-[clamp(32px,4.4vw,64px)] leading-[1] tracking-[-0.045em]"
+    : "text-[clamp(40px,6vw,92px)] leading-[0.94] tracking-[-0.055em]";
+  const hasSide = Boolean(aside || cta);
 
   return (
-    <header className={`${CONTAINER} pt-28 md:pt-40 pb-14 md:pb-20`}>
-      {back && (
-        <Reveal trigger="mount" y={0} delay={0.1}>
-          <Link
-            to={back.to}
-            className="group inline-flex items-center gap-2 mb-10 md:mb-14 font-mono text-[11px] uppercase tracking-[0.16em] text-text-muted hover:text-accent transition-colors duration-200"
-          >
-            <ArrowLeft className="w-3.5 h-3.5 transition-transform duration-200 group-hover:-translate-x-1" />
-            {back.label}
-          </Link>
-        </Reveal>
-      )}
-      {eyebrow && (
-        <Reveal trigger="mount" delay={0.15} y={8}>
-          <div className="flex items-center gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-[0.18em] text-text-muted">
-            <span className="w-1.5 h-1.5 bg-accent inline-block" />
-            <span>{eyebrow}</span>
+    <header className={`${CONTAINER} pt-24 md:pt-32 pb-8 md:pb-12`}>
+      {(back || eyebrow) && (
+        <Reveal trigger="mount" y={6} delay={0.1}>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[11px] uppercase tracking-[0.16em] text-text-muted">
+            {back && (
+              <Link to={back.to} className="group inline-flex items-center gap-2 hover:text-accent transition-colors duration-200">
+                <ArrowLeft className="w-3.5 h-3.5 transition-transform duration-200 group-hover:-translate-x-1" />
+                {back.label}
+              </Link>
+            )}
+            {back && eyebrow && <span aria-hidden="true" className="w-6 h-px bg-black/20" />}
+            {eyebrow && (
+              <span className="inline-flex items-center gap-2">
+                <span className="w-1.5 h-1.5 bg-accent inline-block" />
+                {eyebrow}
+              </span>
+            )}
           </div>
         </Reveal>
       )}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end mt-6 md:mt-8">
-        <h1 className={`${aside ? "lg:col-span-8" : "lg:col-span-12"} font-display font-medium ${size}`}>
-          <MaskLine trigger="mount" delay={0.25}>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-12 items-end mt-4 md:mt-6">
+        <h1 className={`${hasSide ? "lg:col-span-8" : "lg:col-span-12"} font-display font-medium ${size}`}>
+          <MaskLine trigger="mount" delay={0.2}>
             {lead}
           </MaskLine>
           {accent && (
-            <MaskLine trigger="mount" delay={0.37} className="text-accent">
+            <MaskLine trigger="mount" delay={0.3} className="text-accent">
               {accent}
             </MaskLine>
           )}
         </h1>
-        {aside && (
-          <Reveal trigger="mount" delay={0.55} className="lg:col-span-4 lg:pb-3">
-            {aside}
+        {hasSide && (
+          <Reveal trigger="mount" delay={0.45} className="lg:col-span-4 lg:pb-2 space-y-5">
+            {aside && <div data-key="hero-aside">{aside}</div>}
+            {cta && (
+              <div data-key="hero-cta" className="flex flex-wrap gap-3">
+                {cta}
+              </div>
+            )}
           </Reveal>
         )}
       </div>

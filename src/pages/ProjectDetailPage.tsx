@@ -60,8 +60,21 @@ export function ProjectDetailPage() {
         eyebrow={`${project.category} ${content.bullet} ${project.year}`}
         lead={project.title}
         aside={<p className="font-display text-xl sm:text-2xl font-medium tracking-[-0.02em] leading-snug">{project.subtitle}</p>}
-      >
-        <div className="mt-14 md:mt-16">
+      />
+
+      <div className={CONTAINER}>
+        <Reveal trigger="mount" delay={0.3}>
+          <div data-key="lead-media">
+            <VideoStage
+              video={project.heroVideo}
+              fallbackPoster={project.heroImage}
+              title={project.title}
+              watchLabel={content.leadMedia.watchLabel}
+              aspect="aspect-[4/3] sm:aspect-[21/9]"
+            />
+          </div>
+        </Reveal>
+        <div className="mt-8">
           <FactGrid
             facts={[
               { label: content.credits.partnerLabel, value: project.client },
@@ -71,18 +84,6 @@ export function ProjectDetailPage() {
             ]}
           />
         </div>
-      </PageHero>
-
-      <div className={CONTAINER}>
-        <Reveal>
-          <VideoStage
-            video={project.heroVideo}
-            fallbackPoster={project.heroImage}
-            title={project.title}
-            watchLabel={content.leadMedia.watchLabel}
-            aspect="aspect-[4/3] sm:aspect-video"
-          />
-        </Reveal>
       </div>
 
       {/* The story + numbers */}

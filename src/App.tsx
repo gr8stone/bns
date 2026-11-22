@@ -190,7 +190,8 @@ export function App() {
       <PageTransition />
 
       {/* Solum 4-Column Footer & Back to Top (hidden on /ratecard) */}
-      {!isRateCardPage && <Footer />}
+      {/* Big call-to-action footer only on the homepage; a slim one everywhere else */}
+      {!isRateCardPage && <Footer variant={location.pathname === '/' ? 'full' : 'compact'} />}
       <BackToTopButton />
 
       {/* Kenya DPA 2019: analytics load only after opt-in consent */}

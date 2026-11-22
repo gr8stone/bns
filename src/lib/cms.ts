@@ -44,7 +44,7 @@ const TIMEOUT_MS = 3000;
  * Bump this (to now, ISO UTC) whenever you change content in src/data, then
  * run `pnpm sanity:seed` so the CMS matches again.
  */
-export const CONTENT_BUNDLED_AT = "2026-11-22T21:00:00Z";
+export const CONTENT_BUNDLED_AT = "2026-11-22T23:00:00Z";
 
 const isFresh = (doc: PlainObject) =>
   typeof doc._updatedAt === "string" && doc._updatedAt >= CONTENT_BUNDLED_AT;

@@ -3,8 +3,7 @@ export const PROGRAMMES_PAGE_CONTENT = {
     eyebrow: "BNS Foundation programmes",
     titleLead: "Our three",
     titleAccent: "programmes.",
-    scopeLabel: "In one line",
-    scopeText: "Dialogue, grassroots tracking, and journalism: three ways into Kenya's budget.",
+    scopeText: "Pick one. Each opens a different door into Kenya's budget.",
   },
   media: {
     imageSrc: "/images/bns/towwnhallmay/129A4056.jpg",
@@ -17,13 +16,6 @@ export const PROGRAMMES_PAGE_CONTENT = {
     revealText: "From watching the budget to checking it.",
     highlightWords: ["checking"],
     body: "",
-  },
-  list: {
-    label: "The programmes",
-    headlineLead: "One system,",
-    headlineAccent: "three ways in.",
-    deliverablesLabel: "What it delivers",
-    exploreLinkPrefix: "Explore",
   },
   studioNote: {
     eyebrow: "Looking for commissioned production?",

@@ -137,6 +137,18 @@ export const SITE_CONTENT = {
     copyrightSuffix: 'BUDGET NDIO STORY • ALL RIGHTS RESERVED',
     legalNote: 'BNS FOUNDATION • BNS STUDIOS',
     cookieSettingsLabel: 'Cookie settings',
+    // Slim footer used on every page except Home.
+    compactLinks: [
+      { label: 'About', href: '/about' },
+      { label: 'Programmes', href: '/programmes' },
+      { label: 'Studio', href: '/studio' },
+      { label: 'Productions', href: '/projects' },
+      { label: 'Rate card', href: '/ratecard' },
+      { label: 'White paper', href: '/whitepaper' },
+      { label: 'FAQ', href: '/faq' },
+      { label: 'Privacy', href: '/privacy' },
+      { label: 'Terms', href: '/terms' },
+    ],
   },
 
   // Consent banner (Kenya Data Protection Act 2019). Keep this wording in step

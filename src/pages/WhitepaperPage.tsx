@@ -11,12 +11,8 @@ export function WhitepaperPage() {
       eyebrow={hero.eyebrow}
       title={hero.title}
       accent={hero.titleAccent}
-      intro={
-        <div className="space-y-5">
-          <Lede>{hero.intro}</Lede>
-          <Btn to={ROUTES.contact}>{hero.ctaLabel}</Btn>
-        </div>
-      }
+      intro={<Lede>{hero.intro}</Lede>}
+      cta={<Btn to={ROUTES.contact}>{hero.ctaLabel}</Btn>}
       tocLabel={tocLabel}
       summary={
         <div>

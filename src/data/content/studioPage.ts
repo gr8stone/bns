@@ -1,8 +1,8 @@
 export const STUDIO_PAGE_CONTENT = {
   hero: {
     eyebrow: "BNS Studios • Commissioned production",
-    titleLead: "Evidence, made into",
-    titleHighlight: "culture that moves people.",
+    titleLead: "Your research,",
+    titleHighlight: "made watchable.",
     lead: "Documentaries, explainers, podcasts, and campaigns, made from your research.",
     body: "And at least 40% of our profit funds civic work.",
     ctaLabel: "Commission a brief",

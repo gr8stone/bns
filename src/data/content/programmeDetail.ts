@@ -5,6 +5,8 @@ export const PROGRAMME_DETAIL_CONTENT = {
   },
   hero: {
     eyebrowSuffix: "Programme",
+    ctaLabel: "Bring it to your area",
+    filmLabel: "Watch the film",
   },
   facts: {
     mandateLabel: "Constitutional mandate",
