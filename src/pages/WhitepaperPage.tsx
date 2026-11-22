@@ -1,10 +1,10 @@
 import { DocLayout, Paras } from "../components/page/DocLayout";
-import { Btn, Lede, MonoLabel } from "../components/page/kit";
+import { Btn, Lede, MonoLabel, Reveal } from "../components/page/kit";
 import { WHITEPAPER_CONTENT } from "../data/content/whitepaper";
 import { ROUTES } from "../lib/routes";
 
 export function WhitepaperPage() {
-  const { hero, sections, inquiry, tocLabel, links } = WHITEPAPER_CONTENT;
+  const { hero, summary, sections, inquiry, tocLabel, links } = WHITEPAPER_CONTENT;
 
   return (
     <DocLayout
@@ -18,6 +18,19 @@ export function WhitepaperPage() {
         </div>
       }
       tocLabel={tocLabel}
+      summary={
+        <div>
+          <MonoLabel accent>{summary.label}</MonoLabel>
+          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-px bg-black/[0.08] border border-black/[0.08]">
+            {summary.points.map((p, i) => (
+              <Reveal key={p.figure} delay={i * 0.08} className="bg-white p-6 sm:p-8">
+                <span className="font-display text-4xl sm:text-5xl font-medium tracking-[-0.05em] text-accent">{p.figure}</span>
+                <p className="mt-2 font-sans text-base leading-snug">{p.text}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      }
       sections={sections.map((s) => ({ id: s.id, title: s.title, body: <Paras items={s.body} /> }))}
       links={links}
       after={

@@ -1,3 +1,5 @@
+import { ChevronDown } from "lucide-react";
+import { useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { FactGrid, Lede, MonoLabel, PageHero, PrevNext, Reveal, Section } from "../components/page/kit";
 import { VideoStage } from "../components/page/VideoStage";
@@ -8,6 +10,32 @@ import { CONTAINER } from "../lib/layout";
 import { ROUTES } from "../lib/routes";
 
 const content = PRODUCTION_DETAIL_CONTENT;
+
+/** First paragraph up front; the rest one tap away. */
+function Story({ paragraphs, more, less }: { paragraphs: string[]; more: string; less: string }) {
+  const [open, setOpen] = useState(false);
+  const shown = open ? paragraphs : paragraphs.slice(0, 1);
+  return (
+    <>
+      {shown.map((p, i) => (
+        <p key={i} className="font-sans text-base sm:text-lg leading-relaxed text-text-base/80 max-w-3xl">
+          {p}
+        </p>
+      ))}
+      {paragraphs.length > 1 && (
+        <button
+          type="button"
+          onClick={() => setOpen((o) => !o)}
+          aria-expanded={open}
+          className="inline-flex items-center gap-2 pb-1 border-b border-text-base hover:text-accent hover:border-accent transition-colors font-mono text-xs uppercase tracking-wider"
+        >
+          {open ? less : `${more} (${paragraphs.length - 1})`}
+          <ChevronDown className={`w-3.5 h-3.5 transition-transform ${open ? "rotate-180" : ""}`} />
+        </button>
+      )}
+    </>
+  );
+}
 
 export function ProjectDetailPage() {
   const { slug = "" } = useParams<{ slug: string }>();
@@ -64,11 +92,7 @@ export function ProjectDetailPage() {
             <Reveal>
               <p className="font-display text-2xl sm:text-3xl font-medium tracking-[-0.03em] leading-snug">{lede}</p>
             </Reveal>
-            {paragraphs.map((p, i) => (
-              <Reveal key={i} delay={0.05}>
-                <p className="font-sans text-base sm:text-lg leading-relaxed text-text-base/80 max-w-3xl">{p}</p>
-              </Reveal>
-            ))}
+            <Story paragraphs={paragraphs} more={content.narrative.readMoreLabel} less={content.narrative.readLessLabel} />
           </div>
           {project.stats.length > 0 && (
             <aside className="lg:col-span-4">

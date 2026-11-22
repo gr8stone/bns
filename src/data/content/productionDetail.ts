@@ -15,6 +15,8 @@ export const PRODUCTION_DETAIL_CONTENT = {
   },
   narrative: {
     label: "The story",
+    readMoreLabel: "Read the full story",
+    readLessLabel: "Show less",
   },
   numbers: {
     label: "In numbers",

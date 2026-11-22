@@ -41,7 +41,7 @@ function ProductionCard({ project, lead }: { project: Project; lead: boolean }) 
         >
           {project.title}
         </h2>
-        <p className={`font-sans text-sm text-text-muted leading-relaxed ${lead ? "" : "line-clamp-3"}`}>{project.summary}</p>
+        {lead && <p className="font-sans text-sm text-text-muted leading-relaxed line-clamp-3">{project.summary}</p>}
         <span className="inline-flex items-center gap-2 pt-1 font-mono text-[11px] uppercase tracking-wider border-b border-text-base pb-0.5 group-hover:text-accent group-hover:border-accent transition-colors duration-200">
           {content.card.viewLabel}
           <ArrowUpRight className="w-3.5 h-3.5" />

@@ -3,8 +3,7 @@ export const WHITEPAPER_CONTENT = {
     eyebrow: "White paper • Nairobi • 2026",
     title: "Follow the budget.",
     titleAccent: "Find the story.",
-    intro:
-      "A platform for budget literacy, civic accountability, and impact storytelling. This note describes the problem, the two-entity model, and the terms on which a partner may join the work.",
+    intro: "The problem, our model, and how partners join. Short version first.",
     ctaLabel: "Partner with us",
   },
   sections: [
@@ -76,6 +75,15 @@ export const WHITEPAPER_CONTENT = {
     title: "Want the full prospectus?",
     body: "Institutional charters, rate cards, and legal anchors are available on request for accredited partners.",
     ctaLabel: "Contact the team",
+  },
+  summary: {
+    label: "In 30 seconds",
+    points: [
+      { figure: "Public", text: "Budgets are public, but not readable." },
+      { figure: "2", text: "Entities: a civic Foundation and a paid Studio." },
+      { figure: "≥ 40%", text: "Of studio profit funds civic work, every year." },
+      { figure: "50,000+", text: "Young Kenyans reached, in all 47 counties." },
+    ],
   },
   tocLabel: "Contents",
   links: [

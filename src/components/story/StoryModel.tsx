@@ -14,7 +14,13 @@ function EntityCard({ entity, delay }: { entity: typeof CONTENT.studios; delay: 
       <div className="h-full p-7 sm:p-9 border border-white/15 bg-white/[0.03]">
         <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/55">{entity.role}</span>
         <h3 className="mt-3 font-display text-3xl sm:text-4xl font-medium tracking-[-0.04em]">{entity.label}</h3>
-        <p className="mt-5 font-sans text-sm sm:text-base leading-relaxed text-white/75">{entity.body}</p>
+        <ul className="mt-8 flex flex-wrap gap-2">
+          {entity.points.map((p) => (
+            <li key={p} className="px-3 py-1.5 border border-white/20 font-sans text-sm text-white/85">
+              {p}
+            </li>
+          ))}
+        </ul>
       </div>
     </Reveal>
   );
@@ -38,7 +44,7 @@ function Flow() {
       </div>
 
       <Reveal delay={0.5} y={12} className="relative z-10 bg-ink px-4 py-3 text-center">
-        <div className="font-display text-5xl sm:text-6xl font-medium tracking-[-0.05em] text-white tabular-nums">
+        <div className="font-display text-6xl sm:text-7xl font-medium tracking-[-0.05em] text-white tabular-nums">
           {CONTENT.flowValue}
         </div>
         <p className="mt-2 max-w-[200px] mx-auto font-mono text-[10px] uppercase tracking-[0.14em] text-white/60 leading-relaxed">
@@ -57,17 +63,12 @@ export function StoryModel() {
       <div className="max-w-container mx-auto px-5 sm:px-8 md:px-10 py-24 md:py-36">
         <ChapterMarker chapter={CONTENT.chapter} label={CONTENT.eyebrow} tone="dark" />
 
-        <div className="mt-10 md:mt-14 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
-          <h2 className="lg:col-span-8 font-display text-[clamp(38px,6vw,88px)] font-medium tracking-[-0.05em] leading-[0.96]">
-            <MaskLine>{CONTENT.headlineLead}</MaskLine>
-            <MaskLine delay={0.1} className="text-white/55">
-              {CONTENT.headlineAccent}
-            </MaskLine>
-          </h2>
-          <Reveal delay={0.2} className="lg:col-span-4">
-            <p className="font-sans text-sm sm:text-base text-white/70 leading-relaxed">{CONTENT.description}</p>
-          </Reveal>
-        </div>
+        <h2 className="mt-10 md:mt-14 font-display text-[clamp(38px,6vw,88px)] font-medium tracking-[-0.05em] leading-[0.96]">
+          <MaskLine>{CONTENT.headlineLead}</MaskLine>
+          <MaskLine delay={0.1} className="text-white/55">
+            {CONTENT.headlineAccent}
+          </MaskLine>
+        </h2>
 
         {/* Studios → ≥ 40% → Foundation */}
         <div className="mt-16 md:mt-24 grid grid-cols-1 lg:grid-cols-[1fr_minmax(220px,0.6fr)_1fr] items-stretch">

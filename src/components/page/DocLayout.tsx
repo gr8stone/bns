@@ -21,9 +21,12 @@ export function DocLayout({
   intro,
   tocLabel,
   sections,
+  summary,
   after,
   links,
 }: {
+  /** Skimmable key points shown before the full text. */
+  summary?: ReactNode;
   eyebrow: string;
   title: string;
   accent?: string;
@@ -91,6 +94,7 @@ export function DocLayout({
         </nav>
 
         <article className="lg:col-span-8 lg:col-start-5 max-w-[720px]">
+          {summary && <div className="mb-16">{summary}</div>}
           {sections.map((s, i) => (
             <section key={s.id} id={s.id} className="scroll-mt-28 pb-12 mb-12 border-b border-black/[0.08] last:border-0">
               <span className="font-mono text-xs text-accent font-semibold tabular-nums">{String(i + 1).padStart(2, "0")}</span>

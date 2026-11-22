@@ -3,8 +3,8 @@ export const STUDIO_PAGE_CONTENT = {
     eyebrow: "BNS Studios • Commissioned production",
     titleLead: "Evidence, made into",
     titleHighlight: "culture that moves people.",
-    lead: "Commissioned research documentaries, animated explainers, podcasts, and campaigns.",
-    body: "At least 40% of net profits are returned every year to BNS Foundation, funding open civic accountability and grassroots budget monitoring across all 47 counties.",
+    lead: "Documentaries, explainers, podcasts, and campaigns, made from your research.",
+    body: "And at least 40% of our profit funds civic work.",
     ctaLabel: "Commission a brief",
     rateCardLabel: "See the rate card",
   },
@@ -23,7 +23,7 @@ export const STUDIO_PAGE_CONTENT = {
   reel: {
     eyebrow: "Why a studio",
     title: "Research should not die in a PDF.",
-    body: "Millions are invested in public finance audits and baseline evaluations that sit unread. BNS Studios turns technical findings into films, audio, and visual journalism that citizens actually debate.",
+    body: "We turn findings into films and audio people actually watch and share.",
     videoPoster: "/images/bns/studio/studio_motion_vfx.jpg",
     videoSrc:
       "/images/bns/reels/animation reel opportunities . Where do I start ( nyota programmes  uwezo fund) main landing page .mp4",
@@ -39,14 +39,11 @@ export const STUDIO_PAGE_CONTENT = {
     label: "Who we work with",
     headlineLead: "Built for the people",
     headlineAccent: "who fund evidence.",
-    challengeLabel: "The challenge",
-    solutionLabel: "What we do",
-    engagementLabel: "Typical engagement",
   },
   rateSchedule: {
     eyebrow: "Rate card 2026",
     title: "Starting rates.",
-    note: "Indicative starting rates in USD. A final quote follows a written brief.",
+    note: "Starting prices in USD. Final quote after a brief.",
     dedicatedLinkLabel: "Printable rate card",
     ctaLabel: "Commission a brief",
     disclosures: [
@@ -63,7 +60,7 @@ export const STUDIO_PAGE_CONTENT = {
   closing: {
     eyebrow: "Commission",
     title: "Ready to make your evidence land?",
-    body: "Talk to our production team in Nairobi about scope, retainers, or a commission brief.",
+    body: "Tell us what you need. We reply within 24 business hours.",
     primaryCtaLabel: "Write to the production desk",
     secondaryCtaLabel: "Read the FAQ",
   },

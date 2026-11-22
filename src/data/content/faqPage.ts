@@ -4,8 +4,7 @@ export const FAQ_PAGE_CONTENT = {
     titleLead: "Questions,",
     titleAccent: "answered in the open.",
     scopeLabel: "Where the answers come from",
-    scopeBody:
-      "Drawn directly from the BNS institutional framework, white paper, terms, and fiduciary charters.",
+    scopeBody: "Straight from our white paper, terms, and charters.",
   },
   filters: {
     allTopicsLabel: "All topics",
@@ -22,7 +21,7 @@ export const FAQ_PAGE_CONTENT = {
   closing: {
     eyebrow: "Still curious?",
     title: "Ask our team in Nairobi.",
-    body: "We respond to institutional queries, partnership inquiries, and rate card questions within 24 business hours.",
+    body: "We reply within 24 business hours.",
     primaryCtaLabel: "Contact us",
     emailCtaLabel: "Email us",
     emailHref: "mailto:info@budgetndiostory.org",

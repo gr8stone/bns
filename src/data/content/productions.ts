@@ -4,8 +4,7 @@ export const PRODUCTIONS_PAGE_CONTENT = {
     titleLead: "Productions &",
     titleAccent: "campaigns.",
     scopeLabel: "What's here",
-    scopeText:
-      "Docuseries, investigations, plain-language budget explainers, and grassroots tracking campaigns, produced for citizen accountability across 47 counties.",
+    scopeText: "Films, investigations, and campaigns that followed public money.",
   },
   filter: {
     label: "Filter by programme",

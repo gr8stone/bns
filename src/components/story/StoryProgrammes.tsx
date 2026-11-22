@@ -20,7 +20,7 @@ function ProgrammeBody({ item, index }: { item: Programme; index: number }) {
         <span>{item.tag}</span>
       </Reveal>
 
-      <h3 className="mt-5 font-display text-4xl sm:text-5xl xl:text-6xl font-medium tracking-[-0.05em] leading-[0.96]">
+      <h3 className="mt-6 font-display text-5xl sm:text-6xl xl:text-7xl font-medium tracking-[-0.05em] leading-[0.94]">
         <MaskLine delay={0.05}>
           <Link to={ROUTES.programme(item.slug)} className="hover:text-white/80 transition-colors duration-200">
             {item.title}
@@ -29,21 +29,20 @@ function ProgrammeBody({ item, index }: { item: Programme; index: number }) {
       </h3>
 
       <Reveal delay={0.1}>
-        <p className="mt-5 font-sans text-sm md:text-base leading-relaxed text-white/90 max-w-xl">
+        <p className="mt-6 font-display text-2xl sm:text-3xl font-medium tracking-[-0.03em] leading-snug text-white/90 max-w-lg">
           {item.description}
         </p>
-        <ul className="mt-6 pt-5 border-t border-white/20 space-y-2.5">
+        <ul className="mt-8 flex flex-wrap gap-2">
           {item.bullets.map((bullet) => (
-            <li key={bullet} className="flex items-start gap-3 font-sans text-xs sm:text-sm text-white">
-              <span className="mt-[0.45em] w-1.5 h-1.5 bg-white flex-shrink-0" />
-              <span className="leading-snug">{bullet}</span>
+            <li key={bullet} className="px-3.5 py-2 border border-white/30 font-sans text-sm text-white">
+              {bullet}
             </li>
           ))}
         </ul>
         <Link
           to={ROUTES.programme(item.slug)}
           aria-label={`${CONTENT.exploreLabel}: ${item.title}`}
-          className="group mt-8 inline-flex items-center gap-2 px-5 py-3 bg-white text-accent hover:bg-text-base hover:text-white transition-colors duration-200 font-mono text-xs uppercase tracking-wider font-semibold"
+          className="group mt-10 inline-flex items-center gap-2 px-5 py-3 bg-white text-accent hover:bg-text-base hover:text-white transition-colors duration-200 font-mono text-xs uppercase tracking-wider font-semibold"
         >
           <span>{CONTENT.exploreLabel}</span>
           <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />

@@ -10,19 +10,12 @@ export function StoryProof() {
       <div className="max-w-container mx-auto px-5 sm:px-8 md:px-10 pt-24 md:pt-36 pb-16 md:pb-20">
         <ChapterMarker chapter={CONTENT.chapter} label={CONTENT.eyebrow} />
 
-        <div className="mt-10 md:mt-14 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
-          <h2 className="lg:col-span-8 font-display text-[clamp(38px,6vw,88px)] font-medium tracking-[-0.05em] leading-[0.96]">
-            <MaskLine>{CONTENT.headlineLead}</MaskLine>
-            <MaskLine delay={0.1} className="text-accent">
-              {CONTENT.headlineAccent}
-            </MaskLine>
-          </h2>
-          <Reveal delay={0.2} className="lg:col-span-4">
-            <p className="font-sans text-sm sm:text-base text-text-muted leading-relaxed">
-              {CONTENT.description}
-            </p>
-          </Reveal>
-        </div>
+        <h2 className="mt-10 md:mt-14 font-display text-[clamp(38px,6vw,88px)] font-medium tracking-[-0.05em] leading-[0.96]">
+          <MaskLine>{CONTENT.headlineLead}</MaskLine>
+          <MaskLine delay={0.1} className="text-accent">
+            {CONTENT.headlineAccent}
+          </MaskLine>
+        </h2>
 
         {/* Metrics */}
         <div className="mt-16 md:mt-24 grid grid-cols-1 sm:grid-cols-3 border-t border-black/[0.08]">
@@ -34,15 +27,15 @@ export function StoryProof() {
                 i > 0 ? "sm:border-l sm:pl-8 lg:pl-10" : ""
               } sm:pr-8`}
             >
-              <div className="font-display text-[clamp(44px,5.5vw,84px)] font-medium tracking-[-0.05em] leading-none">
+              <div className="font-display text-[clamp(56px,7vw,112px)] font-medium tracking-[-0.05em] leading-none">
                 <CountUp value={metric.value} prefix={metric.prefix} suffix={metric.suffix} />
               </div>
               <div className="mt-5 font-mono text-[11px] sm:text-xs uppercase tracking-[0.16em] font-semibold">
                 {metric.label}
               </div>
-              <p className="mt-2 font-sans text-sm text-text-muted leading-relaxed max-w-xs">
-                {metric.detail}
-              </p>
+              {metric.detail && (
+                <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.14em] text-accent">{metric.detail}</p>
+              )}
             </Reveal>
           ))}
         </div>

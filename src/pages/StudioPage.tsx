@@ -70,19 +70,17 @@ export function StudioPage() {
                 <span className="font-mono text-[10px] uppercase tracking-[0.16em] px-2 py-1 border border-black/10">{m.badge}</span>
               </div>
               <h3 className="mt-6 font-display text-2xl sm:text-3xl font-medium tracking-[-0.03em]">{m.title}</h3>
-              <p className="mt-4 font-sans text-sm sm:text-base text-text-muted leading-relaxed">{m.description}</p>
-              <ul className="mt-6 space-y-2.5 flex-1">
+              <p className="mt-3 font-sans text-base leading-relaxed">{m.description}</p>
+              <ul className="mt-6 flex flex-wrap gap-2 flex-1 content-start">
                 {m.deliverables.map((d) => (
-                  <li key={d} className="flex items-start gap-3 font-sans text-sm">
-                    <span className="mt-[0.5em] w-1.5 h-1.5 bg-accent shrink-0" />
-                    <span>{d}</span>
+                  <li key={d} className="px-3 py-1.5 bg-white border border-black/10 font-sans text-sm">
+                    {d}
                   </li>
                 ))}
               </ul>
-              <div className="mt-8 pt-5 border-t border-black/[0.08]">
-                <MonoLabel>{models.idealForLabel}</MonoLabel>
-                <p className="mt-2 font-sans text-sm leading-relaxed">{m.idealFor}</p>
-              </div>
+              <p className="mt-8 pt-5 border-t border-black/[0.08] font-mono text-[11px] uppercase tracking-[0.14em] text-text-muted">
+                {models.idealForLabel}: <span className="text-text-base">{m.idealFor}</span>
+              </p>
             </Reveal>
           ))}
         </div>
@@ -91,25 +89,14 @@ export function StudioPage() {
       {/* 03 — Audiences */}
       <Section chapter="03" label={audiences.label} ruled={false}>
         <SectionHead lead={audiences.headlineLead} accent={audiences.headlineAccent} />
-        <div className="mt-14 md:mt-20 border-t border-black/[0.08]">
+        <div className="mt-14 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-6">
           {AUDIENCE_ALIGNMENTS.map((a, i) => (
-            <Reveal key={a.category} delay={0.05 * i}>
-              <article className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 py-10 md:py-12 border-b border-black/[0.08]">
-                <div className="lg:col-span-4">
-                  <MonoLabel accent>{a.tag}</MonoLabel>
-                  <h3 className="mt-3 font-display text-2xl sm:text-3xl font-medium tracking-[-0.03em] leading-tight">{a.category}</h3>
-                </div>
-                <div className="lg:col-span-4">
-                  <MonoLabel>{audiences.challengeLabel}</MonoLabel>
-                  <p className="mt-2 font-sans text-sm sm:text-base text-text-muted leading-relaxed">{a.challenge}</p>
-                </div>
-                <div className="lg:col-span-4">
-                  <MonoLabel>{audiences.solutionLabel}</MonoLabel>
-                  <p className="mt-2 font-sans text-sm sm:text-base leading-relaxed">{a.solution}</p>
-                  <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.12em] text-text-muted">
-                    {audiences.engagementLabel}: <span className="text-text-base normal-case tracking-normal font-sans text-sm">{a.engagement}</span>
-                  </p>
-                </div>
+            <Reveal key={a.category} delay={0.1 * i} className="h-full">
+              <article className="h-full p-8 sm:p-10 border border-black/[0.08] hover:border-accent transition-colors duration-300">
+                <MonoLabel accent>{a.tag}</MonoLabel>
+                <h3 className="mt-4 font-display text-2xl sm:text-3xl font-medium tracking-[-0.03em] leading-tight">{a.category}</h3>
+                <p className="mt-6 font-sans text-sm text-text-muted line-through decoration-text-muted/50">{a.challenge}</p>
+                <p className="mt-2 font-sans text-base leading-relaxed">{a.solution}</p>
               </article>
             </Reveal>
           ))}
@@ -138,9 +125,8 @@ export function StudioPage() {
           {STUDIO_RATE_CARD.map((r, i) => (
             <Reveal key={r.code} delay={(i % 3) * 0.08} className="bg-ink p-7 sm:p-9 h-full flex flex-col">
               <span className="font-mono text-[11px] text-white/50 tabular-nums">{String(i + 1).padStart(2, "0")}</span>
-              <h3 className="mt-4 font-display text-xl sm:text-2xl font-medium tracking-[-0.03em]">{r.format}</h3>
-              <p className="mt-3 font-sans text-sm text-white/65 leading-relaxed flex-1">{r.scope}</p>
-              <div className="mt-6 pt-5 border-t border-white/10 flex items-baseline justify-between gap-3">
+              <h3 className="mt-4 font-display text-xl sm:text-2xl font-medium tracking-[-0.03em] flex-1">{r.format}</h3>
+              <div className="mt-10 pt-5 border-t border-white/10 flex items-baseline justify-between gap-3">
                 <span className="font-display text-xl sm:text-2xl font-medium tabular-nums">{r.startingRate}</span>
                 <span className="font-mono text-[11px] text-white/55">{r.unit}</span>
               </div>

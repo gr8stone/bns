@@ -3,8 +3,7 @@ export const CONTACT_PAGE_CONTENT = {
     eyebrow: "Contact",
     title: "Let's talk.",
     titleAccent: "Public money is public business.",
-    intro:
-      "Reach out to collaborate, commission, report, or bring budget literacy to your community. We respond within 24 business hours.",
+    intro: "Pick a topic below. We reply within 24 business hours.",
   },
   paths: {
     label: "What can we help with?",

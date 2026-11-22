@@ -89,8 +89,7 @@ export const SITE_CONTENT = {
     eyebrow: 'CIVIC ENGAGEMENT • 47 COUNTIES',
     headingLead: 'What could your community',
     headingEmphasis: 'become?',
-    ctaDescription:
-      'Connect with Budget Ndio Story to organize county town halls, request ward-level budget training, or pitch an investigative story.',
+    ctaDescription: 'Host a town hall. Train your ward. Pitch a story.',
     ctaLabel: 'Get Involved',
     watermarkAriaLabel: 'Budget Ndio Story',
     watermarkText: 'BUDGET NDIO STORY • 47 COUNTIES •',
@@ -98,8 +97,7 @@ export const SITE_CONTENT = {
     logoSrc: '/images/bns/logo.svg',
     logoAlt: 'Budget Ndio Story',
     brandName: 'Budget Ndio Story®',
-    description:
-      "An independent civic media & public finance platform working to make Kenya's public budgets readable, relatable, and responsive across all 47 counties.",
+    description: "Kenya's public budgets, made readable. Independent and non-partisan.",
     socialLinks: [
       { icon: 'youtube', label: 'YouTube', href: 'https://youtube.com/@budgetndiostory' },
       { icon: 'x', label: 'X (Twitter)', href: 'https://x.com/budgetndiostory' },
@@ -146,7 +144,7 @@ export const SITE_CONTENT = {
   // when the substance changes so visitors are asked again.
   consent: {
     title: 'Can we count your visit?',
-    body: 'With your permission we use privacy-friendly analytics to see, in aggregate, which pages are read and how fast they load. No advertising, no profiling, nothing sold. You can change your mind any time from "Cookie settings" in the footer.',
+    body: 'Privacy-friendly analytics, only with your OK. No ads, no profiling. Change it any time in "Cookie settings".',
     policyLabel: 'Cookies policy',
     acceptLabel: 'Allow analytics',
     rejectLabel: 'No thanks',

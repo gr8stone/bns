@@ -35,9 +35,11 @@ export function ServicesPage() {
           highlightWords={ethos.highlightWords}
           className="mt-10 md:mt-14 max-w-5xl font-display text-[clamp(28px,4.4vw,64px)] font-medium leading-[1.06] tracking-[-0.04em]"
         />
-        <Reveal className="mt-12 md:mt-16 max-w-3xl">
-          <p className="font-sans text-base sm:text-lg leading-relaxed text-text-base/80">{ethos.body}</p>
-        </Reveal>
+        {ethos.body && (
+          <Reveal className="mt-12 md:mt-16 max-w-3xl">
+            <p className="font-sans text-base sm:text-lg leading-relaxed text-text-base/80">{ethos.body}</p>
+          </Reveal>
+        )}
       </Section>
 
       {/* 02 — The three */}
@@ -63,13 +65,13 @@ export function ServicesPage() {
                   </MaskLine>
                 </h3>
                 <Reveal delay={0.1}>
-                  <p className="mt-5 font-sans text-base sm:text-lg text-text-base/80 leading-relaxed max-w-xl">
+                  <p className="mt-5 font-display text-2xl sm:text-3xl font-medium tracking-[-0.03em] leading-snug text-text-base/80 max-w-xl">
                     {prog.heroHeadline}
                   </p>
                   <div className="mt-8">
                     <MonoLabel>{list.deliverablesLabel}</MonoLabel>
                     <ul className="mt-3 flex flex-wrap gap-2">
-                      {prog.deliverables.map((d) => (
+                      {prog.deliverables.slice(0, 3).map((d) => (
                         <li key={d.name} className="px-3 py-1.5 border border-black/10 bg-white font-sans text-xs sm:text-sm">
                           {d.name}
                         </li>
