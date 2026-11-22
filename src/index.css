@@ -89,6 +89,21 @@
   }
 }
 
+/* Sticky bars that live under the navbar (h-16 / sm:h-20) and slide up with it */
+.sticky-under-nav {
+  position: sticky;
+  top: 4rem;
+  transition: top 350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (min-width: 640px) {
+  .sticky-under-nav {
+    top: 5rem;
+  }
+}
+html[data-nav-hidden] .sticky-under-nav {
+  top: 0;
+}
+
 /* Print (rate card, white paper, legal pages): drop fixed chrome */
 @media print {
   header.fixed,

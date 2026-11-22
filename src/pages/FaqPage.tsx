@@ -1,6 +1,8 @@
 import { ArrowRight, Search, X } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { FilterBar } from "../components/page/FilterBar";
+import { scrollToResults } from "../lib/scroll";
 import { Accordion, ClosingCta, Lede, MonoLabel, PageHero } from "../components/page/kit";
 import { COMPREHENSIVE_FAQS, FAQ_CATEGORIES } from "../data/comprehensiveFaq";
 import { FAQ_PAGE_CONTENT } from "../data/content/faqPage";
@@ -12,6 +14,7 @@ const { hero, filters, answer, closing } = FAQ_PAGE_CONTENT;
 export function FaqPage() {
   const [category, setCategory] = useState("all");
   const [query, setQuery] = useState("");
+  const resultsRef = useRef<HTMLDivElement>(null);
 
   const visible = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -36,9 +39,20 @@ export function FaqPage() {
         }
       />
 
-      <div className={`${CONTAINER} pb-24 md:pb-32`}>
-        {/* Controls */}
-        <div className="sticky top-16 sm:top-20 z-20 -mx-5 sm:-mx-8 md:-mx-10 px-5 sm:px-8 md:px-10 py-4 bg-white/90 backdrop-blur-md border-y border-black/[0.08] space-y-3">
+      <FilterBar
+        label={filters.allTopicsLabel}
+        options={FAQ_CATEGORIES.map((c) => ({
+          id: c.id,
+          label: c.id === "all" ? filters.allTopicsLabel : c.label,
+          count: c.id === "all" ? COMPREHENSIVE_FAQS.length : COMPREHENSIVE_FAQS.filter((f) => f.category === c.id).length,
+        }))}
+        value={category}
+        onChange={(id) => {
+          setCategory(id);
+          scrollToResults(resultsRef.current);
+        }}
+        meta={`${visible.length} ${filters.countSingular}${visible.length !== 1 ? filters.countPluralSuffix : ""}`}
+      >
           <label className="relative block">
             <span className="sr-only">{filters.searchLabel}</span>
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" aria-hidden="true" />
@@ -60,28 +74,9 @@ export function FaqPage() {
               </button>
             )}
           </label>
-          <div className="flex gap-2 overflow-x-auto no-scrollbar">
-            {FAQ_CATEGORIES.map((c) => {
-              const active = c.id === category;
-              const count = c.id === "all" ? COMPREHENSIVE_FAQS.length : COMPREHENSIVE_FAQS.filter((f) => f.category === c.id).length;
-              return (
-                <button
-                  key={c.id}
-                  type="button"
-                  aria-pressed={active}
-                  onClick={() => setCategory(c.id)}
-                  className={`shrink-0 px-4 py-2 font-mono text-[11px] uppercase tracking-wider border transition-colors duration-200 ${
-                    active ? "bg-text-base text-white border-text-base" : "border-black/15 text-text-muted hover:text-text-base hover:border-text-base"
-                  }`}
-                >
-                  {c.id === "all" ? filters.allTopicsLabel : c.label}
-                  <span className={`ml-2 tabular-nums ${active ? "text-white/60" : "text-text-muted/70"}`}>{count}</span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
+      </FilterBar>
 
+      <div ref={resultsRef} className={`${CONTAINER} pb-24 md:pb-32`}>
         <p className="mt-10 font-mono text-[11px] uppercase tracking-[0.16em] text-text-muted" aria-live="polite">
           {visible.length} {filters.countSingular}
           {visible.length !== 1 ? filters.countPluralSuffix : ""}

@@ -23,6 +23,7 @@
 - **Don't cram:** fewer elements per section, generous spacing, not denser layouts.
 - **Exempt:** Terms, Privacy, Cookies (legally required in full) and the White Paper body (long-form, with a short summary on top).
 - Facts still come only from existing BNS sources; shortening must not change meaning or invent figures.
+- **After editing anything in `src/data`:** bump `CONTENT_BUNDLED_AT` in `src/lib/cms.ts` to the current time, then run `pnpm sanity:seed`. Sanity documents older than that timestamp are ignored, so stale CMS copy can't override newer code.
 
 ## 4. Progression Gate
 - Layout tweaks, styling enhancements, and structural redesigns will only be permitted after all content has been completely replaced and verified.

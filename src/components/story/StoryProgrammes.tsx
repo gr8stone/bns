@@ -1,6 +1,4 @@
-import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import { useRef } from "react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { HOME_CONTENT } from "../../data/content/home";
 import { ROUTES } from "../../lib/routes";
@@ -9,157 +7,76 @@ import { ChapterMarker, MaskLine, Reveal } from "./primitives";
 const CONTENT = HOME_CONTENT.services;
 type Programme = (typeof CONTENT.items)[number];
 
-function ProgrammeBody({ item, index }: { item: Programme; index: number }) {
+/**
+ * One compact card per programme. Copy is capped in the layout (2-line
+ * description, 3 chips) so a long CMS entry can't bloat the card.
+ */
+function ProgrammeCard({ item, index }: { item: Programme; index: number }) {
   return (
-    <>
-      <Reveal y={12} className="flex items-center gap-3 font-mono text-[11px] sm:text-xs uppercase tracking-[0.16em] text-white/75">
-        <span className="text-white font-semibold tabular-nums">
-          {item.number} {CONTENT.slideCounterTotal}
-        </span>
-        <span className="w-8 h-px bg-white/40" />
-        <span>{item.tag}</span>
-      </Reveal>
-
-      <h3 className="mt-6 font-display text-5xl sm:text-6xl xl:text-7xl font-medium tracking-[-0.05em] leading-[0.94]">
-        <MaskLine delay={0.05}>
-          <Link to={ROUTES.programme(item.slug)} className="hover:text-white/80 transition-colors duration-200">
-            {item.title}
-          </Link>
-        </MaskLine>
-      </h3>
-
-      <Reveal delay={0.1}>
-        <p className="mt-6 font-display text-2xl sm:text-3xl font-medium tracking-[-0.03em] leading-snug text-white/90 max-w-lg">
-          {item.description}
-        </p>
-        <ul className="mt-8 flex flex-wrap gap-2">
-          {item.bullets.map((bullet) => (
-            <li key={bullet} className="px-3.5 py-2 border border-white/30 font-sans text-sm text-white">
-              {bullet}
-            </li>
-          ))}
-        </ul>
-        <Link
-          to={ROUTES.programme(item.slug)}
-          aria-label={`${CONTENT.exploreLabel}: ${item.title}`}
-          className="group mt-10 inline-flex items-center gap-2 px-5 py-3 bg-white text-accent hover:bg-text-base hover:text-white transition-colors duration-200 font-mono text-xs uppercase tracking-wider font-semibold"
-        >
-          <span>{CONTENT.exploreLabel}</span>
-          <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
-        </Link>
-      </Reveal>
-      <span className="sr-only">
-        {CONTENT.programmeLabelPrefix} {index + 1}
-      </span>
-    </>
-  );
-}
-
-/** Desktop: cards pin under the navbar and stack; the covered card recedes. */
-function StackedCard({
-  item,
-  index,
-  total,
-  progress,
-}: {
-  item: Programme;
-  index: number;
-  total: number;
-  progress: MotionValue<number>;
-}) {
-  const reduce = useReducedMotion();
-  const isLast = index === total - 1;
-  const static_ = reduce || isLast || total < 2;
-  // Card i is covered by card i+1 over this slice of the stack's scroll progress.
-  // Ranges must stay within [0, 1]: Framer may hand them to a WAAPI scroll timeline.
-  const start = static_ ? 0 : index / (total - 1);
-  const end = static_ ? 1 : (index + 1) / (total - 1);
-  const scale = useTransform(progress, [start, end], static_ ? [1, 1] : [1, 0.92]);
-  const dim = useTransform(progress, [start, end], static_ ? [0, 0] : [0, 0.45]);
-
-  return (
-    <div className="sticky top-20 h-[calc(100svh-5rem)]" style={{ zIndex: index + 1 }}>
-      <motion.div
-        style={{ scale }}
-        className="relative h-full w-full origin-top flex bg-accent text-white border-t border-white/20 overflow-hidden"
+    <Reveal delay={index * 0.1} className="h-full">
+      <Link
+        to={ROUTES.programme(item.slug)}
+        className="group h-full flex flex-col bg-white border border-black/[0.08] hover:border-accent hover:-translate-y-1 hover:shadow-[0_24px_48px_-24px_rgba(36,70,236,0.35)] transition-[border-color,transform,box-shadow] duration-300"
       >
-        <div className="w-1/2 h-full flex items-center px-12 lg:px-16 py-12 overflow-y-auto">
-          <div className="max-w-xl">
-            <ProgrammeBody item={item} index={index} />
-          </div>
-        </div>
-        <div className="w-1/2 h-full relative overflow-hidden bg-ink">
+        <div className="relative aspect-[16/10] overflow-hidden bg-ink">
           <img
             src={item.image}
             alt={item.title}
-            loading={index === 0 ? "eager" : "lazy"}
-            className="w-full h-full object-cover"
+            loading="lazy"
+            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
           />
+          <span className="absolute top-3 left-3 px-2.5 py-1 bg-white font-mono text-[10px] uppercase tracking-[0.14em] tabular-nums">
+            {item.number} • {item.tag}
+          </span>
         </div>
-        <motion.div style={{ opacity: dim }} className="absolute inset-0 bg-black pointer-events-none" />
-      </motion.div>
-    </div>
+        <div className="flex-1 flex flex-col p-6 sm:p-7">
+          <h3 className="flex items-start justify-between gap-3 font-display text-2xl sm:text-3xl font-medium tracking-[-0.04em] leading-tight group-hover:text-accent transition-colors duration-200">
+            {item.title}
+            <ArrowUpRight className="w-5 h-5 mt-1 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </h3>
+          <p className="mt-3 font-sans text-base text-text-muted leading-snug line-clamp-2">{item.description}</p>
+          <ul className="mt-auto pt-6 flex flex-wrap gap-1.5">
+            {item.bullets.slice(0, 3).map((b) => (
+              <li key={b} className="max-w-full truncate px-2.5 py-1 bg-paper-warm font-sans text-xs sm:text-[13px]">
+                {b}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Link>
+    </Reveal>
   );
 }
 
-/** Chapter 02: the work. Three flagship programmes, one at a time. */
+/** Chapter 02: the work. Three programmes, side by side. */
 export function StoryProgrammes() {
-  const stackRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: stackRef, offset: ["start start", "end end"] });
-  const items = CONTENT.items;
-
   return (
-    <section id="services" className="relative w-full bg-paper-warm text-text-base isolate">
-      {/* Chapter intro */}
+    <section id="services" className="relative w-full bg-paper-warm text-text-base">
       <div className="max-w-container mx-auto px-5 sm:px-8 md:px-10 py-24 md:py-32">
         <ChapterMarker chapter={CONTENT.chapter} label={CONTENT.eyebrow} />
-        <div className="mt-10 md:mt-14 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
-          <h2 className="lg:col-span-8 font-display text-[clamp(38px,6vw,88px)] font-medium tracking-[-0.05em] leading-[0.96]">
+        <div className="mt-10 md:mt-14 flex flex-col md:flex-row md:items-end justify-between gap-8">
+          <h2 className="font-display text-[clamp(38px,6vw,88px)] font-medium tracking-[-0.05em] leading-[0.96]">
             <MaskLine>{CONTENT.headlineLead}</MaskLine>
             <MaskLine delay={0.1} className="text-accent">
               {CONTENT.headlineAccent}
             </MaskLine>
           </h2>
-          <Reveal delay={0.2} className="lg:col-span-4 flex flex-col gap-6">
-            <p className="font-sans text-sm sm:text-base text-text-muted leading-relaxed">
-              {CONTENT.description}
-            </p>
+          <Reveal delay={0.2}>
             <Link
-              to={ROUTES.contact}
-              className="group self-start inline-flex items-center gap-2.5 px-6 py-3.5 bg-accent text-white hover:bg-text-base transition-colors duration-200 font-mono text-xs uppercase tracking-wider"
+              to={ROUTES.programmes}
+              className="group inline-flex items-center gap-2 pb-1 border-b border-text-base hover:text-accent hover:border-accent transition-colors font-mono text-xs uppercase tracking-wider"
             >
-              <span>{CONTENT.ctaLabel}</span>
+              {CONTENT.exploreLabel}
               <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
             </Link>
           </Reveal>
         </div>
-      </div>
 
-      {/* Mobile: a simple vertical sequence, nothing hidden off-screen */}
-      <div className="md:hidden px-5 sm:px-8 pb-20 space-y-5">
-        {items.map((item, index) => (
-          <article key={item.number} className="bg-accent text-white">
-            <div className="aspect-[16/10] overflow-hidden bg-ink">
-              <img src={item.image} alt={item.title} loading="lazy" className="w-full h-full object-cover" />
-            </div>
-            <div className="p-6 sm:p-8">
-              <ProgrammeBody item={item} index={index} />
-            </div>
-          </article>
-        ))}
-      </div>
-
-      {/* Desktop: sticky stack */}
-      <div ref={stackRef} className="hidden md:block relative">
-        {items.map((item, index) => (
-          <StackedCard
-            key={item.number}
-            item={item}
-            index={index}
-            total={items.length}
-            progress={scrollYProgress}
-          />
-        ))}
+        <div className="mt-14 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
+          {CONTENT.items.map((item, i) => (
+            <ProgrammeCard key={item.slug} item={item} index={i} />
+          ))}
+        </div>
       </div>
     </section>
   );

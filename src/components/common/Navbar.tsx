@@ -183,6 +183,11 @@ export function Navbar() {
   const activeHref = desktopLinks.find((l) => isWithin(location.pathname, l.href))?.href ?? null;
   const showBar = !hidden || dropdown || !scrolled;
 
+  // Let sticky page bars (filters, TOCs) sit under the navbar, or at the top when it hides.
+  useEffect(() => {
+    document.documentElement.toggleAttribute("data-nav-hidden", !showBar);
+  }, [showBar]);
+
   return (
     <>
       <motion.header

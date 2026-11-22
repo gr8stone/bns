@@ -59,7 +59,7 @@ export const HOME_CONTENT = {
     ctaLabel: "GET INVOLVED",
     slideCounterTotal: "/ 03",
     programmeLabelPrefix: "PROGRAMME",
-    exploreLabel: "EXPLORE",
+    exploreLabel: "ALL PROGRAMMES",
     items: [
       {
         number: "01",

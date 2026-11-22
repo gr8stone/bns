@@ -35,6 +35,20 @@ const QUERY = `{${Object.keys(COLLECTIONS)
 
 const TIMEOUT_MS = 3000;
 
+/**
+ * When the bundled copy in src/data was last revised. Sanity documents last
+ * saved BEFORE this moment are older than the code and are ignored, so a stale
+ * CMS can't overwrite newer copy. Anything edited in Sanity Studio after this
+ * still wins.
+ *
+ * Bump this (to now, ISO UTC) whenever you change content in src/data, then
+ * run `pnpm sanity:seed` so the CMS matches again.
+ */
+export const CONTENT_BUNDLED_AT = "2026-11-22T21:00:00Z";
+
+const isFresh = (doc: PlainObject) =>
+  typeof doc._updatedAt === "string" && doc._updatedAt >= CONTENT_BUNDLED_AT;
+
 type PlainObject = Record<string, unknown>;
 
 const isPlainObject = (value: unknown): value is PlainObject =>
@@ -82,7 +96,8 @@ export async function hydrateContent(): Promise<void> {
 
     for (const [type, target] of Object.entries(COLLECTIONS)) {
       const docs = result[type];
-      if (Array.isArray(docs) && docs.length > 0) {
+      // A collection is replaced as a whole, so only when someone has edited it since the bundle.
+      if (Array.isArray(docs) && docs.length > 0 && docs.some(isFresh)) {
         const sanitizedDocs = docs.map(stripSystemFields);
         if (type === "project") {
           const remoteSlugs = new Set(
@@ -107,6 +122,7 @@ export async function hydrateContent(): Promise<void> {
     );
 
     for (const doc of result.pageContent ?? []) {
+      if (!isFresh(doc)) continue;
       const entry = PAGE_CONTENT.find((e) => contentDocId(e.key) === doc._id);
       if (entry) mergeInPlace(entry.content, stripSystemFields(doc) as PlainObject);
     }

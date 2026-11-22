@@ -1,8 +1,10 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { FilterBar } from "../components/page/FilterBar";
 import { Lede, MonoLabel, PageHero } from "../components/page/kit";
+import { scrollToResults } from "../lib/scroll";
 import { PRODUCTIONS_PAGE_CONTENT } from "../data/content/productions";
 import { PROJECTS } from "../data/projects";
 import { CONTAINER } from "../lib/layout";
@@ -65,6 +67,12 @@ export function ProjectsPage() {
     [],
   );
 
+  const resultsRef = useRef<HTMLDivElement>(null);
+  const choose = (next: string) => {
+    setCategory(next);
+    scrollToResults(resultsRef.current);
+  };
+
   const visible = category === ALL ? PROJECTS : PROJECTS.filter((p) => p.category === category);
   const [lead, ...rest] = visible;
 
@@ -82,30 +90,15 @@ export function ProjectsPage() {
         }
       />
 
-      <div className={CONTAINER}>
-        {/* Filter bar */}
-        <div className="sticky top-16 sm:top-20 z-20 -mx-5 sm:-mx-8 md:-mx-10 px-5 sm:px-8 md:px-10 py-4 bg-white/90 backdrop-blur-md border-y border-black/[0.08]">
-          <div role="group" aria-label={content.filter.label} className="flex gap-2 overflow-x-auto no-scrollbar">
-            {categories.map((c) => {
-              const active = c.label === category;
-              return (
-                <button
-                  key={c.label}
-                  type="button"
-                  aria-pressed={active}
-                  onClick={() => setCategory(c.label)}
-                  className={`shrink-0 px-4 py-2 font-mono text-[11px] uppercase tracking-wider border transition-colors duration-200 ${
-                    active ? "bg-text-base text-white border-text-base" : "border-black/15 text-text-muted hover:text-text-base hover:border-text-base"
-                  }`}
-                >
-                  {c.label}
-                  <span className={`ml-2 tabular-nums ${active ? "text-white/60" : "text-text-muted/70"}`}>{c.count}</span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
+      <FilterBar
+        label={content.filter.label}
+        options={categories.map((c) => ({ id: c.label, label: c.label, count: c.count }))}
+        value={category}
+        onChange={choose}
+        meta={`${visible.length} ${content.card.countSuffix}`}
+      />
 
+      <div ref={resultsRef} className={CONTAINER}>
         <AnimatePresence mode="wait">
           <motion.div
             key={category}
@@ -131,7 +124,7 @@ export function ProjectsPage() {
                 <p className="font-display text-2xl font-medium">{content.emptyState.title}</p>
                 <button
                   type="button"
-                  onClick={() => setCategory(ALL)}
+                  onClick={() => choose(ALL)}
                   className="mt-6 px-5 py-3 border border-black/20 hover:border-text-base font-mono text-xs uppercase tracking-wider"
                 >
                   {content.emptyState.resetLabel}
