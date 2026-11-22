@@ -1,264 +1,192 @@
 import { ArrowRight, CheckCircle2 } from "lucide-react";
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
+import { Lede, MonoLabel, PageHero, Reveal } from "../components/page/kit";
 import { CONTACT_PAGE_CONTENT } from "../data/content/contact";
+import { CONTAINER } from "../lib/layout";
+import { ROUTES } from "../lib/routes";
+
+const { hero, paths, details, social, success, form, email } = CONTACT_PAGE_CONTENT;
+
+const FIELD =
+  "w-full bg-paper-warm border border-black/10 px-4 py-3.5 font-sans text-sm placeholder:text-text-muted/60 focus:outline-none focus:border-accent focus:bg-white transition-colors";
 
 export function ContactPage() {
-  const { hero, details, social, success, form, email } = CONTACT_PAGE_CONTENT;
   const [submitted, setSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    service: "",
-    message: "",
-  });
+  const [data, setData] = useState({ name: "", email: "", service: "", message: "" });
+  const set = (key: keyof typeof data) => (e: { target: { value: string } }) => setData({ ...data, [key]: e.target.value });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    const subject = formData.service
-      ? `${email.subjectPrefix}${formData.service}`
-      : email.defaultSubject;
+    const topic = form.serviceOptions.find((o) => o.value === data.service)?.label;
+    const subject = topic ? `${email.subjectPrefix}${topic}` : email.defaultSubject;
     const body = [
-      `${email.nameLine}${formData.name}`,
-      `${email.emailLine}${formData.email}`,
-      `${email.initiativeLine}${formData.service || email.initiativeFallback}`,
+      `${email.nameLine}${data.name}`,
+      `${email.emailLine}${data.email}`,
+      `${email.initiativeLine}${topic ?? email.initiativeFallback}`,
       "",
-      formData.message,
+      data.message,
     ].join("\n");
-
     window.location.href = `mailto:${email.recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setSubmitted(true);
-  };
+  }
+
+  function choosePath(value: string) {
+    setData((d) => ({ ...d, service: value }));
+    document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 
   return (
-    <main className="w-full bg-white text-[#101010] select-none">
-      {/* ─────────────────────────────────────────────────────────────
-          SECTION 1: SOLUM CONTACT & MINIMALIST FORM
-          ───────────────────────────────────────────────────────────── */}
-      <section className="pt-28 md:pt-36 pb-20 md:pb-28 border-b border-[#101010]/12">
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            {/* Left Column: Heading & Key Details */}
-            <div className="lg:col-span-6 lg:pr-8 lg:border-r border-[#101010]/12 space-y-12">
-              <div>
-                <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-[108px] font-semibold tracking-[-0.06em] text-[#101010] leading-[0.9] uppercase mb-6">
-                  {hero.title}
-                </h1>
-                <p className="font-sans text-sm sm:text-base text-[#757575] leading-relaxed max-w-md">
-                  {hero.intro}
-                </p>
+    <main className="w-full bg-white text-text-base pb-24 md:pb-32">
+      <PageHero eyebrow={hero.eyebrow} lead={hero.title} accent={hero.titleAccent} aside={<Lede>{hero.intro}</Lede>} />
+
+      <div className={CONTAINER}>
+        {/* Paths */}
+        <Reveal>
+          <MonoLabel accent>{paths.label}</MonoLabel>
+        </Reveal>
+        <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-black/[0.08] border border-black/[0.08]">
+          {paths.items.map((p, i) => {
+            const active = data.service === p.value;
+            return (
+              <Reveal key={p.value} delay={i * 0.06} className="h-full">
+                <button
+                  type="button"
+                  onClick={() => choosePath(p.value)}
+                  aria-pressed={active}
+                  className={`group w-full h-full text-left p-6 sm:p-7 transition-colors duration-200 ${active ? "bg-accent text-white" : "bg-white hover:bg-paper-warm"}`}
+                >
+                  <span className="flex items-center justify-between font-display text-xl font-medium tracking-[-0.02em]">
+                    {p.title}
+                    <ArrowRight className={`w-4 h-4 transition-transform duration-200 group-hover:translate-x-1 ${active ? "text-white" : "text-accent"}`} />
+                  </span>
+                  <span className={`mt-2 block font-sans text-sm leading-relaxed ${active ? "text-white/80" : "text-text-muted"}`}>{p.body}</span>
+                </button>
+              </Reveal>
+            );
+          })}
+        </div>
+
+        <div className="mt-20 md:mt-28 grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-16 items-start">
+          {/* Details */}
+          <Reveal className="lg:col-span-5 space-y-8">
+            {[
+              { label: details.emailLabel, value: details.email, href: details.emailHref },
+              { label: details.phoneLabel, value: details.phone, href: details.phoneHref },
+              { label: details.addressLabel, value: details.address },
+              { label: details.hoursLabel, value: details.hours },
+            ].map((d) => (
+              <div key={d.label} className="pb-8 border-b border-black/[0.08]">
+                <MonoLabel>{d.label}</MonoLabel>
+                {d.href ? (
+                  <a href={d.href} className="mt-2 block font-display text-xl sm:text-2xl font-medium tracking-[-0.02em] hover:text-accent transition-colors">
+                    {d.value}
+                  </a>
+                ) : (
+                  <p className="mt-2 font-display text-xl sm:text-2xl font-medium tracking-[-0.02em]">{d.value}</p>
+                )}
               </div>
-
-              {/* Coordinates List */}
-              <div className="space-y-8 pt-2">
-                <div>
-                  <span className="font-mono text-xs uppercase tracking-wider text-[#757575] block mb-1">
-                    {details.emailLabel}
-                  </span>
+            ))}
+            <div>
+              <MonoLabel>{social.label}</MonoLabel>
+              <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
+                {social.links.map((l) => (
                   <a
-                    href={details.emailHref}
-                    className="font-sans font-semibold text-lg sm:text-xl text-[#101010] hover:underline"
+                    key={l.href}
+                    href={l.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono text-xs uppercase tracking-wider hover:text-accent transition-colors"
                   >
-                    {details.email}
+                    {l.label}
                   </a>
-                </div>
-
-                <div>
-                  <span className="font-mono text-xs uppercase tracking-wider text-[#757575] block mb-1">
-                    {details.phoneLabel}
-                  </span>
-                  <a
-                    href={details.phoneHref}
-                    className="font-sans font-semibold text-lg sm:text-xl text-[#101010] hover:underline"
-                  >
-                    {details.phone}
-                  </a>
-                </div>
-
-                <div>
-                  <span className="font-mono text-xs uppercase tracking-wider text-[#757575] block mb-1">
-                    {details.addressLabel}
-                  </span>
-                  <p className="font-sans font-semibold text-lg sm:text-xl text-[#101010]">
-                    {details.address}
-                  </p>
-                </div>
-
-                <div>
-                  <span className="font-mono text-xs uppercase tracking-wider text-[#757575] block mb-1">
-                    {details.hoursLabel}
-                  </span>
-                  <p className="font-sans font-semibold text-lg sm:text-xl text-[#101010]">
-                    {details.hours}
-                  </p>
-                </div>
+                ))}
               </div>
             </div>
+          </Reveal>
 
-            {/* Right Column: Follow Us & Clean Form */}
-            <div className="lg:col-span-6 lg:pl-4">
-              {/* Follow Us Bar */}
-              <div className="flex items-center justify-between pb-5 mb-8 border-b border-[#101010]/12 text-xs font-mono text-[#757575]">
-                <span>{social.label}</span>
-                <div className="flex items-center gap-5 text-xs sm:text-sm text-[#101010]">
-                  {social.links.map((link) => (
-                    <a
-                      key={link.href}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:opacity-60 transition-opacity font-semibold tracking-wider uppercase"
-                    >
-                      {link.label}
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-              {/* Minimalist Form */}
+          {/* Form */}
+          <Reveal delay={0.1} className="lg:col-span-7">
+            <div id="contact-form" className="scroll-mt-28">
               {submitted ? (
-                <div
-                  role="status"
-                  aria-live="polite"
-                  className="bg-[#F9F9F8] p-10 md:p-14 border border-[#101010]/12 text-center"
-                >
-                  <CheckCircle2 className="w-10 h-10 text-[#101010] mx-auto mb-4" />
-                  <h3 className="font-display text-2xl md:text-3xl font-semibold uppercase text-[#101010] mb-2 tracking-tight">
-                    {success.title}
-                  </h3>
-                  <p className="font-sans text-xs sm:text-sm text-[#757575] leading-relaxed mb-8 max-w-md mx-auto">
-                    {success.body}
-                  </p>
+                <div role="status" aria-live="polite" className="p-10 md:p-14 bg-paper-warm border border-black/[0.08]">
+                  <CheckCircle2 className="w-9 h-9 text-accent" />
+                  <h2 className="mt-5 font-display text-2xl md:text-3xl font-medium tracking-[-0.03em]">{success.title}</h2>
+                  <p className="mt-3 font-sans text-sm text-text-muted leading-relaxed max-w-md">{success.body}</p>
                   <button
+                    type="button"
                     onClick={() => setSubmitted(false)}
-                    className="px-6 py-3 bg-[#101010] text-white text-xs font-mono uppercase tracking-wider hover:bg-black transition-colors cursor-pointer"
+                    className="mt-8 px-5 py-3 border border-black/20 hover:border-text-base font-mono text-xs uppercase tracking-wider"
                   >
                     {success.resetLabel}
                   </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Name */}
-                  <div>
-                    <label htmlFor="contact-name" className="block font-sans text-xs text-[#757575] mb-2">
-                      {form.nameLabel}
+                  <h2 className="font-display text-2xl sm:text-3xl font-medium tracking-[-0.03em]">{form.heading}</h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <label className="block">
+                      <MonoLabel>{form.nameLabel}</MonoLabel>
+                      <input required value={data.name} onChange={set("name")} placeholder={form.namePlaceholder} className={`${FIELD} mt-2`} />
                     </label>
-                    <input
-                      id="contact-name"
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={(e) =>
-                        setFormData({ ...formData, name: e.target.value })
-                      }
-                      placeholder={form.namePlaceholder}
-                      className="w-full bg-[#F9F9F8] border border-[#101010]/10 px-4 py-3 text-sm font-sans text-[#101010] placeholder-[#757575]/50 focus:outline-none focus:border-[#101010] transition-colors rounded-none"
-                    />
+                    <label className="block">
+                      <MonoLabel>{form.emailLabel}</MonoLabel>
+                      <input
+                        type="email"
+                        required
+                        value={data.email}
+                        onChange={set("email")}
+                        placeholder={form.emailPlaceholder}
+                        className={`${FIELD} mt-2`}
+                      />
+                    </label>
                   </div>
-
-                  {/* Email */}
-                  <div>
-                    <label htmlFor="contact-email" className="block font-sans text-xs text-[#757575] mb-2">
-                      {form.emailLabel}
-                    </label>
-                    <input
-                      id="contact-email"
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })
-                      }
-                      placeholder={form.emailPlaceholder}
-                      className="w-full bg-[#F9F9F8] border border-[#101010]/10 px-4 py-3 text-sm font-sans text-[#101010] placeholder-[#757575]/50 focus:outline-none focus:border-[#101010] transition-colors rounded-none"
-                    />
-                  </div>
-
-                  {/* Service */}
-                  <div>
-                    <label htmlFor="contact-service" className="block font-sans text-xs text-[#757575] mb-2">
-                      {form.serviceLabel}
-                    </label>
-                    <div className="relative">
-                      <select
-                        id="contact-service"
-                        value={formData.service}
-                        onChange={(e) =>
-                          setFormData({ ...formData, service: e.target.value })
-                        }
-                        className="w-full bg-[#F9F9F8] border border-[#101010]/10 px-4 py-3 text-sm font-sans text-[#101010] focus:outline-none focus:border-[#101010] transition-colors rounded-none appearance-none cursor-pointer"
-                      >
-                        <option value="">{form.servicePlaceholder}</option>
-                        {form.serviceOptions.map((option) => (
-                          <option key={option.value} value={option.value}>
-                            {option.label}
-                          </option>
-                        ))}
-                      </select>
-                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-xs text-[#757575]">
-                        {form.selectIndicator}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Message */}
-                  <div>
-                    <label htmlFor="contact-message" className="block font-sans text-xs text-[#757575] mb-2">
-                      {form.messageLabel}
-                    </label>
+                  <label className="block">
+                    <MonoLabel>{form.serviceLabel}</MonoLabel>
+                    <select value={data.service} onChange={set("service")} className={`${FIELD} mt-2 cursor-pointer`}>
+                      <option value="">{form.servicePlaceholder}</option>
+                      {form.serviceOptions.map((o) => (
+                        <option key={o.value} value={o.value}>
+                          {o.label}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  <label className="block">
+                    <MonoLabel>{form.messageLabel}</MonoLabel>
                     <textarea
-                      id="contact-message"
-                      rows={5}
                       required
-                      value={formData.message}
-                      onChange={(e) =>
-                        setFormData({ ...formData, message: e.target.value })
-                      }
+                      rows={6}
+                      value={data.message}
+                      onChange={set("message")}
                       placeholder={form.messagePlaceholder}
-                      className="w-full bg-[#F9F9F8] border border-[#101010]/10 px-4 py-3 text-sm font-sans text-[#101010] placeholder-[#757575]/50 focus:outline-none focus:border-[#101010] transition-colors rounded-none resize-none"
+                      className={`${FIELD} mt-2 resize-none`}
                     />
-                  </div>
-
-                  {/* Full-width Solum Submit Button */}
-                  <div>
-                    <button
-                      type="submit"
-                      className="w-full flex items-center justify-between bg-[#101010] text-white px-5 py-3.5 text-xs font-mono uppercase tracking-wider hover:bg-black transition-colors group cursor-pointer"
-                    >
-                      <span className="font-semibold">{form.submitLabel}</span>
-                      <div className="w-6 h-6 border border-white/30 group-hover:border-white flex items-center justify-center transition-colors">
-                        <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
-                      </div>
-                    </button>
-                    <p className="font-sans text-xs text-[#757575] mt-3">
-                      {form.consentLead}{" "}
-                      <Link
-                        to="/terms"
-                        className="underline text-[#101010] hover:opacity-75"
-                      >
-                        {form.termsLabel}
-                      </Link>{" "}
-                      {form.consentJoin}{" "}
-                      <Link
-                        to="/privacy"
-                        className="underline text-[#101010] hover:opacity-75"
-                      >
-                        {form.privacyLabel}
-                      </Link>
-                      {form.consentEnd}
-                    </p>
-                  </div>
+                  </label>
+                  <button
+                    type="submit"
+                    className="group w-full flex items-center justify-between px-6 py-4 bg-accent text-white hover:bg-text-base transition-colors duration-200 font-mono text-xs uppercase tracking-wider"
+                  >
+                    {form.submitLabel}
+                    <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+                  </button>
+                  <p className="font-sans text-xs text-text-muted">
+                    {form.consentLead}{" "}
+                    <Link to={ROUTES.terms} className="underline hover:text-accent">
+                      {form.termsLabel}
+                    </Link>{" "}
+                    {form.consentJoin}{" "}
+                    <Link to={ROUTES.privacy} className="underline hover:text-accent">
+                      {form.privacyLabel}
+                    </Link>
+                    {form.consentEnd}
+                  </p>
                 </form>
               )}
             </div>
-          </div>
+          </Reveal>
         </div>
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────────
-          SECTION 2: VISUAL "WHAT WE NEED FROM YOU" (MINIMALIST CARDS WITH IMAGES)
-          Direct visual answers with real imagery, concise punchy copy, no clutter
-          ───────────────────────────────────────────────────────────── */}
+      </div>
     </main>
   );
 }

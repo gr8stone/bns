@@ -1,36 +1,36 @@
 export const RATE_CARD_CONTENT = {
   page: {
-    backLabel: "Back to Studio",
-    printLabel: "Print Schedule",
-    eyebrow: "BNS STUDIOS // OFFICIAL RATE CARD 2026",
-    title: "COMMERCIAL RATE CARD.",
-    scheduleRef: "SCHEDULE REF: BNS-STUDIO-2026-V1",
-    terms: "CURRENCY: USD • TERMS: 50/50 • NET 30",
-    reinvestment: "≥ 40% REINVESTED IN CIVIC ENDOWMENT",
+    backLabel: "Back to BNS Studios",
+    printLabel: "Print or save as PDF",
+    eyebrow: "BNS Studios • Rate card 2026",
+    title: "Starting rates.",
+    intro:
+      "Indicative starting rates for commissioned production. Every engagement begins with a written brief; the final quote reflects scope, locations, and timelines.",
+    facts: [
+      { label: "Currency", value: "USD" },
+      { label: "Payment", value: "50% on signing, 50% on delivery" },
+      { label: "Terms", value: "Net 30" },
+      { label: "Reinvested in civic work", value: "≥ 40% of net profit" },
+    ],
   },
   table: {
-    codeHeader: "CODE",
-    formatHeader: "FORMAT",
-    scopeHeader: "SCOPE & DELIVERABLES",
-    rateHeader: "STARTING RATE",
-    actionHeader: "ACTION",
-    mobileFormatHeader: "ITEM / FORMAT",
-    mobileRateHeader: "STARTING RATE",
-    refLabel: "REF:",
-    briefLabel: "Brief",
+    formatHeader: "Format",
+    scopeHeader: "Scope & deliverables",
+    rateHeader: "Starting rate",
+    briefLabel: "Brief us",
   },
   disclosures: [
     {
-      label: "01 // DISBURSEMENTS",
-      body: "Outside Nairobi invoiced at verified net cost with receipts.",
+      label: "Travel & disbursements",
+      body: "Work outside Nairobi is invoiced at verified net cost, with receipts.",
     },
     {
-      label: "02 // FIDUCIARY FIREWALL",
-      body: "Commissions confer zero editorial control over BNS civic research.",
+      label: "Editorial firewall",
+      body: "Commissions confer no editorial control over BNS Foundation's civic research.",
     },
     {
-      label: "03 // RECTIFY & RETAIN",
-      body: "Series mandates and grant lines receive bespoke tariff models.",
+      label: "Series & retainers",
+      body: "Series mandates and multi-year grant lines receive custom rate models.",
     },
   ],
 };

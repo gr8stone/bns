@@ -1,27 +1,30 @@
 export const FAQ_PAGE_CONTENT = {
   hero: {
-    eyebrow: "HELP CENTER • INSTITUTIONAL REPOSITORY • 2026",
-    title: "THE COMPLETE BRIEF, IN THE OPEN.",
-    scopeLabel: "SCOPE OF KNOWLEDGE",
+    eyebrow: "Help & FAQ",
+    titleLead: "Questions,",
+    titleAccent: "answered in the open.",
+    scopeLabel: "Where the answers come from",
     scopeBody:
-      "Drawn directly from the BNS Institutional Framework, Whitepaper, Terms, and Fiduciary Charters.",
+      "Drawn directly from the BNS institutional framework, white paper, terms, and fiduciary charters.",
   },
   filters: {
-    allTopicsLabel: "All Topics",
+    allTopicsLabel: "All topics",
     countSingular: "question",
     countPluralSuffix: "s",
-    clearLabel: "Clear",
-    toggleLabel: "Filter by topic",
+    searchLabel: "Search questions",
+    searchPlaceholder: "Search, e.g. “40%”, “rates”, “town hall”",
+    emptyLabel: "No questions match that search.",
+    clearLabel: "Clear search",
   },
   answer: {
-    sourceLabel: "SOURCE:",
+    sourceLabel: "Source:",
   },
   closing: {
-    eyebrow: "CANNOT FIND WHAT YOU ARE LOOKING FOR?",
-    title: "Speak directly with our team in Nairobi.",
-    body: "We respond to institutional queries, partnership inquiries, and rate card clarifications within 24 business hours.",
-    primaryCtaLabel: "Write to Desk",
-    emailCtaLabel: "Email Us",
+    eyebrow: "Still curious?",
+    title: "Ask our team in Nairobi.",
+    body: "We respond to institutional queries, partnership inquiries, and rate card questions within 24 business hours.",
+    primaryCtaLabel: "Contact us",
+    emailCtaLabel: "Email us",
     emailHref: "mailto:info@budgetndiostory.org",
   },
 };

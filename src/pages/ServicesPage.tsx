@@ -1,228 +1,112 @@
-import {
-    motion,
-    useReducedMotion,
-    useScroll,
-    useTransform,
-} from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { WordReveal } from "../components/common/WordReveal";
+import { Btn, Lede, MediaFrame, MonoLabel, PageHero, Reveal, Section, SectionHead } from "../components/page/kit";
+import { MaskLine, ScrollHighlight } from "../components/story/primitives";
 import { PROGRAMMES_PAGE_CONTENT } from "../data/content/programmes";
 import { SERVICES } from "../data/services";
+import { CONTAINER } from "../lib/layout";
+import { ROUTES } from "../lib/routes";
 
-const content = PROGRAMMES_PAGE_CONTENT;
+const { hero, media, ethos, list, studioNote } = PROGRAMMES_PAGE_CONTENT;
 
 export function ServicesPage() {
-  const mediaRef = useRef<HTMLDivElement>(null);
-  const shouldReduceMotion = useReducedMotion();
-
-  // Clipped frame parallax within 10% range matching AboutPage
-  const { scrollYProgress } = useScroll({
-    target: mediaRef,
-    offset: ["start end", "end start"],
-  });
-  const yParallax = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
-
   return (
-    <main className="w-full bg-white text-[#101010] pt-28 md:pt-36 pb-24 md:pb-36 select-none">
-      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10">
-        {/* ========================================================= */}
-        {/* 1) WHITE GRID HERO WITH OVERSIZED TITLE (MATCHING ABOUT)  */}
-        {/* ========================================================= */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-20 border-b border-[#101010]/12 items-end">
-          <div className="col-span-1 md:col-span-3">
-            <motion.h1
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.6,
-                delay: 0.08,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="font-display text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-[-0.06em] text-[#101010] uppercase leading-[0.94]"
-            >
-              {content.hero.titleLead}{" "}
-              <span className="text-[#2446EC]">{content.hero.titleAccent}</span>
-            </motion.h1>
+    <main className="w-full bg-white text-text-base">
+      <PageHero
+        eyebrow={hero.eyebrow}
+        lead={hero.titleLead}
+        accent={hero.titleAccent}
+        aside={
+          <div className="space-y-3">
+            <MonoLabel accent>{hero.scopeLabel}</MonoLabel>
+            <Lede>{hero.scopeText}</Lede>
           </div>
+        }
+      />
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="col-span-1"
-          >
-            <span className="font-mono text-xs text-[#757575] block mb-2 font-medium">
-              {content.hero.scopeLabel}
-            </span>
-            <p className="font-sans text-sm text-[#757575] leading-relaxed font-light">
-              {content.hero.scopeText}
-            </p>
-          </motion.div>
-        </div>
-
-        {/* ========================================================= */}
-        {/* 2) FULL-BLEED MEDIA WITH RESTRAINED PARALLAX              */}
-        {/* ========================================================= */}
-        <div
-          ref={mediaRef}
-          className="py-16 md:py-24 border-b border-[#101010]/12"
-        >
-          <div className="relative aspect-[16/9] md:aspect-[21/9] w-full overflow-hidden bg-zinc-900 border border-[#101010]/12">
-            <motion.img
-              style={{ y: shouldReduceMotion ? "0%" : yParallax }}
-              src={content.media.imageSrc}
-              alt={content.media.imageAlt}
-              initial={{ scale: 1.06, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-              className="w-full h-full object-cover filter grayscale contrast-125 brightness-95 will-change-transform"
-            />
-            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between font-mono text-xs text-white/80 uppercase">
-              <span>{content.media.captionLeft}</span>
-              <span>{content.media.captionRight}</span>
-            </div>
-          </div>
-        </div>
-
-        {/* ========================================================= */}
-        {/* 3) PROGRAMME ETHOS & WORD REVEAL                          */}
-        {/* ========================================================= */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 py-20 border-b border-[#101010]/12 items-start">
-          <div className="col-span-1">
-            <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
-              <span className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#101010] font-medium">
-                {content.ethos.label}
-              </span>
-            </div>
-          </div>
-
-          <div className="col-span-1 md:col-span-3 space-y-6 max-w-3xl text-sm sm:text-base text-[#101010]/85 font-light leading-relaxed">
-            <WordReveal
-              text={content.ethos.revealText}
-              as="p"
-              className="font-display text-2xl sm:text-3xl font-normal tracking-[-0.03em] leading-snug text-[#101010]"
-              staggerMs={30}
-            />
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.6,
-                delay: 0.3,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="text-sm sm:text-base text-[#757575] leading-relaxed font-light"
-            >
-              {content.ethos.body}
-            </motion.p>
-          </div>
-        </div>
-
-        {/* ========================================================= */}
-        {/* 4) THE 3 PROGRAMMES (MINIMALIST EDITORIAL LIST)           */}
-        {/* ========================================================= */}
-        <div className="py-20 border-b border-[#101010]/12">
-          <div className="flex items-center justify-between mb-12">
-            <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
-              <span className="font-mono text-xs sm:text-sm uppercase tracking-wider text-[#101010] font-medium">
-                {content.list.label}
-              </span>
-            </div>
-          </div>
-
-          {/* Minimalist Editorial List Layout */}
-          <div className="divide-y divide-[#101010]/15 border-t border-b border-[#101010]/15">
-            {SERVICES.map((prog) => (
-              <div
-                key={prog.slug}
-                className="group py-12 lg:py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start hover:bg-[#FAFAF8] transition-colors -mx-5 sm:-mx-8 md:-mx-10 px-5 sm:px-8 md:px-10"
-              >
-                {/* Column 1: Just Number (No PILLAR text) */}
-                <div className="lg:col-span-2 space-y-1">
-                  <span className="font-mono text-2xl lg:text-3xl font-light text-[#2446EC] block">
-                    {prog.number}
-                  </span>
-                  <span className="font-mono text-[11px] text-[#757575] block uppercase tracking-wider">
-                    {prog.slug.replace("-", " ")}
-                  </span>
-                </div>
-
-                {/* Column 2: Minimalist Title, Headline, and Clean Link */}
-                <div className="lg:col-span-6 space-y-4">
-                  <h3 className="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight uppercase text-[#101010] group-hover:text-[#2446EC] transition-colors leading-[0.98]">
-                    <Link to={`/programmes/${prog.slug}`}>{prog.title}</Link>
-                  </h3>
-
-                  <p className="font-sans text-sm sm:text-base text-[#101010]/80 font-normal leading-relaxed max-w-xl">
-                    {prog.shortDescription}
-                  </p>
-
-                  <div className="pt-2">
-                    <Link
-                      to={`/programmes/${prog.slug}`}
-                      className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[#101010] group-hover:text-[#2446EC] font-semibold border-b border-current pb-0.5 transition-colors"
-                    >
-                      <span>
-                        {content.list.exploreLinkPrefix} {prog.title}
-                      </span>
-                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </Link>
-                  </div>
-                </div>
-
-                {/* Column 3: High-Res Visual Frame (No card borders) */}
-                <div className="lg:col-span-4">
-                  <Link
-                    to={`/programmes/${prog.slug}`}
-                    className="block overflow-hidden bg-black aspect-[16/10] relative group/img"
-                  >
-                    <img
-                      src={prog.image}
-                      alt={prog.title}
-                      loading="lazy"
-                      className="w-full h-full object-cover filter brightness-95 group-hover/img:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-[#2446EC]/0 group-hover/img:bg-[#2446EC]/15 transition-colors duration-300" />
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ========================================================= */}
-        {/* 6) PROGRAMME METHODOLOGY WORKFLOW (CHRONOLOGY STYLE)     */}
-        {/* ========================================================= */}
-
-        {/* ========================================================= */}
-        {/* 7) CLOSING INITIATIVE CALLOUT (MATCHING ABOUT)            */}
-        {/* ========================================================= */}
-        <div className="mt-16 sm:mt-24 pt-10 border-t border-[#101010]/12 flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div className="space-y-2">
-            <h3 className="font-display text-2xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#101010] leading-tight">
-              {content.closing.title}
-            </h3>
-            <p className="font-sans text-xs sm:text-sm text-[#757575] font-light max-w-xl leading-relaxed">
-              {content.closing.text}
-            </p>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <Link
-              to={content.closing.ctaHref}
-              className="solum-btn px-7 py-3.5 bg-[#101010] text-white border border-[#101010] font-mono text-xs uppercase tracking-wider hover:bg-white hover:text-[#101010] transition-colors"
-            >
-              {content.closing.ctaLabel}
-            </Link>
-          </div>
-        </div>
+      <div className={CONTAINER}>
+        <MediaFrame src={media.imageSrc} alt={media.imageAlt} captionLeft={media.captionLeft} captionRight={media.captionRight} />
       </div>
+
+      {/* 01 — Why */}
+      <Section chapter="01" label={ethos.label} ruled={false} className="md:py-36">
+        <ScrollHighlight
+          text={ethos.revealText}
+          highlightWords={ethos.highlightWords}
+          className="mt-10 md:mt-14 max-w-5xl font-display text-[clamp(28px,4.4vw,64px)] font-medium leading-[1.06] tracking-[-0.04em]"
+        />
+        <Reveal className="mt-12 md:mt-16 max-w-3xl">
+          <p className="font-sans text-base sm:text-lg leading-relaxed text-text-base/80">{ethos.body}</p>
+        </Reveal>
+      </Section>
+
+      {/* 02 — The three */}
+      <Section chapter="02" label={list.label} tone="warm">
+        <SectionHead lead={list.headlineLead} accent={list.headlineAccent} />
+        <div className="mt-14 md:mt-20 border-t border-black/[0.08]">
+          {SERVICES.map((prog) => (
+            <article
+              key={prog.slug}
+              className="group grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 py-12 md:py-16 border-b border-black/[0.08]"
+            >
+              <div className="lg:col-span-7 flex flex-col">
+                <Reveal y={12}>
+                  <span className="font-mono text-xs text-accent font-semibold tabular-nums">
+                    {prog.number} / 0{SERVICES.length}
+                  </span>
+                </Reveal>
+                <h3 className="mt-4 font-display text-4xl sm:text-5xl lg:text-6xl font-medium tracking-[-0.05em] leading-[0.96]">
+                  <MaskLine>
+                    <Link to={ROUTES.programme(prog.slug)} className="group-hover:text-accent transition-colors duration-200">
+                      {prog.title}
+                    </Link>
+                  </MaskLine>
+                </h3>
+                <Reveal delay={0.1}>
+                  <p className="mt-5 font-sans text-base sm:text-lg text-text-base/80 leading-relaxed max-w-xl">
+                    {prog.heroHeadline}
+                  </p>
+                  <div className="mt-8">
+                    <MonoLabel>{list.deliverablesLabel}</MonoLabel>
+                    <ul className="mt-3 flex flex-wrap gap-2">
+                      {prog.deliverables.map((d) => (
+                        <li key={d.name} className="px-3 py-1.5 border border-black/10 bg-white font-sans text-xs sm:text-sm">
+                          {d.name}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <Link
+                    to={ROUTES.programme(prog.slug)}
+                    className="mt-8 inline-flex items-center gap-2 pb-1 border-b border-text-base hover:text-accent hover:border-accent transition-colors duration-200 font-mono text-xs uppercase tracking-wider"
+                  >
+                    {list.exploreLinkPrefix} {prog.title}
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </Link>
+                </Reveal>
+              </div>
+              <Reveal delay={0.15} className="lg:col-span-5">
+                <Link to={ROUTES.programme(prog.slug)} className="block aspect-[4/3] overflow-hidden bg-ink" tabIndex={-1}>
+                  <img
+                    src={prog.image}
+                    alt={prog.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  />
+                </Link>
+              </Reveal>
+            </article>
+          ))}
+        </div>
+
+        <Reveal className="mt-16 md:mt-20 flex flex-col md:flex-row md:items-center justify-between gap-6 p-8 sm:p-10 bg-white border border-black/[0.08]">
+          <div className="max-w-2xl">
+            <MonoLabel accent>{studioNote.eyebrow}</MonoLabel>
+            <p className="mt-3 font-sans text-base sm:text-lg leading-relaxed">{studioNote.body}</p>
+          </div>
+          <Btn to={ROUTES.studio}>{studioNote.ctaLabel}</Btn>
+        </Reveal>
+      </Section>
     </main>
   );
 }

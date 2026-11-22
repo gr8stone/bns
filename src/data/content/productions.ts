@@ -1,29 +1,23 @@
 export const PRODUCTIONS_PAGE_CONTENT = {
   hero: {
-    eyebrow: "CIVIC MEDIA ARCHIVE",
+    eyebrow: "Civic media archive",
     titleLead: "Productions &",
     titleAccent: "campaigns.",
-    scopeLabel: "ARCHIVE SCOPE",
+    scopeLabel: "What's here",
     scopeText:
-      "Docuseries, investigations, plain-language budget explainers, and grassroots tracking campaigns produced for citizen accountability across 47 counties.",
+      "Docuseries, investigations, plain-language budget explainers, and grassroots tracking campaigns, produced for citizen accountability across 47 counties.",
   },
   filter: {
-    label: "FILTER BY DESK",
-    allCategoryLabel: "All Projects",
-    categories: [
-      "Wanahabari Lab",
-      "BNS Connect",
-      "BNS Mashinani",
-      "BNS Studios",
-    ],
-    switchToScrollTitle: "Switch to Scroll Navigation Mode",
-    switchToFilterTitle: "Switch to Filter-Only Mode",
-    isolateOnLabel: "ISOLATE: ON",
-    scrollNavLabel: "SCROLL NAV",
+    label: "Filter by programme",
+    allCategoryLabel: "All",
+    categories: ["BNS Connect", "BNS Mashinani", "Wanahabari Lab", "BNS Studios"],
+  },
+  card: {
+    viewLabel: "View production",
+    countSuffix: "productions",
   },
   emptyState: {
-    eyebrow: "00 // NO ENTRIES FOUND",
-    title: "NO PRODUCTIONS IN THIS DESK",
-    resetLabel: "RESET FILTER",
+    title: "Nothing here yet.",
+    resetLabel: "Show all productions",
   },
 };

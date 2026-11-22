@@ -1,36 +1,36 @@
 export const PRODUCTION_DETAIL_CONTENT = {
-  separator: "//",
   bullet: "•",
   listSeparator: ", ",
   breadcrumb: {
-    backLabel: "PROJECTS ARCHIVE",
-  },
-  header: {
-    yearLabel: "YEAR:",
-    locationLabel: "LOCATION:",
+    backLabel: "All productions",
   },
   credits: {
-    partnerLabel: "PARTNER / INITIATIVE",
-    productionLabel: "RESEARCH & PRODUCTION",
-    pillarLabel: "PILLAR / THEME",
-    focusLabel: "CIVIC FOCUS",
+    partnerLabel: "Partner",
+    productionLabel: "Research & production",
+    locationLabel: "Location",
+    focusLabel: "Programmes",
   },
   leadMedia: {
-    playAriaLabel: "Play documentary video",
-    watchLabel: "Watch Feature • 2026",
-    visualLabel: "PRIMARY EPISODE VISUAL",
+    watchLabel: "Watch",
   },
   narrative: {
-    label: "NARRATIVE",
-    subLabel: "STATEMENT OF INTENT",
+    label: "The story",
+  },
+  numbers: {
+    label: "In numbers",
+  },
+  transformation: {
+    label: "From documents to understanding",
+  },
+  process: {
+    label: "How it was made",
+    stepLabel: "Step",
   },
   gallery: {
-    label: "PRODUCTION & FIELD GALLERY",
+    label: "From the field",
   },
   navigation: {
-    prevShortLabel: "PREV",
-    prevLongLabel: "PREVIOUS CAMPAIGN",
-    nextShortLabel: "NEXT",
-    nextLongLabel: "NEXT CAMPAIGN",
+    prevLabel: "Previous",
+    nextLabel: "Next",
   },
 };

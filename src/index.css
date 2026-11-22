@@ -89,6 +89,14 @@
   }
 }
 
+/* Print (rate card, white paper, legal pages): drop fixed chrome */
+@media print {
+  header.fixed,
+  .print\:hidden {
+    display: none !important;
+  }
+}
+
 /* 1px Hairline rules */
 .rule-white {
   border-color: rgba(16, 16, 16, 0.12);

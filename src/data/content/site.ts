@@ -65,7 +65,7 @@ export const SITE_CONTENT = {
     closeMenuAriaLabel: 'Close Menu',
     menuLabel: 'MENU',
     closeLabel: 'CLOSE',
-    contactHeading: 'CIVIC CONTACT',
+    contactHeading: 'CONTACT',
     hubsHeading: 'HUBS',
     hubsText: 'Nairobi • Kenya (47 Counties)',
     indexHeading: 'INDEX',
@@ -77,7 +77,7 @@ export const SITE_CONTENT = {
       { label: 'Cookies', href: '/cookies' },
     ],
     copyright: '© 2026',
-    tagline: 'Budget Ndio Story • AI in Civic Design',
+    tagline: 'Budget Ndio Story • Follow the budget. Find the story.',
   },
 
   footer: {
@@ -128,25 +128,25 @@ export const SITE_CONTENT = {
       { label: 'COOKIES', href: '/cookies' },
     ],
     coordinatesHeading: 'COORDINATES',
-    addressLine1: 'Civic Action & Public Finance Hub,',
-    addressLine2: 'Nairobi, Kenya • 47 Counties',
+    addressLine1: 'Nairobi, Kenya',
+    addressLine2: 'Working in all 47 counties',
     copyrightPrefix: '©',
     copyrightSuffix: 'BUDGET NDIO STORY • ALL RIGHTS RESERVED',
-    legalNote: 'KENYA DEVOLUTION ARTICLE 10 • 201',
+    legalNote: 'BNS FOUNDATION • BNS STUDIOS',
   },
 
   preloader: {
-    topLeftText: 'Budget Ndio Story® // Civic Media & Public Finance',
-    topRightText: 'Edition 2026 // Civic Tech & Storytelling',
+    topLeftText: 'Budget Ndio Story® • Civic media & public finance',
+    topRightText: 'Nairobi • 47 counties',
     wordmark: 'Budget Ndio Story®',
     taglines: [
       { label: 'Civic Media' },
       { label: 'Budget Literacy' },
       { label: 'Public Finance' },
     ],
-    bottomLeftText: 'Index 01 // Public Finance Archive',
-    loadingPrefix: 'Loading [',
-    loadingSuffix: '%]',
+    bottomLeftText: 'Follow the budget. Find the story.',
+    loadingPrefix: '',
+    loadingSuffix: '%',
   },
 
   backToTop: {

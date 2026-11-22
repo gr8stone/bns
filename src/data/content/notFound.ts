@@ -4,10 +4,12 @@
  */
 
 export const NOT_FOUND_CONTENT = {
-  eyebrow: '404 // CIVIC MEDIA ARCHIVE',
-  heading: '404',
-  description:
-    'The requested episode, campaign archive, or civic story cannot be located within our index.',
-  ctaLabel: 'RETURN HOME',
-  ctaHref: '/',
+  eyebrow: "Error 404",
+  heading: "This page",
+  headingAccent: "isn't in the budget.",
+  description: "The page you're looking for has moved or never existed. Try one of these instead.",
+  ctaLabel: "Back to home",
+  ctaHref: "/",
+  secondaryCtaLabel: "Browse productions",
+  secondaryCtaHref: "/projects",
 };

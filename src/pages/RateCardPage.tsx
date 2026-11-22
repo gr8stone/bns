@@ -1,67 +1,79 @@
-import { ArrowLeft, Printer } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { RateCard } from '../components/studio/RateCard';
-import { RATE_CARD_CONTENT } from '../data/content/rateCard';
-import { ROUTES } from '../lib/routes';
+import { ArrowUpRight, Printer } from "lucide-react";
+import { Link } from "react-router-dom";
+import { FactGrid, Lede, MonoLabel, PageHero } from "../components/page/kit";
+import { RATE_CARD_CONTENT } from "../data/content/rateCard";
+import { STUDIO_RATE_CARD } from "../data/studio";
+import { CONTAINER } from "../lib/layout";
+import { ROUTES } from "../lib/routes";
+
+const { page, table, disclosures } = RATE_CARD_CONTENT;
 
 export function RateCardPage() {
-  const { page } = RATE_CARD_CONTENT;
-
-  function handlePrint() {
-    window.print();
-  }
-
   return (
-    <main className="min-h-screen w-full bg-[#2446EC] text-white pt-24 sm:pt-28 pb-16 px-5 sm:px-8 md:px-12 select-none flex flex-col justify-between">
-      <div className="max-w-[1380px] w-full mx-auto flex-1 flex flex-col justify-between">
-
-        {/* ─── Top Control Bar ────────────────────────────────────────── */}
-        <div className="pb-6 sm:pb-8 border-b border-white/20 flex flex-wrap items-center justify-between gap-4">
-          <Link
-            to={ROUTES.studio}
-            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-white/80 hover:text-white transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>{page.backLabel}</span>
-          </Link>
-
-          <div className="flex items-center gap-3">
+    <main className="w-full bg-white text-text-base pb-20 md:pb-28">
+      <PageHero
+        back={{ to: ROUTES.studio, label: page.backLabel }}
+        eyebrow={page.eyebrow}
+        lead={page.title}
+        aside={
+          <div className="space-y-5">
+            <Lede>{page.intro}</Lede>
             <button
-              onClick={handlePrint}
-              className="inline-flex items-center gap-2 px-3.5 py-2 font-mono text-xs uppercase tracking-wider border border-white/30 text-white hover:bg-white/10 transition-colors"
+              type="button"
+              onClick={() => window.print()}
+              className="print:hidden inline-flex items-center gap-2 px-5 py-3 border border-black/20 hover:border-text-base transition-colors font-mono text-xs uppercase tracking-wider"
             >
               <Printer className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">{page.printLabel}</span>
+              {page.printLabel}
             </button>
           </div>
+        }
+      >
+        <div className="mt-14 md:mt-16">
+          <FactGrid facts={page.facts} />
         </div>
+      </PageHero>
 
-        {/* ─── Hero Headline & Monograph Metadata ─────────────────────── */}
-        <div className="py-8 sm:py-12 border-b border-white/20 flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6">
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-white inline-block animate-pulse" />
-              <span className="font-mono text-xs uppercase tracking-wider text-white font-medium">
-                {page.eyebrow}
-              </span>
+      <div className={CONTAINER}>
+        <div className="hidden md:grid grid-cols-12 gap-6 pb-3 border-b border-text-base">
+          <div className="col-span-3"><MonoLabel>{table.formatHeader}</MonoLabel></div>
+          <div className="col-span-6"><MonoLabel>{table.scopeHeader}</MonoLabel></div>
+          <div className="col-span-3 text-right"><MonoLabel>{table.rateHeader}</MonoLabel></div>
+        </div>
+        <ol>
+          {STUDIO_RATE_CARD.map((item, i) => (
+              <li key={item.code} className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-6 py-7 border-b border-black/[0.08] break-inside-avoid">
+                <div className="md:col-span-3 flex items-baseline gap-3">
+                  <span className="font-mono text-[11px] text-text-muted tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+                  <h2 className="font-display text-xl sm:text-2xl font-medium tracking-[-0.03em] leading-tight">{item.format}</h2>
+                </div>
+                <p className="md:col-span-6 font-sans text-sm text-text-muted leading-relaxed pl-8 md:pl-0">{item.scope}</p>
+                <div className="md:col-span-3 md:text-right pl-8 md:pl-0 flex md:flex-col items-baseline md:items-end justify-between gap-2">
+                  <div>
+                    <span className="font-display text-xl font-medium tabular-nums">{item.startingRate}</span>
+                    <span className="ml-1.5 font-mono text-[11px] text-text-muted">{item.unit}</span>
+                  </div>
+                  <Link
+                    to={ROUTES.contact}
+                    className="print:hidden group inline-flex items-center gap-1 font-mono text-[11px] uppercase tracking-wider text-accent hover:underline"
+                  >
+                    {table.briefLabel}
+                    <ArrowUpRight className="w-3 h-3" />
+                  </Link>
+                </div>
+              </li>
+          ))}
+        </ol>
+
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+          {disclosures.map((d) => (
+            <div key={d.label}>
+              <MonoLabel accent>{d.label}</MonoLabel>
+              <p className="mt-2 font-sans text-sm text-text-muted leading-relaxed">{d.body}</p>
             </div>
-            <h1 className="font-display text-3xl sm:text-5xl lg:text-7xl font-bold tracking-[-0.05em] uppercase leading-[0.92] text-white">
-              {page.title}
-            </h1>
-          </div>
-
-          <div className="font-mono text-xs text-white/70 space-y-1 md:text-right shrink-0">
-            <div>{page.scheduleRef}</div>
-            <div>{page.terms}</div>
-            <div>{page.reinvestment}</div>
-          </div>
+          ))}
         </div>
-
-        {/* ─── Clean Rate Card Component (Receipt on mobile, ledger on desktop) ─── */}
-        <RateCard showDisclosures={true} />
-
       </div>
     </main>
   );
 }
-export { RateCard };

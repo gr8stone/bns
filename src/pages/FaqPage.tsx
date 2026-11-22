@@ -1,313 +1,137 @@
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import {
-    ArrowRight,
-    Mail,
-    Minus,
-    Plus,
-    SlidersHorizontal,
-    X,
-} from "lucide-react";
-import { useMemo, useRef, useState } from "react";
+import { ArrowRight, Search, X } from "lucide-react";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { WordReveal } from "../components/common/WordReveal";
+import { Accordion, ClosingCta, Lede, MonoLabel, PageHero } from "../components/page/kit";
 import { COMPREHENSIVE_FAQS, FAQ_CATEGORIES } from "../data/comprehensiveFaq";
 import { FAQ_PAGE_CONTENT } from "../data/content/faqPage";
+import { CONTAINER } from "../lib/layout";
 import { ROUTES } from "../lib/routes";
 
+const { hero, filters, answer, closing } = FAQ_PAGE_CONTENT;
+
 export function FaqPage() {
-  const { hero, filters, answer, closing } = FAQ_PAGE_CONTENT;
-  const shouldReduceMotion = useReducedMotion();
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
-  const [filtersOpen, setFiltersOpen] = useState(false);
-  const [openIds, setOpenIds] = useState<Set<string>>(new Set());
-  const listRef = useRef<HTMLDivElement>(null);
+  const [category, setCategory] = useState("all");
+  const [query, setQuery] = useState("");
 
-  const filteredFaqs = useMemo(() => {
+  const visible = useMemo(() => {
+    const q = query.trim().toLowerCase();
     return COMPREHENSIVE_FAQS.filter(
-      (item) =>
-        selectedCategory === "all" || item.category === selectedCategory,
+      (f) =>
+        (category === "all" || f.category === category) &&
+        (!q || `${f.question} ${f.answer}`.toLowerCase().includes(q)),
     );
-  }, [selectedCategory]);
-
-  function handleCategoryChange(id: string) {
-    setSelectedCategory(id);
-    setFiltersOpen(false);
-    setOpenIds(new Set()); // collapse all when switching topic
-    setTimeout(() => {
-      listRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 80);
-  }
-
-  function toggleItem(id: string) {
-    setOpenIds((prev) => {
-      const next = new Set(prev);
-      next.has(id) ? next.delete(id) : next.add(id);
-      return next;
-    });
-  }
-
-  const activeLabel =
-    selectedCategory === "all"
-      ? filters.allTopicsLabel
-      : (FAQ_CATEGORIES.find((c) => c.id === selectedCategory)?.label ??
-        filters.allTopicsLabel);
+  }, [category, query]);
 
   return (
-    <main className="w-full bg-white text-[#101010] pt-28 md:pt-36 pb-24 md:pb-36">
-      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10">
-        {/* ========================================================= */}
-        {/* 1. HERO                                                    */}
-        {/* ========================================================= */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-16 md:pb-20 border-b border-[#101010]/12 items-end">
-          <div className="col-span-1 md:col-span-3">
-            <motion.div
-              initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.36, ease: [0.22, 1, 0.36, 1] }}
-              className="flex items-center gap-2 mb-4"
-            >
-              <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
-              <span className="font-mono text-xs uppercase tracking-wider text-[#101010] font-medium">
-                {hero.eyebrow}
-              </span>
-            </motion.div>
-            <WordReveal
-              as="h1"
-              text={hero.title}
-              className="font-display text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-[-0.06em] text-[#101010] uppercase leading-[0.92]"
-              staggerMs={28}
+    <main className="w-full bg-white text-text-base">
+      <PageHero
+        eyebrow={hero.eyebrow}
+        lead={hero.titleLead}
+        accent={hero.titleAccent}
+        aside={
+          <div className="space-y-3">
+            <MonoLabel accent>{hero.scopeLabel}</MonoLabel>
+            <Lede>{hero.scopeBody}</Lede>
+          </div>
+        }
+      />
+
+      <div className={`${CONTAINER} pb-24 md:pb-32`}>
+        {/* Controls */}
+        <div className="sticky top-16 sm:top-20 z-20 -mx-5 sm:-mx-8 md:-mx-10 px-5 sm:px-8 md:px-10 py-4 bg-white/90 backdrop-blur-md border-y border-black/[0.08] space-y-3">
+          <label className="relative block">
+            <span className="sr-only">{filters.searchLabel}</span>
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" aria-hidden="true" />
+            <input
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder={filters.searchPlaceholder}
+              className="w-full bg-paper-warm border border-black/10 pl-11 pr-10 py-3 font-sans text-sm focus:outline-none focus:border-accent focus:bg-white transition-colors"
             />
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="col-span-1 space-y-4"
-          >
-            <div>
-              <span className="font-mono text-xs text-[#757575] block mb-2 font-medium">
-                {hero.scopeLabel}
-              </span>
-              <p className="font-sans text-sm text-[#757575] leading-relaxed font-light">
-                {hero.scopeBody}
-              </p>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* ========================================================= */}
-        {/* 2. STICKY BAR — filter icon + active label                 */}
-        {/* ========================================================= */}
-        <div className="sticky top-[72px] md:top-[88px] z-30 bg-white border-b border-[#101010]/12 -mx-5 sm:-mx-8 md:-mx-10 px-5 sm:px-8 md:px-10">
-          {/* Trigger row */}
-          <div className="flex items-center justify-between py-3">
-            <div className="flex items-center gap-3">
-              <span className="font-mono text-[10px] uppercase tracking-wider text-[#757575]">
-                {filteredFaqs.length} {filters.countSingular}
-                {filteredFaqs.length !== 1 ? filters.countPluralSuffix : ""}
-              </span>
-              {selectedCategory !== "all" && (
-                <span className="font-mono text-[10px] uppercase tracking-wider text-[#101010] bg-[#101010]/06 px-2 py-0.5 border border-[#101010]/10">
-                  {activeLabel}
-                </span>
-              )}
-            </div>
-
-            <div className="flex items-center gap-2">
-              {selectedCategory !== "all" && (
-                <button
-                  onClick={() => handleCategoryChange("all")}
-                  className="font-mono text-[10px] uppercase tracking-wider text-[#757575] hover:text-[#101010] transition-colors"
-                >
-                  {filters.clearLabel}
-                </button>
-              )}
+            {query && (
               <button
-                onClick={() => setFiltersOpen((v) => !v)}
-                className={`flex items-center gap-2 px-3 py-2 border font-mono text-[10px] uppercase tracking-wider transition-colors ${
-                  filtersOpen
-                    ? "bg-[#101010] text-white border-[#101010]"
-                    : "bg-white text-[#101010] border-[#101010]/20 hover:border-[#101010]"
-                }`}
+                type="button"
+                onClick={() => setQuery("")}
+                aria-label={filters.clearLabel}
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-text-muted hover:text-text-base"
               >
-                {filtersOpen ? (
-                  <X className="w-3.5 h-3.5" />
-                ) : (
-                  <SlidersHorizontal className="w-3.5 h-3.5" />
-                )}
-                <span>{filters.toggleLabel}</span>
+                <X className="w-4 h-4" />
               </button>
-            </div>
-          </div>
-
-          {/* Collapsible category panel */}
-          <AnimatePresence initial={false}>
-            {filtersOpen && (
-              <motion.div
-                key="filters"
-                initial={shouldReduceMotion ? false : { height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                className="overflow-hidden"
-              >
-                <div className="flex flex-wrap gap-2 pb-4 pt-1">
-                  {FAQ_CATEGORIES.map((cat) => {
-                    const isActive = selectedCategory === cat.id;
-                    const count =
-                      cat.id === "all"
-                        ? COMPREHENSIVE_FAQS.length
-                        : COMPREHENSIVE_FAQS.filter(
-                            (f) => f.category === cat.id,
-                          ).length;
-
-                    return (
-                      <button
-                        key={cat.id}
-                        onClick={() => handleCategoryChange(cat.id)}
-                        className={`px-4 py-2 font-mono text-[10px] uppercase tracking-wider transition-all border ${
-                          isActive
-                            ? "bg-[#101010] text-white border-[#101010]"
-                            : "bg-white text-[#757575] border-[#101010]/20 hover:border-[#101010] hover:text-[#101010]"
-                        }`}
-                      >
-                        {cat.label}
-                        <span
-                          className={`ml-1.5 tabular-nums ${isActive ? "opacity-60" : "opacity-40"}`}
-                        >
-                          {count}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </motion.div>
             )}
-          </AnimatePresence>
-        </div>
-
-        {/* ========================================================= */}
-        {/* 3. FAQ ACCORDION ROWS — always visible                     */}
-        {/* ========================================================= */}
-        <div ref={listRef} className="divide-y divide-[#101010]/12">
-          <AnimatePresence mode="popLayout">
-            {filteredFaqs.map((item, idx) => {
-              const isOpen = openIds.has(item.id);
+          </label>
+          <div className="flex gap-2 overflow-x-auto no-scrollbar">
+            {FAQ_CATEGORIES.map((c) => {
+              const active = c.id === category;
+              const count = c.id === "all" ? COMPREHENSIVE_FAQS.length : COMPREHENSIVE_FAQS.filter((f) => f.category === c.id).length;
               return (
-                <motion.div
-                  key={item.id}
-                  layout
-                  initial={shouldReduceMotion ? false : { opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{
-                    duration: 0.22,
-                    delay: Math.min(idx * 0.025, 0.18),
-                  }}
+                <button
+                  key={c.id}
+                  type="button"
+                  aria-pressed={active}
+                  onClick={() => setCategory(c.id)}
+                  className={`shrink-0 px-4 py-2 font-mono text-[11px] uppercase tracking-wider border transition-colors duration-200 ${
+                    active ? "bg-text-base text-white border-text-base" : "border-black/15 text-text-muted hover:text-text-base hover:border-text-base"
+                  }`}
                 >
-                  {/* Question row */}
-                  <button
-                    onClick={() => toggleItem(item.id)}
-                    className="w-full text-left py-6 flex items-start gap-4 group hover:bg-[#FAFAF8] transition-colors -mx-4 px-4 sm:-mx-6 sm:px-6"
-                  >
-                    <span className="font-mono text-xs text-[#757575] pt-0.5 shrink-0 w-7 tabular-nums">
-                      {String(idx + 1).padStart(2, "0")}
-                    </span>
-                    <div className="flex-1 space-y-0.5">
-                      <span className="font-mono text-[10px] uppercase tracking-wider text-[#757575] block">
-                        {item.categoryLabel}
-                      </span>
-                      <h2 className="font-display text-lg sm:text-xl font-medium tracking-tight text-[#101010] leading-snug group-hover:text-[#4E58AA] transition-colors">
-                        {item.question}
-                      </h2>
-                    </div>
-                    <span className="shrink-0 pt-1 text-[#757575]">
-                      {isOpen ? (
-                        <Minus className="w-4 h-4" />
-                      ) : (
-                        <Plus className="w-4 h-4" />
-                      )}
-                    </span>
-                  </button>
-
-                  {/* Answer */}
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        key="body"
-                        initial={
-                          shouldReduceMotion ? false : { height: 0, opacity: 0 }
-                        }
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                        className="overflow-hidden"
-                      >
-                        <div className="pb-7 pl-11 pr-4 sm:pr-6 space-y-4">
-                          <p className="font-sans text-sm sm:text-base text-[#101010]/80 font-light leading-relaxed max-w-3xl">
-                            {item.answer}
-                          </p>
-                          <div className="flex flex-wrap items-center gap-4 font-mono text-[11px] text-[#757575]">
-                            {item.sourceDoc && (
-                              <span className="bg-[#101010]/04 px-2 py-0.5 border border-[#101010]/08">
-                                {answer.sourceLabel} {item.sourceDoc}
-                              </span>
-                            )}
-                            {item.relatedLinks?.map((link) => (
-                              <Link
-                                key={link.url}
-                                to={link.url}
-                                className="inline-flex items-center gap-1 text-[#101010] hover:text-[#4E58AA] transition-colors uppercase tracking-wider"
-                              >
-                                <span>{link.label}</span>
-                                <ArrowRight className="w-3 h-3" />
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
+                  {c.id === "all" ? filters.allTopicsLabel : c.label}
+                  <span className={`ml-2 tabular-nums ${active ? "text-white/60" : "text-text-muted/70"}`}>{count}</span>
+                </button>
               );
             })}
-          </AnimatePresence>
+          </div>
         </div>
 
-        {/* ========================================================= */}
-        {/* 4. CLOSING DESK                                            */}
-        {/* ========================================================= */}
-        <div className="mt-16 sm:mt-24 pt-12 border-t border-[#101010]/12 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-          <div className="md:col-span-8 space-y-2">
-            <span className="font-mono text-xs uppercase tracking-wider text-[#101010] font-medium block">
-              {closing.eyebrow}
-            </span>
-            <h3 className="font-display text-2xl sm:text-4xl font-semibold tracking-tight text-[#101010] uppercase">
-              {closing.title}
-            </h3>
-            <p className="font-sans text-sm text-[#757575] font-light max-w-xl leading-relaxed">
-              {closing.body}
-            </p>
-          </div>
-          <div className="md:col-span-4 flex flex-wrap items-center gap-3 md:justify-end">
-            <Link
-              to={ROUTES.contact}
-              className="solum-btn px-6 py-3.5 bg-[#101010] text-white font-mono text-xs uppercase tracking-wider hover:bg-white hover:text-[#101010] transition-colors inline-flex items-center gap-2"
-            >
-              <span>{closing.primaryCtaLabel}</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-            <a
-              href={closing.emailHref}
-              className="px-5 py-3.5 border border-[#101010]/20 text-[#101010] font-mono text-xs uppercase tracking-wider hover:border-[#101010] transition-colors inline-flex items-center gap-2"
-            >
-              <Mail className="w-3.5 h-3.5" />
-              <span>{closing.emailCtaLabel}</span>
-            </a>
-          </div>
+        <p className="mt-10 font-mono text-[11px] uppercase tracking-[0.16em] text-text-muted" aria-live="polite">
+          {visible.length} {filters.countSingular}
+          {visible.length !== 1 ? filters.countPluralSuffix : ""}
+        </p>
+
+        <div className="mt-4 max-w-4xl">
+          {visible.length === 0 ? (
+            <p className="py-16 font-display text-2xl font-medium">{filters.emptyLabel}</p>
+          ) : (
+            <Accordion
+              key={`${category}-${query}`}
+              items={visible.map((f) => ({
+                id: f.id,
+                kicker: category === "all" ? f.categoryLabel : undefined,
+                title: f.question,
+                body: (
+                  <div className="space-y-4">
+                    <Lede>{f.answer}</Lede>
+                    <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+                      {f.sourceDoc && (
+                        <span className="font-mono text-[11px] text-text-muted">
+                          {answer.sourceLabel} {f.sourceDoc}
+                        </span>
+                      )}
+                      {f.relatedLinks?.map((l) => (
+                        <Link
+                          key={l.url}
+                          to={l.url}
+                          className="inline-flex items-center gap-1 font-mono text-[11px] uppercase tracking-wider text-accent hover:underline"
+                        >
+                          {l.label}
+                          <ArrowRight className="w-3 h-3" />
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ),
+              }))}
+            />
+          )}
         </div>
       </div>
+
+      <ClosingCta
+        eyebrow={closing.eyebrow}
+        title={closing.title}
+        body={closing.body}
+        primary={{ to: ROUTES.contact, label: closing.primaryCtaLabel }}
+        secondary={{ href: closing.emailHref, label: closing.emailCtaLabel }}
+      />
     </main>
   );
 }

@@ -1,11 +1,11 @@
 export const WHITEPAPER_CONTENT = {
   hero: {
-    eyebrow: "Budget Ndio Story · Nairobi · 2026",
-    title: "Follow the budget. Find the story.",
+    eyebrow: "White paper • Nairobi • 2026",
+    title: "Follow the budget.",
+    titleAccent: "Find the story.",
     intro:
       "A platform for budget literacy, civic accountability, and impact storytelling. This note describes the problem, the two-entity model, and the terms on which a partner may join the work.",
-    ctaLabel: "Partner With Us",
-    ctaArrow: "→",
+    ctaLabel: "Partner with us",
   },
   sections: [
     {
@@ -72,17 +72,16 @@ export const WHITEPAPER_CONTENT = {
     },
   ],
   inquiry: {
-    eyebrow: "OFFICIAL PUBLICATION · INSTITUTIONAL NOTE",
-    title: "BNS Partnership Inquiries",
-    body: "Official institutional charters, rate cards, and legal anchors are available upon direct request for accredited partners.",
-    ctaLabel: "Contact Team",
-    ctaArrow: "→",
+    eyebrow: "Partnership inquiries",
+    title: "Want the full prospectus?",
+    body: "Institutional charters, rate cards, and legal anchors are available on request for accredited partners.",
+    ctaLabel: "Contact the team",
   },
-  footer: {
-    termsLabel: "Terms",
-    cookiesLabel: "Cookies",
-    privacyLabel: "Privacy",
-    contactLabel: "Contact",
-    separator: " · ",
-  },
+  tocLabel: "Contents",
+  links: [
+    { to: "/terms", label: "Terms" },
+    { to: "/privacy", label: "Privacy" },
+    { to: "/cookies", label: "Cookies" },
+    { to: "/contact", label: "Contact" },
+  ],
 };

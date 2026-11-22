@@ -1,24 +1,30 @@
 export const PRIVACY_CONTENT = {
-  backLabel: "RETURN HOME",
-  eyebrow: "PRIVACY POLICY • VOL. 2026",
-  title: "PRIVACY POLICY",
-  effectiveDate: "EFFECTIVE DATE: JANUARY 1, 2026",
+  eyebrow: "Privacy",
+  title: "Privacy policy",
+  effectiveDate: "Effective 1 January 2026",
+  intro: "We collect as little as possible, protect our sources, and never sell data.",
+  tocLabel: "Contents",
   sections: [
     {
-      heading: "01 // DATA MINIMIZATION & CITIZEN PRIVACY",
-      body: "Budget Ndio Story operates on strict minimization and citizen privacy principles. We only collect information provided directly through our civic inquiry forms, whistleblower tip channels, or event registrations for the sole purpose of advancing public finance education and community reporting.",
+      heading: "Data minimisation",
+      body: "Budget Ndio Story operates on strict data minimisation and citizen privacy principles. We only collect information you provide directly through our inquiry forms, tip channels, or event registrations, for the sole purpose of advancing public finance education and community reporting.",
     },
     {
-      heading: "02 // EVIDENCE STORAGE & SOURCE SECURITY",
-      body: "Public finance datasets, community monitoring logs, and whistleblower documents are stored on secure encrypted servers with restricted access. We never sell, monetize, or disclose citizen or whistleblower data to commercial third parties.",
+      heading: "Evidence storage & source security",
+      body: "Public finance datasets, community monitoring logs, and whistleblower documents are stored on encrypted servers with restricted access. We never sell, monetise, or disclose citizen or whistleblower data to commercial third parties.",
     },
     {
-      heading: "03 // OPEN PLATFORM & METRICS",
-      body: "Our website uses lightweight, privacy-respecting analytics to gauge civic reach and explainer engagement without deploying invasive tracking cookies or profiling individual citizens across external web services.",
+      heading: "Analytics",
+      body: "This website uses lightweight, privacy-respecting analytics to understand civic reach and explainer engagement, without invasive tracking cookies or profiling individual citizens across other websites.",
     },
     {
-      heading: "04 // PRIVACY & WHISTLEBLOWER DESK",
-      body: "For data access, correction, or inquiries regarding our source confidentiality protocols under Kenyan data protection laws, contact our privacy desk directly at info@budgetndiostory.org.",
+      heading: "Your rights & our privacy desk",
+      body: "For data access, correction, or questions about our source confidentiality protocols under Kenyan data protection law, contact our privacy desk at info@budgetndiostory.org.",
     },
+  ],
+  links: [
+    { to: "/cookies", label: "Cookies" },
+    { to: "/terms", label: "Terms" },
+    { to: "/contact", label: "Contact" },
   ],
 };

@@ -11,7 +11,6 @@ import { PROGRAMME_DETAIL_CONTENT } from "./programmeDetail";
 import { PROGRAMMES_PAGE_CONTENT } from "./programmes";
 import { RATE_CARD_CONTENT } from "./rateCard";
 import { SEO_CONTENT } from "./seo";
-import { SHOWCASE_CONTENT } from "./showcase";
 import { SITE_CONTENT } from "./site";
 import { STUDIO_PAGE_CONTENT } from "./studioPage";
 import { TERMS_CONTENT } from "./terms";
@@ -35,7 +34,6 @@ export const PAGE_CONTENT: PageContentEntry[] = [
   { key: "rateCard", title: "Page: Rate card", content: RATE_CARD_CONTENT },
   { key: "productions", title: "Page: Productions", content: PRODUCTIONS_PAGE_CONTENT },
   { key: "productionDetail", title: "Page: Production detail", content: PRODUCTION_DETAIL_CONTENT },
-  { key: "showcase", title: "Component: Production showcase & lightbox", content: SHOWCASE_CONTENT },
   { key: "contact", title: "Page: Contact", content: CONTACT_PAGE_CONTENT },
   { key: "faqPage", title: "Page: FAQ", content: FAQ_PAGE_CONTENT },
   { key: "whitepaper", title: "Page: Whitepaper", content: WHITEPAPER_CONTENT },

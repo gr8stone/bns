@@ -1,305 +1,145 @@
-import { motion } from "framer-motion";
-import { Filter } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
-import { ArchvizProjectShowcase } from "../components/common/ArchvizProjectShowcase";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
+import { Lede, MonoLabel, PageHero } from "../components/page/kit";
 import { PRODUCTIONS_PAGE_CONTENT } from "../data/content/productions";
 import { PROJECTS } from "../data/projects";
+import { CONTAINER } from "../lib/layout";
+import { EASE_EDITORIAL } from "../lib/motion";
+import { ROUTES } from "../lib/routes";
+import type { Project } from "../types";
 
 const content = PRODUCTIONS_PAGE_CONTENT;
+const ALL = content.filter.allCategoryLabel;
 
-const ALL_CATEGORY = content.filter.allCategoryLabel;
-
-const CATEGORIES = [ALL_CATEGORY, ...content.filter.categories];
+function ProductionCard({ project, lead }: { project: Project; lead: boolean }) {
+  return (
+    <Link
+      to={ROUTES.project(project.slug)}
+      className={`group grid gap-5 ${lead ? "lg:grid-cols-12 lg:gap-10 lg:items-end" : ""}`}
+    >
+      <div className={`relative overflow-hidden bg-paper-warm ${lead ? "lg:col-span-8 aspect-[16/10]" : "aspect-[4/3]"}`}>
+        <img
+          src={project.heroImage}
+          alt={project.heroImageAlt || project.title}
+          loading="lazy"
+          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+        />
+        <span className="absolute top-3 left-3 px-2.5 py-1 bg-white font-mono text-[10px] uppercase tracking-[0.14em]">
+          {project.category}
+        </span>
+      </div>
+      <div className={`space-y-3 ${lead ? "lg:col-span-4 lg:pb-2" : ""}`}>
+        <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-text-muted tabular-nums">
+          {project.year} • {project.location}
+        </span>
+        <h2
+          className={`font-display font-medium tracking-[-0.03em] leading-tight group-hover:text-accent transition-colors duration-200 ${
+            lead ? "text-3xl sm:text-4xl" : "text-xl sm:text-2xl"
+          }`}
+        >
+          {project.title}
+        </h2>
+        <p className={`font-sans text-sm text-text-muted leading-relaxed ${lead ? "" : "line-clamp-3"}`}>{project.summary}</p>
+        <span className="inline-flex items-center gap-2 pt-1 font-mono text-[11px] uppercase tracking-wider border-b border-text-base pb-0.5 group-hover:text-accent group-hover:border-accent transition-colors duration-200">
+          {content.card.viewLabel}
+          <ArrowUpRight className="w-3.5 h-3.5" />
+        </span>
+      </div>
+    </Link>
+  );
+}
 
 export function ProjectsPage() {
-  const [selectedCategory, setSelectedCategory] = useState(ALL_CATEGORY);
-  const [activeScrollCategory, setActiveScrollCategory] =
-    useState(ALL_CATEGORY);
-  const [isFilterOnly, setIsFilterOnly] = useState(false);
-  const mobileNavRef = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
+  const [category, setCategory] = useState(ALL);
 
-  const filteredProjects = useMemo(() => {
-    if (selectedCategory === ALL_CATEGORY) return PROJECTS;
-    return PROJECTS.filter((p) => p.category === selectedCategory);
-  }, [selectedCategory]);
+  const categories = useMemo(
+    () => [
+      { label: ALL, count: PROJECTS.length },
+      ...content.filter.categories
+        .map((c) => ({ label: c, count: PROJECTS.filter((p) => p.category === c).length }))
+        .filter((c) => c.count > 0),
+    ],
+    [],
+  );
 
-  // ─────────────────────────────────────────────────────────────
-  // 1. SCROLLSPY OBSERVER: Tracks which desk is currently in view
-  // ─────────────────────────────────────────────────────────────
-  useEffect(() => {
-    if (selectedCategory !== ALL_CATEGORY) {
-      setActiveScrollCategory(selectedCategory);
-      return;
-    }
-
-    const handleScroll = () => {
-      // Near top of page, activate 'All Projects'
-      if (window.scrollY < 260) {
-        setActiveScrollCategory(ALL_CATEGORY);
-        return;
-      }
-
-      const elements =
-        document.querySelectorAll<HTMLElement>("[data-category]");
-      if (!elements || elements.length === 0) return;
-
-      const triggerY = 200; // reading line below navbar
-      let detectedCategory = ALL_CATEGORY;
-
-      for (let i = 0; i < elements.length; i++) {
-        const el = elements[i];
-        const rect = el.getBoundingClientRect();
-        // If element spans the reading line:
-        if (rect.top <= triggerY && rect.bottom > triggerY) {
-          const cat = el.getAttribute("data-category");
-          if (cat) {
-            detectedCategory = cat;
-            break;
-          }
-        } else if (rect.top > triggerY && i === 0) {
-          detectedCategory = ALL_CATEGORY;
-          break;
-        }
-      }
-
-      setActiveScrollCategory(detectedCategory);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [selectedCategory]);
-
-  // ─────────────────────────────────────────────────────────────
-  // 2. MOBILE AUTO-CENTER: Keeps the active tab visible on mobile
-  // ─────────────────────────────────────────────────────────────
-  useEffect(() => {
-    if (typeof window === "undefined" || window.innerWidth >= 768) return;
-    const activeBtn = mobileNavRef.current?.querySelector<HTMLElement>(
-      `[data-nav-cat="${activeScrollCategory}"]`,
-    );
-    if (activeBtn) {
-      activeBtn.scrollIntoView({
-        behavior: "smooth",
-        inline: "center",
-        block: "nearest",
-      });
-    }
-  }, [activeScrollCategory]);
-
-  // ─────────────────────────────────────────────────────────────
-  // 3. CATEGORY CLICK HANDLER: Smooth scroll or filter
-  // ─────────────────────────────────────────────────────────────
-  const handleCategoryClick = (cat: string) => {
-    if (cat === ALL_CATEGORY) {
-      setSelectedCategory(ALL_CATEGORY);
-      setActiveScrollCategory(ALL_CATEGORY);
-      setIsFilterOnly(false);
-
-      const topAnchor = document.getElementById("projects-top");
-      if (topAnchor) {
-        const lenis = (window as any).lenis;
-        if (lenis && typeof lenis.scrollTo === "function") {
-          lenis.scrollTo(topAnchor, { offset: -120, duration: 1.0 });
-        } else {
-          const y =
-            topAnchor.getBoundingClientRect().top + window.pageYOffset - 120;
-          window.scrollTo({ top: y, behavior: "smooth" });
-        }
-      }
-      return;
-    }
-
-    if (isFilterOnly) {
-      setSelectedCategory(cat);
-      setActiveScrollCategory(cat);
-      return;
-    }
-
-    // Scroll Mode (Default): smoothly scroll to that category's first card
-    if (selectedCategory !== ALL_CATEGORY) {
-      setSelectedCategory(ALL_CATEGORY);
-    }
-
-    setTimeout(
-      () => {
-        const target = document.querySelector<HTMLElement>(
-          `[data-category="${cat}"]`,
-        );
-        if (target) {
-          setActiveScrollCategory(cat);
-          const lenis = (window as any).lenis;
-          if (lenis && typeof lenis.scrollTo === "function") {
-            lenis.scrollTo(target, { offset: -110, duration: 1.1 });
-          } else {
-            const y =
-              target.getBoundingClientRect().top + window.pageYOffset - 110;
-            window.scrollTo({ top: y, behavior: "smooth" });
-          }
-        }
-      },
-      selectedCategory !== ALL_CATEGORY ? 50 : 0,
-    );
-  };
+  const visible = category === ALL ? PROJECTS : PROJECTS.filter((p) => p.category === category);
+  const [lead, ...rest] = visible;
 
   return (
-    <main className="w-full bg-white text-text-base pt-28 md:pt-36 pb-24 md:pb-36 select-none">
-      <div
-        id="projects-top"
-        className="max-w-[1425px] mx-auto px-5 sm:px-8 md:px-10"
-      >
-        {/* Header: Swiss 4-Column Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-16 border-b border-black/[0.08] items-end">
-          <div className="col-span-1 md:col-span-3">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="w-2 h-2 bg-[#2446EC] inline-block" />
-              <span className="font-mono text-xs uppercase tracking-wider text-[#2446EC] font-semibold">
-                {content.hero.eyebrow}
-              </span>
-            </div>
-            <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-medium tracking-[-0.05em] text-text-base uppercase leading-[0.94]">
-              {content.hero.titleLead}{" "}
-              <span className="text-[#2446EC]">{content.hero.titleAccent}</span>
-            </h1>
+    <main className="w-full bg-white text-text-base pb-24 md:pb-32">
+      <PageHero
+        eyebrow={content.hero.eyebrow}
+        lead={content.hero.titleLead}
+        accent={content.hero.titleAccent}
+        aside={
+          <div className="space-y-3">
+            <MonoLabel accent>{content.hero.scopeLabel}</MonoLabel>
+            <Lede>{content.hero.scopeText}</Lede>
           </div>
+        }
+      />
 
-          <div className="col-span-1">
-            <span className="font-mono text-xs text-slate block mb-2 font-medium">
-              {content.hero.scopeLabel}
-            </span>
-            <p className="font-sans text-xs sm:text-sm text-text-muted leading-relaxed font-normal">
-              {content.hero.scopeText}
-            </p>
+      <div className={CONTAINER}>
+        {/* Filter bar */}
+        <div className="sticky top-16 sm:top-20 z-20 -mx-5 sm:-mx-8 md:-mx-10 px-5 sm:px-8 md:px-10 py-4 bg-white/90 backdrop-blur-md border-y border-black/[0.08]">
+          <div role="group" aria-label={content.filter.label} className="flex gap-2 overflow-x-auto no-scrollbar">
+            {categories.map((c) => {
+              const active = c.label === category;
+              return (
+                <button
+                  key={c.label}
+                  type="button"
+                  aria-pressed={active}
+                  onClick={() => setCategory(c.label)}
+                  className={`shrink-0 px-4 py-2 font-mono text-[11px] uppercase tracking-wider border transition-colors duration-200 ${
+                    active ? "bg-text-base text-white border-text-base" : "border-black/15 text-text-muted hover:text-text-base hover:border-text-base"
+                  }`}
+                >
+                  {c.label}
+                  <span className={`ml-2 tabular-nums ${active ? "text-white/60" : "text-text-muted/70"}`}>{c.count}</span>
+                </button>
+              );
+            })}
           </div>
         </div>
 
-        {/* Content Layout: Sticky Left Sidebar Rail + Main Project Stream */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pt-16 items-start">
-          {/* Left Rail: Category Navigation (Responsive to scroll & clickable) */}
-          <div className="col-span-1 md:sticky md:top-28 z-20 bg-white">
-            <div className="flex items-center justify-between mb-3 md:mb-6">
-              <span className="font-mono text-xs uppercase tracking-wider text-[#2446EC] font-semibold block">
-                {content.filter.label}
-              </span>
-              <button
-                onClick={() => {
-                  const nextMode = !isFilterOnly;
-                  setIsFilterOnly(nextMode);
-                  if (!nextMode && selectedCategory !== ALL_CATEGORY) {
-                    setSelectedCategory(ALL_CATEGORY);
-                  }
-                }}
-                className="font-mono text-[10px] uppercase text-text-muted hover:text-[#2446EC] transition-colors flex items-center gap-1.5 cursor-pointer rounded-none border-0"
-                title={
-                  isFilterOnly
-                    ? content.filter.switchToScrollTitle
-                    : content.filter.switchToFilterTitle
-                }
-              >
-                <Filter className="w-3 h-3 text-[#2446EC]" />
-                <span className="text-slate font-medium">
-                  {isFilterOnly
-                    ? content.filter.isolateOnLabel
-                    : content.filter.scrollNavLabel}
-                </span>
-              </button>
-            </div>
-
-            {/* Horizontal swipe strip on mobile, vertical sticky stack on desktop */}
-            <div
-              ref={mobileNavRef}
-              className="flex md:flex-col overflow-x-auto md:overflow-x-visible no-scrollbar gap-2 md:gap-0 md:space-y-3 pb-3 md:pb-0 -mx-1 px-1 md:mx-0 md:px-0"
-            >
-              {CATEGORIES.map((cat) => {
-                const isActive =
-                  selectedCategory === ALL_CATEGORY
-                    ? activeScrollCategory === cat
-                    : selectedCategory === cat;
-
-                const count =
-                  cat === ALL_CATEGORY
-                    ? PROJECTS.length
-                    : PROJECTS.filter((p) => p.category === cat).length;
-
-                return (
-                  <button
-                    key={cat}
-                    data-nav-cat={cat}
-                    onClick={() => handleCategoryClick(cat)}
-                    className={`whitespace-nowrap px-3.5 py-2 md:p-0 border md:border-0 text-left font-mono text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer flex-shrink-0 rounded-none flex items-center justify-between ${
-                      isActive
-                        ? "border-[#2446EC] bg-[#2446EC]/5 md:bg-transparent text-text-base font-semibold"
-                        : "border-black/10 text-text-muted hover:text-text-base hover:border-black/30"
-                    }`}
-                  >
-                    <div className="flex items-center">
-                      {isActive ? (
-                        <span className="w-1.5 h-1.5 bg-[#2446EC] inline-block mr-2.5 flex-shrink-0" />
-                      ) : (
-                        <span className="w-1.5 h-1.5 bg-transparent inline-block mr-2.5 flex-shrink-0 hidden md:inline-block" />
-                      )}
-                      <span>{cat}</span>
-                    </div>
-                    <span
-                      className={`text-[10px] ml-2 font-mono tabular-nums ${
-                        isActive ? "text-[#2446EC] font-medium" : "text-slate"
-                      }`}
-                    >
-                      ({count})
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Main Stream: Full-Width Projects */}
-          <div className="col-span-1 md:col-span-3 min-h-[500px]">
-            {filteredProjects.length === 0 ? (
-              <motion.div
-                key="empty"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.35 }}
-                className="py-32 text-center border border-black/[0.08] p-12 bg-[#FAFAF8]"
-              >
-                <span className="font-mono text-xs text-slate uppercase block mb-3 font-medium">
-                  {content.emptyState.eyebrow}
-                </span>
-                <h3 className="font-display text-2xl font-medium uppercase text-text-base mb-4 tracking-tight">
-                  {content.emptyState.title}
-                </h3>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={category}
+            initial={reduce ? false : { opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={reduce ? undefined : { opacity: 0, y: -8 }}
+            transition={{ duration: 0.4, ease: EASE_EDITORIAL }}
+            className="pt-12 md:pt-16"
+          >
+            {lead ? (
+              <>
+                <ProductionCard project={lead} lead />
+                {rest.length > 0 && (
+                  <div className="mt-16 md:mt-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 lg:gap-x-8 gap-y-14">
+                    {rest.map((p) => (
+                      <ProductionCard key={p.slug} project={p} lead={false} />
+                    ))}
+                  </div>
+                )}
+              </>
+            ) : (
+              <div className="py-24 text-center">
+                <p className="font-display text-2xl font-medium">{content.emptyState.title}</p>
                 <button
-                  onClick={() => handleCategoryClick(ALL_CATEGORY)}
-                  className="px-6 py-3 border border-black/20 text-xs font-mono uppercase tracking-wider hover:bg-text-base hover:text-white transition-colors cursor-pointer rounded-none"
+                  type="button"
+                  onClick={() => setCategory(ALL)}
+                  className="mt-6 px-5 py-3 border border-black/20 hover:border-text-base font-mono text-xs uppercase tracking-wider"
                 >
                   {content.emptyState.resetLabel}
                 </button>
-              </motion.div>
-            ) : (
-              <motion.div
-                key={selectedCategory}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                className="space-y-12 sm:space-y-16"
-              >
-                {filteredProjects.map((project, idx) => (
-                  <div
-                    key={project.slug}
-                    id={`project-${project.slug}`}
-                    data-category={project.category}
-                    className="scroll-mt-28"
-                  >
-                    <ArchvizProjectShowcase project={project} index={idx} />
-                  </div>
-                ))}
-              </motion.div>
+              </div>
             )}
-          </div>
-        </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </main>
   );

@@ -1,343 +1,170 @@
-import {
-    motion,
-    useReducedMotion,
-    useScroll,
-    useTransform,
-} from "framer-motion";
-import { ArrowLeft, ArrowRight, Play } from "lucide-react";
-import { useMemo, useRef, useState } from "react";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
+import { FactGrid, Lede, MonoLabel, PageHero, PrevNext, Reveal, Section } from "../components/page/kit";
+import { VideoStage } from "../components/page/VideoStage";
 import { PRODUCTION_DETAIL_CONTENT } from "../data/content/productionDetail";
 import { JOURNAL_ARTICLES } from "../data/journal";
 import { PROJECTS } from "../data/projects";
-import { getYouTubeId, getYouTubeThumbnail } from "../lib/media";
+import { CONTAINER } from "../lib/layout";
+import { ROUTES } from "../lib/routes";
 
 const content = PRODUCTION_DETAIL_CONTENT;
 
 export function ProjectDetailPage() {
-  const { slug } = useParams<{ slug: string }>();
-  const leadImageRef = useRef<HTMLDivElement>(null);
-  const shouldReduceMotion = useReducedMotion();
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [thumbError, setThumbError] = useState(false);
+  const { slug = "" } = useParams<{ slug: string }>();
+  const index = PROJECTS.findIndex((p) => p.slug === slug || p.aliases?.includes(slug));
+  const project = PROJECTS[index];
 
-  const project = useMemo(() => {
-    return PROJECTS.find(
-      (p) => p.slug === slug || p.aliases?.includes(slug || ""),
-    );
-  }, [slug]);
+  if (!project) return <Navigate to={ROUTES.projects} replace />;
 
-  const currentIndex = useMemo(() => {
-    return PROJECTS.findIndex(
-      (p) => p.slug === slug || p.aliases?.includes(slug || ""),
-    );
-  }, [slug]);
-
-  const prevProject = useMemo(() => {
-    if (currentIndex <= 0) return PROJECTS[PROJECTS.length - 1];
-    return PROJECTS[currentIndex - 1];
-  }, [currentIndex]);
-
-  const nextProject = useMemo(() => {
-    if (currentIndex < 0 || currentIndex >= PROJECTS.length - 1)
-      return PROJECTS[0];
-    return PROJECTS[currentIndex + 1];
-  }, [currentIndex]);
-
-  const { scrollYProgress } = useScroll({
-    target: leadImageRef,
-    offset: ["start end", "end start"],
-  });
-  const parallaxY = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
-
-  if (!project) {
-    return <Navigate to="/projects" replace />;
-  }
-
-  const projectArticle = JOURNAL_ARTICLES.find(
-    (article) => article.projectSlug === project.slug,
-  );
-  const youtubeId = getYouTubeId(project.heroVideo);
-  const youtubeThumb = youtubeId
-    ? getYouTubeThumbnail(youtubeId, thumbError ? "hq" : "maxres")
-    : null;
-  const leadPoster = youtubeThumb || project.heroImage;
-  const isDirectVideo = Boolean(
-    project.heroVideo &&
-    (project.heroVideo.endsWith(".mp4") || project.heroVideo.endsWith(".webm")),
-  );
+  const prev = PROJECTS[(index - 1 + PROJECTS.length) % PROJECTS.length];
+  const next = PROJECTS[(index + 1) % PROJECTS.length];
+  const article = JOURNAL_ARTICLES.find((a) => a.projectSlug === project.slug);
+  const lede = article?.subtitle ?? project.summary;
+  const paragraphs = article?.content ?? project.description;
+  let chapter = 0;
+  const nextChapter = () => String(++chapter).padStart(2, "0");
 
   return (
-    <main className="w-full bg-white text-[#101010] pt-28 md:pt-36">
-      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10">
-        {/* Breadcrumb / Rail Label */}
-        <div className="flex items-center justify-between pb-8 border-b border-[#101010]/12 font-mono text-xs text-[#757575] uppercase tracking-wider">
-          <Link
-            to="/projects"
-            className="flex items-center gap-2 hover:text-[#101010] transition-colors"
-          >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            <span>{content.breadcrumb.backLabel}</span>
-          </Link>
-          <div className="flex items-center gap-2 text-[#101010]">
-            <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
-            <span>
-              {project.category} {content.separator} {project.year}
-            </span>
-          </div>
-        </div>
-
-        {/* Title & Year */}
-        <div className="py-12 md:py-16 grid grid-cols-1 md:grid-cols-4 gap-8 items-end">
-          <div className="col-span-1 md:col-span-3">
-            <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-[-0.06em] text-[#101010] uppercase leading-[0.94]">
-              {project.title}
-            </h1>
-          </div>
-          <div className="col-span-1 text-left md:text-right font-mono text-xs text-[#757575] uppercase">
-            <span>
-              {content.header.yearLabel} {project.year}
-            </span>
-            <span className="block mt-1">
-              {content.header.locationLabel} {project.location}
-            </span>
-          </div>
-        </div>
-
-        {/* Ruled Details / Credits Table */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-8 border-t border-b border-[#101010]/12 text-xs font-mono">
-          <div>
-            <span className="text-[#757575] block uppercase mb-1">
-              {content.credits.partnerLabel}
-            </span>
-            <span className="text-[#101010] font-sans font-medium">
-              {project.client}
-            </span>
-          </div>
-          <div>
-            <span className="text-[#757575] block uppercase mb-1">
-              {content.credits.productionLabel}
-            </span>
-            <span className="text-[#101010] font-sans font-medium">
-              {project.architect}
-            </span>
-          </div>
-          <div>
-            <span className="text-[#757575] block uppercase mb-1">
-              {content.credits.pillarLabel}
-            </span>
-            <span className="text-[#101010] font-sans font-medium">
-              {project.category}
-            </span>
-          </div>
-          <div>
-            <span className="text-[#757575] block uppercase mb-1">
-              {content.credits.focusLabel}
-            </span>
-            <span className="text-[#101010] font-sans font-medium">
-              {project.services.join(content.listSeparator)}
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* Full-Bleed Lead Video / Thumbnail Stage */}
-      <div
-        ref={leadImageRef}
-        className="relative w-full h-[55vh] sm:h-[70vh] lg:h-[80vh] overflow-hidden bg-black my-16 border-t border-b border-[#101010]/12 group"
+    <main className="w-full bg-white text-text-base">
+      <PageHero
+        compact
+        back={{ to: ROUTES.projects, label: content.breadcrumb.backLabel }}
+        eyebrow={`${project.category} ${content.bullet} ${project.year}`}
+        lead={project.title}
+        aside={<p className="font-display text-xl sm:text-2xl font-medium tracking-[-0.02em] leading-snug">{project.subtitle}</p>}
       >
-        {youtubeId && isPlaying ? (
-          <iframe
-            src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1`}
+        <div className="mt-14 md:mt-16">
+          <FactGrid
+            facts={[
+              { label: content.credits.partnerLabel, value: project.client },
+              { label: content.credits.productionLabel, value: project.architect },
+              { label: content.credits.locationLabel, value: project.location },
+              { label: content.credits.focusLabel, value: project.services.join(content.listSeparator) },
+            ]}
+          />
+        </div>
+      </PageHero>
+
+      <div className={CONTAINER}>
+        <Reveal>
+          <VideoStage
+            video={project.heroVideo}
+            fallbackPoster={project.heroImage}
             title={project.title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="w-full h-full object-cover border-0"
+            watchLabel={content.leadMedia.watchLabel}
+            aspect="aspect-[4/3] sm:aspect-video"
           />
-        ) : isDirectVideo && isPlaying ? (
-          <video
-            src={project.heroVideo}
-            poster={leadPoster}
-            autoPlay
-            controls
-            className="w-full h-full object-cover"
-          />
-        ) : (
-          <div className="relative w-full h-full">
-            <motion.div
-              style={{ y: shouldReduceMotion ? "0%" : parallaxY }}
-              className="absolute inset-0 w-full h-[120%] -top-[10%]"
-            >
-              <img
-                src={leadPoster}
-                alt={project.heroImageAlt || project.title}
-                loading="eager"
-                onError={() => setThumbError(true)}
-                className="w-full h-full object-cover filter brightness-90"
-              />
-              <div className="absolute inset-0 bg-black/25 pointer-events-none" />
-            </motion.div>
-
-            {(youtubeId || isDirectVideo) && (
-              <div className="absolute inset-0 flex items-center justify-center z-20">
-                <button
-                  onClick={() => setIsPlaying(true)}
-                  aria-label={content.leadMedia.playAriaLabel}
-                  className="flex items-center gap-3 px-6 py-3.5 bg-[#2446EC] text-white hover:bg-[#101010] transition-colors rounded-none font-mono text-xs uppercase tracking-wider font-semibold cursor-pointer shadow-xl border-0"
-                >
-                  <Play className="w-4 h-4 fill-current ml-0.5" />
-                  <span>{content.leadMedia.watchLabel}</span>
-                </button>
-              </div>
-            )}
-          </div>
-        )}
-
-        <div className="absolute bottom-4 left-6 md:left-10 text-white font-mono text-xs uppercase tracking-wider z-20 pointer-events-none">
-          {content.leadMedia.visualLabel} {content.bullet} {project.title}
-        </div>
+        </Reveal>
       </div>
 
-      {/* Narrow Narrative Column (4-Column System, Content Starts Column 2) */}
-      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10 py-16 md:py-24">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
-          <div className="col-span-1">
-            <div className="flex items-center gap-2 mb-2">
-              <span className="w-1.5 h-1.5 bg-[#101010] inline-block" />
-              <span className="font-mono text-xs uppercase tracking-wider text-[#101010]">
-                {content.narrative.label}
-              </span>
-            </div>
-            <span className="font-mono text-xs text-[#757575]">
-              {content.narrative.subLabel}
-            </span>
+      {/* The story + numbers */}
+      <Section chapter={nextChapter()} label={content.narrative.label} ruled={false}>
+        <div className="mt-10 md:mt-14 grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <div className="lg:col-span-8 space-y-6">
+            <Reveal>
+              <p className="font-display text-2xl sm:text-3xl font-medium tracking-[-0.03em] leading-snug">{lede}</p>
+            </Reveal>
+            {paragraphs.map((p, i) => (
+              <Reveal key={i} delay={0.05}>
+                <p className="font-sans text-base sm:text-lg leading-relaxed text-text-base/80 max-w-3xl">{p}</p>
+              </Reveal>
+            ))}
           </div>
-
-          <div className="col-span-1 md:col-span-2 space-y-6 text-sm sm:text-base text-[#101010]/85 font-light leading-relaxed">
-            <p className="font-display text-xl sm:text-2xl font-normal tracking-[-0.03em] leading-snug text-[#101010]">
-              {projectArticle?.subtitle ?? project.summary}
-            </p>
-            {(projectArticle?.content ?? project.description).map(
-              (paragraph, i) => (
-                <p
-                  key={i}
-                  className="text-xs sm:text-sm text-[#757575] leading-relaxed"
-                >
-                  {paragraph}
-                </p>
-              ),
-            )}
-          </div>
-
-          {/* Project Metrics Summary in Column 4 */}
-          <div className="col-span-1 divide-y divide-[#101010]/12 border-t border-b border-[#101010]/12">
-            {project.stats.map((st) => (
-              <div key={st.label} className="py-3 font-mono text-xs">
-                <span className="text-[#757575] uppercase block text-[11px] mb-0.5">
-                  {st.label}
-                </span>
-                <span className="text-[#101010] font-semibold tabular-nums">
-                  {st.value}
-                </span>
+          {project.stats.length > 0 && (
+            <aside className="lg:col-span-4">
+              <div className="lg:sticky lg:top-28">
+                <MonoLabel accent>{content.numbers.label}</MonoLabel>
+                <dl className="mt-4 border-t border-black/[0.08]">
+                  {project.stats.map((s, i) => (
+                    <Reveal key={s.label} delay={i * 0.06} className="py-5 border-b border-black/[0.08]">
+                      <dt className="font-mono text-[11px] uppercase tracking-[0.14em] text-text-muted">{s.label}</dt>
+                      <dd className="mt-1 font-display text-2xl font-medium tracking-[-0.03em]">{s.value}</dd>
+                    </Reveal>
+                  ))}
+                </dl>
               </div>
+            </aside>
+          )}
+        </div>
+      </Section>
+
+      {/* Before / after */}
+      {project.beforeAfter && (
+        <Section chapter={nextChapter()} label={content.transformation.label} tone="warm">
+          <Reveal className="mt-8 max-w-2xl">
+            <Lede>{project.beforeAfter.description}</Lede>
+          </Reveal>
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              { src: project.beforeAfter.beforeImage, label: project.beforeAfter.beforeLabel },
+              { src: project.beforeAfter.afterImage, label: project.beforeAfter.afterLabel },
+            ].map((side, i) => (
+              <Reveal key={side.src} delay={i * 0.12}>
+                <figure>
+                  <div className="aspect-[4/3] overflow-hidden bg-ink">
+                    <img src={side.src} alt={side.label} loading="lazy" className="w-full h-full object-cover" />
+                  </div>
+                  <figcaption className="mt-3 font-mono text-[11px] uppercase tracking-[0.14em] text-text-muted">{side.label}</figcaption>
+                </figure>
+              </Reveal>
             ))}
           </div>
-        </div>
-      </div>
-
-      {/* Alternating Full-Bleed and Grid Gallery from CMS */}
-      {project.gallery && project.gallery.length > 0 && (
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10 pb-24 space-y-12">
-          <div className="border-b border-[#101010]/12 pb-4">
-            <span className="font-mono text-xs uppercase tracking-wider text-[#101010]">
-              {content.gallery.label} ({project.gallery.length})
-            </span>
-          </div>
-
-          {/* Gallery Items with 15% view opacity 0/y28px reveal */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {project.gallery.map((item, idx) => (
-              <motion.div
-                key={item.url + idx}
-                initial={{
-                  opacity: shouldReduceMotion ? 1 : 0,
-                  y: shouldReduceMotion ? 0 : 28,
-                }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className={idx === 0 ? "md:col-span-2" : "col-span-1"}
-              >
-                <div
-                  className={`relative ${idx === 0 ? "aspect-[21/9]" : "aspect-[4/3]"} w-full overflow-hidden bg-zinc-100 border border-[#101010]/12`}
-                >
-                  <img
-                    src={item.url}
-                    alt={item.caption || project.title}
-                    loading="lazy"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="pt-2 flex justify-between font-mono text-xs text-[#757575] border-b border-[#101010]/12 pb-2">
-                  <span>0{idx + 1}</span>
-                  <span>{item.caption || project.title}</span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+        </Section>
       )}
 
-      {/* Previous & Next Project Navigation Links */}
-      <div className="w-full border-t border-[#101010]/12 bg-[#F6F6F2]">
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10 grid grid-cols-2 divide-x divide-[#101010]/12">
-          {prevProject && (
-            <Link
-              to={`/projects/${prevProject.slug}`}
-              className={`py-6 px-3 sm:py-12 sm:pr-6 flex flex-col justify-between group select-none hover:bg-white transition-colors duration-200 ${nextProject ? "" : "col-span-2"}`}
-            >
-              <div className="flex items-center gap-2 font-mono text-[10px] sm:text-xs uppercase text-[#757575] mb-3 sm:mb-4">
-                <ArrowLeft className="w-3.5 h-3.5 shrink-0 group-hover:-translate-x-1 transition-transform" />
-                <span className="sm:hidden">
-                  {content.navigation.prevShortLabel}
-                </span>
-                <span className="hidden sm:inline">
-                  {content.navigation.prevLongLabel}
-                </span>
-              </div>
-              <h4 className="font-display text-base sm:text-3xl font-semibold tracking-[-0.04em] text-[#101010] uppercase">
-                {prevProject.title}
-              </h4>
-              <span className="font-mono text-[10px] sm:text-xs text-[#757575] mt-2">
-                {prevProject.category} {content.bullet} {prevProject.year}
-              </span>
-            </Link>
-          )}
+      {/* Process */}
+      {project.process.length > 0 && (
+        <Section chapter={nextChapter()} label={content.process.label}>
+          <div className="mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 lg:gap-x-8 gap-y-12">
+            {project.process.map((step, i) => (
+              <Reveal key={step.step} delay={(i % 3) * 0.08}>
+                <article>
+                  {step.image && (
+                    <div className="aspect-[4/3] overflow-hidden bg-paper-warm mb-5">
+                      <img src={step.image} alt={step.title} loading="lazy" className="w-full h-full object-cover" />
+                    </div>
+                  )}
+                  <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent font-semibold">
+                    {content.process.stepLabel} {step.step}
+                  </span>
+                  <h3 className="mt-2 font-display text-xl sm:text-2xl font-medium tracking-[-0.03em] leading-snug">{step.title}</h3>
+                  <p className="mt-3 font-sans text-sm text-text-muted leading-relaxed">{step.description}</p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </Section>
+      )}
 
-          {nextProject && (
-            <Link
-              to={`/projects/${nextProject.slug}`}
-              className={`py-6 px-3 sm:py-12 sm:pl-8 flex flex-col justify-between group select-none hover:bg-white transition-colors duration-200 sm:text-right ${prevProject ? "" : "col-span-2"}`}
-            >
-              <div className="flex items-center sm:justify-end gap-2 font-mono text-[10px] sm:text-xs uppercase text-[#757575] mb-3 sm:mb-4">
-                <span className="sm:hidden">
-                  {content.navigation.nextShortLabel}
-                </span>
-                <span className="hidden sm:inline">
-                  {content.navigation.nextLongLabel}
-                </span>
-                <ArrowRight className="w-3.5 h-3.5 shrink-0 group-hover:translate-x-1 transition-transform" />
-              </div>
-              <h4 className="font-display text-base sm:text-3xl font-semibold tracking-[-0.04em] text-[#101010] uppercase">
-                {nextProject.title}
-              </h4>
-              <span className="font-mono text-[10px] sm:text-xs text-[#757575] mt-2">
-                {nextProject.category} {content.bullet} {nextProject.year}
-              </span>
-            </Link>
-          )}
-        </div>
-      </div>
+      {/* Gallery */}
+      {project.gallery.length > 0 && (
+        <Section chapter={nextChapter()} label={content.gallery.label}>
+          <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-6">
+            {project.gallery.map((item, i) => (
+              <Reveal key={item.url + i} delay={(i % 2) * 0.1} className={i === 0 ? "md:col-span-2" : ""}>
+                <figure>
+                  <div className={`overflow-hidden bg-paper-warm ${i === 0 ? "aspect-[16/9] lg:aspect-[21/9]" : "aspect-[4/3]"}`}>
+                    <img src={item.url} alt={item.caption || project.title} loading="lazy" className="w-full h-full object-cover" />
+                  </div>
+                  {item.caption && (
+                    <figcaption className="mt-3 flex gap-3 font-sans text-sm text-text-muted">
+                      <span className="font-mono text-[11px] text-accent tabular-nums pt-0.5">{String(i + 1).padStart(2, "0")}</span>
+                      {item.caption}
+                    </figcaption>
+                  )}
+                </figure>
+              </Reveal>
+            ))}
+          </div>
+        </Section>
+      )}
+
+      <PrevNext
+        prevLabel={content.navigation.prevLabel}
+        nextLabel={content.navigation.nextLabel}
+        prev={{ to: ROUTES.project(prev.slug), title: prev.title, meta: `${prev.category} ${content.bullet} ${prev.year}` }}
+        next={{ to: ROUTES.project(next.slug), title: next.title, meta: `${next.category} ${content.bullet} ${next.year}` }}
+      />
     </main>
   );
 }
